@@ -2,7 +2,7 @@ name = "json-toolbox"
 main = "src/index.js"
 compatibility_date = "2026-07-18"
 
-# 💡 核心规则：让后端能够将 HTML 读取为纯文本字符串进行魔改
+# 告诉 Wrangler 将 HTML 读取为纯文本字符串进行数据注入
 [[rules]]
 type = "Text"
 globs = ["**/*.html"]

@@ -1,86 +1,109 @@
 // 自动导入隔壁的纯 HTML 视图资产
 import htmlTemplate from './index.html';
 
+// 在全局作用域缓存一份扫描到的真实文件路径树，避免重复请求暴露或降速
+let globalTreeCache = null;
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
     // ==========================================
-    // 🔒 云端安全配置（代码锁在云端，外人绝对抓不到）
+    // 🔒 云端敏感配置区
     // ==========================================
-    // 优先读取你在 CF 后台配置的环境变量 SECRET_KEY，没有则默认密码为 "614118"
-    const AUTH_KEY = env.SECRET_KEY || "614118"; 
-
-    // 🛠️ 已经焊死你的真实 GitHub 仓库信息
+    const AUTH_KEY = env.SECRET_KEY || "614118"; // 你的操作验证密码
     const GITHUB_OWNER = "zzgs219G"; 
     const GITHUB_REPO = "json"; 
     const GITHUB_BRANCH = "main"; 
-    
-    // 💡 如果你的仓库是【私有仓库】，请务必在 CF 后台环境变量里配置 GH_TOKEN（你的 GitHub 个人访问令牌）
-    const GH_TOKEN = env.GH_TOKEN || ""; 
-
-    // 自动拼接的域名地址前缀
+    const GH_TOKEN = env.GH_TOKEN || ""; // 私有仓库填Token，公开仓库可不填
     const BASE_URL = "https://json.614118.xyz";
 
     // ==========================================
-    // 🔑 异步安全鉴权接口（点击复制或直达时触发）
+    // 🌲 核心黑魔法：内部拉取并解析 GitHub 目录树
+    // ==========================================
+    async function getCachedTree() {
+      if (globalTreeCache) return globalTreeCache;
+      try {
+        const ghApiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
+        const headers = { "User-Agent": "Cloudflare-Worker-AutoIndex" };
+        if (GH_TOKEN) { headers["Authorization"] = `token ${GH_TOKEN}`; }
+
+        const ghResponse = await fetch(ghApiUrl, { headers });
+        if (ghResponse.ok) {
+          const treeData = await ghResponse.json();
+          // 只抓取真正的文件，且后缀必须是 .json 或者是 .enc
+          globalTreeCache = treeData.tree.filter(node => 
+            node.type === "blob" && 
+            (node.path.endsWith(".json") || node.path.endsWith(".enc"))
+          );
+          return globalTreeCache;
+        }
+      } catch (e) {}
+      return [];
+    }
+
+    // ==========================================
+    // 🛡️ 路由 1：云端代理匿名测速（彻底防止前端抓包暴露明文）
+    // ==========================================
+    if (url.pathname === "/api/ping") {
+      const id = parseInt(url.searchParams.get("id"));
+      const tree = await getCachedTree();
+      const targetFile = tree[id];
+
+      if (!targetFile) return new Response("Error", { status: 404 });
+
+      const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
+      const startTime = performance.now();
+      try {
+        // 在云端（服务器内部）发起测速包，外界 F12 网络面板只能看到请求了 Worker，完全看不见这个真实 URL！
+        await fetch(fullRealUrl, { method: 'HEAD', cache: 'no-store' });
+        const latency = Math.round(performance.now() - startTime);
+        return new Response(JSON.stringify({ success: true, latency }), {
+          headers: { "Content-Type": "application/json" }
+        });
+      } catch (e) {
+        return new Response(JSON.stringify({ success: false }), { status: 500 });
+      }
+    }
+
+    // ==========================================
+    // 🔑 路由 2：安全解锁解密真实明文 URL
     // ==========================================
     if (url.pathname === "/api/get-secure-link") {
-      const targetUrl = url.searchParams.get("url");
+      const id = parseInt(url.searchParams.get("id"));
       const key = url.searchParams.get("key");
+      const tree = await getCachedTree();
+      const targetFile = tree[id];
 
-      if (key === AUTH_KEY && targetUrl && targetUrl.startsWith(BASE_URL)) {
-        return new Response(JSON.stringify({ success: true, url: targetUrl }), {
-          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+      if (key === AUTH_KEY && targetFile) {
+        const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
+        return new Response(JSON.stringify({ success: true, url: fullRealUrl }), {
+          headers: { "Content-Type": "application/json" }
         });
       }
-      return new Response(JSON.stringify({ success: false, msg: "安全密钥认证失败" }), { 
+      return new Response(JSON.stringify({ success: false, msg: "认证失败" }), { 
         status: 403, headers: { "Content-Type": "application/json" } 
       });
     }
 
     // ==========================================
-    // 🌲 核心黑魔法：动态去 GitHub API 抓取完整的项目结构目录树
+    // 🚀 路由 3：主页面渲染下发（脱敏分发）
     // ==========================================
-    let publicMetadata = [];
-    try {
-      const ghApiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
-      
-      const headers = { "User-Agent": "Cloudflare-Worker-AutoIndex" };
-      if (GH_TOKEN) { headers["Authorization"] = `token ${GH_TOKEN}`; }
+    // 每次进入页面刷新清空缓存，确保能感知仓库最新文件变动
+    globalTreeCache = null; 
+    const tree = await getCachedTree();
 
-      const ghResponse = await fetch(ghApiUrl, { headers });
-      
-      if (ghResponse.ok) {
-        const treeData = await ghResponse.json();
-        
-        // 全自动过滤：只抓取真正的文件，且后缀必须是 .json 或者是 .enc
-        const validFiles = treeData.tree.filter(node => 
-          node.type === "blob" && 
-          (node.path.endsWith(".json") || node.path.endsWith(".enc"))
-        );
+    // 💡 重点：发给前端的数据结构干净得像张白纸，没有包含任何 URL 路径，只有名字
+    const publicMetadata = tree.map((file, index) => {
+      const pathSegments = file.path.split('/');
+      const filename = pathSegments.pop();
+      const ext = filename.split('.').pop().toLowerCase();
+      const pathInfo = pathSegments.slice(-2).join('/') || 'root';
+      return { id: index, filename, ext, pathInfo };
+    });
 
-        // 动态拼装脱敏元数据发放给前端
-        publicMetadata = validFiles.map((file, index) => {
-          const pathSegments = file.path.split('/');
-          const filename = pathSegments.pop();
-          const ext = filename.split('.').pop().toLowerCase();
-          const pathInfo = pathSegments.slice(-2).join('/') || 'root';
-          const fullRealUrl = `${BASE_URL}/${file.path}`; // 全自动拼接真实网盘路径
-
-          return { id: index, filename, ext, pathInfo, testUrl: fullRealUrl };
-        });
-      }
-    } catch (e) {
-      // 容错兜底
-      publicMetadata = [{ id: 0, filename: "实时扫描仓库失败", ext: "error", pathInfo: "error", testUrl: "" }];
-    }
-
-    // ==========================================
-    // 🚀 服务端合并与下发（真正的 1 次请求闭环秒开）
-    // ==========================================
     const rawHtmlString = typeof htmlTemplate === 'string' ? htmlTemplate : htmlTemplate.default;
-    if (!rawHtmlString) return new Response("服务器内部错误：HTML资产解析失败", { status: 500 });
+    if (!rawHtmlString) return new Response("HTML 视图加载失败", { status: 500 });
 
     const finalHtml = rawHtmlString.replace('/*SERVER_DATA*/ []', JSON.stringify(publicMetadata));
     return new Response(finalHtml, { headers: { "Content-Type": "text/html; charset=utf-8" } });

@@ -3,121 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>控制台 // 资源调度中心</title>
+  <title>控制台 // 资源调度</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="min-h-screen bg-[#030712] text-zinc-100 antialiased flex flex-col justify-between font-sans selection:bg-indigo-500/30">
+<body class="min-h-screen bg-[#030712] text-zinc-100 antialiased flex flex-col justify-between font-sans selection:bg-indigo-500/30 text-xs">
 
-  <!-- 霓虹微光背景（顶奢 UI 氛围感） -->
+  <!-- 氛围微光背景 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/10 blur-[130px]"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-500/10 blur-[120px]"></div>
+    <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/5 blur-[130px]"></div>
   </div>
 
-  <!-- 主看板容器 -->
-  <main class="relative z-10 max-w-6xl w-full mx-auto px-4 py-12 flex-1 flex flex-col justify-between">
+  <!-- 主看板 -->
+  <main class="relative z-10 max-w-5xl w-full mx-auto px-4 py-8 flex-1 flex flex-col justify-between">
     <div>
-      <!-- 头部状态栏 -->
-      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-900 pb-6 mb-10">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 text-indigo-400 rounded-2xl shadow-xl shadow-indigo-500/5">
-            <i class="fas fa-terminal text-xl"></i>
+      <!-- 顶部状态栏（极高密度精简） -->
+      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-zinc-900 pb-4 mb-6">
+        <div class="flex items-center gap-2.5">
+          <div class="flex items-center justify-center w-8 h-8 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-lg">
+            <i class="fas fa-terminal text-sm"></i>
           </div>
           <div>
-            <h1 class="text-xl font-bold tracking-tight text-white">仓库全自动智能索引面板</h1>
-            <p class="text-zinc-500 text-xs font-mono mt-0.5">运行环境 // GITHUB_TREE_FLOW</p>
+            <h1 class="text-sm font-bold text-white tracking-tight">仓库全自动智能索引大盘</h1>
+            <p class="text-zinc-600 font-mono text-[10px]">节点状态 // 隐匿流测速防锁已激活</p>
           </div>
         </div>
         
-        <div class="flex items-center gap-3 self-start sm:self-center">
-          <div class="bg-zinc-900/80 border border-zinc-800/80 rounded-xl px-3 py-2 flex items-center gap-2 text-[11px] text-zinc-400 font-mono">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-            <span class="w-2 h-2 rounded-full bg-emerald-500 absolute"></span>
-            <span class="pl-2">按需动态金库锁就绪</span>
+        <!-- CF 免费额度实会计看板 -->
+        <div class="flex flex-wrap items-center gap-2 font-mono text-[10px]">
+          <div class="bg-zinc-900 border border-zinc-800 rounded-lg px-2.5 py-1 text-zinc-400">
+            会话已消耗 CF 请求: <span id="cfCounter" class="text-amber-400 font-bold">1</span> 次
           </div>
-          <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-medium transition-all duration-200 active:scale-95 flex items-center gap-1.5 shadow-lg shadow-indigo-600/10">
-            <i class="fas fa-bolt"></i> 重新测试各节点延迟
+          <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded-lg transition-all active:scale-95 flex items-center gap-1">
+            <i class="fas fa-bolt text-[9px]"></i> 并发全测速
           </button>
         </div>
       </header>
 
       <!-- 工具过滤栏 -->
-      <section class="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between bg-zinc-900/20 border border-zinc-900 p-3 rounded-2xl backdrop-blur-md">
+      <section class="mb-4 flex flex-col sm:flex-row gap-2 items-center justify-between bg-zinc-900/30 border border-zinc-900/60 p-2 rounded-xl backdrop-blur-md">
         <div class="relative w-full sm:max-w-xs">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-zinc-500 text-xs">
-            <i class="fas fa-search"></i>
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-zinc-600">
+            <i class="fas fa-search text-[10px]"></i>
           </span>
-          <input 
-            type="text" 
-            id="searchInput"
-            placeholder="输入关键字过滤文件名..." 
-            class="w-full pl-9 pr-4 py-2 bg-zinc-950/60 border border-zinc-800/80 rounded-xl text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 transition-all text-xs"
-          >
+          <input type="text" id="searchInput" placeholder="搜索过滤文件名..." class="w-full pl-7 pr-3 py-1 bg-zinc-950/60 border border-zinc-800/80 rounded-lg text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 text-[11px]">
         </div>
-        <div id="categoryTabs" class="flex gap-1.5 p-1 bg-zinc-950/80 border border-zinc-900 rounded-xl text-[11px] w-full sm:w-auto overflow-x-auto"></div>
+        <div id="categoryTabs" class="flex gap-1 p-0.5 bg-zinc-950/80 border border-zinc-900 rounded-lg text-[10px]"></div>
       </section>
 
-      <!-- Bento 云端网格 -->
-      <section id="linksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></section>
+      <!-- 核心高密度行列表（一排拉过去，高度极低，纵观全局） -->
+      <section class="border border-zinc-900/60 rounded-xl overflow-hidden bg-zinc-900/10 backdrop-blur-md">
+        <div class="bg-zinc-900/40 border-b border-zinc-900 px-4 py-2 flex font-mono text-zinc-500 text-[10px] uppercase tracking-wider">
+          <div class="w-2/5">资源资产名称</div>
+          <div class="w-1/5 text-center">所属目录</div>
+          <div class="w-1/5 text-center">内部归类</div>
+          <div class="w-1/5 text-right pr-4">调度交互</div>
+        </div>
+        <div id="linksGrid" class="divide-y divide-zinc-900">
+          <!-- 动态卡片行 -->
+        </div>
+      </section>
     </div>
   </main>
 
-  <!-- 按需验证锁弹窗 -->
-  <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
-    <div class="bg-[#090d16] border border-zinc-800/80 p-6 rounded-3xl w-full max-w-sm text-center space-y-4 shadow-2xl">
-        <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl flex items-center justify-center mx-auto text-sm"><i class="fas fa-key"></i></div>
+  <!-- 按需验证生态锁弹窗 -->
+  <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
+    <div class="bg-[#090d16] border border-zinc-800/80 p-5 rounded-2xl w-full max-w-xs text-center space-y-3 shadow-2xl">
+        <div class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg flex items-center justify-center mx-auto text-xs"><i class="fas fa-key"></i></div>
         <div>
-          <h3 class="text-sm font-bold text-zinc-200">触发生态安全锁</h3>
-          <p class="text-zinc-500 text-[11px] mt-0.5">拉取云端真实明文URL需要验证内部授权密钥</p>
+          <h3 class="font-bold text-zinc-200">触发生态锁</h3>
+          <p class="text-zinc-500 text-[10px] mt-0.5">获取真实网盘明文链接需要密钥</p>
         </div>
-        <input 
-          type="password" 
-          id="modalKey" 
-          class="w-full text-center tracking-widest bg-zinc-950 p-3 rounded-xl border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-sm text-zinc-200" 
-          placeholder="请输入授权调度密码" 
-          onkeydown="if(event.key==='Enter') executeSecureAction()"
-        >
-        <div class="flex gap-2 text-xs">
-            <button onclick="closeModal()" class="flex-1 p-2.5 text-zinc-500 hover:text-zinc-400 transition">取消</button>
-            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 p-2.5 rounded-xl font-bold transition">确认验证</button>
+        <input type="password" id="modalKey" class="w-full text-center bg-zinc-950 p-2 rounded-lg border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200" placeholder="授权调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
+        <div class="flex gap-1.5 text-[11px]">
+            <button onclick="closeModal()" class="flex-1 py-1.5 text-zinc-500 hover:text-zinc-400 transition">取消</button>
+            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1.5 rounded-lg font-bold transition">验证</button>
         </div>
     </div>
   </div>
 
-  <!-- 页脚 -->
-  <footer class="relative z-10 py-6 text-center text-[11px] text-zinc-700 font-mono border-t border-zinc-950 bg-zinc-950/40">
-    <span>分布式边缘架构 // CLOUDFLARE WORKERS NATIVE TEXT STREAM</span>
+  <footer class="py-4 text-center text-[10px] text-zinc-800 font-mono border-t border-zinc-950">
+    <span>SYSTEM ACTIVE // TOTAL CONTROL</span>
   </footer>
 
-  <!-- 全局通知组件 -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
-    <div id="toastContent" class="flex items-center gap-2.5 bg-zinc-900/95 border border-emerald-500/30 text-emerald-400 px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur-md text-xs font-mono">
+  <!-- 全局通知 -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="toastContent" class="flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3 py-2 rounded-lg shadow-xl text-[11px] font-mono">
       <i class="fas fa-check-circle"></i><span id="toastText">操作成功</span>
     </div>
   </div>
 
   <script>
-    // 💡 核心机制：后端在分发此文件前，会用实际扫描到的目录树 JSON 强行顶替掉这个占位符
+    // 💡 纯无害脱敏数据，里面不带任何明文路径和 testUrl！
     let fetchedData = /*SERVER_DATA*/ []; 
     
     let currentTab = '全部';
     let pendingAction = { id: null, type: null };
+    let cfRequestCount = 1; // 初始打开网页计作 1 次
 
+    // 修复图标：.enc 密文文件匹配经典防护盾图标
     const extStyleMap = {
       json: { icon: "fas fa-file-code", label: "明文配置", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
-      enc: { icon: "fas fa-file-shield", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
-      error: { icon: "fas fa-exclamation-triangle", label: "扫描失败", theme: "border-rose-500/20 bg-rose-500/5 text-rose-400" },
+      enc: { icon: "fas fa-shield-alt", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
       default: { icon: "fas fa-file-alt", label: "常规资产", theme: "border-zinc-700/50 bg-zinc-800/20 text-zinc-400" }
     };
 
     fetchedData = fetchedData.map(item => ({ ...item, latency: null, testing: false }));
 
+    // 更新 CF 记账器看板数值
+    function updateCfCounter(count = 1) {
+      cfRequestCount += count;
+      document.getElementById('cfCounter').innerText = cfRequestCount;
+    }
+
     function renderTabs() {
       const extensions = ['全部', ...new Set(fetchedData.map(item => item.ext.toUpperCase()))];
       document.getElementById('categoryTabs').innerHTML = extensions.map(ext => `
-        <button onclick="switchTab('${ext}')" class="px-3 py-1 rounded-lg font-mono transition-all ${
-          currentTab === ext ? 'bg-zinc-800 text-white shadow border border-zinc-700/50' : 'text-zinc-500 hover:text-zinc-300'
+        <button onclick="switchTab('${ext}')" class="px-2 py-0.5 rounded transition-all ${
+          currentTab === ext ? 'bg-zinc-800 text-white border border-zinc-700/50' : 'text-zinc-500 hover:text-zinc-300'
         }">.${ext}</button>
       `).join('');
     }
@@ -128,41 +131,44 @@
       const filtered = fetchedData.filter(item => (currentTab === '全部' || item.ext.toUpperCase() === currentTab) && (!kw || item.filename.toLowerCase().includes(kw)));
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-20 text-zinc-600 text-xs font-mono"><i class="fas fa-ghost text-lg mb-2 block"></i>没有在仓库中检索到相关资产</div>`;
+        grid.innerHTML = `<div class="text-center py-8 text-zinc-600 font-mono">没有检索到任何仓库资产</div>`;
         return;
       }
 
       grid.innerHTML = filtered.map(item => {
         const config = extStyleMap[item.ext] || extStyleMap.default;
-        let latencyHTML = `<span class="text-zinc-600 text-[11px]">未测试</span>`;
         
+        // 精简测速状态：右移并封装成紧凑的小灯泡/小标签
+        let latencyHTML = `<span class="text-zinc-700"><i class="fas fa-hourglass-start text-[9px] mr-1"></i>未测</span>`;
         if (item.testing) {
-          latencyHTML = `<span class="text-indigo-400 animate-pulse text-[11px]"><i class="fas fa-circle-notch animate-spin mr-1"></i>握手探测中</span>`;
+          latencyHTML = `<span class="text-indigo-400 animate-pulse"><i class="fas fa-circle-notch animate-spin mr-1"></i>探测</span>`;
         } else if (item.latency !== null) {
-          if (item.latency === 'error') latencyHTML = `<span class="bg-rose-500/10 border border-rose-500/20 px-1.5 py-0.5 rounded text-rose-400 font-bold text-[10px]">超时/断路</span>`;
-          else if (item.latency < 180) latencyHTML = `<span class="bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-400 font-bold text-[10px]"><i class="fas fa-bolt mr-0.5"></i>${item.latency} ms</span>`;
-          else latencyHTML = `<span class="bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded text-amber-400 font-bold text-[10px]">${item.latency} ms</span>`;
+          if (item.latency === 'error') latencyHTML = `<span class="text-rose-500 font-bold">异常</span>`;
+          else if (item.latency < 180) latencyHTML = `<span class="bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-400 font-mono font-bold">${item.latency} ms</span>`;
+          else latencyHTML = `<span class="bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded text-amber-400 font-mono font-bold">${item.latency} ms</span>`;
         }
 
         return `
-          <div class="bg-[#090d16]/50 border border-zinc-900 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-zinc-800 hover:bg-[#0d1321]/70">
-            <div class="flex items-start justify-between gap-3">
-              <div class="flex items-center gap-3 overflow-hidden">
-                <div class="flex items-center justify-center w-10 h-10 rounded-xl border ${config.theme} text-base shrink-0"><i class="${config.icon}"></i></div>
-                <div class="overflow-hidden">
-                  <h3 class="font-semibold text-xs text-zinc-200 truncate" title="${item.filename}">${item.filename}</h3>
-                  <p class="text-[10px] text-zinc-600 font-mono mt-0.5 truncate"><i class="fas fa-folder-open text-[9px] mr-1 text-zinc-700"></i>../${item.pathInfo}/</p>
-                </div>
-              </div>
-              <span class="text-[9px] font-mono tracking-wider px-2 py-0.5 rounded border uppercase shrink-0 font-bold ${config.theme}">${config.label}</span>
+          <div class="px-4 py-1.5 flex items-center justify-between hover:bg-zinc-900/40 transition duration-150">
+            <!-- 名字 + 呼吸延迟灯合一 -->
+            <div class="w-2/5 flex items-center gap-2 overflow-hidden">
+              <i class="${config.icon} ${config.theme.split(' ').pop()} text-xs shrink-0"></i>
+              <span class="font-medium text-zinc-200 truncate group-hover:text-indigo-400" title="${item.filename}">${item.filename}</span>
+              <div class="shrink-0 ml-1 scale-90">${latencyHTML}</div>
             </div>
-            <div class="bg-zinc-950/60 border border-zinc-900/60 rounded-xl px-3 py-1.5 flex items-center justify-between text-xs font-mono">
-              <span class="text-zinc-500 text-[11px]">请求往返耗时</span>
-              <div>${latencyHTML}</div>
+            
+            <!-- 路径 -->
+            <div class="w-1/5 text-center text-zinc-500 font-mono text-[11px] truncate">../${item.pathInfo}/</div>
+            
+            <!-- 类型 -->
+            <div class="w-1/5 text-center">
+              <span class="text-[9px] font-mono px-1.5 py-0.5 rounded border font-bold ${config.theme}">${config.label}</span>
             </div>
-            <div class="flex gap-2">
-              <button onclick="triggerAction(${item.id}, 'copy')" class="flex-1 bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 py-1.5 rounded-xl text-xs transition flex items-center justify-center gap-1.5"><i class="fas fa-copy"></i>一键复制</button>
-              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 w-8 h-8 rounded-xl transition flex items-center justify-center text-xs" title="直达资源"><i class="fas fa-external-link-alt text-[10px]"></i></button>
+            
+            <!-- 动作交互 -->
+            <div class="w-1/5 flex justify-end gap-1.5 pl-2">
+              <button onclick="triggerAction(${item.id}, 'copy')" class="bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 px-2 py-0.5 rounded transition text-[10px]">复制</button>
+              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 px-1.5 py-0.5 rounded transition text-[10px]" title="直达"><i class="fas fa-external-link-alt text-[9px]"></i></button>
             </div>
           </div>
         `;
@@ -190,16 +196,14 @@
       document.getElementById('modalKey').value = "";
     }
 
-    // 🛠️ 对齐改动：将当前卡片已经自动拼接好的 URL 丢给后端安全校验，校验通过才会吐回给剪贴板
+    // 点击复制/直达动作安全鉴权（消耗 1 次 CF 请求次数）
     async function executeSecureAction(providedKey) {
       const key = providedKey || document.getElementById('modalKey').value.trim();
       if(!key) return;
 
-      const target = fetchedData.find(item => item.id === pendingAction.id);
-      if(!target) return;
-
       try {
-        const res = await fetch(`/api/get-secure-link?url=${encodeURIComponent(target.testUrl)}&key=${key}`);
+        updateCfCounter(1); // 触发后端密码比对，计 1 次
+        const res = await fetch(`/api/get-secure-link?id=${pendingAction.id}&key=${key}`);
         const result = await res.json();
 
         if(result.success) {
@@ -207,7 +211,7 @@
           closeModal();
           if(pendingAction.type === 'copy') {
             navigator.clipboard.writeText(result.url);
-            showToast("📋 真实网盘链接已安全复制");
+            showToast("📋 链接已安全提取至剪贴板");
           } else if(pendingAction.type === 'go') {
             window.open(result.url, '_blank');
           }
@@ -217,25 +221,31 @@
 
     function handleAuthFail() {
       localStorage.removeItem('node_auth_pwd');
-      showToast("✕ 认证密码错误，拒绝调用", "error");
+      showToast("✕ 密钥错误，保护阻断", "error");
       const input = document.getElementById('modalKey');
       input.value = "";
       input.classList.add('border-rose-500', 'animate-shake');
       setTimeout(() => input.classList.remove('border-rose-500', 'animate-shake'), 500);
     }
 
+    // =========================================================
+    // ⚡ 工业级·纯后端无感中转代理测速
+    // =========================================================
     async function measureLatency(id) {
       const target = fetchedData.find(item => item.id === id);
-      if (!target || !target.testUrl) return;
+      if (!target) return;
+      
       target.testing = true;
       renderGrid(document.getElementById('searchInput').value);
-      const startTime = performance.now();
+      
       try {
-        await fetch(target.testUrl, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' });
-        target.latency = Math.round(performance.now() - startTime);
+        updateCfCounter(1); // 发起一次代理测速，计 1 次 Worker 请求
+        // 请求内部中转接口 /api/ping，不接触真实敏感路径
+        const res = await fetch(`/api/ping?id=${id}`);
+        const result = await res.json();
+        target.latency = result.success ? result.latency : 'error';
       } catch (e) {
-        const finalTime = Math.round(performance.now() - startTime);
-        target.latency = (finalTime > 0 && finalTime < 4500) ? finalTime : 'error';
+        target.latency = 'error';
       } finally {
         target.testing = false;
         renderGrid(document.getElementById('searchInput').value);
@@ -250,8 +260,8 @@
       const content = document.getElementById('toastContent');
       text.innerText = msg;
       content.className = type === "success" 
-        ? "flex items-center gap-2.5 bg-zinc-900/95 border border-emerald-500/30 text-emerald-400 px-4 py-2 rounded-xl text-xs font-mono shadow-2xl"
-        : "flex items-center gap-2.5 bg-zinc-900/95 border border-rose-500/30 text-rose-400 px-4 py-2 rounded-xl text-xs font-mono shadow-2xl";
+        ? "flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3 py-2 rounded-lg shadow-xl text-[11px] font-mono"
+        : "flex items-center gap-2 bg-zinc-900 border border-rose-500/30 text-rose-400 px-3 py-2 rounded-lg shadow-xl text-[11px] font-mono";
       toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
       toast.classList.add('opacity-100', 'translate-y-0');
       setTimeout(() => {
@@ -264,7 +274,7 @@
     
     renderTabs();
     renderGrid();
-    setTimeout(testAllLatency, 300);
+    setTimeout(testAllLatency, 300); // 丝滑入场自动开始匿名链路代理体检
   </script>
   <style>
     @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
