@@ -3,81 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>控制台 // 资源调度</title>
+  <title>控制台 // 资源中心</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 99px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+  </style>
 </head>
-<body class="min-h-screen bg-[#030712] text-zinc-100 antialiased flex flex-col justify-between font-sans selection:bg-indigo-500/30 text-xs">
+<body class="min-h-screen bg-[#030712] text-zinc-100 font-sans antialiased flex flex-col justify-between selection:bg-indigo-500/30 text-xs">
 
-  <!-- 背景微光 -->
+  <!-- 背景粒子微光 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute top-[-25%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/[0.015] blur-[130px]"></div>
+    <div class="absolute top-[-25%] left-[-10%] w-[70vw] h-[70vw] rounded-full bg-indigo-500/[0.02] blur-[150px]"></div>
+    <div class="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-500/[0.015] blur-[130px]"></div>
   </div>
 
   <!-- 主容器 -->
-  <main class="relative z-10 max-w-3xl w-full mx-auto px-4 py-8 flex-1 flex flex-col justify-between">
-    <div>
-      <!-- 顶栏状态 -->
-      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-zinc-900/60 pb-4 mb-5">
-        <div class="flex items-center gap-3">
-          <div class="flex items-center justify-center w-8 h-8 bg-zinc-900 border border-zinc-800 text-indigo-400 rounded-lg shadow-inner">
-            <i class="fas fa-shield-network text-xs"></i>
+  <main class="relative z-10 max-w-5xl w-full mx-auto px-4 py-8 md:py-12 flex-1 flex flex-col justify-between">
+    <div class="space-y-6">
+      
+      <!-- 1. 顶栏状态信息区 -->
+      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-900 pb-5">
+        <div class="flex items-center gap-3.5">
+          <!-- 强渲染修复：显式限定尺寸，确保电脑/手机均不塌陷的立体图标 -->
+          <div class="w-10 h-10 min-w-[40px] bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 text-indigo-400 rounded-xl flex items-center justify-center shadow-md shadow-black/50">
+            <i class="fas fa-shield-halved text-sm block"></i>
           </div>
           <div>
-            <h1 class="text-xs font-bold text-zinc-200 tracking-tight">应用配置文件调度大盘</h1>
-            <p class="text-zinc-600 font-mono text-[9px] mt-0.5">SECURITY PROTOCOL // ZERO_PATH_EXPOSURE</p>
+            <h1 class="text-sm font-bold text-zinc-100 tracking-tight sm:text-base">远程资产管理调度面板</h1>
+            <p class="text-zinc-600 font-mono text-[9px] mt-0.5 tracking-wider uppercase">Security Level // Zero-Exposure Encryption</p>
           </div>
         </div>
         
-        <!-- 记账器看板 -->
-        <div class="flex items-center gap-2 font-mono text-[10px]">
-          <div class="bg-zinc-900/80 border border-zinc-800/60 rounded-xl px-3 py-1 text-zinc-400 backdrop-blur-sm shadow-sm">
-            本会话消耗 CF 请求: <span id="cfCounter" class="text-emerald-400 font-bold">1</span> 次
+        <!-- 大厂精算账本看板 -->
+        <div class="flex items-center gap-2.5 font-mono text-[10px] self-start sm:self-center">
+          <div class="bg-zinc-900/90 border border-zinc-800/80 rounded-xl px-3 py-1.5 text-zinc-400 backdrop-blur-md shadow-sm">
+            本会话已消耗 CF 请求: <span id="cfCounter" class="text-emerald-400 font-bold">1</span> 次
           </div>
-          <button onclick="syncRepository()" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-zinc-200 px-2.5 py-1 rounded-xl transition active:scale-95 flex items-center gap-1">
+          <button onclick="syncRepository()" class="bg-zinc-900 hover:bg-zinc-800 text-zinc-300 hover:text-white border border-zinc-800 px-3 py-1.5 rounded-xl font-medium transition active:scale-95 flex items-center gap-1.5">
             <i class="fas fa-sync-alt text-[9px]"></i> 同步仓库
           </button>
         </div>
       </header>
 
-      <!-- 紧凑过滤工具栏（彻底砍掉多余的代码格式标签） -->
-      <section class="mb-4 flex gap-3 items-center justify-between bg-zinc-900/20 border border-zinc-900/60 p-1.5 rounded-xl backdrop-blur-md">
-        <div class="relative w-full sm:max-w-xs">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-zinc-600">
-            <i class="fas fa-search text-[9px]"></i>
+      <!-- 2. 完美的搜索与筛选对齐栏（修复高度不均与丑陋边框问题） -->
+      <section class="flex flex-col md:flex-row gap-3 items-center justify-between bg-zinc-900/20 border border-zinc-900 p-2 rounded-2xl backdrop-blur-md">
+        <div class="relative w-full md:max-w-xs">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-zinc-600">
+            <i class="fas fa-search text-[10px]"></i>
           </span>
-          <input type="text" id="searchInput" placeholder="检索过滤资源资产..." class="w-full pl-7 pr-2 py-1 bg-zinc-950/40 border border-zinc-800/80 rounded-lg text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/40 text-[11px]">
+          <!-- 深度美化：规范高度 h-9 配合完美的呼吸内边距 -->
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="搜索检索资源资产名称..." 
+            class="w-full h-9 pl-9 pr-4 bg-zinc-950/60 border border-zinc-800 rounded-xl text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 focus:ring-1 focus:ring-indigo-500/20 transition-all text-[11px]"
+          >
         </div>
-        <div id="categoryTabs" class="flex gap-1 p-0.5 bg-zinc-950/60 border border-zinc-900 rounded-lg text-[10px]"></div>
+        <div id="categoryTabs" class="flex gap-1 p-1 bg-zinc-950/80 border border-zinc-900 rounded-xl text-[10px] w-full md:w-auto overflow-x-auto select-none">
+          <!-- 动态类型标签 -->
+        </div>
       </section>
 
-      <!-- 核心微卡片流布局（优雅拉满，摆脱系统日志感） -->
-      <section id="linksGrid" class="space-y-2"></section>
+      <!-- 3. 真·双端自适应卡片矩阵大盘（手机1列，平板2列，电脑高分辨率自动展开3列） -->
+      <section id="linksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <!-- 动态资产组件 -->
+      </section>
     </div>
   </main>
 
-  <!-- 验证锁弹窗 -->
-  <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
-    <div class="bg-[#090d16] border border-zinc-800/80 p-4 rounded-xl w-full max-w-xs text-center space-y-3 shadow-2xl">
-        <div class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg flex items-center justify-center mx-auto text-xs shadow-inner"><i class="fas fa-key"></i></div>
+  <!-- 4. 按需安全验证锁弹窗 -->
+  <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 transition-all duration-300 opacity-0">
+    <div class="bg-[#090d16] border border-zinc-800/80 p-5 rounded-2xl w-full max-w-xs text-center space-y-4 shadow-2xl">
+        <div class="w-9 h-9 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl flex items-center justify-center mx-auto text-xs"><i class="fas fa-key"></i></div>
         <div>
-          <h3 class="font-bold text-zinc-200 text-xs">安全验证锁</h3>
-          <p class="text-zinc-500 text-[10px] mt-0.5">调取内部原始明文资源需要进行身份验证</p>
+          <h3 class="font-bold text-zinc-200 text-xs">安全生态控制锁</h3>
+          <p class="text-zinc-500 text-[10px] mt-0.5">获取底层原始路径需调用安全解密链</p>
         </div>
-        <input type="password" id="modalKey" class="w-full text-center bg-zinc-950 p-1.5 rounded-lg border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200 text-xs tracking-wider" placeholder="输入调度授权密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
-        <div class="flex gap-1.5 text-[10px]">
-            <button onclick="closeModal()" class="flex-1 py-1 text-zinc-500 hover:text-zinc-400 transition">取消</button>
-            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1 rounded-lg font-bold transition shadow-md">确认授权</button>
+        <input type="password" id="modalKey" class="w-full h-9 text-center bg-zinc-950 p-2 rounded-xl border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200 text-xs tracking-widest" placeholder="输入调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
+        <div class="flex gap-2 text-[11px]">
+            <button onclick="closeModal()" class="flex-1 py-1.5 text-zinc-500 hover:text-zinc-400 transition font-medium">取消</button>
+            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1.5 rounded-xl font-bold transition shadow-md">通过验证</button>
         </div>
     </div>
   </div>
 
-  <footer class="py-3 text-center text-[9px] text-zinc-800 font-mono border-t border-zinc-950/40">
-    <span>SYSTEM ACTIVE // SECURE EDGE ENDPOINT</span>
+  <footer class="py-4 text-center text-[9px] text-zinc-800 font-mono border-t border-zinc-950/50">
+    <span>SYSTEM EXECUTIVE ENDPOINT // ARCHITECT VERSION 3.0</span>
   </footer>
 
-  <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
-    <div id="toastContent" class="flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3 py-1.5 rounded-lg shadow-xl text-[10px] font-mono backdrop-blur-md">
+  <!-- 全局提示器 -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="toastContent" class="flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-4 py-2.5 rounded-xl shadow-2xl text-[11px] font-mono backdrop-blur-md">
       <i class="fas fa-check-circle"></i><span id="toastText">操作成功</span>
     </div>
   </div>
@@ -88,7 +107,7 @@
     let pendingAction = { id: null, type: null };
     let cfRequestCount = 1; 
 
-    // 💡 极其核心的前端缓存金库：一旦解密成功，真网址直接锁死在浏览器内存中，再次点击复制耗费 0 请求！
+    // 🔒 零功耗内存金库
     let unlockedCache = {}; 
 
     const extStyleMap = {
@@ -107,9 +126,9 @@
     function renderTabs() {
       const extensions = ['全部', ...new Set(fetchedData.map(item => item.ext.toUpperCase()))];
       document.getElementById('categoryTabs').innerHTML = extensions.map(ext => `
-        <button onclick="switchTab('${ext}')" class="px-2 py-0.5 rounded transition-all ${
-          currentTab === ext ? 'bg-zinc-800 text-white border border-zinc-700/50 shadow' : 'text-zinc-500 hover:text-zinc-300'
-        }">.${ext}</button>
+        <button onclick="switchTab('${ext}')" class="px-3 h-7 rounded-lg transition-all ${
+          currentTab === ext ? 'bg-zinc-800 text-white border border-zinc-700/50 shadow font-medium' : 'text-zinc-500 hover:text-zinc-300'
+        }">${ext === '全部' ? '全部' : '.' + ext}</button>
       `).join('');
     }
 
@@ -119,7 +138,7 @@
       const filtered = fetchedData.filter(item => (currentTab === '全部' || item.ext.toUpperCase() === currentTab) && (!kw || item.filename.toLowerCase().includes(kw)));
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="text-center py-6 border border-dashed border-zinc-900 rounded-xl text-zinc-600 font-mono">未检索到任何资源文件</div>`;
+        grid.innerHTML = `<div class="col-span-full text-center py-12 border border-dashed border-zinc-900 rounded-2xl text-zinc-600 font-mono">未检索到任何匹配资源</div>`;
         return;
       }
 
@@ -127,46 +146,46 @@
         const config = extStyleMap[item.ext] || extStyleMap.default;
         
         let latencyHTML = `
-          <button onclick="measureLatency(${item.id})" class="bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 text-zinc-500 text-[9px] px-2 py-0.5 rounded font-mono transition active:scale-95">
+          <button onclick="measureLatency(${item.id})" class="bg-zinc-950 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 text-zinc-500 text-[10px] px-2 h-5 rounded-md font-mono transition active:scale-95">
             测速
           </button>
         `;
         
         if (item.testing) {
-          latencyHTML = `<span class="bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[9px] px-1.5 py-0.5 rounded font-mono animate-pulse"><i class="fas fa-circle-notch animate-spin text-[8px] mr-1"></i>PING</span>`;
+          latencyHTML = `<span class="bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[9px] px-2 h-5 rounded-md flex items-center font-mono animate-pulse"><i class="fas fa-circle-notch animate-spin text-[8px] mr-1"></i>PING</span>`;
         } else if (item.latency !== null) {
           if (item.latency === 'error') {
-            latencyHTML = `<button onclick="measureLatency(${item.id})" class="bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[9px] px-1.5 py-0.5 rounded font-bold font-mono">ERR ↻</button>`;
+            latencyHTML = `<button onclick="measureLatency(${item.id})" class="bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[9px] px-2 h-5 rounded-md font-bold font-mono">ERR ↻</button>`;
           } else {
             const colorClass = item.latency < 180 ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' : 'text-amber-400 bg-amber-500/10 border-amber-500/20';
-            latencyHTML = `<button onclick="measureLatency(${item.id})" class="${colorClass} border text-[9px] px-1.5 py-0.5 rounded font-mono font-bold">${item.latency}ms</button>`;
+            latencyHTML = `<button onclick="measureLatency(${item.id})" class="${colorClass} border text-[9px] px-2 h-5 rounded-md flex items-center font-mono font-bold">${item.latency}ms</button>`;
           }
         }
 
-        // 🛠️ 视觉升级：呼吸感微卡片行，彻底砍掉 pathInfo 信息展示，左边名字右边按钮，井然有序
+        // 🛠️ 顶奢微卡片自适应组件排版
         return `
-          <div class="group bg-[#090d16]/30 border border-zinc-900/60 rounded-xl p-3 flex items-center justify-between gap-4 transition duration-150 hover:border-zinc-800 hover:bg-[#0d1321]/40">
+          <div class="group bg-[#090d16]/30 border border-zinc-900 rounded-xl p-3.5 flex items-center justify-between gap-3 transition hover:border-zinc-800 hover:bg-[#0d1321]/40">
             <div class="flex items-center gap-3 overflow-hidden min-w-0 flex-1">
-              <div class="w-7 h-7 rounded-lg border ${config.theme} flex items-center justify-center text-[11px] shrink-0 group-hover:scale-105 transition-transform">
+              <div class="w-8 h-8 min-w-[32px] rounded-lg border ${config.theme} flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform shadow-inner">
                 <i class="${config.icon}"></i>
               </div>
               <div class="truncate">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5 max-w-full">
                   <span class="font-semibold text-zinc-200 text-xs tracking-tight truncate group-hover:text-indigo-400 transition-colors" title="${item.filename}">${item.filename}</span>
-                  <div class="shrink-0 scale-95">${latencyHTML}</div>
                 </div>
-                <div class="text-[9px] font-mono mt-0.5 flex items-center gap-1.5">
-                  <span class="font-bold tracking-wider uppercase ${config.theme.split(' ').pop()}">${config.label}</span>
+                <div class="text-[9px] font-mono mt-1 flex items-center gap-1.5">
+                  <span class="font-bold tracking-wider uppercase px-1 rounded bg-zinc-950 text-zinc-500 border border-zinc-900 text-[8px]">${item.ext}</span>
+                  <div class="shrink-0 scale-90">${latencyHTML}</div>
                 </div>
               </div>
             </div>
             
             <div class="flex items-center gap-2 shrink-0">
-              <button onclick="triggerAction(${item.id}, 'copy')" class="bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 px-3 py-1 rounded-lg text-[10px] font-medium transition active:scale-95 flex items-center gap-1">
-                <i class="fas fa-copy text-[9px]"></i> 一键复制
+              <button onclick="triggerAction(${item.id}, 'copy')" class="bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 px-3 h-7 rounded-lg text-[10px] font-medium transition active:scale-95 flex items-center gap-1">
+                <i class="fas fa-copy text-[9px]"></i> 复制
               </button>
-              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-600 hover:text-zinc-400 border border-zinc-800/40 w-6 h-6 rounded-lg transition flex items-center justify-center" title="直达资源">
-                <i class="fas fa-external-link-alt text-[8px]"></i>
+              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-600 hover:text-indigo-400 border border-zinc-800/40 w-7 h-7 rounded-lg transition flex items-center justify-center" title="直达路径">
+                <i class="fas fa-external-link-alt text-[9px]"></i>
               </button>
             </div>
           </div>
@@ -179,11 +198,11 @@
     function triggerAction(id, type) {
       pendingAction = { id, type };
       
-      // 🎯 核心优化：如果该链接以前提取过一次，直接从本地内存金库提取，0次网络请求消耗！
+      // 🎯 极客核心纠正：内存中存在数据，直接执行，计数表保持死寂，不加 1！
       if (unlockedCache[id]) {
         if(type === 'copy') {
           navigator.clipboard.writeText(unlockedCache[id]);
-          showToast("📋 链接已安全提取（命中内存缓存）");
+          showToast("📋 链接已安全提取（已命中内存金库）");
         } else if(type === 'go') {
           window.open(unlockedCache[id], '_blank');
         }
@@ -212,14 +231,14 @@
       if(!key) return;
 
       try {
+        // 🎯 只有走 fetch 的时候账本才会真实增加 1！
         updateCfCounter(1); 
         const res = await fetch(`/api/get-secure-link?id=${pendingAction.id}&key=${key}`);
         const result = await res.json();
 
         if(result.success) {
           localStorage.setItem('node_auth_pwd', key);
-          // 🎯 写入内存金库，这一页不刷新，以后怎么复制都是 0 开销
-          unlockedCache[pendingAction.id] = result.url;
+          unlockedCache[pendingAction.id] = result.url; // 锁入内存
           
           closeModal();
           if(pendingAction.type === 'copy') {
@@ -250,7 +269,7 @@
       const startTime = performance.now();
       
       try {
-        updateCfCounter(1); 
+        updateCfCounter(1); // 测速属于网络IO，精准+1
         const res = await fetch(`/api/ping?id=${id}`);
         const result = await res.json();
         target.latency = result.success ? Math.round(performance.now() - startTime) : 'error';
@@ -264,7 +283,7 @@
 
     async function syncRepository() {
       const savedKey = localStorage.getItem('node_auth_pwd');
-      const key = savedKey || prompt("请输入密码进行仓库大盘同步：");
+      const key = savedKey || prompt("请输入开发密码刷新边缘大盘：");
       if(!key) return;
 
       try {
@@ -273,10 +292,10 @@
         const result = await res.json();
         if(result.success) {
           localStorage.setItem('node_auth_pwd', key);
-          showToast("♻️ 边缘节点已完成仓库同步");
+          showToast("♻️ 边缘节点数据已重置完成");
           setTimeout(() => location.reload(), 800);
-        } else { showToast("✕ 同步验证失败", "error"); }
-      } catch(e) { showToast("✕ 同步网络故障", "error"); }
+        } else { showToast("✕ 同步认证未通过", "error"); }
+      } catch(e) { showToast("✕ 边缘链路通信故障", "error"); }
     }
 
     function showToast(msg, type = "success") {
@@ -285,8 +304,8 @@
       const content = document.getElementById('toastContent');
       text.innerText = msg;
       content.className = type === "success" 
-        ? "flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3.5 py-1.5 rounded-lg shadow-xl text-[10px] font-mono"
-        : "flex items-center gap-2 bg-zinc-900 border border-rose-500/30 text-rose-400 px-3.5 py-1.5 rounded-lg shadow-xl text-[10px] font-mono";
+        ? "flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3.5 py-2 rounded-xl shadow-2xl text-[11px] font-mono backdrop-blur-md"
+        : "flex items-center gap-2 bg-zinc-900 border border-rose-500/30 text-rose-400 px-3.5 py-2 rounded-xl shadow-2xl text-[11px] font-mono backdrop-blur-md";
       toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
       toast.classList.add('opacity-100', 'translate-y-0');
       setTimeout(() => {
@@ -300,9 +319,5 @@
     renderTabs();
     renderGrid();
   </script>
-  <style>
-    @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
-    .animate-shake { animation: shake 0.4s ease-in-out; }
-  </style>
 </body>
 </html>

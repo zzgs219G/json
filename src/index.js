@@ -1,4 +1,3 @@
-// 自动导入隔壁的纯 HTML 视图资产
 import htmlTemplate from './index.html';
 
 let globalTreeCache = null;
@@ -64,7 +63,7 @@ export default {
     }
 
     // ==========================================
-    // ⚡ 路由 2：全隐匿端到端网络测速中转站
+    // ⚡ 路由 2：隐匿测速
     // ==========================================
     if (url.pathname === "/api/ping") {
       const id = parseInt(url.searchParams.get("id"));
@@ -109,7 +108,7 @@ export default {
     if (url.pathname === "/" || url.pathname === "/index.html") {
       const tree = await getTreeWithCache();
 
-      // 🛠️ 核心修正：publicMetadata 干净得像张白纸，彻底抹除 pathInfo，外人无法再拼凑明文路径
+      // 🛠️ 彻底抹除任何 pathInfo 信息，前端只有纯文件名
       const publicMetadata = tree.map((file, index) => {
         const filename = file.path.split('/').pop();
         const ext = filename.split('.').pop().toLowerCase();
@@ -124,7 +123,7 @@ export default {
     }
 
     // ==========================================
-    // 🛡️ 路由 5：反向代理透传（带静态边缘缓存，APP访问专用通道）
+    // 🛡️ 路由 5：反向代理透传（带边缘强缓存）
     // ==========================================
     const cacheKeyRequest = new Request(request.url, { method: "GET", headers: request.headers });
     let cachedAsset = await edgeCache.match(cacheKeyRequest);
