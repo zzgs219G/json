@@ -7,7 +7,7 @@ export default {
     const url = new URL(request.url);
 
     // ==========================================
-    // 🔒 云端敏感配置区
+    // 🔒 云端安全配置区
     // ==========================================
     const AUTH_KEY = env.SECRET_KEY || "614118"; 
     const GITHUB_OWNER = "zzgs219G"; 
@@ -37,17 +37,16 @@ export default {
     }
 
     // ==========================================
-    // 🚀 路由 1：【全新重构】云端并发聚合测速（N个文件只算1次Worker请求）
+    // ⚡ 路由 1：打包聚合测速接口（只产生 1 次前端到 Worker 的请求）
     // ==========================================
     if (url.pathname === "/api/ping-all") {
       const tree = await getCachedTree();
       
-      // 使用 Promise.all 像轰炸机一样并发测速，CF 限制单个事件内子请求上限一般为 50 个
       const testPromises = tree.map(async (targetFile, index) => {
         const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
         const startTime = performance.now();
         try {
-          // 3秒强行超时，防止挂死
+          // 发起轻量级 HEAD 探测，3秒强行超时
           await fetch(fullRealUrl, { 
             method: 'HEAD', 
             cache: 'no-store',
@@ -66,7 +65,7 @@ export default {
     }
 
     // ==========================================
-    // 🔑 路由 2：安全解锁解密真实明文 URL
+    // 🔑 路由 2：安全解锁提取真实明文 URL
     // ==========================================
     if (url.pathname === "/api/get-secure-link") {
       const id = parseInt(url.searchParams.get("id"));
@@ -75,8 +74,7 @@ export default {
       const targetFile = tree[id];
 
       if (key === AUTH_KEY && targetFile) {
-        const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
-        return new Response(JSON.stringify({ success: true, url: fullRealUrl }), {
+        return new Response(JSON.stringify({ success: true, url: `${BASE_URL}/${targetFile.path}` }), {
           headers: { "Content-Type": "application/json" }
         });
       }
@@ -86,23 +84,30 @@ export default {
     }
 
     // ==========================================
-    // 🗂️ 路由 3：页面首屏分发
+    // 🔹 路由 3：只在访问根目录时才拦截下发导航页 UI
     // ==========================================
-    globalTreeCache = null; 
-    const tree = await getCachedTree();
+    if (url.pathname === "/" || url.pathname === "/index.html") {
+      globalTreeCache = null; 
+      const tree = await getCachedTree();
 
-    const publicMetadata = tree.map((file, index) => {
-      const pathSegments = file.path.split('/');
-      const filename = pathSegments.pop();
-      const ext = filename.split('.').pop().toLowerCase();
-      const pathInfo = pathSegments.slice(-2).join('/') || 'root';
-      return { id: index, filename, ext, pathInfo };
-    });
+      const publicMetadata = tree.map((file, index) => {
+        const pathSegments = file.path.split('/');
+        const filename = pathSegments.pop();
+        const ext = filename.split('.').pop().toLowerCase();
+        const pathInfo = pathSegments.slice(-2).join('/') || 'root';
+        return { id: index, filename, ext, pathInfo };
+      });
 
-    const rawHtmlString = typeof htmlTemplate === 'string' ? htmlTemplate : htmlTemplate.default;
-    if (!rawHtmlString) return new Response("HTML 视图加载失败", { status: 500 });
+      const rawHtmlString = typeof htmlTemplate === 'string' ? htmlTemplate : htmlTemplate.default;
+      if (!rawHtmlString) return new Response("HTML 视图加载失败", { status: 500 });
 
-    const finalHtml = rawHtmlString.replace('/*SERVER_DATA*/ []', JSON.stringify(publicMetadata));
-    return new Response(finalHtml, { headers: { "Content-Type": "text/html; charset=utf-8" } });
+      const finalHtml = rawHtmlString.replace('/*SERVER_DATA*/ []', JSON.stringify(publicMetadata));
+      return new Response(finalHtml, { headers: { "Content-Type": "text/html; charset=utf-8" } });
+    }
+
+    // ==========================================
+    // 🛡️ 【重大修复】非核心 API/导航路径（如 APP 读取配置路径），原路透传放行给源站！
+    // ==========================================
+    return fetch(request);
   }
 };
