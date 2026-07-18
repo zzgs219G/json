@@ -98,10 +98,12 @@
     let globalSecureData = {}; 
 
     const extStyleMap = {
-      json: { icon: "fas fa-file-code", label: "明文配置", theme: "bg-blue-50 text-blue-600" },
-      enc: { icon: "fas fa-file-shield", label: "加密密文", theme: "bg-purple-50 text-purple-600" },
-      default: { icon: "fas fa-file-alt", label: "常规资产", theme: "bg-slate-100 text-slate-600" }
-    };
+  json: { icon: "fas fa-file-code", label: "明文配置", theme: "bg-blue-50 text-blue-600" },
+  // ✅ 换回绝对稳定、所有免费库都支持的基础盾牌图标 fa-shield-alt 或者 fa-lock
+  enc: { icon: "fas fa-shield-alt", label: "加密密文", theme: "bg-purple-50 text-purple-600" }, 
+  default: { icon: "fas fa-file-alt", label: "常规资产", theme: "bg-slate-100 text-slate-600" }
+};
+
 
     fetchedData = fetchedData.map(item => ({ ...item, latency: null, testing: false }));
 
