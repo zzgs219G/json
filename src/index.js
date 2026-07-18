@@ -8,7 +8,7 @@ export default {
     const url = new URL(request.url);
 
     // ==========================================
-    // 🔒 云端安全配置区（安全闭环，源码不外泄）
+    // 🔒 云端安全配置区
     // ==========================================
     const AUTH_KEY = env.SECRET_KEY || "614118"; 
     const GITHUB_OWNER = "zzgs219G"; 
@@ -38,34 +38,33 @@ export default {
     }
 
     // ==========================================
-    // ⚡ 路由 1：全网段云端异步并发测速接口
+    // ⚡ 路由 1：【全新重构】真·隐藏路径单独测速中转站
     // ==========================================
-    if (url.pathname === "/api/ping-all") {
+    if (url.pathname === "/api/ping") {
+      const id = parseInt(url.searchParams.get("id"));
       const tree = await getCachedTree();
-      
-      const testPromises = tree.map(async (targetFile, index) => {
-        const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
-        const startTime = performance.now();
-        try {
-          await fetch(fullRealUrl, { 
-            method: 'HEAD', 
-            cache: 'no-store',
-            signal: AbortSignal.timeout(3000) 
-          });
-          return { id: index, success: true, latency: Math.round(performance.now() - startTime) };
-        } catch (e) {
-          return { id: index, success: false };
-        }
-      });
+      const targetFile = tree[id];
 
-      const results = await Promise.all(testPromises);
-      return new Response(JSON.stringify(results), {
-        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
-      });
+      if (!targetFile) return new Response("Not Found", { status: 404 });
+
+      try {
+        const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
+        // Worker 在云端和 GitHub 真实握手，配合前端掐表，算出真实的端到端全链路时间
+        await fetch(fullRealUrl, { 
+          method: 'HEAD', 
+          cache: 'no-store',
+          signal: AbortSignal.timeout(3000) 
+        });
+        return new Response(JSON.stringify({ success: true }), {
+          headers: { "Content-Type": "application/json" }
+        });
+      } catch (e) {
+        return new Response(JSON.stringify({ success: false }), { status: 500 });
+      }
     }
 
     // ==========================================
-    // 🔑 路由 2：安全认证并提取真实明文 URL
+    // 🔑 路由 2：安全解锁提取真实明文 URL
     // ==========================================
     if (url.pathname === "/api/get-secure-link") {
       const id = parseInt(url.searchParams.get("id"));
@@ -106,7 +105,7 @@ export default {
     }
 
     // ==========================================
-    // 🛡️ 路由 4：反向代理透传。APP请求配置直达 GitHub Raw，彻底隔绝无限死循环
+    // 🛡️ 路由 4：反向代理透传。APP请求配置直达 GitHub Raw，彻底隔绝死循环
     // ==========================================
     const githubRawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}${url.pathname}`;
     const proxyHeaders = new Headers(request.headers);
