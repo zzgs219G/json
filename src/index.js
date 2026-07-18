@@ -1,7 +1,5 @@
-// 自动导入隔壁的纯 HTML 视图资产
 import htmlTemplate from './index.html';
 
-// 在全局作用域缓存一份扫描到的真实文件路径树，避免重复请求暴露或降速
 let globalTreeCache = null;
 
 export default {
@@ -11,16 +9,13 @@ export default {
     // ==========================================
     // 🔒 云端敏感配置区
     // ==========================================
-    const AUTH_KEY = env.SECRET_KEY || "614118"; // 你的操作验证密码
+    const AUTH_KEY = env.SECRET_KEY || "614118"; 
     const GITHUB_OWNER = "zzgs219G"; 
     const GITHUB_REPO = "json"; 
     const GITHUB_BRANCH = "main"; 
-    const GH_TOKEN = env.GH_TOKEN || ""; // 私有仓库填Token，公开仓库可不填
+    const GH_TOKEN = env.GH_TOKEN || ""; 
     const BASE_URL = "https://json.614118.xyz";
 
-    // ==========================================
-    // 🌲 核心黑魔法：内部拉取并解析 GitHub 目录树
-    // ==========================================
     async function getCachedTree() {
       if (globalTreeCache) return globalTreeCache;
       try {
@@ -31,7 +26,6 @@ export default {
         const ghResponse = await fetch(ghApiUrl, { headers });
         if (ghResponse.ok) {
           const treeData = await ghResponse.json();
-          // 只抓取真正的文件，且后缀必须是 .json 或者是 .enc
           globalTreeCache = treeData.tree.filter(node => 
             node.type === "blob" && 
             (node.path.endsWith(".json") || node.path.endsWith(".enc"))
@@ -43,27 +37,32 @@ export default {
     }
 
     // ==========================================
-    // 🛡️ 路由 1：云端代理匿名测速（彻底防止前端抓包暴露明文）
+    // 🚀 路由 1：【全新重构】云端并发聚合测速（N个文件只算1次Worker请求）
     // ==========================================
-    if (url.pathname === "/api/ping") {
-      const id = parseInt(url.searchParams.get("id"));
+    if (url.pathname === "/api/ping-all") {
       const tree = await getCachedTree();
-      const targetFile = tree[id];
+      
+      // 使用 Promise.all 像轰炸机一样并发测速，CF 限制单个事件内子请求上限一般为 50 个
+      const testPromises = tree.map(async (targetFile, index) => {
+        const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
+        const startTime = performance.now();
+        try {
+          // 3秒强行超时，防止挂死
+          await fetch(fullRealUrl, { 
+            method: 'HEAD', 
+            cache: 'no-store',
+            signal: AbortSignal.timeout(3000) 
+          });
+          return { id: index, success: true, latency: Math.round(performance.now() - startTime) };
+        } catch (e) {
+          return { id: index, success: false };
+        }
+      });
 
-      if (!targetFile) return new Response("Error", { status: 404 });
-
-      const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
-      const startTime = performance.now();
-      try {
-        // 在云端（服务器内部）发起测速包，外界 F12 网络面板只能看到请求了 Worker，完全看不见这个真实 URL！
-        await fetch(fullRealUrl, { method: 'HEAD', cache: 'no-store' });
-        const latency = Math.round(performance.now() - startTime);
-        return new Response(JSON.stringify({ success: true, latency }), {
-          headers: { "Content-Type": "application/json" }
-        });
-      } catch (e) {
-        return new Response(JSON.stringify({ success: false }), { status: 500 });
-      }
+      const results = await Promise.all(testPromises);
+      return new Response(JSON.stringify(results), {
+        headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+      });
     }
 
     // ==========================================
@@ -87,13 +86,11 @@ export default {
     }
 
     // ==========================================
-    // 🚀 路由 3：主页面渲染下发（脱敏分发）
+    // 🗂️ 路由 3：页面首屏分发
     // ==========================================
-    // 每次进入页面刷新清空缓存，确保能感知仓库最新文件变动
     globalTreeCache = null; 
     const tree = await getCachedTree();
 
-    // 💡 重点：发给前端的数据结构干净得像张白纸，没有包含任何 URL 路径，只有名字
     const publicMetadata = tree.map((file, index) => {
       const pathSegments = file.path.split('/');
       const filename = pathSegments.pop();
