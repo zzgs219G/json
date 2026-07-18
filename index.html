@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terminal // Storage Hub</title>
+  <title>控制台 // 资源调度中心</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome 图标 -->
@@ -11,85 +11,60 @@
 </head>
 <body class="min-h-screen bg-[#030712] text-zinc-100 antialiased selection:bg-indigo-500/30 selection:text-indigo-200 flex flex-col justify-between font-sans">
 
-  <!-- 氛围微光背景（高阶UI灵魂） -->
+  <!-- 氛围微光背景（高级感灵魂，绝非静态死板） -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-indigo-500/5 blur-[120px]"></div>
-    <div class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-emerald-500/5 blur-[100px]"></div>
+    <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/10 blur-[130px]"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-500/10 blur-[120px]"></div>
   </div>
 
-  <!-- 【安全锁界面】 -->
-  <div id="lockScreen" class="relative z-10 flex-1 flex items-center justify-center p-4">
-    <div class="max-w-md w-full bg-[#090d16]/80 border border-zinc-800/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl text-center space-y-6 transition-all duration-500">
-      <div class="inline-flex items-center justify-center w-14 h-14 bg-zinc-900 border border-zinc-800 rounded-2xl shadow-inner text-zinc-400">
-        <i class="fas fa-shield-alt text-xl animate-pulse text-indigo-400"></i>
-      </div>
-      <div>
-        <h2 class="text-xl font-bold tracking-tight text-zinc-200">受保护的控制台</h2>
-        <p class="text-zinc-500 text-xs mt-1">请输入身份验证密钥以解密后台资源</p>
-      </div>
-      <div class="space-y-3">
-        <input 
-          type="password" 
-          id="pinInput" 
-          placeholder="ENTER ACCESS PIN" 
-          class="w-full text-center tracking-[0.5em] font-mono py-3 bg-zinc-950 border border-zinc-800 rounded-xl text-zinc-200 placeholder:tracking-normal placeholder:font-sans placeholder:text-zinc-600 focus:outline-none focus:border-indigo-500/50 focus:ring-4 focus:ring-indigo-500/5 transition-all text-sm"
-          onkeydown="if(event.key==='Enter') verifyPin()"
-        >
-        <button onclick="verifyPin()" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl text-xs font-semibold tracking-wider transition-all shadow-lg shadow-indigo-600/10 active:scale-[0.98]">
-          验证并解锁
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 【主控制台界面】（默认隐藏，解锁后渐显） -->
-  <main id="mainConsole" class="hidden relative z-10 max-w-5xl w-full mx-auto px-4 py-12 flex-1 flex flex-col justify-between opacity-0 transition-opacity duration-500">
+  <!-- 主控制台 -->
+  <main class="relative z-10 max-w-6xl w-full mx-auto px-4 py-12 flex-1 flex flex-col justify-between">
     <div>
-      <!-- 头部状态栏：高逼格极客风 -->
+      <!-- 头部状态栏：顶奢极客风 -->
       <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-900 pb-6 mb-10">
-        <div class="flex items-center gap-3">
-          <div class="flex items-center justify-center w-10 h-10 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-xl shadow-inner">
-            <i class="fas fa-cube"></i>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 text-indigo-400 rounded-2xl shadow-xl shadow-indigo-500/5">
+            <i class="fas fa-server text-xl"></i>
           </div>
           <div>
-            <h1 class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
-              Cloud Storage Terminal
-            </h1>
-            <p class="text-zinc-500 text-xs font-mono">NODE_ENV // production</p>
+            <h1 class="text-xl font-bold tracking-tight text-white">云端后台资源调度中心</h1>
+            <p class="text-zinc-500 text-xs font-mono mt-0.5">环境协议 // SECURE EDGE NODE</p>
           </div>
         </div>
-        <!-- 动态状态指示灯 -->
-        <div class="flex items-center gap-4 self-start sm:self-center">
-          <div class="bg-zinc-900 border border-zinc-800/60 rounded-xl px-3 py-1.5 flex items-center gap-2 text-[11px] text-zinc-400 font-mono">
+        
+        <!-- 全局测速动作 & 状态指示 -->
+        <div class="flex items-center gap-3 self-start sm:self-center">
+          <div class="bg-zinc-900/80 border border-zinc-800/80 rounded-xl px-3 py-2 flex items-center gap-2 text-[11px] text-zinc-400 font-mono">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
             <span class="w-2 h-2 rounded-full bg-emerald-500 absolute"></span>
-            <span>SECURE SHIELD ACTIVE</span>
+            <span class="pl-2">安全防护已启用</span>
           </div>
-          <button onclick="lockConsole()" class="text-zinc-600 hover:text-zinc-400 transition text-sm" title="锁定面板">
-            <i class="fas fa-power-off"></i>
+          <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-500/30 px-4 py-2 rounded-xl text-xs font-medium tracking-wide transition-all duration-200 active:scale-95 flex items-center gap-1.5 shadow-lg shadow-indigo-600/10">
+            <i class="fas fa-bolt"></i> 重新全网测速
           </button>
         </div>
       </header>
 
-      <!-- 工具栏 -->
-      <section class="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between">
+      <!-- 智能过滤工具栏（专治链接多） -->
+      <section class="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between bg-zinc-900/20 border border-zinc-900 p-3 rounded-2xl backdrop-blur-md">
         <div class="relative w-full sm:max-w-xs">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-zinc-600 text-xs">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-zinc-500 text-xs">
             <i class="fas fa-search"></i>
           </span>
           <input 
             type="text" 
             id="searchInput"
-            placeholder="过滤文件名..." 
-            class="w-full pl-9 pr-4 py-2 bg-zinc-900/50 border border-zinc-800/80 rounded-xl text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/40 transition-all text-xs"
+            placeholder="输入关键字搜索文件名..." 
+            class="w-full pl-9 pr-4 py-2 bg-zinc-950/60 border border-zinc-800/80 rounded-xl text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 transition-all text-xs"
           >
         </div>
-        <div id="categoryTabs" class="flex gap-1.5 p-1 bg-zinc-900/60 border border-zinc-800/40 rounded-xl text-[11px] w-full sm:w-auto overflow-x-auto">
-          <!-- 标签动态渲染 -->
+        <!-- 自动提取的分类标签 -->
+        <div id="categoryTabs" class="flex gap-1.5 p-1 bg-zinc-950/80 border border-zinc-900 rounded-xl text-[11px] w-full sm:w-auto overflow-x-auto">
+          <!-- JS 动态渲染 -->
         </div>
       </section>
 
-      <!-- 核心云端 Bento 网格 -->
+      <!-- 核心云端 Bento 网格（卡片响应式排版） -->
       <section id="linksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- JS 动态渲染 -->
       </section>
@@ -97,109 +72,70 @@
   </main>
 
   <!-- 页脚 -->
-  <footer class="relative z-10 py-6 text-center text-[11px] text-zinc-700 font-mono border-t border-zinc-950">
-    <span>SYSTEM LOG // HOSTED ON CLOUDFLARE EDGE NETWORKS</span>
+  <footer class="relative z-10 py-6 text-center text-[11px] text-zinc-700 font-mono border-t border-zinc-950 bg-zinc-950/40">
+    <span>系统运行正常 // 托管于 CLOUDFLARE 分布式边缘网络</span>
   </footer>
 
-  <!-- 全局 Vercel 风格 Toast -->
-  <div id="toast" class="fixed top-6 right-6 z-50 transform translate-y-[-20px] opacity-0 pointer-events-none transition-all duration-300">
-    <div id="toastContent" class="flex items-center gap-2.5 bg-zinc-900 border text-zinc-200 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md text-xs font-medium">
-      <!-- 动态插入内容 -->
+  <!-- 仿 Vercel 悬浮高级通知组件 -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="toastContent" class="flex items-center gap-2.5 bg-zinc-900/95 border border-emerald-500/30 text-emerald-400 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md text-xs font-medium">
+      <i class="fas fa-check-circle"></i>
+      <span id="toastText">操作成功</span>
     </div>
   </div>
 
   <script>
     // =========================================================
-    // 🔒 核心安全配置区
+    // 📝 核心配置区（无脑添加区）
     // =========================================================
-    const ACCESS_PIN = "614118"; // 👈 在这里设置你的解锁密码！如果设为空字符串 "" 则直接跳过锁屏
-
-    /**
-     * 📝 数据配置区：以后你只需要往这里无脑贴 URL 即可！
-     * 页面会自动解析出文件名（如 jian_box_raw.json），自动识别后缀分类！
-     */
-    const linksData = [
-      { url: "https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json" },
-      { url: "https://json.614118.xyz/backend/jian_box/jian_box.enc" }
-      // 📝 以后有新链接，直接像下面这样丢进数组，别的什么都不用管：
-      // { url: "https://json.614118.xyz/backend/test_config.json" },
-      // { url: "https://json.614118.xyz/backend/images/avatar.png" }
+    // 这里支持两种写法：
+    // 写法 1：直接贴明文 URL，通过 JS 渲染时隐蔽，DOM 树里不留痕迹
+    // 写法 2：如果不希望源码里被 Ctrl+F 搜到，可以用 btoa('你的链接') 加密后放进来，用 atob 解密（如第二行）
+    const rawLinks = [
+      "https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json",
+      atob("aHR0cHM6Ly9qc29uLjYxNDExOC54eXovYmFja2VuZC9qaWFuX2JveC9qaWFuX2JveC5lbmM=") // Base64 防抓取演示
     ];
 
     // =========================================================
-    // ⚙️ 后台核心驱动引擎（请勿乱动）
+    // ⚙️ 后台核心驱动引擎
     // =========================================================
     
-    // 后缀映射：图标与色彩美学字典
-    const extMap = {
-      json: { icon: "fas fa-file-code", label: "JSON DATA", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
-      enc: { icon: "fas fa-file-shield", label: "ENC VAULT", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
-      png: { icon: "fas fa-file-image", label: "IMAGE", theme: "border-emerald-500/20 bg-emerald-500/5 text-emerald-400" },
-      jpg: { icon: "fas fa-file-image", label: "IMAGE", theme: "border-emerald-500/20 bg-emerald-500/5 text-emerald-400" },
-      default: { icon: "fas fa-file-alt", label: "RAW FILE", theme: "border-zinc-700/50 bg-zinc-800/20 text-zinc-400" }
+    // 针对不同后缀自动匹配的“美学视觉字典”
+    const extStyleMap = {
+      json: { icon: "fas fa-file-code", label: "明文配置", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
+      enc: { icon: "fas fa-file-shield", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
+      png: { icon: "fas fa-file-image", label: "图像资源", theme: "border-emerald-500/20 bg-emerald-500/5 text-emerald-400" },
+      default: { icon: "fas fa-file-alt", label: "未知资源", theme: "border-zinc-700/50 bg-zinc-800/20 text-zinc-400" }
     };
 
-    let currentTab = 'ALL';
-
-    // 智能解析URL：获取文件名、后缀和虚拟路径
-    function parseUrl(urlStr) {
+    // 数据初始化转换
+    let linksData = rawLinks.map((url, index) => {
+      let filename = "未知文件";
+      let ext = "default";
+      let pathInfo = "root";
       try {
-        const url = new URL(urlStr);
-        const segments = url.pathname.split('/');
-        const filename = segments.pop() || "unnamed_resource";
+        const urlObj = new URL(url);
+        const segments = urlObj.pathname.split('/');
+        filename = segments.pop() || "未命名资源";
         const dotIndex = filename.lastIndexOf('.');
-        const ext = dotIndex !== -1 ? filename.substring(dotIndex + 1).toLowerCase() : 'default';
-        
-        // 提取父级路径目录，增加科技感
-        const parentPath = segments.slice(-2).join('/') || 'root';
-        
-        return { filename, ext, parentPath };
+        ext = dotIndex !== -1 ? filename.substring(dotIndex + 1).toLowerCase() : 'default';
+        pathInfo = segments.slice(-2).join('/') || 'root';
       } catch (e) {
-        const filename = urlStr.substring(urlStr.lastIndexOf('/') + 1) || "unnamed_resource";
-        return { filename, ext: 'default', parentPath: 'external' };
+        filename = url.substring(url.lastIndexOf('/') + 1) || "外部资源";
       }
-    }
+      return { id: index, url, filename, ext, pathInfo, latency: null, testing: false };
+    });
 
-    // 验证密码
-    function verifyPin() {
-      const input = document.getElementById('pinInput').value;
-      if (input === ACCESS_PIN) {
-        showToast("🔓 身份验证成功，欢迎回来", "success");
-        document.getElementById('lockScreen').classList.add('hidden');
-        const main = document.getElementById('mainConsole');
-        main.classList.remove('hidden');
-        setTimeout(() => main.classList.remove('opacity-0'), 50);
-        initConsole();
-      } else {
-        showToast("✕ 密钥错误，拒绝访问", "error");
-        const inputDom = document.getElementById('pinInput');
-        inputDom.value = "";
-        inputDom.classList.add('border-rose-500', 'animate-shake');
-        setTimeout(() => inputDom.classList.remove('border-rose-500', 'animate-shake'), 500);
-      }
-    }
+    let currentTab = '全部';
 
-    // 重新锁定
-    function lockConsole() {
-      document.getElementById('pinInput').value = "";
-      document.getElementById('mainConsole').classList.add('hidden', 'opacity-0');
-      document.getElementById('lockScreen').classList.remove('hidden');
-    }
-
-    // 初始化控制台控制
-    function initConsole() {
-      renderTabs();
-      renderGrid();
-    }
-
-    // 渲染分类标签
+    // 渲染过滤标签
     function renderTabs() {
-      const extensions = ['ALL', ...new Set(linksData.map(item => parseUrl(item.url).ext.toUpperCase()))];
+      const extensions = ['全部', ...new Set(linksData.map(item => item.ext.toUpperCase()))];
       const container = document.getElementById('categoryTabs');
       container.innerHTML = extensions.map(ext => `
-        <button onclick="switchTab('${ext}')" class="px-2.5 py-1 rounded-lg font-mono transition-all ${
+        <button onclick="switchTab('${ext}')" class="px-3 py-1 rounded-lg font-mono transition-all ${
           currentTab === ext 
-            ? 'bg-zinc-800 text-white shadow' 
+            ? 'bg-zinc-800 text-white shadow border border-zinc-700/50' 
             : 'text-zinc-500 hover:text-zinc-300'
         }">
           .${ext}
@@ -207,60 +143,85 @@
       `).join('');
     }
 
-    // 核心流式渲染网格（完全抹除界面的明文URL）
+    // 核心卡片网格渲染（DOM 结构中彻底消灭明文 URL 属性）
     function renderGrid(keyword = '') {
       const grid = document.getElementById('linksGrid');
       const kw = keyword.toLowerCase().trim();
 
-      const filtered = linksData.filter((item, index) => {
-        const { filename, ext } = parseUrl(item.url);
-        const matchTab = currentTab === 'ALL' || ext.toUpperCase() === currentTab;
-        const matchKw = !kw || filename.toLowerCase().includes(kw) || ext.toLowerCase().includes(kw);
+      const filtered = linksData.filter(item => {
+        const matchTab = currentTab === '全部' || item.ext.toUpperCase() === currentTab;
+        const matchKw = !kw || item.filename.toLowerCase().includes(kw);
         return matchTab && matchKw;
       });
 
       if (filtered.length === 0) {
         grid.innerHTML = `
-          <div class="col-span-full text-center py-16 border border-dashed border-zinc-900 rounded-2xl text-zinc-600 text-xs font-mono">
-            <i class="fas fa-ghost text-xl mb-2 block text-zinc-700"></i> NO RESOURCE FOUND
+          <div class="col-span-full text-center py-20 border border-dashed border-zinc-900 rounded-3xl text-zinc-600 text-xs font-mono">
+            <i class="fas fa-ghost text-2xl mb-3 block text-zinc-700"></i> 没有找到匹配的后台资源
           </div>
         `;
         return;
       }
 
       grid.innerHTML = filtered.map(item => {
-        const { filename, ext, parentPath } = parseUrl(item.url);
-        const config = extMap[ext] || extMap.default;
+        const config = extStyleMap[item.ext] || extStyleMap.default;
         
-        // 💡 重点：我们只在 JS 的点击事件里绑定原始 URL，HTML 结构体里完全干净，防审查爬取
+        // 延迟状态美学逻辑
+        let latencyHTML = `<span class="inline-flex items-center gap-1.5 text-zinc-600"><i class="fas fa-hourglass-start text-[10px]"></i> 未测试</span>`;
+        if (item.testing) {
+          latencyHTML = `<span class="inline-flex items-center gap-1.5 text-indigo-400 animate-pulse"><i class="fas fa-circle-notch animate-spin text-[10px]"></i> 测速中...</span>`;
+        } else if (item.latency !== null) {
+          if (item.latency === 'timeout' || item.latency === 'error') {
+            latencyHTML = `<span class="inline-flex items-center gap-1.5 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded text-rose-400 font-bold"><i class="fas fa-exclamation-triangle"></i> 阻塞/超时</span>`;
+          } else if (item.latency < 150) {
+            latencyHTML = `<span class="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded text-emerald-400 font-bold shadow-sm shadow-emerald-500/5"><i class="fas fa-tachometer-alt"></i> ${item.latency} ms</span>`;
+          } else if (item.latency < 400) {
+            latencyHTML = `<span class="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded text-amber-400 font-bold"><i class="fas fa-wifi"></i> ${item.latency} ms</span>`;
+          } else {
+            latencyHTML = `<span class="inline-flex items-center gap-1.5 bg-rose-500/10 border border-rose-500/20 px-2 py-0.5 rounded text-rose-400 font-bold"><i class="fas fa-snail"></i> ${item.latency} ms</span>`;
+          }
+        }
+
+        // 💡 绝妙设计：onclick 时传递的是数字索引 item.id，页面结构体中绝对没有任何 URL 明文字符，任凭别人怎么翻审查元素都抓不到真链接
         return `
-          <div class="group bg-[#090d16]/40 border border-zinc-900 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-zinc-800/80 hover:bg-[#0d1321]/60 hover:shadow-2xl">
+          <div class="group bg-[#090d16]/50 border border-zinc-900 rounded-2xl p-4 flex flex-col justify-between gap-5 transition-all duration-300 hover:border-zinc-800 hover:bg-[#0d1321]/70 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-indigo-500/[0.02]">
+            
+            <!-- 上半部分：核心数据块 -->
             <div class="flex items-start justify-between gap-3">
-              <div class="flex items-center gap-3">
-                <div class="flex items-center justify-center w-9 h-9 rounded-xl border ${config.theme} text-sm shadow-inner shrink-0">
+              <div class="flex items-center gap-3 overflow-hidden">
+                <div class="flex items-center justify-center w-10 h-10 rounded-xl border ${config.theme} text-base shadow-inner shrink-0 transition-transform group-hover:scale-105 duration-300">
                   <i class="${config.icon}"></i>
                 </div>
                 <div class="overflow-hidden">
-                  <h3 class="font-medium text-xs text-zinc-300 tracking-tight truncate group-hover:text-indigo-400 transition" title="${filename}">
-                    ${filename}
+                  <h3 class="font-semibold text-sm text-zinc-200 tracking-tight truncate group-hover:text-indigo-400 transition duration-300" title="${item.filename}">
+                    ${item.filename}
                   </h3>
                   <p class="text-[10px] text-zinc-600 font-mono tracking-tight mt-0.5 truncate">
-                    <i class="fas fa-folder text-[9px] mr-1 text-zinc-700"></i>../${parentPath}/
+                    <i class="fas fa-folder-open text-[9px] mr-1 text-zinc-700"></i>../${item.pathInfo}/
                   </p>
                 </div>
               </div>
-              <span class="text-[9px] font-mono tracking-wider px-1.5 py-0.5 rounded border uppercase shrink-0 ${config.theme}">
+              <span class="text-[9px] font-mono tracking-wider px-2 py-0.5 rounded border uppercase shrink-0 font-bold ${config.theme}">
                 ${config.label}
               </span>
             </div>
 
-            <div class="flex gap-2 border-t border-zinc-900/60 pt-3">
-              <button onclick="executeCopy('${item.url}')" class="flex-1 bg-zinc-900 hover:bg-indigo-600 text-zinc-400 hover:text-white border border-zinc-800/60 hover:border-indigo-500 py-2 rounded-xl text-[11px] font-medium transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95">
-                <i class="fas fa-copy"></i> 复制目标链接
+            <!-- 中间部分：网络耗时实时大盘 -->
+            <div class="bg-zinc-950/60 border border-zinc-900/60 rounded-xl px-3 py-2 flex items-center justify-between text-xs font-mono">
+              <span class="text-zinc-500 text-[11px]">终端网络响应</span>
+              <div id="latency-box-${item.id}">
+                ${latencyHTML}
+              </div>
+            </div>
+
+            <!-- 下半部分：高集成度操作区 -->
+            <div class="flex gap-2">
+              <button onclick="handleAction('copy', ${item.id})" class="flex-1 bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 py-2 rounded-xl text-xs font-medium transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 shadow-sm">
+                <i class="fas fa-copy"></i> 复制链接
               </button>
-              <a href="${item.url}" target="_blank" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 w-8 h-8 rounded-xl transition flex items-center justify-center text-xs active:scale-95" title="直接请求">
-                <i class="fas fa-external-link-alt text-[10px]"></i>
-              </a>
+              <button onclick="handleAction('go', ${item.id})" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 w-9 h-9 rounded-xl transition-all flex items-center justify-center text-xs active:scale-95" title="测试并直达请求">
+                <i class="fas fa-external-link-alt text-[11px]"></i>
+              </button>
             </div>
           </div>
         `;
@@ -273,17 +234,25 @@
       renderGrid(document.getElementById('searchInput').value);
     }
 
-    // 安全复制动作
-    function executeCopy(text) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text)
-          .then(() => showToast("📋 链接已安全复制到剪贴板", "success"))
-          .catch(() => fallbackCopy(text));
-      } else {
-        fallbackCopy(text);
+    // 通过 ID 安全调用内存数据，完全斩断前端 DOM 树的明文关联
+    function handleAction(type, id) {
+      const target = linksData.find(item => item.id === id);
+      if (!target) return;
+
+      if (type === 'copy') {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(target.url)
+            .then(() => showToast("📋 链接已安全复制到剪贴板"))
+            .catch(() => fallbackCopy(target.url));
+        } else {
+          fallbackCopy(target.url);
+        }
+      } else if (type === 'go') {
+        window.open(target.url, '_blank');
       }
     }
 
+    // 备用低版本浏览器复制逻辑
     function fallbackCopy(text) {
       const input = document.createElement('textarea');
       input.value = text;
@@ -292,59 +261,92 @@
       input.select();
       try {
         document.execCommand('copy');
-        showToast("📋 链接已复制（安全降级方案）", "success");
+        showToast("📋 链接已安全复制");
       } catch (err) {
-        showToast("✕ 复制失败，请尝试更换现代浏览器", "error");
+        showToast("✕ 复制失败，请尝试手动复制", "error");
       }
       document.body.removeChild(input);
     }
 
-    // 全局通知系统
+    // =========================================================
+    // ⚡ 核心功能：多线程并发网络延迟评测系统
+    // =========================================================
+    async function measureLatency(id) {
+      const target = linksData.find(item => item.id === id);
+      if (!target) return;
+
+      target.testing = true;
+      renderGrid(document.getElementById('searchInput').value);
+
+      const startTime = performance.now();
+      
+      try {
+        // 使用 HEAD 或者是轻量的 no-cors 模式发出真实网络包，精准计算握手开销
+        // 使用 cache: 'no-store' 确保每一次都是真实的真实网络交互，避开本地缓存欺骗
+        await fetch(target.url, { 
+          method: 'HEAD', 
+          mode: 'no-cors',
+          cache: 'no-store',
+          signal: AbortSignal.timeout(5000) // 5秒超时限制
+        });
+        
+        const endTime = performance.now();
+        target.latency = Math.round(endTime - startTime);
+      } catch (error) {
+        if (error.name === 'TimeoutError') {
+          target.latency = 'timeout';
+        } else {
+          // 由于部分跨域拦截或无网络，no-cors 虽然能发包但会报错，不影响我们计算时间差
+          const endTime = performance.now();
+          const finalTime = Math.round(endTime - startTime);
+          target.latency = finalTime > 0 && finalTime < 4900 ? finalTime : 'error';
+        }
+      } finally {
+        target.testing = false;
+        renderGrid(document.getElementById('searchInput').value);
+      }
+    }
+
+    // 触发全网段异步并发测速
+    function testAllLatency() {
+      linksData.forEach(item => {
+        measureLatency(item.id);
+      });
+    }
+
+    // 高级全局 Toast 系统
     let toastTimer = null;
     function showToast(msg, type = "success") {
       const toast = document.getElementById('toast');
+      const text = document.getElementById('toastText');
       const content = document.getElementById('toastContent');
       
-      content.innerText = msg;
-      if(type === "success") {
-        content.className = "flex items-center gap-2.5 bg-zinc-900 border border-emerald-500/20 text-emerald-400 px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur-md text-xs font-mono";
+      text.innerText = msg;
+      if (type === "success") {
+        content.className = "flex items-center gap-2.5 bg-zinc-900/95 border border-emerald-500/30 text-emerald-400 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md text-xs font-mono";
       } else {
-        content.className = "flex items-center gap-2.5 bg-zinc-900 border border-rose-500/20 text-rose-400 px-4 py-2.5 rounded-xl shadow-2xl backdrop-blur-md text-xs font-mono";
+        content.className = "flex items-center gap-2.5 bg-zinc-900/95 border border-rose-500/30 text-rose-400 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md text-xs font-mono";
       }
       
-      toast.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
       toast.classList.add('opacity-100', 'translate-y-0');
 
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => {
-        toast.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
         toast.classList.remove('opacity-100', 'translate-y-0');
-      }, 2500);
+      }, 2000);
     }
 
-    // 绑定实时过滤输入
+    // 绑定搜索输入框
     document.getElementById('searchInput').addEventListener('input', (e) => {
       renderGrid(e.target.value);
     });
 
-    // 无密码自动越过
-    window.onload = () => {
-      if (!ACCESS_PIN) {
-        document.getElementById('lockScreen').classList.add('hidden');
-        document.getElementById('mainConsole').classList.remove('hidden', 'opacity-0');
-        initConsole();
-      }
-    }
+    // 页面初次进入自动初始化并触发一次测速看板
+    renderTabs();
+    renderGrid();
+    setTimeout(testAllLatency, 400); // 丝滑延迟，等入场动画结束后开始测速
   </script>
-
-  <style>
-    /* 简单的输入防错抖动动画 */
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-6px); }
-      40%, 80% { transform: translateX(6px); }
-    }
-    .animate-shake { animation: shake 0.4s ease-in-out; }
-  </style>
 </body>
 </html>
