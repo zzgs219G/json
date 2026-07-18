@@ -25,8 +25,8 @@
             <i class="fas fa-terminal text-xl"></i>
           </div>
           <div>
-            <h1 class="text-xl font-bold tracking-tight text-white">应用远程仓库配置面板</h1>
-            <p class="text-zinc-500 text-xs font-mono mt-0.5">运行环境 // SECURE_EDGE_PROD</p>
+            <h1 class="text-xl font-bold tracking-tight text-white">仓库全自动智能索引面板</h1>
+            <p class="text-zinc-500 text-xs font-mono mt-0.5">运行环境 // GITHUB_TREE_FLOW</p>
           </div>
         </div>
         
@@ -34,7 +34,7 @@
           <div class="bg-zinc-900/80 border border-zinc-800/80 rounded-xl px-3 py-2 flex items-center gap-2 text-[11px] text-zinc-400 font-mono">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
             <span class="w-2 h-2 rounded-full bg-emerald-500 absolute"></span>
-            <span class="pl-2">按需安全验证锁已就绪</span>
+            <span class="pl-2">按需动态金库锁就绪</span>
           </div>
           <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-medium transition-all duration-200 active:scale-95 flex items-center gap-1.5 shadow-lg shadow-indigo-600/10">
             <i class="fas fa-bolt"></i> 重新测试各节点延迟
@@ -63,13 +63,13 @@
     </div>
   </main>
 
-  <!-- 按需验证锁（平时不弹，只有本地没存密码、且点击动作时才弹出） -->
+  <!-- 按需验证锁弹窗 -->
   <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
     <div class="bg-[#090d16] border border-zinc-800/80 p-6 rounded-3xl w-full max-w-sm text-center space-y-4 shadow-2xl">
         <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl flex items-center justify-center mx-auto text-sm"><i class="fas fa-key"></i></div>
         <div>
           <h3 class="text-sm font-bold text-zinc-200">触发生态安全锁</h3>
-          <p class="text-zinc-500 text-[11px] mt-0.5">调取明文资源用以开发，需要验证调度密钥</p>
+          <p class="text-zinc-500 text-[11px] mt-0.5">拉取云端真实明文URL需要验证内部授权密钥</p>
         </div>
         <input 
           type="password" 
@@ -87,7 +87,7 @@
 
   <!-- 页脚 -->
   <footer class="relative z-10 py-6 text-center text-[11px] text-zinc-700 font-mono border-t border-zinc-950 bg-zinc-950/40">
-    <span>当前项目架构 // CLOUDFLARE WORKERS NATIVE TEXT STREAM</span>
+    <span>分布式边缘架构 // CLOUDFLARE WORKERS NATIVE TEXT STREAM</span>
   </footer>
 
   <!-- 全局通知组件 -->
@@ -98,7 +98,7 @@
   </div>
 
   <script>
-    // 💡 核心机制：服务器下发前，会直接把下面这行占位符替换成已渲染好的脱敏元数据
+    // 💡 核心机制：后端在分发此文件前，会用实际扫描到的目录树 JSON 强行顶替掉这个占位符
     let fetchedData = /*SERVER_DATA*/ []; 
     
     let currentTab = '全部';
@@ -107,6 +107,7 @@
     const extStyleMap = {
       json: { icon: "fas fa-file-code", label: "明文配置", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
       enc: { icon: "fas fa-file-shield", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
+      error: { icon: "fas fa-exclamation-triangle", label: "扫描失败", theme: "border-rose-500/20 bg-rose-500/5 text-rose-400" },
       default: { icon: "fas fa-file-alt", label: "常规资产", theme: "border-zinc-700/50 bg-zinc-800/20 text-zinc-400" }
     };
 
@@ -189,12 +190,16 @@
       document.getElementById('modalKey').value = "";
     }
 
+    // 🛠️ 对齐改动：将当前卡片已经自动拼接好的 URL 丢给后端安全校验，校验通过才会吐回给剪贴板
     async function executeSecureAction(providedKey) {
       const key = providedKey || document.getElementById('modalKey').value.trim();
       if(!key) return;
 
+      const target = fetchedData.find(item => item.id === pendingAction.id);
+      if(!target) return;
+
       try {
-        const res = await fetch(`/api/get-secure-link?id=${pendingAction.id}&key=${key}`);
+        const res = await fetch(`/api/get-secure-link?url=${encodeURIComponent(target.testUrl)}&key=${key}`);
         const result = await res.json();
 
         if(result.success) {
@@ -202,7 +207,7 @@
           closeModal();
           if(pendingAction.type === 'copy') {
             navigator.clipboard.writeText(result.url);
-            showToast("📋 链接已安全复制");
+            showToast("📋 真实网盘链接已安全复制");
           } else if(pendingAction.type === 'go') {
             window.open(result.url, '_blank');
           }
@@ -221,7 +226,7 @@
 
     async function measureLatency(id) {
       const target = fetchedData.find(item => item.id === id);
-      if (!target) return;
+      if (!target || !target.testUrl) return;
       target.testing = true;
       renderGrid(document.getElementById('searchInput').value);
       const startTime = performance.now();
