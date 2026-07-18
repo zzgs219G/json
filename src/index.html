@@ -15,7 +15,7 @@
     <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-500/10 blur-[120px]"></div>
   </div>
 
-  <!-- 主控制台 -->
+  <!-- 主控制台看板 -->
   <main class="relative z-10 max-w-6xl w-full mx-auto px-4 py-12 flex-1 flex flex-col justify-between">
     <div>
       <!-- 头部状态栏 -->
@@ -26,11 +26,16 @@
           </div>
           <div>
             <h1 class="text-xl font-bold tracking-tight text-white">云端资源调度中心</h1>
-            <p class="text-zinc-500 text-xs font-mono mt-0.5">运行节点 // PAGES_EDGE_PROD</p>
+            <p class="text-zinc-500 text-xs font-mono mt-0.5">运行节点 // WORKER_EDGE_PROD</p>
           </div>
         </div>
         
         <div class="flex items-center gap-3 self-start sm:self-center">
+          <div class="bg-zinc-900/80 border border-zinc-800/80 rounded-xl px-3 py-2 flex items-center gap-2 text-[11px] text-zinc-400 font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 absolute"></span>
+            <span class="pl-2">按需安全验证锁已就绪</span>
+          </div>
           <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-medium transition-all duration-200 active:scale-95 flex items-center gap-1.5 shadow-lg shadow-indigo-600/10">
             <i class="fas fa-sync-alt"></i> 重新测试延迟
           </button>
@@ -53,13 +58,13 @@
     </div>
   </main>
 
-  <!-- 加密验证弹窗 -->
+  <!-- 按需验证弹窗 -->
   <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
     <div class="bg-[#090d16] border border-zinc-800/80 p-6 rounded-3xl w-full max-w-sm text-center space-y-4 shadow-2xl">
         <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl flex items-center justify-center mx-auto text-sm"><i class="fas fa-key"></i></div>
         <div>
           <h3 class="text-sm font-bold text-zinc-200">触发生态锁</h3>
-          <p class="text-zinc-500 text-[11px] mt-0.5">获取明文资源链接需要验证调度密钥</p>
+          <p class="text-zinc-500 text-[11px] mt-0.5">复制或请求明文资源需要调度密钥</p>
         </div>
         <input type="password" id="modalKey" class="w-full text-center tracking-widest bg-zinc-950 p-3 rounded-xl border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-sm text-zinc-200" placeholder="请输入调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
         <div class="flex gap-2 text-xs">
@@ -77,7 +82,9 @@
   </div>
 
   <script>
-    let fetchedData = [];
+    // 💡 核心注入点：JS 在服务器下发前，会强行把 /*SERVER_DATA*/ [] 替换成脱敏后的列表数据。页面 0 额外请求秒开！
+    let fetchedData = /*SERVER_DATA*/ []; 
+    
     let currentTab = '全部';
     let pendingAction = { id: null, type: null };
 
@@ -87,21 +94,9 @@
       default: { icon: "fas fa-file-alt", label: "未知资源", theme: "border-zinc-700/50 bg-zinc-800/20 text-zinc-400" }
     };
 
-    // 页面加载自动向后端要“安全脱敏”后的文件列表
-    async function initPortal() {
-      try {
-        const res = await fetch('/api/list');
-        const data = await res.json();
-        fetchedData = data.map(item => ({ ...item, latency: null, testing: false }));
-        renderTabs();
-        renderGrid();
-        setTimeout(testAllLatency, 300);
-      } catch(e) {
-        showToast("✕ 同步云端资源失败", "error");
-      }
-    }
+    // 数据初始化
+    fetchedData = fetchedData.map(item => ({ ...item, latency: null, testing: false }));
 
-    // 后续渲染逻辑与原先完全一致...
     function renderTabs() {
       const extensions = ['全部', ...new Set(fetchedData.map(item => item.ext.toUpperCase()))];
       document.getElementById('categoryTabs').innerHTML = extensions.map(ext => `
@@ -151,7 +146,7 @@
             </div>
             <div class="flex gap-2">
               <button onclick="triggerAction(${item.id}, 'copy')" class="flex-1 bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 py-1.5 rounded-xl text-xs transition flex items-center justify-center gap-1.5"><i class="fas fa-copy"></i>安全复制</button>
-              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 w-8 h-8 rounded-xl transition flex items-center justify-center text-xs"><i class="fas fa-external-link-alt text-[10px]"></i></button>
+              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 w-8 h-8 rounded-xl transition flex items-center justify-center text-xs" title="直达资源"><i class="fas fa-external-link-alt text-[10px]"></i></button>
             </div>
           </div>
         `;
@@ -188,7 +183,7 @@
         const result = await res.json();
 
         if(result.success) {
-          localStorage.setItem('node_auth_pwd', key);
+          localStorage.setItem('node_auth_pwd', key); // 记住密码
           closeModal();
           if(pendingAction.type === 'copy') {
             navigator.clipboard.writeText(result.url);
@@ -209,6 +204,7 @@
       setTimeout(() => input.classList.remove('border-rose-500', 'animate-shake'), 500);
     }
 
+    // ⚡ 核心高精度并发网络测速
     async function measureLatency(id) {
       const target = fetchedData.find(item => item.id === id);
       if (!target) return;
@@ -246,7 +242,11 @@
     }
 
     document.getElementById('searchInput').addEventListener('input', (e) => renderGrid(e.target.value));
-    window.onload = initPortal;
+    
+    // 初始化运行
+    renderTabs();
+    renderGrid();
+    setTimeout(testAllLatency, 300);
   </script>
   <style>
     @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
