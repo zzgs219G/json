@@ -1,3 +1,4 @@
+// 自动导入隔壁的纯 HTML 视图资产
 import htmlTemplate from './index.html';
 
 let globalTreeCache = null;
@@ -7,7 +8,7 @@ export default {
     const url = new URL(request.url);
 
     // ==========================================
-    // 🔒 云端安全配置区
+    // 🔒 云端安全配置区（安全闭环，源码不外泄）
     // ==========================================
     const AUTH_KEY = env.SECRET_KEY || "614118"; 
     const GITHUB_OWNER = "zzgs219G"; 
@@ -37,7 +38,7 @@ export default {
     }
 
     // ==========================================
-    // ⚡ 路由 1：打包聚合测速接口（只产生 1 次前端到 Worker 的请求）
+    // ⚡ 路由 1：全网段云端异步并发测速接口
     // ==========================================
     if (url.pathname === "/api/ping-all") {
       const tree = await getCachedTree();
@@ -46,7 +47,6 @@ export default {
         const fullRealUrl = `${BASE_URL}/${targetFile.path}`;
         const startTime = performance.now();
         try {
-          // 发起轻量级 HEAD 探测，3秒强行超时
           await fetch(fullRealUrl, { 
             method: 'HEAD', 
             cache: 'no-store',
@@ -65,7 +65,7 @@ export default {
     }
 
     // ==========================================
-    // 🔑 路由 2：安全解锁提取真实明文 URL
+    // 🔑 路由 2：安全认证并提取真实明文 URL
     // ==========================================
     if (url.pathname === "/api/get-secure-link") {
       const id = parseInt(url.searchParams.get("id"));
@@ -84,7 +84,7 @@ export default {
     }
 
     // ==========================================
-    // 🔹 路由 3：只在访问根目录时才拦截下发导航页 UI
+    // 🔹 路由 3：只在访问首页根路径时，拦截下发导航面板 UI
     // ==========================================
     if (url.pathname === "/" || url.pathname === "/index.html") {
       globalTreeCache = null; 
@@ -106,8 +106,21 @@ export default {
     }
 
     // ==========================================
-    // 🛡️ 【重大修复】非核心 API/导航路径（如 APP 读取配置路径），原路透传放行给源站！
+    // 🛡️ 路由 4：反向代理透传。APP请求配置直达 GitHub Raw，彻底隔绝无限死循环
     // ==========================================
-    return fetch(request);
+    const githubRawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${GITHUB_BRANCH}${url.pathname}`;
+    const proxyHeaders = new Headers(request.headers);
+    if (GH_TOKEN) { proxyHeaders.set("Authorization", `token ${GH_TOKEN}`); }
+
+    try {
+      const gitHubResponse = await fetch(githubRawUrl, {
+        method: request.method,
+        headers: proxyHeaders,
+        redirect: "follow"
+      });
+      if (gitHubResponse.ok) return gitHubResponse;
+    } catch (err) {}
+
+    return new Response("资源未在仓库中找到", { status: 404 });
   }
 };

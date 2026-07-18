@@ -9,83 +9,80 @@
 </head>
 <body class="min-h-screen bg-[#030712] text-zinc-100 antialiased flex flex-col justify-between font-sans selection:bg-indigo-500/30 text-xs">
 
+  <!-- 顶部渐变微光 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
-    <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/5 blur-[130px]"></div>
+    <div class="absolute top-[-25%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/[0.03] blur-[130px]"></div>
+    <div class="absolute top-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-500/[0.02] blur-[120px]"></div>
   </div>
 
-  <main class="relative z-10 max-w-5xl w-full mx-auto px-4 py-6 flex-1 flex flex-col justify-between">
+  <!-- 主容器 -->
+  <main class="relative z-10 max-w-5xl w-full mx-auto px-4 py-8 flex-1 flex flex-col justify-between">
     <div>
-      <!-- 顶栏状态 -->
-      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-zinc-900 pb-3 mb-4">
-        <div class="flex items-center gap-2.5">
-          <div class="flex items-center justify-center w-7 h-8 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 rounded-lg">
-            <i class="fas fa-terminal text-xs"></i>
+      <!-- 头部精简状态栏 -->
+      <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-zinc-900/80 pb-4 mb-5">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center justify-center w-9 h-9 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 text-indigo-400 rounded-xl shadow-inner">
+            <i class="fas fa-cubes text-sm"></i>
           </div>
           <div>
-            <h1 class="text-xs font-bold text-white tracking-tight">仓库全自动智能索引大盘</h1>
-            <p class="text-zinc-600 font-mono text-[9px]">状态 // 隐匿流打包并发测速系统已就绪</p>
+            <h1 class="text-sm font-bold text-white tracking-tight">应用远程配置调度大盘</h1>
+            <p class="text-zinc-500 font-mono text-[10px] mt-0.5">环境架构 // CLOUDFLARE SECURE ROUTER</p>
           </div>
         </div>
         
-        <!-- 真正被纠正的精准计账器 -->
-        <div class="flex items-center gap-2 font-mono text-[10px]">
-          <div class="bg-zinc-900 border border-zinc-800 rounded-lg px-2 py-0.5 text-zinc-400">
-            会话消耗 CF 请求: <span id="cfCounter" class="text-emerald-400 font-bold">1</span> 次
+        <!-- 免费计算记账器面板 -->
+        <div class="flex items-center gap-2.5 font-mono text-[10px]">
+          <div class="bg-zinc-900/60 border border-zinc-800/80 rounded-xl px-3 py-1 text-zinc-400 shadow-sm backdrop-blur-sm">
+            本会话消耗 CF 请求: <span id="cfCounter" class="text-emerald-400 font-bold">1</span> 次
           </div>
-          <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-2.5 py-0.5 rounded transition-all active:scale-95 flex items-center gap-1">
-            <i class="fas fa-bolt text-[9px]"></i> 聚合测速
+          <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-500/30 px-3 py-1 rounded-xl font-medium transition-all duration-150 active:scale-95 flex items-center gap-1.5 shadow-md shadow-indigo-600/10">
+            <i class="fas fa-bolt text-[9px]"></i> 聚合全网测速
           </button>
         </div>
       </header>
 
-      <!-- 紧凑型工具过滤栏 -->
-      <section class="mb-3 flex flex-col sm:flex-row gap-2 items-center justify-between bg-zinc-900/30 border border-zinc-900/60 p-1.5 rounded-xl backdrop-blur-md">
+      <!-- 智能工具过滤栏 -->
+      <section class="mb-4 flex flex-col sm:flex-row gap-3 items-center justify-between bg-zinc-900/20 border border-zinc-900 p-2 rounded-2xl backdrop-blur-md">
         <div class="relative w-full sm:max-w-xs">
-          <span class="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none text-zinc-600">
-            <i class="fas fa-search text-[9px]"></i>
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-600">
+            <i class="fas fa-search text-[10px]"></i>
           </span>
-          <input type="text" id="searchInput" placeholder="搜索过滤文件名..." class="w-full pl-6 pr-2 py-0.5 bg-zinc-950/60 border border-zinc-800/80 rounded-lg text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 text-[11px]">
+          <input type="text" id="searchInput" placeholder="检索路由文件名..." class="w-full pl-8 pr-3 py-1.5 bg-zinc-950/40 border border-zinc-800/80 rounded-xl text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/40 transition-all text-[11px]">
         </div>
-        <div id="categoryTabs" class="flex gap-1 p-0.5 bg-zinc-950/80 border border-zinc-900 rounded-lg text-[10px]"></div>
+        <div id="categoryTabs" class="flex gap-1 p-1 bg-zinc-950/60 border border-zinc-900 rounded-xl text-[10px]"></div>
       </section>
 
-      <!-- 极致紧凑型看板表格（高度极低，单屏能塞下几十行） -->
-      <section class="border border-zinc-900/60 rounded-xl overflow-hidden bg-zinc-900/10 backdrop-blur-md">
-        <div class="bg-zinc-900/40 border-b border-zinc-900 px-4 py-1.5 flex font-mono text-zinc-500 text-[9px] uppercase tracking-wider">
-          <div class="w-2/5">资源资产名称</div>
-          <div class="w-1/5 text-center">所属目录</div>
-          <div class="w-1/5 text-center">内部归类</div>
-          <div class="w-1/5 text-right pr-2">调度交互</div>
-        </div>
-        <div id="linksGrid" class="divide-y divide-zinc-900">
-          <!-- 动态高效列表项 -->
-        </div>
+      <!-- 核心微卡堆叠看板（解除日志感，变为高级卡片路由组件） -->
+      <section id="linksGrid" class="space-y-2.5">
+        <!-- 由数据动态流式渲染 -->
       </section>
     </div>
   </main>
 
-  <!-- 独立按需验证锁 -->
-  <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
-    <div class="bg-[#090d16] border border-zinc-800/80 p-4 rounded-xl w-full max-w-xs text-center space-y-3 shadow-2xl">
-        <div class="w-7 h-7 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg flex items-center justify-center mx-auto text-xs"><i class="fas fa-key"></i></div>
+  <!-- 安全锁弹窗 -->
+  <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
+    <div class="bg-[#090d16] border border-zinc-800/80 p-5 rounded-2xl w-full max-w-xs text-center space-y-3.5 shadow-2xl">
+        <div class="w-9 h-9 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl flex items-center justify-center mx-auto text-xs shadow-inner"><i class="fas fa-key"></i></div>
         <div>
-          <h3 class="font-bold text-zinc-200 text-xs">触发生态锁</h3>
-          <p class="text-zinc-500 text-[10px] mt-0.5">调取内部明文链接需要验证密钥</p>
+          <h3 class="font-bold text-zinc-200 text-xs">安全生态锁已激活</h3>
+          <p class="text-zinc-500 text-[10px] mt-0.5">调取内部原始明文资源需要进行身份验证</p>
         </div>
-        <input type="password" id="modalKey" class="w-full text-center bg-zinc-950 p-1.5 rounded-lg border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200 text-xs" placeholder="授权调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
-        <div class="flex gap-1.5 text-[10px]">
-            <button onclick="closeModal()" class="flex-1 py-1 text-zinc-500 hover:text-zinc-400 transition">取消</button>
-            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1 rounded-lg font-bold transition">确认验证</button>
+        <input type="password" id="modalKey" class="w-full text-center bg-zinc-950 p-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200 text-xs tracking-wider" placeholder="输入内部调度密钥" onkeydown="if(event.key==='Enter') executeSecureAction()">
+        <div class="flex gap-2 text-[11px]">
+            <button onclick="closeModal()" class="flex-1 py-1.5 text-zinc-500 hover:text-zinc-400 transition">取消</button>
+            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1.5 rounded-xl font-bold transition-all shadow-md">确认授权</button>
         </div>
     </div>
   </div>
 
-  <footer class="py-2 text-center text-[9px] text-zinc-800 font-mono border-t border-zinc-950">
-    <span>SYSTEM ACTIVE // TOTAL CONTROL</span>
+  <!-- 页脚 -->
+  <footer class="py-4 text-center text-[10px] text-zinc-800 font-mono border-t border-zinc-950/60">
+    <span>SYSTEM MONITOR ENGINE // POWERED BY EDGE CHIPS</span>
   </footer>
 
-  <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
-    <div id="toastContent" class="flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3 py-1.5 rounded-lg shadow-xl text-[10px] font-mono">
+  <!-- 全局轻量通知 -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div id="toastContent" class="flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3.5 py-2 rounded-xl shadow-2xl text-[11px] font-mono backdrop-blur-md">
       <i class="fas fa-check-circle"></i><span id="toastText">操作成功</span>
     </div>
   </div>
@@ -96,7 +93,7 @@
     let pendingAction = { id: null, type: null };
     let cfRequestCount = 1; 
 
-    // 修复图标显示：.enc文件精确套用防护盾牌图标
+    // 配色与图标字典：.enc 文件焊死防护盾牌图标
     const extStyleMap = {
       json: { icon: "fas fa-file-code", label: "明文配置", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
       enc: { icon: "fas fa-shield-alt", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
@@ -113,8 +110,8 @@
     function renderTabs() {
       const extensions = ['全部', ...new Set(fetchedData.map(item => item.ext.toUpperCase()))];
       document.getElementById('categoryTabs').innerHTML = extensions.map(ext => `
-        <button onclick="switchTab('${ext}')" class="px-1.5 py-0.5 rounded transition-all ${
-          currentTab === ext ? 'bg-zinc-800 text-white border border-zinc-700/50' : 'text-zinc-500 hover:text-zinc-300'
+        <button onclick="switchTab('${ext}')" class="px-2.5 py-1 rounded-lg transition-all ${
+          currentTab === ext ? 'bg-zinc-800 text-white border border-zinc-700/50 shadow' : 'text-zinc-500 hover:text-zinc-300'
         }">.${ext}</button>
       `).join('');
     }
@@ -125,38 +122,52 @@
       const filtered = fetchedData.filter(item => (currentTab === '全部' || item.ext.toUpperCase() === currentTab) && (!kw || item.filename.toLowerCase().includes(kw)));
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="text-center py-4 text-zinc-600 font-mono text-[10px]">未检索到任何资源文件</div>`;
+        grid.innerHTML = `<div class="text-center py-10 bg-zinc-900/10 border border-dashed border-zinc-900 rounded-2xl text-zinc-600 font-mono">未检索到任何资源文件</div>`;
         return;
       }
 
       grid.innerHTML = filtered.map(item => {
         const config = extStyleMap[item.ext] || extStyleMap.default;
         
-        // 移除了单独占位的UI和文字，直接做成超精简小数字贴在右侧
-        let latencyHTML = `<span class="text-zinc-700 font-mono scale-90">--</span>`;
+        // 测速状态：演变为精密的胶囊药丸指示灯，融入复合标题流中
+        let latencyHTML = `<span class="bg-zinc-950 text-zinc-600 border border-zinc-900 text-[9px] px-1.5 py-0.2 rounded font-mono">--</span>`;
         if (item.testing) {
-          latencyHTML = `<span class="text-indigo-400 animate-pulse font-mono"><i class="fas fa-circle-notch animate-spin text-[8px]"></i></span>`;
+          latencyHTML = `<span class="bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[9px] px-1.5 py-0.2 rounded font-mono animate-pulse"><i class="fas fa-circle-notch animate-spin text-[8px] mr-1"></i>PROBE</span>`;
         } else if (item.latency !== null) {
-          if (item.latency === 'error') latencyHTML = `<span class="text-rose-500 font-bold font-mono">ERR</span>`;
-          else if (item.latency < 180) latencyHTML = `<span class="text-emerald-400 font-mono font-bold">${item.latency}ms</span>`;
-          else latencyHTML = `<span class="text-amber-400 font-mono font-bold">${item.latency}ms</span>`;
+          if (item.latency === 'error') latencyHTML = `<span class="bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[9px] px-1.5 py-0.2 rounded font-bold font-mono">ERR</span>`;
+          else if (item.latency < 180) latencyHTML = `<span class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] px-1.5 py-0.2 rounded font-mono font-bold"><i class="fas fa-bolt text-[8px] mr-0.5 text-emerald-500"></i>${item.latency}ms</span>`;
+          else latencyHTML = `<span class="bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[9px] px-1.5 py-0.2 rounded font-mono font-bold">${item.latency}ms</span>`;
         }
 
+        // 微卡流架构设计：复合元数据整齐排布，告别系统日志感
         return `
-          <div class="px-4 py-1 flex items-center justify-between hover:bg-zinc-900/50 transition duration-100">
-            <!-- 名字 + 紧凑延迟合并 -->
-            <div class="w-2/5 flex items-center gap-2 overflow-hidden">
-              <i class="${config.icon} ${config.theme.split(' ').pop()} text-[10px] shrink-0"></i>
-              <span class="font-medium text-zinc-200 truncate" title="${item.filename}">${item.filename}</span>
-              <div class="shrink-0 scale-90 ml-0.5">${latencyHTML}</div>
+          <div class="group bg-[#090d16]/30 border border-zinc-900/60 rounded-xl px-4 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all duration-200 hover:border-zinc-800 hover:bg-[#0d1321]/50 hover:shadow-lg shadow-indigo-500/[0.01]">
+            <!-- 左侧：复合核心数据区块 -->
+            <div class="flex items-center gap-3 overflow-hidden min-w-0 flex-1">
+              <div class="w-8 h-8 rounded-lg border ${config.theme} flex items-center justify-center text-xs shrink-0 group-hover:scale-105 transition-transform duration-200 shadow-inner">
+                <i class="${config.icon}"></i>
+              </div>
+              <div class="truncate">
+                <div class="flex items-center gap-2">
+                  <span class="font-semibold text-zinc-100 text-xs tracking-tight truncate group-hover:text-indigo-400 transition-colors">${item.filename}</span>
+                  <div class="shrink-0 scale-95">${latencyHTML}</div>
+                </div>
+                <div class="text-[10px] text-zinc-500 font-mono mt-0.5 truncate flex items-center gap-1.5">
+                  <span class="flex items-center gap-1"><i class="fas fa-folder text-[8px] text-zinc-700"></i>../${item.pathInfo}/</span>
+                  <span class="text-zinc-800 font-bold">•</span>
+                  <span class="font-bold tracking-wider uppercase text-[8px] ${config.theme.split(' ').pop()}">${config.label}</span>
+                </div>
+              </div>
             </div>
-            <div class="w-1/5 text-center text-zinc-600 font-mono text-[10px] truncate">../${item.pathInfo}/</div>
-            <div class="w-1/5 text-center">
-              <span class="text-[8px] font-mono px-1 py-0.2 rounded border font-bold uppercase ${config.theme}">${config.label}</span>
-            </div>
-            <div class="w-1/5 flex justify-end gap-2">
-              <button onclick="triggerAction(${item.id}, 'copy')" class="bg-zinc-900 hover:bg-indigo-600 text-zinc-400 hover:text-white border border-zinc-800 hover:border-indigo-500 px-2 py-0.2 rounded text-[9px] transition">复制</button>
-              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-600 hover:text-zinc-400 border border-zinc-800/40 px-1 py-0.2 rounded transition text-[9px]" title="直达"><i class="fas fa-external-link-alt text-[8px]"></i></button>
+            
+            <!-- 右侧：精简高整合操作区 -->
+            <div class="flex items-center justify-end gap-2 shrink-0 self-end sm:self-center">
+              <button onclick="triggerAction(${item.id}, 'copy')" class="bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800/80 hover:border-indigo-500 px-3 py-1 rounded-lg text-[10px] font-medium transition-all active:scale-95 flex items-center gap-1">
+                <i class="fas fa-copy text-[9px]"></i> 复制路径
+              </button>
+              <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-indigo-400 border border-zinc-800/40 w-7 h-7 rounded-lg transition-all active:scale-95 flex items-center justify-center" title="直达路径">
+                <i class="fas fa-external-link-alt text-[9px]"></i>
+              </button>
             </div>
           </div>
         `;
@@ -198,7 +209,7 @@
           closeModal();
           if(pendingAction.type === 'copy') {
             navigator.clipboard.writeText(result.url);
-            showToast("📋 链接已提取到剪贴板");
+            showToast("📋 核心配置路径已安全复制");
           } else if(pendingAction.type === 'go') {
             window.open(result.url, '_blank');
           }
@@ -208,22 +219,19 @@
 
     function handleAuthFail() {
       localStorage.removeItem('node_auth_pwd');
-      showToast("✕ 验证失败，阻断调用", "error");
+      showToast("✕ 验证授权失败", "error");
       const input = document.getElementById('modalKey');
       input.value = "";
       input.classList.add('border-rose-500', 'animate-shake');
       setTimeout(() => input.classList.remove('border-rose-500', 'animate-shake'), 500);
     }
 
-    // ==========================================
-    // 🗜️ 【彻底纠正】真正彻底切断前端循环，仅 fetch 1 次接口打包聚合返回
-    // ==========================================
     async function testAllLatency() {
       fetchedData.forEach(item => item.testing = true);
       renderGrid(document.getElementById('searchInput').value);
       
       try {
-        updateCfCounter(1); // 💡 只有 1 次 fetch！计数器精准+1！
+        updateCfCounter(1); // 1 次打包聚合请求
         const res = await fetch(`/api/ping-all`);
         const results = await res.json();
         
@@ -247,8 +255,8 @@
       const content = document.getElementById('toastContent');
       text.innerText = msg;
       content.className = type === "success" 
-        ? "flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3 py-1.5 rounded-lg shadow-xl text-[10px] font-mono"
-        : "flex items-center gap-2 bg-zinc-900 border border-rose-500/30 text-rose-400 px-3 py-1.5 rounded-lg shadow-xl text-[10px] font-mono";
+        ? "flex items-center gap-2 bg-zinc-900 border border-emerald-500/30 text-emerald-400 px-3.5 py-2 rounded-xl shadow-2xl text-[11px] font-mono"
+        : "flex items-center gap-2 bg-zinc-900 border border-rose-500/30 text-rose-400 px-3.5 py-2 rounded-xl shadow-2xl text-[11px] font-mono";
       toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
       toast.classList.add('opacity-100', 'translate-y-0');
       setTimeout(() => {
@@ -261,7 +269,7 @@
     
     renderTabs();
     renderGrid();
-    setTimeout(testAllLatency, 300); // 真正意义上的 1 启动合并测速
+    setTimeout(testAllLatency, 300);
   </script>
   <style>
     @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
