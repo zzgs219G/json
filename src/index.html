@@ -9,35 +9,36 @@
 </head>
 <body class="min-h-screen bg-[#030712] text-zinc-100 antialiased flex flex-col justify-between font-sans selection:bg-indigo-500/30 text-xs">
 
-  <!-- 顶部渐变微光 -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
     <div class="absolute top-[-25%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/[0.02] blur-[130px]"></div>
   </div>
 
-  <!-- 主容器 -->
   <main class="relative z-10 max-w-4xl w-full mx-auto px-4 py-6 flex-1 flex flex-col justify-between">
     <div>
-      <!-- 头部精简状态栏 -->
+      <!-- 头部状态栏 -->
       <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-zinc-900 pb-3 mb-4">
         <div class="flex items-center gap-2.5">
           <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border border-indigo-500/20 text-indigo-400 rounded-xl shadow-inner">
-            <i class="fas fa-cubes text-xs"></i>
+            <i class="fas fa-layer-group text-xs"></i>
           </div>
           <div>
-            <h1 class="text-xs font-bold text-white tracking-tight">应用远程配置调度大盘</h1>
-            <p class="text-zinc-600 font-mono text-[9px]">架构状态 // 独立按需隐匿流测速链路已就绪</p>
+            <h1 class="text-xs font-bold text-white tracking-tight">高级全栈资产调度大盘</h1>
+            <p class="text-zinc-600 font-mono text-[9px]">架构模式 // EDGE_CACHE_PROXY ACTIVE</p>
           </div>
         </div>
         
-        <!-- 免费额度精算账本 -->
+        <!-- 精算账本与清缓存大按钮 -->
         <div class="flex items-center gap-2 font-mono text-[10px]">
-          <div class="bg-zinc-900/60 border border-zinc-800/80 rounded-xl px-2.5 py-0.5 text-zinc-400 shadow-sm backdrop-blur-sm">
+          <div class="bg-zinc-900 border border-zinc-800 rounded-xl px-2.5 py-0.5 text-zinc-400">
             会话消耗 CF 请求: <span id="cfCounter" class="text-emerald-400 font-bold">1</span> 次
           </div>
+          <button onclick="syncRepository()" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 px-2.5 py-0.5 rounded-xl font-medium transition active:scale-95 flex items-center gap-1">
+            <i class="fas fa-sync-alt text-[9px]"></i> 同步仓库
+          </button>
         </div>
       </header>
 
-      <!-- 智能过滤工具栏 -->
+      <!-- 工具栏与代码片段格式切换（首席架构师独家赋能） -->
       <section class="mb-3 flex flex-col sm:flex-row gap-2 items-center justify-between bg-zinc-900/20 border border-zinc-900 p-1.5 rounded-xl backdrop-blur-md">
         <div class="relative w-full sm:max-w-xs">
           <span class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-zinc-600">
@@ -45,34 +46,42 @@
           </span>
           <input type="text" id="searchInput" placeholder="检索路由文件名..." class="w-full pl-7 pr-2 py-1 bg-zinc-950/40 border border-zinc-800/80 rounded-lg text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/40 text-[11px]">
         </div>
-        <div id="categoryTabs" class="flex gap-1 p-0.5 bg-zinc-950/60 border border-zinc-900 rounded-lg text-[10px]"></div>
+        
+        <!-- 💡 核心创新点：开发代码复制格式切换器 -->
+        <div class="flex items-center gap-2">
+          <span class="text-zinc-500 text-[10px] font-mono">复制格式:</span>
+          <div id="copyFormatSelector" class="flex gap-1 p-0.5 bg-zinc-950/80 border border-zinc-900 rounded-lg text-[10px]">
+            <button onclick="switchFormat('URL')" class="px-2 py-0.5 rounded transition format-btn bg-zinc-800 text-white">URL</button>
+            <button onclick="switchFormat('KOTLIN')" class="px-2 py-0.5 rounded transition format-btn text-zinc-500 hover:text-zinc-300">Kotlin</button>
+            <button onclick="switchFormat('RETROFIT')" class="px-2 py-0.5 rounded transition format-btn text-zinc-500 hover:text-zinc-300">Retrofit</button>
+          </div>
+          <div id="categoryTabs" class="flex gap-1 p-0.5 bg-zinc-950/60 border border-zinc-900 rounded-lg text-[10px]"></div>
+        </div>
       </section>
 
-      <!-- 核心微卡堆叠大盘（完美告别死板日志感，回归高阶导航美学） -->
-      <section id="linksGrid" class="space-y-2">
-        <!-- 由数据动态流式渲染 -->
-      </section>
+      <!-- 微卡片流容器 -->
+      <section id="linksGrid" class="space-y-2"></section>
     </div>
   </main>
 
-  <!-- 安全生态锁弹窗 -->
+  <!-- 验证锁弹窗 -->
   <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
     <div class="bg-[#090d16] border border-zinc-800/80 p-4 rounded-xl w-full max-w-xs text-center space-y-3 shadow-2xl">
         <div class="w-8 h-8 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg flex items-center justify-center mx-auto text-xs"><i class="fas fa-key"></i></div>
         <div>
-          <h3 class="font-bold text-zinc-200 text-xs">触发生态安全锁</h3>
-          <p class="text-zinc-500 text-[10px] mt-0.5">提取真实网盘明文链接需要验证开发密钥</p>
+          <h3 class="font-bold text-zinc-200 text-xs">安全生态验证锁</h3>
+          <p class="text-zinc-500 text-[10px] mt-0.5">调取内部原始明文资源需要安全密钥</p>
         </div>
-        <input type="password" id="modalKey" class="w-full text-center bg-zinc-950 p-2 rounded-xl border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200 text-xs tracking-wider" placeholder="授权调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
+        <input type="password" id="modalKey" class="w-full text-center bg-zinc-950 p-1.5 rounded-lg border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-zinc-200 text-xs tracking-wider" placeholder="授权调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
         <div class="flex gap-1.5 text-[10px]">
             <button onclick="closeModal()" class="flex-1 py-1 text-zinc-500 hover:text-zinc-400 transition">取消</button>
-            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1 rounded-lg font-bold transition">确认验证</button>
+            <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 py-1 rounded-lg font-bold transition">验证授权</button>
         </div>
     </div>
   </div>
 
   <footer class="py-3 text-center text-[9px] text-zinc-800 font-mono border-t border-zinc-950/60">
-    <span>SYSTEM MONITOR ENGINE // POWERED BY EDGE CHIPS</span>
+    <span>SYSTEM MONITOR ENGINE // ARCHITECT EDITION 2026</span>
   </footer>
 
   <div id="toast" class="fixed bottom-4 right-4 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
@@ -84,10 +93,10 @@
   <script>
     let fetchedData = /*SERVER_DATA*/ []; 
     let currentTab = '全部';
+    let currentFormat = 'URL'; // URL, KOTLIN, RETROFIT
     let pendingAction = { id: null, type: null };
     let cfRequestCount = 1; 
 
-    // 配置字典：.enc 文件匹配专属盾牌图标
     const extStyleMap = {
       json: { icon: "fas fa-file-code", label: "明文配置", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
       enc: { icon: "fas fa-shield-alt", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
@@ -99,6 +108,29 @@
     function updateCfCounter(count = 1) {
       cfRequestCount += count;
       document.getElementById('cfCounter').innerText = cfRequestCount;
+    }
+
+    function switchFormat(format) {
+      currentFormat = format;
+      document.querySelectorAll('.format-btn').forEach(btn => {
+        if(btn.innerText.toUpperCase() === format) {
+          btn.className = "px-2 py-0.5 rounded transition format-btn bg-zinc-800 text-white";
+        } else {
+          btn.className = "px-2 py-0.5 rounded transition format-btn text-zinc-500 hover:text-zinc-300";
+        }
+      });
+    }
+
+    // 💡 核心设计功能：多端代码模板一键智能映射
+    function transformCodeSnippet(filename, rawUrl) {
+      const cleanName = filename.split('.')[0].toUpperCase();
+      if (currentFormat === 'KOTLIN') {
+        return `const val URL_${cleanName} = "${rawUrl}"`;
+      } else if (currentFormat === 'RETROFIT') {
+        const relativePath = rawUrl.replace("https://json.614118.xyz/", "");
+        return `@GET("${relativePath}")\nsuspend function get${cleanName.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())}(): ResponseBody`;
+      }
+      return rawUrl;
     }
 
     function renderTabs() {
@@ -123,7 +155,6 @@
       grid.innerHTML = filtered.map(item => {
         const config = extStyleMap[item.ext] || extStyleMap.default;
         
-        // 💡 改进排版：延迟数据作为小胶囊按钮紧贴右侧，支持独立点击触发“单独请求测速”
         let latencyHTML = `
           <button onclick="measureLatency(${item.id})" class="bg-zinc-950/80 hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 text-zinc-500 text-[9px] px-1.5 py-0.5 rounded font-mono transition active:scale-95 flex items-center gap-1">
             <i class="fas fa-stopwatch text-[8px]"></i> 测速
@@ -141,10 +172,8 @@
           }
         }
 
-        // 微卡片流排排坐架构：高度适中，极具科技呼吸感
         return `
           <div class="group bg-[#090d16]/30 border border-zinc-900/60 rounded-xl px-3.5 py-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 transition duration-150 hover:border-zinc-800 hover:bg-[#0d1321]/40">
-            <!-- 左侧：复合文件元数据流 -->
             <div class="flex items-center gap-2.5 overflow-hidden min-w-0 flex-1">
               <div class="w-7 h-7 rounded-lg border ${config.theme} flex items-center justify-center text-[11px] shrink-0 group-hover:scale-105 transition-transform">
                 <i class="${config.icon}"></i>
@@ -161,12 +190,11 @@
               </div>
             </div>
             
-            <!-- 右侧：按需测速胶囊 + 开发复制直达 -->
             <div class="flex items-center justify-end gap-2.5 shrink-0 self-end sm:self-center">
               <div class="shrink-0 scale-95">${latencyHTML}</div>
               <div class="h-3 w-[1px] bg-zinc-900 hidden sm:block"></div>
               <button onclick="triggerAction(${item.id}, 'copy')" class="bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 px-2.5 py-0.5 rounded-lg text-[10px] font-medium transition active:scale-95 flex items-center gap-1">
-                <i class="fas fa-copy text-[9px]"></i> 复制路径
+                <i class="fas fa-copy text-[9px]"></i> 智能复制
               </button>
               <button onclick="triggerAction(${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-600 hover:text-zinc-400 border border-zinc-800/40 w-6 h-6 rounded-lg transition flex items-center justify-center" title="直达资源">
                 <i class="fas fa-external-link-alt text-[8px]"></i>
@@ -211,8 +239,11 @@
           localStorage.setItem('node_auth_pwd', key);
           closeModal();
           if(pendingAction.type === 'copy') {
-            navigator.clipboard.writeText(result.url);
-            showToast("📋 核心配置路径已安全复制");
+            const target = fetchedData.find(item => item.id === pendingAction.id);
+            // 💡 复制时自动进行多格式模板转换
+            const formattedCode = transformCodeSnippet(target.filename, result.url);
+            navigator.clipboard.writeText(formattedCode);
+            showToast(`📋 已以 [${currentFormat}] 格式复制代码`);
           } else if(pendingAction.type === 'go') {
             window.open(result.url, '_blank');
           }
@@ -229,24 +260,18 @@
       setTimeout(() => input.classList.remove('border-rose-500', 'animate-shake'), 500);
     }
 
-    // =========================================================
-    // ⚡ 【重大重构】真·全路径按需单独测速（点一次测一个，绝不污染首屏）
-    // =========================================================
     async function measureLatency(id) {
       const target = fetchedData.find(item => item.id === id);
       if (!target) return;
       
       target.testing = true;
       renderGrid(document.getElementById('searchInput').value);
-      
-      // 前端掐表开始（代表从你家设备出发的绝对时间）
       const startTime = performance.now();
       
       try {
-        updateCfCounter(1); // 精准消耗 1 次 CF 免费额度
+        updateCfCounter(1); 
         const res = await fetch(`/api/ping?id=${id}`);
         const result = await res.json();
-        // 前端掐表截止。此时时间 = 你到CF + CF到GitHub 的总环回延迟！
         target.latency = result.success ? Math.round(performance.now() - startTime) : 'error';
       } catch (e) {
         target.latency = 'error';
@@ -254,6 +279,24 @@
         target.testing = false;
         renderGrid(document.getElementById('searchInput').value);
       }
+    }
+
+    // 💡 同步仓库：清空云端边缘缓存，强制触发最新全量扫描
+    async function syncRepository() {
+      const savedKey = localStorage.getItem('node_auth_pwd');
+      const key = savedKey || prompt("请输入授权调度密码进行同步：");
+      if(!key) return;
+
+      try {
+        updateCfCounter(1);
+        const res = await fetch(`/api/flush-cache?key=${key}`);
+        const result = await res.json();
+        if(result.success) {
+          localStorage.setItem('node_auth_pwd', key);
+          showToast("♻️ 边缘节点已完成仓库全量同步");
+          setTimeout(() => location.reload(), 1000);
+        } else { showToast("✕ 同步验证失败", "error"); }
+      } catch(e) { showToast("✕ 同步网络故障", "error"); }
     }
 
     function showToast(msg, type = "success") {
@@ -276,7 +319,6 @@
     
     renderTabs();
     renderGrid();
-    // 💡 彻底切断启动时测速，进页面额度雷打不动只扣 1
   </script>
   <style>
     @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
