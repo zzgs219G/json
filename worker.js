@@ -1,0 +1,347 @@
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // ==========================================
+    // ⚙️ 云端配置区（安全防爆，外人绝对看不到）
+    // ==========================================
+    const AUTH_KEY = env.SECRET_KEY || "614118"; // 你的操作密钥
+
+    // 你的核心资源库，直接贴真实URL即可
+    const PRIVATE_RESOURCES = [
+      "https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json",
+      "https://json.614118.xyz/backend/jian_box/jian_box.enc"
+      // 📝 以后有新链接，直接无脑往下加：
+      // , "https://json.614118.xyz/backend/other.json"
+    ];
+
+    // ==========================================
+    // 🔒 独立后端验证路由（只在触发核心动作时请求）
+    // ==========================================
+    if (url.pathname === "/api/get-secure-link") {
+      const id = parseInt(url.searchParams.get("id"));
+      const key = url.searchParams.get("key");
+
+      if (key === AUTH_KEY && PRIVATE_RESOURCES[id]) {
+        return new Response(JSON.stringify({ success: true, url: PRIVATE_RESOURCES[id] }), {
+          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+        });
+      }
+      return new Response(JSON.stringify({ success: false, msg: "密钥错误" }), { 
+        status: 403, 
+        headers: { "Content-Type": "application/json" } 
+      });
+    }
+
+    // ==========================================
+    // 🎛️ 服务端数据预处理（将无敏感信息的元数据注入HTML）
+    // ==========================================
+    const publicMetadata = PRIVATE_RESOURCES.map((link, index) => {
+      let filename = "未知文件";
+      let ext = "default";
+      let pathInfo = "root";
+      try {
+        const urlObj = new URL(link);
+        const segments = urlObj.pathname.split('/');
+        filename = segments.pop() || "未命名";
+        const dotIndex = filename.lastIndexOf('.');
+        ext = dotIndex !== -1 ? filename.substring(dotIndex + 1).toLowerCase() : 'default';
+        pathInfo = segments.slice(-2).join('/') || 'root';
+      } catch(e) {
+        filename = link.substring(link.lastIndexOf('/') + 1) || "外部配置";
+      }
+      return { id: index, filename, ext, pathInfo, testUrl: link }; // testUrl 仅用于前端无跨域要求的测速
+    });
+
+    // ==========================================
+    // 🎨 满血版中文化 UI 模板（数据已在服务端打包）
+    // ==========================================
+    const html = `
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>控制台 // 资源调度中心</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="min-h-screen bg-[#030712] text-zinc-100 antialiased flex flex-col justify-between font-sans selection:bg-indigo-500/30">
+
+      <!-- 霓虹氛围背景 -->
+      <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-indigo-500/10 blur-[130px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-purple-500/10 blur-[120px]"></div>
+      </div>
+
+      <!-- 主控制台看板 -->
+      <main class="relative z-10 max-w-6xl w-full mx-auto px-4 py-12 flex-1 flex flex-col justify-between">
+        <div>
+          <!-- 头部状态栏 -->
+          <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-zinc-900 pb-6 mb-10">
+            <div class="flex items-center gap-4">
+              <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 text-indigo-400 rounded-2xl shadow-xl">
+                <i class="fas fa-bolt text-xl"></i>
+              </div>
+              <div>
+                <h1 class="text-xl font-bold tracking-tight text-white">云端资源调度中心</h1>
+                <p class="text-zinc-500 text-xs font-mono mt-0.5">运行节点 // EDGE_NODE_PROD</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-3 self-start sm:self-center">
+              <div class="bg-zinc-900/80 border border-zinc-800/80 rounded-xl px-3 py-2 flex items-center gap-2 text-[11px] text-zinc-400 font-mono">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 absolute"></span>
+                <span class="pl-2">按需加密验证激活</span>
+              </div>
+              <button onclick="testAllLatency()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-medium transition-all duration-200 active:scale-95 flex items-center gap-1.5 shadow-lg shadow-indigo-600/10">
+                <i class="fas fa-sync-alt"></i> 重新测试延迟
+              </button>
+            </div>
+          </header>
+
+          <!-- 工具栏 -->
+          <section class="mb-8 flex flex-col sm:flex-row gap-4 items-center justify-between bg-zinc-900/20 border border-zinc-900 p-3 rounded-2xl backdrop-blur-md">
+            <div class="relative w-full sm:max-w-xs">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-zinc-500 text-xs">
+                <i class="fas fa-search"></i>
+              </span>
+              <input 
+                type="text" 
+                id="searchInput"
+                placeholder="输入关键字过滤文件名..." 
+                class="w-full pl-9 pr-4 py-2 bg-zinc-950/60 border border-zinc-800/80 rounded-xl text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 transition-all text-xs"
+              >
+            </div>
+            <div id="categoryTabs" class="flex gap-1.5 p-1 bg-zinc-950/80 border border-zinc-900 rounded-xl text-[11px] w-full sm:w-auto overflow-x-auto"></div>
+          </section>
+
+          <!-- 核心 Bento 网格 -->
+          <section id="linksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></section>
+        </div>
+      </main>
+
+      <!-- 按需验证弹窗（默认隐藏） -->
+      <div id="cryptoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-all duration-300 opacity-0">
+        <div class="bg-[#090d16] border border-zinc-800/80 p-6 rounded-3xl w-full max-w-sm text-center space-y-4 shadow-2xl">
+            <div class="w-10 h-10 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-xl flex items-center justify-center mx-auto text-sm"><i class="fas fa-key"></i></div>
+            <div>
+              <h3 class="text-sm font-bold text-zinc-200">触发生态锁</h3>
+              <p class="text-zinc-500 text-[11px] mt-0.5">复制或请求明文资源需要调度密钥</p>
+            </div>
+            <input type="password" id="modalKey" class="w-full text-center tracking-widest bg-zinc-950 p-3 rounded-xl border border-zinc-800 focus:outline-none focus:border-indigo-500/50 text-sm text-zinc-200" placeholder="请输入调度密码" onkeydown="if(event.key==='Enter') executeSecureAction()">
+            <div class="flex gap-2 text-xs">
+                <button onclick="closeModal()" class="flex-1 p-2.5 text-zinc-500 hover:text-zinc-400 transition">取消</button>
+                <button onclick="executeSecureAction()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 p-2.5 rounded-xl font-bold transition">确认验证</button>
+            </div>
+        </div>
+      </div>
+
+      <!-- 页脚 -->
+      <footer class="relative z-10 py-6 text-center text-[11px] text-zinc-700 font-mono border-t border-zinc-950 bg-zinc-950/40">
+        <span>系统运行正常 // 托管于 CLOUDFLARE 边缘节点</span>
+      </footer>
+
+      <!-- 全局通知组件 -->
+      <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div id="toastContent" class="flex items-center gap-2.5 bg-zinc-900/95 border border-emerald-500/30 text-emerald-400 px-4 py-3 rounded-xl shadow-2xl backdrop-blur-md text-xs font-medium">
+          <i class="fas fa-check-circle"></i><span id="toastText">操作成功</span>
+        </div>
+      </div>
+
+      <script>
+        // 💡 核心高光：利用 SSR 直接将元数据注入到前端变量，页面加载完不需要再 fetch 列表请求！
+        let fetchedData = ${JSON.stringify(publicMetadata)}; 
+        
+        let currentTab = '全部';
+        let pendingAction = { id: null, type: null }; // 缓存待处理的动作
+
+        const extStyleMap = {
+          json: { icon: "fas fa-file-code", label: "明文配置", theme: "border-cyan-500/20 bg-cyan-500/5 text-cyan-400" },
+          enc: { icon: "fas fa-file-shield", label: "加密密文", theme: "border-fuchsia-500/20 bg-fuchsia-500/5 text-fuchsia-400" },
+          default: { icon: "fas fa-file-alt", label: "未知资源", theme: "border-zinc-700/50 bg-zinc-800/20 text-zinc-400" }
+        };
+
+        // 初始化数据层
+        fetchedData = fetchedData.map(item => ({ ...item, latency: null, testing: false }));
+
+        function renderTabs() {
+          const extensions = ['全部', ...new Set(fetchedData.map(item => item.ext.toUpperCase()))];
+          document.getElementById('categoryTabs').innerHTML = extensions.map(ext => \`
+            <button onclick="switchTab('\${ext}')" class="px-3 py-1 rounded-lg font-mono transition-all \${
+              currentTab === ext ? 'bg-zinc-800 text-white shadow border border-zinc-700/50' : 'text-zinc-500 hover:text-zinc-300'
+            }">.\${ext}</button>
+          \`).join('');
+        }
+
+        function renderGrid(keyword = '') {
+          const grid = document.getElementById('linksGrid');
+          const kw = keyword.toLowerCase().trim();
+          const filtered = fetchedData.filter(item => (currentTab === '全部' || item.ext.toUpperCase() === currentTab) && (!kw || item.filename.toLowerCase().includes(kw)));
+
+          if (filtered.length === 0) {
+            grid.innerHTML = \`<div class="col-span-full text-center py-20 text-zinc-600 text-xs font-mono">没有找到资源</div>\`;
+            return;
+          }
+
+          grid.innerHTML = filtered.map(item => {
+            const config = extStyleMap[item.ext] || extStyleMap.default;
+            let latencyHTML = \`<span class="text-zinc-600 text-[11px]">未测试</span>\`;
+            
+            if (item.testing) {
+              latencyHTML = \`<span class="text-indigo-400 animate-pulse text-[11px]"><i class="fas fa-circle-notch animate-spin mr-1"></i>测速中</span>\`;
+            } else if (item.latency !== null) {
+              if (item.latency === 'error') latencyHTML = \`<span class="bg-rose-500/10 border border-rose-500/20 px-1.5 py-0.5 rounded text-rose-400 font-bold text-[10px]">超时/断路</span>\`;
+              else if (item.latency < 180) latencyHTML = \`<span class="bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-400 font-bold text-[10px]"><i class="fas fa-bolt mr-0.5"></i>\${item.latency} ms</span>\`;
+              else latencyHTML = \`<span class="bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded text-amber-400 font-bold text-[10px]">\${item.latency} ms</span>\`;
+            }
+
+            return \`
+              <div class="bg-[#090d16]/50 border border-zinc-900 rounded-2xl p-4 flex flex-col justify-between gap-4 transition-all duration-300 hover:border-zinc-800 hover:bg-[#0d1321]/70">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-3 overflow-hidden">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-xl border \${config.theme} text-base shrink-0"><i class="\${config.icon}"></i></div>
+                    <div class="overflow-hidden">
+                      <h3 class="font-semibold text-xs text-zinc-200 truncate">\${item.filename}</h3>
+                      <p class="text-[10px] text-zinc-600 font-mono mt-0.5 truncate">../\${item.pathInfo}/</p>
+                    </div>
+                  </div>
+                  <span class="text-[9px] font-mono tracking-wider px-2 py-0.5 rounded border uppercase shrink-0 font-bold \${config.theme}">\${config.label}</span>
+                </div>
+                <div class="bg-zinc-950/60 border border-zinc-900/60 rounded-xl px-3 py-1.5 flex items-center justify-between text-xs font-mono">
+                  <span class="text-zinc-500 text-[11px]">请求往返耗时</span>
+                  <div>\${latencyHTML}</div>
+                </div>
+                <div class="flex gap-2">
+                  <button onclick="triggerAction(\${item.id}, 'copy')" class="flex-1 bg-zinc-900 hover:bg-indigo-600 text-zinc-300 hover:text-white border border-zinc-800 hover:border-indigo-500 py-1.5 rounded-xl text-xs transition flex items-center justify-center gap-1.5"><i class="fas fa-copy"></i>安全复制</button>
+                  <button onclick="triggerAction(\${item.id}, 'go')" class="bg-zinc-900/40 hover:bg-zinc-800 text-zinc-500 hover:text-zinc-300 border border-zinc-800/40 w-8 h-8 rounded-xl transition flex items-center justify-center text-xs" title="直达资源"><i class="fas fa-external-link-alt text-[10px]"></i></button>
+                </div>
+              </div>
+            \`;
+          }).join('');
+        }
+
+        function switchTab(ext) { currentTab = ext; renderTabs(); renderGrid(document.getElementById('searchInput').value); }
+
+        // 核心拦截动作
+        function triggerAction(id, type) {
+          pendingAction = { id, type };
+          const savedKey = localStorage.getItem('node_auth_pwd');
+          if (savedKey) {
+            executeSecureAction(savedKey);
+          } else {
+            openModal();
+          }
+        }
+
+        function openModal() {
+          const m = document.getElementById('cryptoModal');
+          m.classList.remove('hidden');
+          setTimeout(() => m.classList.remove('opacity-0'), 10);
+        }
+
+        function closeModal() {
+          const m = document.getElementById('cryptoModal');
+          m.classList.add('opacity-0');
+          setTimeout(() => m.classList.add('hidden'), 300);
+          document.getElementById('modalKey').value = "";
+        }
+
+        // 后端金库安全调用
+        async function executeSecureAction(providedKey) {
+          const key = providedKey || document.getElementById('modalKey').value.trim();
+          if(!key) return;
+
+          try {
+            const res = await fetch(\`/api/get-secure-link?id=\${pendingAction.id}&key=\${key}\`);
+            const result = await res.json();
+
+            if(result.success) {
+              localStorage.setItem('node_auth_pwd', key); // 记住密码防止反复打扰
+              closeModal();
+              
+              if(pendingAction.type === 'copy') {
+                navigator.clipboard.writeText(result.url);
+                showToast("📋 真实后台链接已安全复制");
+              } else if(pendingAction.type === 'go') {
+                window.open(result.url, '_blank');
+              }
+            } else {
+              handleAuthFail();
+            }
+          } catch(e) {
+            handleAuthFail();
+          }
+        }
+
+        function handleAuthFail() {
+          localStorage.removeItem('node_auth_pwd');
+          showToast("✕ 认证密码错误，金库绝不分发", "error");
+          const input = document.getElementById('modalKey');
+          input.value = "";
+          input.classList.add('border-rose-500', 'animate-shake');
+          setTimeout(() => input.classList.remove('border-rose-500', 'animate-shake'), 500);
+        }
+
+        // =========================================================
+        // ⚡ 核心功能：高并发零缓存网络时延大盘测速
+        // =========================================================
+        async function measureLatency(id) {
+          const target = fetchedData.find(item => item.id === id);
+          if (!target) return;
+
+          target.testing = true;
+          renderGrid(document.getElementById('searchInput').value);
+          const startTime = performance.now();
+
+          try {
+            await fetch(target.testUrl, { method: 'HEAD', mode: 'no-cors', cache: 'no-store' });
+            target.latency = Math.round(performance.now() - startTime);
+          } catch (e) {
+            const finalTime = Math.round(performance.now() - startTime);
+            target.latency = (finalTime > 0 && finalTime < 4500) ? finalTime : 'error';
+          } finally {
+            target.testing = false;
+            renderGrid(document.getElementById('searchInput').value);
+          }
+        }
+
+        function testAllLatency() {
+          fetchedData.forEach(item => measureLatency(item.id));
+        }
+
+        function showToast(msg, type = "success") {
+          const toast = document.getElementById('toast');
+          const text = document.getElementById('toastText');
+          const content = document.getElementById('toastContent');
+          text.innerText = msg;
+          content.className = type === "success" 
+            ? "flex items-center gap-2.5 bg-zinc-900/95 border border-emerald-500/30 text-emerald-400 px-4 py-2.5 rounded-xl text-xs font-mono shadow-2xl"
+            : "flex items-center gap-2.5 bg-zinc-900/95 border border-rose-500/30 text-rose-400 px-4 py-2.5 rounded-xl text-xs font-mono shadow-2xl";
+          toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+          toast.classList.add('opacity-100', 'translate-y-0');
+          setTimeout(() => {
+            toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+            toast.classList.remove('opacity-100', 'translate-y-0');
+          }, 2000);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => renderGrid(e.target.value));
+
+        // 页面秒开初始化
+        renderTabs();
+        renderGrid();
+        setTimeout(testAllLatency, 300); // 丝滑起跑测速
+      </script>
+      <style>
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+        .animate-shake { animation: shake 0.4s ease-in-out; }
+      </style>
+    </body>
+    </html>
+    `;
+
+    return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8" } });
+  }
+};
