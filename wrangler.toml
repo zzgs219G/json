@@ -1,5 +1,9 @@
-name = "json"
+name = "json-toolbox"
+main = "src/index.js"
 compatibility_date = "2026-07-18"
 
-[assets]
-directory = "./"
+# 💡 核心规则：允许后端 JS 像读记事本一样把 HTML 读成纯文本字符串
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
