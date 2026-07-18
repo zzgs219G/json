@@ -4,239 +4,99 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>导航 · 工具箱</title>
-  <!-- Font Awesome 图标库（免费） -->
+  <!-- 引入 Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 图标库 (可选) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 自定义微调 (非必须) -->
   <style>
-    /* 全局重置 & 字体 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      min-height: 100vh;
-      background: linear-gradient(145deg, #0f0c29, #302b63, #24243e);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .container {
-      max-width: 600px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 48px;
-      padding: 40px 30px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.3s ease;
-    }
-    h1 {
-      font-size: 28px;
-      font-weight: 600;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 8px;
-      letter-spacing: -0.5px;
-    }
-    .subtitle {
-      text-align: center;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 15px;
-      margin-bottom: 36px;
-      font-weight: 400;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding-bottom: 20px;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 24px;
-      padding: 20px 24px;
-      margin-bottom: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .card:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.4);
-    }
-    .card .label {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #fff;
-      font-weight: 500;
-      font-size: 16px;
-    }
-    .card .label i {
-      font-size: 20px;
-      width: 28px;
-      color: #a78bfa; /* 淡紫色 */
-    }
-    .card .label .badge {
-      font-size: 12px;
-      background: rgba(167, 139, 250, 0.2);
-      color: #c4b5fd;
-      padding: 2px 12px;
-      border-radius: 40px;
-      font-weight: 400;
-      margin-left: 4px;
-    }
-    .card .actions {
-      display: flex;
-      gap: 8px;
-      flex-shrink: 0;
-    }
-    .btn {
-      background: rgba(255, 255, 255, 0.07);
-      border: none;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 40px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid transparent;
-      text-decoration: none;
-    }
-    .btn i {
-      font-size: 14px;
-    }
-    .btn-copy {
-      background: rgba(167, 139, 250, 0.15);
-      color: #c4b5fd;
-      border-color: rgba(167, 139, 250, 0.2);
-    }
-    .btn-copy:hover {
-      background: rgba(167, 139, 250, 0.3);
-      border-color: #a78bfa;
-    }
+    /* 仅用于复制按钮的反馈动画，Tailwind 无法覆盖的细节 */
     .btn-copy.copied {
-      background: rgba(52, 211, 153, 0.2);
-      color: #6ee7b7;
-      border-color: #34d399;
+      background-color: #34d399 !important;
+      color: #fff !important;
     }
-    .btn-open {
-      background: rgba(255, 255, 255, 0.05);
-      color: rgba(255,255,255,0.6);
-    }
-    .btn-open:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-    }
-    .footer {
-      margin-top: 30px;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.25);
-      font-size: 13px;
-      letter-spacing: 0.3px;
-    }
-    .footer a {
-      color: rgba(255, 255, 255, 0.3);
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(255,255,255,0.1);
-    }
-    .footer a:hover {
-      color: rgba(255,255,255,0.6);
-    }
-    /* 复制提示 Toast */
     .toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(8px);
-      color: #fff;
-      padding: 12px 28px;
-      border-radius: 60px;
-      font-size: 14px;
-      font-weight: 500;
+      transition: all 0.3s ease;
       opacity: 0;
-      transition: all 0.35s ease;
-      pointer-events: none;
-      border: 1px solid rgba(255,255,255,0.08);
+      transform: translateY(20px);
     }
     .toast.show {
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-    @media (max-width: 480px) {
-      .container { padding: 28px 16px; }
-      .card { padding: 16px; flex-direction: column; align-items: stretch; }
-      .card .actions { justify-content: flex-end; }
-      .btn { padding: 6px 14px; font-size: 12px; }
+      transform: translateY(0);
     }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1><i class="fas fa-cube" style="color:#a78bfa; margin-right: 10px;"></i>我的工具箱</h1>
-    <div class="subtitle">点击复制链接 · 一键直达</div>
+<body class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] font-sans">
+
+  <!-- 主卡片 -->
+  <div class="max-w-lg w-full bg-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/10 transition-all hover:shadow-3xl">
+    
+    <!-- 标题 -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-white flex items-center justify-center gap-2">
+        <i class="fas fa-cube text-purple-400"></i> 我的工具箱
+      </h1>
+      <p class="text-white/50 text-sm mt-1 border-b border-white/10 pb-4">一键复制链接 · 极速直达</p>
+    </div>
 
     <!-- 卡片：明文 -->
-    <div class="card">
-      <div class="label">
-        <i class="fas fa-file-alt"></i>
-        <span>明文 <span class="badge">JSON</span></span>
+    <div class="bg-white/5 rounded-2xl p-4 mb-4 flex items-center justify-between flex-wrap gap-3 border border-white/5 hover:bg-white/10 hover:border-purple-400/30 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+      <div class="flex items-center gap-3 text-white font-medium">
+        <i class="fas fa-file-alt text-purple-400 text-xl w-6"></i>
+        <span>明文 JSON</span>
+        <span class="text-xs bg-purple-400/20 text-purple-300 px-2 py-0.5 rounded-full">RAW</span>
       </div>
-      <div class="actions">
-        <button class="btn btn-copy" onclick="copyLink('https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json', this)">
+      <div class="flex gap-2">
+        <button onclick="copyLink('https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json', this)" 
+                class="btn-copy bg-purple-400/20 hover:bg-purple-400/40 text-purple-300 hover:text-white px-4 py-1.5 rounded-full text-sm font-medium border border-purple-400/20 hover:border-purple-400 transition flex items-center gap-1.5">
           <i class="fas fa-copy"></i> 复制
         </button>
-        <a href="https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json" target="_blank" class="btn btn-open">
+        <a href="https://json.614118.xyz/backend/jian_box/raw/jian_box_raw.json" target="_blank" 
+           class="bg-white/5 hover:bg-white/20 text-white/50 hover:text-white px-3 py-1.5 rounded-full text-sm transition flex items-center gap-1">
           <i class="fas fa-arrow-up-right-from-square"></i>
         </a>
       </div>
     </div>
 
     <!-- 卡片：密文 -->
-    <div class="card">
-      <div class="label">
-        <i class="fas fa-lock"></i>
-        <span>密文 <span class="badge">ENC</span></span>
+    <div class="bg-white/5 rounded-2xl p-4 mb-6 flex items-center justify-between flex-wrap gap-3 border border-white/5 hover:bg-white/10 hover:border-purple-400/30 transition-all hover:-translate-y-0.5 hover:shadow-lg">
+      <div class="flex items-center gap-3 text-white font-medium">
+        <i class="fas fa-lock text-purple-400 text-xl w-6"></i>
+        <span>密文 ENC</span>
+        <span class="text-xs bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-full">加密</span>
       </div>
-      <div class="actions">
-        <button class="btn btn-copy" onclick="copyLink('https://json.614118.xyz/backend/jian_box/jian_box.enc', this)">
+      <div class="flex gap-2">
+        <button onclick="copyLink('https://json.614118.xyz/backend/jian_box/jian_box.enc', this)" 
+                class="btn-copy bg-purple-400/20 hover:bg-purple-400/40 text-purple-300 hover:text-white px-4 py-1.5 rounded-full text-sm font-medium border border-purple-400/20 hover:border-purple-400 transition flex items-center gap-1.5">
           <i class="fas fa-copy"></i> 复制
         </button>
-        <a href="https://json.614118.xyz/backend/jian_box/jian_box.enc" target="_blank" class="btn btn-open">
+        <a href="https://json.614118.xyz/backend/jian_box/jian_box.enc" target="_blank" 
+           class="bg-white/5 hover:bg-white/20 text-white/50 hover:text-white px-3 py-1.5 rounded-full text-sm transition flex items-center gap-1">
           <i class="fas fa-arrow-up-right-from-square"></i>
         </a>
       </div>
     </div>
 
-    <div class="footer">
-      <i class="fas fa-cloud"></i> 托管于 Cloudflare · 自定义域 <a href="https://json.614118.xyz" target="_blank">json.614118.xyz</a>
+    <!-- 页脚 -->
+    <div class="text-center text-white/20 text-xs flex items-center justify-center gap-2">
+      <i class="fas fa-cloud"></i> 托管于 Cloudflare ·
+      <a href="https://json.614118.xyz" target="_blank" class="text-white/30 hover:text-white/60 border-b border-white/10 hover:border-white/30 transition">json.614118.xyz</a>
     </div>
   </div>
 
   <!-- Toast 提示 -->
-  <div id="toast" class="toast">✅ 已复制到剪贴板</div>
+  <div id="toast" class="toast fixed bottom-8 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-medium border border-white/10 pointer-events-none">
+    ✅ 已复制到剪贴板
+  </div>
 
   <script>
     function copyLink(url, btn) {
-      // 复制到剪贴板
       navigator.clipboard.writeText(url).then(() => {
-        // 按钮反馈
+        // 反馈：按钮变绿
         const originalHTML = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check"></i> 已复制';
         btn.classList.add('copied');
-        // 显示 Toast
+        // Toast 显示
         const toast = document.getElementById('toast');
         toast.textContent = '✅ 已复制：' + url;
         toast.classList.add('show');
@@ -249,14 +109,14 @@
           btn.classList.remove('copied');
         }, 1800);
       }).catch(() => {
-        // 降级方案：选中并提示手动复制
+        // 降级方案
         const input = document.createElement('input');
         input.value = url;
         document.body.appendChild(input);
         input.select();
         document.execCommand('copy');
         document.body.removeChild(input);
-        alert('已复制到剪贴板（降级方式）');
+        alert('已复制（降级方式）');
       });
     }
   </script>
