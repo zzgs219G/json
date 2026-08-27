@@ -1,0 +1,67 @@
+# ============================================================================
+# GitHub 星标库 · 云端定时抓取
+# ============================================================================
+# 触发：
+#   - schedule:   每天 UTC 18:00 执行（北京时间凌晨 2:00，低峰期）
+#   - workflow_dispatch: 手动触发
+#   - push:       脚本/工作流变更时自动跑一次
+# 产出物：backend/github_star/*.json
+# 提交：commit message 带 [skip ci]，避免触发无关构建
+# 依赖：GH_STAR_TOKEN（GitHub Personal Access Token，需 user scope）
+# ============================================================================
+
+name: GitHub Star Lists
+
+on:
+  schedule:
+    - cron: "0 18 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/github_star_lists.py"
+      - ".github/workflows/github-star-lists.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-star-lists
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    name: Fetch & Commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet requests
+
+      - name: Run GitHub Star Lists crawler
+        env:
+          GH_STAR_TOKEN: ${{ secrets.GH_STAR_TOKEN }}
+        run: python scripts/github_star_lists.py --out backend/github_star
+
+      - name: Commit & push
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/github_star/
+          if ! git diff --cached --quiet; then
+            git commit -m "🤖 github-star: update lists [skip ci]"
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push
+          else
+            echo "数据无变化，跳过提交"
+          fi
