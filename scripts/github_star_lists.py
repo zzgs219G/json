@@ -8,9 +8,10 @@ GitHub 星标库 · 云端抓取脚本
 
 设计原则：
   - 只抓取公开列表（API 默认行为）
-  - 分层存储：index / lists / repos
+  - 分层存储：index / lists / repos / readmes
   - 每个仓库只取最近 5 个 Release（per_page=5）
   - Asset 全量采集（不过滤），源码包作为 Asset 追加进列表（isSource 标记）
+  - 每个仓库采集 README 原文到 readmes/{owner}_{repo}.md（App 端经三线路优先加载，失败回退 GitHub 直连）
   - 原始下载链接不拼接镜像（镜像前缀由 App 端拼接）
   - 单仓库失败不影响整体
   - 所有网络请求带超时与重试（稳定性优先）
@@ -18,8 +19,8 @@ GitHub 星标库 · 云端抓取脚本
 数据流：
   1. GraphQL 查询所有 Star 列表 → 获取每个分类的 ID 和名称
   2. 对每个分类，分页查询所有仓库
-  3. 对每个仓库，调用 REST API 获取 Release 列表
-  4. 生成三层 JSON 结构
+  3. 对每个仓库，调用 REST API 获取 Release 列表与 README 原文
+  4. 生成分层 JSON + README Markdown 文件
 
 环境变量：
   GH_STAR_TOKEN: GitHub Personal Access Token（需 user scope）
@@ -50,6 +51,7 @@ TARGET_USER = os.environ.get("GITHUB_STAR_USER", "zzgs219G")
 MAX_LISTS = 50              # 最多获取 50 个分类
 MAX_REPOS_PER_LIST = 100    # 每个分类分页获取，单页上限 100（GraphQL 连接上限）
 MAX_RELEASES = 5            # 每个仓库最多获取 5 个 Release（per_page 上限，取最近版本）
+MAX_README_CHARS = 500_000  # README 文件最大字符数（超长截断，避免超大文件入库）
 REQUEST_DELAY = 0.5         # 请求间隔（秒），避免触发限流
 REQUEST_TIMEOUT = 30        # 单次请求超时（秒）
 MAX_RETRIES = 3             # 网络错误重试次数
@@ -280,6 +282,45 @@ def fetch_releases(client: GitHubClient, repo_full_name: str) -> List[Dict[str, 
     return releases
 
 
+def fetch_readme(client: GitHubClient, repo_full_name: str,
+                 readmes_dir: Path, safe_name: str) -> bool:
+    """
+    获取仓库 README（Markdown 原文）并写入 readmes/{safe_name}.md。
+    - 使用 GitHub raw Accept 直接拿原文，避免 base64 编解码
+    - 无 README（HTTP 404）或请求失败时静默跳过，不影响整体
+    - 超长内容截断到 MAX_README_CHARS，避免超大文件入库
+    返回是否成功生成文件。
+    """
+    url = f"{GITHUB_REST_API}/repos/{repo_full_name}/readme"
+    try:
+        resp = client.session.get(
+            url,
+            headers={"Accept": "application/vnd.github.raw"},
+            timeout=REQUEST_TIMEOUT
+        )
+        # 404 = 仓库没有 README（README.md / readme.md 均无），直接跳过
+        if resp.status_code == 404:
+            return False
+        resp.raise_for_status()
+        content = resp.text
+    except requests.exceptions.RequestException as e:
+        print(f"   ⚠️ {repo_full_name} README 获取失败: {e}")
+        return False
+
+    if not content.strip():
+        return False
+
+    if len(content) > MAX_README_CHARS:
+        content = content[:MAX_README_CHARS]
+        print(f"   ⚠️ {repo_full_name} README 超长，已截断到 {MAX_README_CHARS} 字符")
+
+    readmes_dir.mkdir(parents=True, exist_ok=True)
+    readme_path = readmes_dir / f"{safe_name}.md"
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.write(content)
+    return True
+
+
 def sanitize_filename(name: str) -> str:
     """将分类名/仓库名转为安全的文件名"""
     # 替换不安全字符
@@ -331,8 +372,10 @@ def main():
     # 2. 创建输出目录
     lists_dir = out_dir / "lists"
     repos_dir = out_dir / "repos"
+    readmes_dir = out_dir / "readmes"
     lists_dir.mkdir(parents=True, exist_ok=True)
     repos_dir.mkdir(parents=True, exist_ok=True)
+    readmes_dir.mkdir(parents=True, exist_ok=True)
 
     # 3. 遍历每个分类
     index_entries = []
@@ -378,6 +421,8 @@ def main():
             if full_name not in all_repos:
                 print(f"   🔍 获取 {full_name} 的 Releases...")
                 releases = fetch_releases(client, full_name)
+                # 采集 README 到 readmes/{safe_name}.md（无 README / 失败时静默跳过）
+                fetch_readme(client, full_name, readmes_dir, safe_name)
 
                 if releases:
                     release_data = {
@@ -434,6 +479,7 @@ def main():
     print(f"\n📄 索引文件: {index_path}")
     print(f"   分类列表: {len(list(lists_dir.glob('*.json')))} 个文件")
     print(f"   仓库 Release: {len(list(repos_dir.glob('*.json')))} 个文件")
+    print(f"   README: {len(list(readmes_dir.glob('*.md')))} 个文件")
 
 
 if __name__ == "__main__":
