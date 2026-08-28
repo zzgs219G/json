@@ -9,8 +9,9 @@ GitHub 星标库 · 云端抓取脚本
 设计原则：
   - 只抓取公开列表（API 默认行为）
   - 分层存储：index / lists / repos
-  - 只保留有 APK 的 Release
-  - 原始下载链接不拼接镜像
+  - 每个仓库只取最近 5 个 Release（per_page=5）
+  - Asset 全量采集（不过滤），源码包作为 Asset 追加进列表（isSource 标记）
+  - 原始下载链接不拼接镜像（镜像前缀由 App 端拼接）
   - 单仓库失败不影响整体
   - 所有网络请求带超时与重试（稳定性优先）
 
@@ -48,7 +49,7 @@ GITHUB_REST_API = "https://api.github.com"
 TARGET_USER = os.environ.get("GITHUB_STAR_USER", "zzgs219G")
 MAX_LISTS = 50              # 最多获取 50 个分类
 MAX_REPOS_PER_LIST = 100    # 每个分类分页获取，单页上限 100（GraphQL 连接上限）
-MAX_RELEASES = 30           # 每个仓库最多获取 30 个 Release
+MAX_RELEASES = 5            # 每个仓库最多获取 5 个 Release（per_page 上限，取最近版本）
 REQUEST_DELAY = 0.5         # 请求间隔（秒），避免触发限流
 REQUEST_TIMEOUT = 30        # 单次请求超时（秒）
 MAX_RETRIES = 3             # 网络错误重试次数
@@ -234,7 +235,9 @@ def fetch_list_repos(client: GitHubClient, list_id: str) -> List[Dict[str, Any]]
 
 def fetch_releases(client: GitHubClient, repo_full_name: str) -> List[Dict[str, Any]]:
     """
-    获取某个仓库的 Releases，只保留有 APK 的 Release。
+    获取某个仓库最近的 Releases（最多 MAX_RELEASES 个）。
+    - Asset 全量采集，不过滤类型（APK / Windows / Linux / 其他全部保留）
+    - 源码包（zipball）作为 Asset 追加进列表，统一展示，isSource=True 标记
     如果获取失败，返回空列表。
     """
     try:
@@ -249,21 +252,29 @@ def fetch_releases(client: GitHubClient, repo_full_name: str) -> List[Dict[str, 
 
     releases = []
     for rel in data:
-        apks = []
+        assets = []
         for asset in rel.get("assets", []):
-            if asset.get("content_type") == "application/vnd.android.package-archive":
-                apks.append({
-                    "name": asset["name"],
-                    "originalDownloadUrl": asset["browser_download_url"],
-                    "size": asset.get("size", 0)
-                })
+            assets.append({
+                "name": asset["name"],
+                "size": asset.get("size", 0),
+                "url": asset["browser_download_url"]
+            })
 
-        if apks:
+        # 源码作为 Asset 追加到列表中（统一展示，无需单独字段）
+        source_code_url = rel.get("zipball_url") or rel.get("tarball_url")
+        if source_code_url:
+            assets.append({
+                "name": f"Source Code ({rel.get('tag_name', '')}).zip",
+                "size": 0,  # GitHub API 不返回源码包大小
+                "url": source_code_url,
+                "isSource": True
+            })
+
+        if assets:
             releases.append({
                 "tagName": rel.get("tag_name", ""),
                 "publishedAt": rel.get("published_at"),
-                "apkAssets": apks,
-                "sourceZipUrl": rel.get("zipball_url")
+                "assets": assets
             })
 
     return releases
@@ -378,7 +389,7 @@ def main():
                         json.dump(release_data, f, ensure_ascii=False, indent=2)
                     all_repos[full_name] = f"repos/{safe_name}.json"
                 else:
-                    # 没有 APK Release，不生成文件
+                    # 没有任何 Release，不生成文件
                     all_repos[full_name] = None
 
             # 每个仓库都带 releaseJsonPath 引用（跨分类去重时复用缓存）
