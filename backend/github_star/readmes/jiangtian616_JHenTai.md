@@ -8,17 +8,18 @@
 
 # JHenTai
 
-English | [简体中文](https://github.com/jiangtian616/JHenTai/blob/master/README_cn.md) | [한국어](https://github.com/jiangtian616/JHenTai/blob/master/README_kr.md)
+[English](https://github.com/jiangtian616/JHenTai/blob/master/README.md) | 简体中文
+| [한국어](https://github.com/jiangtian616/JHenTai/blob/master/README_kr.md)
 
-[Q&A](https://github.com/jiangtian616/JHenTai/wiki/Common-Questions)
+[常见问题，提问前必看](https://github.com/jiangtian616/JHenTai/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
 
-## Description
+## 定位
 
-A manga app for E-Hentai, supporting Android & iOS & Windows & MacOS & Linux.
+E-hentai 的一个多端app，现支持Android、iOS、Windows、MacOS和Linux系统。
 
-Still in development stage, welcome to submit issues or feature requests.
+仍在发展阶段，十分欢迎提交各种bug反馈或Feature Request。
 
-## Download & Install
+## 下载&安装
 
 [<img src="https://raw.githubusercontent.com/jiangtian616/JHenTai/master/badges/download_from_github.png" 
       alt="Download from GitHub" 
@@ -26,6 +27,7 @@ Still in development stage, welcome to submit issues or feature requests.
 [<img src="https://raw.githubusercontent.com/jiangtian616/JHenTai/master/badges/get_it_on_obtainium.png" 
       alt="Get it on Obtainium" 
       height="60">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22top.jtmonster.jhentai%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fjiangtian616%2FJHenTai%22%2C%22author%22%3A%22jiangtian616%22%2C%22name%22%3A%22JHenTai%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22includePrereleases%5C%22%3Afalse%2C%5C%22fallbackToOlderReleases%5C%22%3Atrue%2C%5C%22filterReleaseTitlesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22filterReleaseNotesByRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22verifyLatestTag%5C%22%3Afalse%2C%5C%22sortMethodChoice%5C%22%3A%5C%22date%5C%22%2C%5C%22useLatestAssetDateAsReleaseDate%5C%22%3Afalse%2C%5C%22releaseTitleAsVersion%5C%22%3Afalse%2C%5C%22trackOnly%5C%22%3Afalse%2C%5C%22versionExtractionRegEx%5C%22%3A%5C%22v(.*)%5C%22%2C%5C%22matchGroupToUse%5C%22%3A%5C%22%241%5C%22%2C%5C%22versionDetection%5C%22%3Atrue%2C%5C%22releaseDateAsVersion%5C%22%3Afalse%2C%5C%22useVersionCodeAsOSVersion%5C%22%3Afalse%2C%5C%22apkFilterRegEx%5C%22%3A%5C%22%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22autoApkFilterByArch%5C%22%3Atrue%2C%5C%22appName%5C%22%3A%5C%22JHenTai%5C%22%2C%5C%22appAuthor%5C%22%3A%5C%22JTMonster%5C%22%2C%5C%22shizukuPretendToBeGooglePlay%5C%22%3Afalse%2C%5C%22allowInsecure%5C%22%3Afalse%2C%5C%22exemptFromBackgroundUpdates%5C%22%3Afalse%2C%5C%22skipUpdateNotifications%5C%22%3Afalse%2C%5C%22about%5C%22%3A%5C%22https%3A%2F%2Fgithub.com%2Fjiangtian616%2FJHenTai%2Fblob%2Fmaster%2FREADME.md%5C%22%2C%5C%22refreshBeforeDownload%5C%22%3Afalse%7D%22%2C%22overrideSource%22%3Anull%7D)
+
 
 [<img src="https://raw.githubusercontent.com/jiangtian616/JHenTai/master/badges/add_to_altstore.png" 
       alt="Add to AltStore" 
@@ -37,31 +39,30 @@ Still in development stage, welcome to submit issues or feature requests.
       alt="Add to Feather" 
       height="60">](https://intradeus.github.io/http-protocol-redirector?r=feather://source/https://raw.githubusercontent.com/jiangtian616/JHenTai/refs/heads/master/altsource/AltSource.json)
 
-Install for Android: download .apk according to your device architecture and install.
+安卓安装:  下载对应自己设置架构的apk文件，直接安装即可。
 
-- arm64-v8a：Suitable for Android phones with 8th generation ARM processor(common choice)
-- armeabiv-v7a：Suitable for Android phones with 7th generation ARM processor
-- x86_64：rare
+- arm64-v8a：适用于较新的第8代ARM处理器安卓手机(常见选择)
+- armeabiv-v7a：适用于较老的第7代ARM处理器安卓手机
+- x86_64：少见
 
-Install for iOS: download .ipa, then use [AltStore](https://altstore.io) or SideLoadly to sign.
+iOS安装:  下载ipa文件后，使用[AltStore](https://altstore.io)、SideLoadly、爱思助手等任一工具进行自签名。
 
-- You can get easier installation and updates by adding [AltStore Repo](https://intradeus.github.io/http-protocol-redirector?r=altstore://source?url=https://raw.githubusercontent.com/jiangtian616/JHenTai/refs/heads/master/altsource/AltSource.json)
+- 你可以通过[ AltStore 订阅](https://intradeus.github.io/http-protocol-redirector?r=altstore://source?url=https://raw.githubusercontent.com/jiangtian616/JHenTai/refs/heads/master/altsource/AltSource.json)来获得更便捷的安装与更新体验
 
-Install for Windows: download Windows_xxx.zip, then unpack it.
+Windows安装： 下载Windows_xxx.zip后解压即可。
 
-- If you use a proxy server, set proxy address at network setting page.
-- If you're using Windows 11 and can't launch app, try to run jhentai.exe in compatibility mode.
-- If it's blocked by Windows Defender, Please trust it.
+- 如果你使用了代理服务器，在网络设置里配置代理地址。
+- 如果你使用的是Win11且出现打不开应用的情况， 请尝试右键更改jhentai.exe的属性，以兼容模式启动。
+- 如果Windows Defender报毒，请信任它。
 
-Install for MacOS(No maintenance): download .dmg.
+MacOS安装（不维护）： 下载dmg后安装即可。
 
-- Trust it in system setting.
-- If you use a proxy server, set proxy address at network setting page.
+- 在系统设置-安全性与隐私中信任应用
+- 如果你使用了代理服务器，在网络设置里配置代理地址。
 
-Install for Linux(No maintenance): download Linux-amd64.deb or Linux-x86_64.AppImage due to your platform, then install
-or execute it (You may need to install webkit2gtk-4.1).
+Linux安装（不维护）：根据你的系统选择 Linux-amd64.deb 或 Linux-x86_64.AppImage，下载后安装运行即可。(视需要你可能需要安装webkit2gtk-4.1)
 
-Fedora-based dnf linux distro:
+基于 Fedora 的 dnf Linux 发行版：
 
 ```bash
 sudo rpm --import https://meeks233.github.io/Jhentai-rpm/fedora/RPM-GPG-KEY-jhentai
@@ -69,154 +70,137 @@ sudo curl -fsSL -o /etc/yum.repos.d/jhentai.repo https://meeks233.github.io/Jhen
 sudo dnf install -y jhentai
 ```
 
+- 如果你使用了代理服务器，在网络设置里配置代理地址。
 
-- If you use a proxy server, set proxy address at network setting page.
+## 更新
 
-## Update
+安卓更新： 下载对应自己设置架构的apk文件，直接覆盖安装即可。
 
-Update for Android: download .apk according to your device architecture and install.
+iOS更新： 下载ipa文件后，使用[AltStore](https://altstore.io)、SideLoadly、爱思助手等任一工具进行自签名覆盖安装。
 
-Update for iOS: download .ipa, then use [AltStore](https://altstore.io) or SideLoadly to sign.
+Windows更新： 直接删除旧的解压出来的文件夹，下载最新的Windows_xxx.zip后解压使用即可。
 
-Update for Windows: Delete old unpacked directory directly, then download latest Windows_xxx.zip, unpack it.
+MacOS更新（不维护）： 直接删除旧包后，下载最新的包使用即可。
 
-Update for MacOS(No maintenance): download .dmg.
+Linux更新（不维护）： 直接删除旧包后，下载最新的包使用即可。
 
-Update for Linux(No maintenance): Delete old and download the latest product.
+## 开发动机
 
-## Help With Translation
+学习flutter的第一个练手项目，用来熟悉flutter的开发流程和模式。
 
-Please submit a PR if you want to help with translation.
+我自己的使用设备包括安卓手机、iPad、Windows主机，之前用的E站其他App Bug较多，没接触过原生开发也改不动源码，就刚好选JHenTai来作为第一个项目。
 
-[steps](https://github.com/jiangtian616/JHenTai#Translation)
+2022.08.20 经过五个月的开发，现在JHenTai已经初具雏形，也逐渐对初期编写的不成熟的画廊页、阅读页、下载等代码进行了完全的重构，
+尽力增内聚降耦合，方便新功能的开发。如果有同学能够对代码风格、设计模式、代码目录等Flutter开发相关进行指点，或者参与到JHenTai的开发中，我都会十分感谢。
 
-## Develop Motivation
+2022.10.29 目前对于Flutter项目的基础开发已经较为熟悉，之后学习的主要精力会转向其他方向，JHenTai进入低频率更新时期，但仍会对bug或issue进行及时处理。
 
-My first project With Flutter. I aim at getting familiar with Flutter during development. Devices I use include Android
-phone, Ipad and Windows computer. E-hentai apps I used before have several bugs, and I don't understand source code
-because I have no development
-experience with Android or ios, so I choose JHenTai to become my first Flutter Project.
+## 借鉴与感谢
 
-2022.08.20 After five months of development, JHenTai has gradually become more and more strong, and I have completely
-refactored some codes for gallery page, reading page, download, etc.
-which are written at the beginning stage. I tried my best to extract the commonality between different page and style to
-reduce coupling,
-in order to benefit the development of new features. I would be very grateful if any kind of you could give me some
-advice on coding style,
-design patterns and anything related to Flutter development or participate in the development of JHenTai.
+布局样式参考:
 
-2022.10.29 I have been more familiar with basic Flutter development, and I'll focus on another area from now on.
-So updates for JHenTai will be less than previous, but I'll still handle bugs or issues in time。
-
-## References & Thanks
-
-Layout and style references:
-
-- [FEhviewer](https://github.com/honjow/FEhViewer) : Mainly
+- [FEhviewer](https://github.com/honjow/FEhViewer) : 主要
 - [EHPanda](https://github.com/tatsuz0u/EhPanda)
 - [EHViewer](https://gitlab.com/NekoInverter/EhViewer)
 
-Tag translation:
+标签翻译数据库:
 
 - [EhTagTranslation](https://github.com/EhTagTranslation/Database)
 
-Tag order optimization:
+标签排序:
 
 - [e-hentai-db](https://github.com/ccloli/e-hentai-db)
 - [e-hentai-tag-count](https://github.com/mokurin000/e-hentai-tag-count)
 - [EhSyringe](https://github.com/EhTagTranslation/EhSyringe)
 
-App translation：
+App翻译：
 
 - [andyching168](https://github.com/andyching168) [kenny03211](https://github.com/kenny03211) [NeKoOuO](https://github.com/NeKoOuO) 繁體中文(台灣)
-- [lucas-04](https://github.com/lucas-04) Português brasileiro
-- [qlife1146](https://github.com/qlife1146) 한국어
+- [lucas-04](https://github.com/lucas-04) 葡萄牙语 Português brasileiro
+- [qlife1146](https://github.com/qlife1146) 韩语
 - [bropines](https://github.com/bropines) Russian
 
-mush thanks to these projects and people🙇‍
+十分感谢以上项目与人员🙇‍
 
-## Screenshots
+## 截图
 
-### Mobile Layout
+### 手机模式
 
 <img width="250" src="screenshot/mobile_v2.jpg"/>
 
-### Tablet Layout
+### 平板模式
 
 <img width="770" src="screenshot/tabletV2.png"/>
 
-### Desktop Layout
+### 桌面模式
 
 <img width="770" src="screenshot/desktop1.png"/>
 
-### Gallery & Search
+### 画廊页 & 搜索页
 
 <img width="250" style="margin-right:10px" src="screenshot/mobile_v2.jpg"/><img width="250" style="margin-right:10px" src="screenshot/search.jpg"/> 
 
-### Gallery Detail
+### 画廊详情页
 
 <img width="250" src="screenshot/detail.png" style="margin-right:10px" /><img width="250" src="screenshot/archive.jpg" style="margin-right:10px" />
 
-### Setting & Download
+### 设置 & 下载
 
-<img width="270" src="screenshot/setting_en.jpg" style="margin-right:10px" /><img width="250" src="screenshot/download.jpg" style="margin-right:10px" />
+<img width="250" src="screenshot/setting_zh.jpg" style="margin-right:10px" /><img width="250" src="screenshot/download.jpg" style="margin-right:10px" />
 
-### Read
+### 阅读
 
-<img width="250" src="screenshot/read.jpg" /><img src="screenshot/read_double_column.png" /><img src="screenshot/read_continuous_scroll.png" />
+<img width="250" src="screenshot/read.jpg" /><img src="screenshot/read_double_column.png" /><img  src="screenshot/read_continuous_scroll.png" />
 
-## Main Features
+## 主要功能
 
--   [x] Mobile, tablet, desktop layout(3 kinds)
--   [x] Vertical, horizontal, double column read page layout(4 kinds)
--   [x] GalleryPage, Popular, Favorite, Watched, History, support multiple gallery list style
--   [x] search, search suggestion, tap tag to search, file search, jump to a certain page
--   [x] online reading and download, support restore download task, support synchronize updates after the uploader has
-    uploaded a new version
--   [x] archive download and automatic unpacking and reading
--   [x] support loading local images and read
--   [x] support assign priority to download task manually
--   [x] support assign group to gallery and archive
--   [x] favorite, rating, torrent, archive, statistics, share
--   [x] password login, Cookie login, web login
--   [x] support EX site(domain fronting optional)
--   [x] vote for Tag, watch and hidden tags
--   [x] comment, vote for comment
--   [x] Fingerprint unlock
+- [x] 支持手机、平板、桌面三端布局
+- [x] 支持上下、左右、双列等共四种阅读布局
+- [x] 主页、热门、收藏、关注、历史，支持多种画廊样式
+- [x] 搜索、搜索Tag提示、点击Tag快捷搜索、以图搜图、跳页
+- [x] 在线阅读与下载，支持恢复下载记录，支持在上传者更新画廊后同步更新本地已下载的画廊
+- [x] 支持下载归档并自动解压、阅读
+- [x] 支持读取本地图片，当作本地阅读器
+- [x] 下载画廊支持手动调节任务优先级、下载分组、自定义排序
+- [x] 画廊和归档支持打上分组标签，统一展开折叠
+- [x] 收藏、评分、磁力、归档、统计、分享
+- [x] 账号密码登录、Cookie登录、Web登录
+- [x] 支持域名前置直连里站
+- [x] Tag翻译、Tag投票、关注Tag、隐藏Tag
+- [x] 评论、评论投票
+- [x] 指纹解锁
 
-## Translation
+## 国际化步骤
 
 > [languageCode](https://github.com/unicode-org/cldr/blob/master/common/validity/language.xml)
 >
 > [countryCode](https://github.com/unicode-org/cldr/blob/master/common/validity/region.xml)
 
-1. Copy `/lib/src/l18n/en_US.dart ` and rename to `{your_languageCode}_{your_countryCode}.dart`
-2. Rename classname in new file(optional)
-3. Modify k-v pairs in method `keys` ,translate values to your language
+1. 复制 `/lib/src/l18n/en_US.dart` 一份并重命名为`{your_languageCode}_{your_countryCode}.dart`
+2. 更改新文件的class name(可选)
+3. 修改keys方法返回的所有键值对，将value翻译为你的语言
 
-Now you can submit your PR, I'll do the remaining things. Or you can go on with:
+你可以只做以上步骤然后提交PR，我会补充其他的步骤，或者你自己可以继续：
 
-4. Enter `/lib/src/l18n/locale_text.dart ` , add a new k-v pair in method `keys`
-   => `{your_languageCode}_{your_countryCode} : {your_className}.keys()`
-5. Enter `/lib/src/consts/locale_consts.dart`, add a new k-v pair in
-   property `localeCode2Description`: `{your_languageCode}_{your_countryCode} : {languageDescription}` to describe your
-   language.
+4. 在 `/lib/src/l18n/locale_text.dart`
+   的keys方法中增加一条键值对`{your_languageCode}_{your_countryCode} : {your_className}.keys()`
+5. 在 `/lib/src/consts/locale_consts.dart` 的 `localeCode2Description`
+   属性中增加一条键值对`{your_languageCode}_{your_countryCode} : {languageDescription}`，用于描述你的语言
 
-## About compiling
+## 项目编译相关
 
-1. You need to manage your Android signing by yourself,
-   check https://docs.flutter.dev/deployment/android#signing-the-app
-2. Just run this project via IDEA or VSCode simply.
+1. 你需要自己管理安卓签名文件，见https://docs.flutter.dev/deployment/android#signing-the-app
+2. 使用IDEA或者VSCode直接运行即可
 
-## About code contribution
+## 关于代码贡献
 
-1. There is no fixed requirement for branch names. You can make changes on your local master branch and submit a PR.
-2. For changes that are large in scope or involve interactions between multiple modules, code submitted via Vibe Coding by developers without code review capability will not be accepted. Such code often fails to follow the project's existing coding conventions, is harmful to code extensibility, and its correctness cannot be guaranteed.
-3. A single PR should focus on the minimal feature scope. If multiple features are involved, please submit separate PRs.
+1. 对分支名无固定要求，可以在本地master分支上修改并提交pr。
+2. 如果改动功能点较大且且涉及多模块间的交互，不接受没有代码审查能力的开发者使用Vibe Coding提交的代码，该类代码常常不遵守项目现有编码规范，同时对代码拓展性有较大危害，代码正确性也没有保障。
+3. 单个pr需要聚焦于最小功能点，涉及多个功能点请提交多个pr。
 
-## Main Dart Dependencies
+## 主要dart依赖
 
-- [get](https://pub.flutter-io.cn/packages/get): dependency management, state management, l18n, NoSQL
-- [dio](https://pub.flutter-io.cn/packages?q=dio): network
-- [extendedImage](https://pub.flutter-io.cn/packages/extended_image): image
-- [drift](https://pub.flutter-io.cn/packages/drift): database
+- [get](https://pub.flutter-io.cn/packages/get): 依赖管理、状态管理、国际化、NoSQL
+- [dio](https://pub.flutter-io.cn/packages?q=dio): 网络
+- [extendedImage](https://pub.flutter-io.cn/packages/extended_image): 图片
+- [drift](https://pub.flutter-io.cn/packages/drift): 数据库
