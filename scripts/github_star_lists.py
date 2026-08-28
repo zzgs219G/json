@@ -286,39 +286,55 @@ def fetch_readme(client: GitHubClient, repo_full_name: str,
                  readmes_dir: Path, safe_name: str) -> bool:
     """
     获取仓库 README（Markdown 原文）并写入 readmes/{safe_name}.md。
-    - 使用 GitHub raw Accept 直接拿原文，避免 base64 编解码
-    - 无 README（HTTP 404）或请求失败时静默跳过，不影响整体
+    - 优先抓取中文 README：按 readme_names 优先级逐个尝试，
+      第一个成功返回内容的文件名即为抓取结果（有中文则中文，否则英文 README.md）
+    - 使用 GitHub Contents API + raw Accept 直接拿原文，避免 base64 编解码
+    - 全部候选文件均不存在（404）或请求失败时静默跳过，不影响整体
     - 超长内容截断到 MAX_README_CHARS，避免超大文件入库
     返回是否成功生成文件。
     """
-    url = f"{GITHUB_REST_API}/repos/{repo_full_name}/readme"
-    try:
-        resp = client.session.get(
-            url,
-            headers={"Accept": "application/vnd.github.raw"},
-            timeout=REQUEST_TIMEOUT
-        )
-        # 404 = 仓库没有 README（README.md / readme.md 均无），直接跳过
-        if resp.status_code == 404:
+    # 中文 README 文件名优先级列表：优先中文版，最后回退默认 README.md
+    readme_names = [
+        "README_cn.md",
+        "README_zh.md",
+        "README_zh-CN.md",
+        "README_CN.md",
+        "README_ZH.md",
+        "README.md"
+    ]
+    for name in readme_names:
+        url = f"{GITHUB_REST_API}/repos/{repo_full_name}/contents/{name}"
+        try:
+            resp = client.session.get(
+                url,
+                headers={"Accept": "application/vnd.github.raw"},
+                timeout=REQUEST_TIMEOUT
+            )
+            # 404 = 当前文件名不存在，尝试下一个候选文件名
+            if resp.status_code == 404:
+                continue
+            resp.raise_for_status()
+            content = resp.text
+        except requests.exceptions.RequestException as e:
+            print(f"   ⚠️ {repo_full_name} README({name}) 获取失败: {e}")
             return False
-        resp.raise_for_status()
-        content = resp.text
-    except requests.exceptions.RequestException as e:
-        print(f"   ⚠️ {repo_full_name} README 获取失败: {e}")
-        return False
 
-    if not content.strip():
-        return False
+        if not content.strip():
+            # 文件存在但内容为空，继续尝试下一个候选
+            continue
 
-    if len(content) > MAX_README_CHARS:
-        content = content[:MAX_README_CHARS]
-        print(f"   ⚠️ {repo_full_name} README 超长，已截断到 {MAX_README_CHARS} 字符")
+        if len(content) > MAX_README_CHARS:
+            content = content[:MAX_README_CHARS]
+            print(f"   ⚠️ {repo_full_name} README 超长，已截断到 {MAX_README_CHARS} 字符")
 
-    readmes_dir.mkdir(parents=True, exist_ok=True)
-    readme_path = readmes_dir / f"{safe_name}.md"
-    with open(readme_path, "w", encoding="utf-8") as f:
-        f.write(content)
-    return True
+        readmes_dir.mkdir(parents=True, exist_ok=True)
+        readme_path = readmes_dir / f"{safe_name}.md"
+        with open(readme_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return True
+
+    # 全部候选文件名均不存在 → 仓库无 README，跳过不生成文件
+    return False
 
 
 def sanitize_filename(name: str) -> str:
