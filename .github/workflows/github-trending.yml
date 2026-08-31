@@ -1,0 +1,65 @@
+# ============================================================================
+# GitHub Trending · 云端定时抓取
+# ============================================================================
+# 触发：
+#   - schedule:   每天 UTC 20:00 执行（文档第 9 节要求；北京时间凌晨 4:00，低峰期）
+#   - workflow_dispatch: 手动触发
+#   - push:       脚本/工作流变更时自动跑一次
+# 产出物：backend/github_trending/*.json（index.json + languages/*.json）
+# 提交：commit message 带 [skip ci]，避免触发无关构建
+# 依赖：requests + beautifulsoup4，无需任何 GitHub Token（仅解析公开页面）
+# ============================================================================
+
+name: GitHub Trending
+
+on:
+  schedule:
+    - cron: "0 20 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/github_trending.py"
+      - ".github/workflows/github-trending.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-trending
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    name: Fetch & Commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet requests beautifulsoup4
+
+      - name: Run GitHub Trending crawler
+        run: python scripts/github_trending.py --out backend/github_trending
+
+      - name: Commit & push
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/github_trending/
+          if ! git diff --cached --quiet; then
+            git commit -m "🤖 github-trending: update trending data [skip ci]"
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push
+          else
+            echo "数据无变化，跳过提交"
+          fi
