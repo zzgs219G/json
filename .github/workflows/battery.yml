@@ -1,0 +1,65 @@
+# ==============================================================================
+# 极客湾续航排行榜云端定时爬虫
+# ==============================================================================
+# 触发：
+#   - schedule:  每天 UTC 21:00 执行（北京时间凌晨 5:00，低峰期，错开 antutu/star/trending）
+#   - workflow_dispatch: 手动触发
+#   - push:      脚本/工作流变更时自动跑一次
+# 产出物：backend/battery/battery_rank.json
+# 提交：commit message 带 [skip ci]，避免触发无关构建 / 自身 push 造成的循环触发
+# ==============================================================================
+
+name: Battery Crawler
+
+on:
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/battery_crawler.py"
+      - ".github/workflows/battery.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: battery-crawler
+  cancel-in-progress: true
+
+jobs:
+  crawl:
+    name: Crawl & Commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet requests
+
+      - name: Run Battery crawler
+        run: python scripts/battery_crawler.py --out backend/battery/battery_rank.json
+
+      - name: Commit & push
+        env:
+          # GitHub 自动注入的临时令牌；配合上方 permissions: contents: write 具备推送权限
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/battery/battery_rank.json
+          if ! git diff --cached --quiet; then
+            git commit -m "🤖 battery: update rankings [skip ci]"
+            # 将 origin 指向带 token 的地址后推送（否则默认 URL 无凭据会认证失败）
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push
+          else
+            echo "数据无变化，跳过提交"
+          fi
