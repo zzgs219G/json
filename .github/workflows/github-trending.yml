@@ -5,7 +5,7 @@
 #   - schedule:   每天 UTC 20:00 执行（文档第 9 节要求；北京时间凌晨 4:00，低峰期）
 #   - workflow_dispatch: 手动触发
 #   - push:       脚本/工作流变更时自动跑一次
-# 产出物：backend/github_trending/*.json（index.json + languages/*.json）
+# 产出物：backend/github_trending/{daily,weekly,monthly}.json（按维度合并）
 # 提交：commit message 带 [skip ci]，避免触发无关构建
 # 依赖：requests + beautifulsoup4，无需任何 GitHub Token（仅解析公开页面）
 # ============================================================================

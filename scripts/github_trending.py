@@ -7,16 +7,18 @@ GitHub Trending 采集模块
 职责：抓取 GitHub Trending 页面（语言 × 时间维度），解析为结构化 JSON，
 供 jian_box App 端展示"今日/本周/本月"热门项目并支持按语言筛选。
 
-产出物（backend/github_trending/）：
-  index.json              # 索引：generatedAt / dimensions / languages / files 映射
-  languages/{lang}_{since}.json
+产出物（backend/github_trending/，按时间维度合并，避免碎片化小文件）：
+  daily.json              # 今日全部语言
+  weekly.json             # 本周全部语言
+  monthly.json            # 本月全部语言
+  每个文件内 reposByLanguage 按"语言显示名 -> 仓库数组"组织，自描述，无需单独 index.json
 
 设计原则（与 antutu_crawler.py 风格一致）：
   - 仅解析公开 trending HTML，不调用任何需要 GitHub API 的接口（见文档约束）
   - 并发抓取（ThreadPoolExecutor, 4 线程）：单请求实测 2.3~4.0s，
     串行 + 1.5s 间隔 45 个请求约 216s，无法满足文档"<120s"验收标准；
     温和并发在保证不触发限流的前提下约 50s 完成
-  - 单个语言/维度失败不影响整体（降级处理），输出时在 index.json 中只登记成功文件
+  - 单个语言/维度失败不影响整体（降级处理），输出时对应语言不登记进维度文件
   - 所有网络请求带超时与重试
 
 数据源：
@@ -191,12 +193,8 @@ def fetch_one(slug, since):
 
 
 def build_payload(out_dir):
-    """并发抓取全部组合，落盘单语言文件并返回 index.json 结构（dict）。"""
-    os.makedirs(os.path.join(out_dir, "languages"), exist_ok=True)
-
-    tasks = [(name, slug, ident, since)
-             for (name, slug, ident) in LANGUAGES
-             for (since, _) in DIMENSIONS]
+    """并发抓取全部组合，按时间维度合并落盘（每维度一个 JSON 文件）。"""
+    os.makedirs(out_dir, exist_ok=True)
 
     results = {}   # (slug, since) -> repos
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
@@ -207,41 +205,34 @@ def build_payload(out_dir):
             results[(slug, since)] = repos
 
     generated_at = datetime.now(CST).strftime("%Y-%m-%dT%H:%M:%S+08:00")
-    files = {since: {} for (since, _) in DIMENSIONS}
-    ok_files = 0
+    ok_combos = 0
     empty_logged = []
 
-    for (name, slug, ident) in LANGUAGES:
-        for (since, _) in DIMENSIONS:
+    for (since, label) in DIMENSIONS:
+        repos_by_language = {}
+        for (name, slug, ident) in LANGUAGES:
             repos = results.get((slug, since), [])
             if not repos:
                 empty_logged.append(f"{ident}_{since}")
-                continue  # 降级：该组合无数据则不产出文件、不登记索引
-            rel_path = f"languages/{ident}_{since}.json"
-            payload = {
-                "language": ident if ident != "all" else "all",
-                "since": since,
-                "updatedAt": generated_at,
-                "repos": repos,
-            }
-            with open(os.path.join(out_dir, rel_path), "w", encoding="utf-8") as f:
-                json.dump(payload, f, ensure_ascii=False, indent=2)
-            files[since][name] = rel_path
-            ok_files += 1
+                continue  # 降级：该语言无数据则不在该维度文件中登记
+            repos_by_language[name] = repos
+            ok_combos += 1
+        payload = {
+            "dimension": {"since": since, "label": label},
+            "updatedAt": generated_at,
+            "languages": list(repos_by_language.keys()),
+            "reposByLanguage": repos_by_language,
+        }
+        rel_path = f"{since}.json"
+        with open(os.path.join(out_dir, rel_path), "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        print(f"   产出 {rel_path}（{len(repos_by_language)} 种语言, "
+              f"{sum(len(v) for v in repos_by_language.values())} 个仓库）")
 
-    index = {
-        "generatedAt": generated_at,
-        "dimensions": [{"since": s, "label": label} for (s, label) in DIMENSIONS],
-        "languages": [name for (name, _, _) in LANGUAGES],
-        "files": files,
-    }
-    with open(os.path.join(out_dir, "index.json"), "w", encoding="utf-8") as f:
-        json.dump(index, f, ensure_ascii=False, indent=2)
-
-    print(f"✅ 产出 {out_dir}/index.json + {ok_files} 个语言文件")
+    print(f"✅ 产出 {out_dir}/{{{','.join(s for s, _ in DIMENSIONS)}}}.json，"
+          f"共 {ok_combos} 个 语言×维度 组合")
     if empty_logged:
-        print(f"   [降级] 以下组合无数据/抓取失败，未产出文件: {', '.join(empty_logged)}")
-    return index
+        print(f"   [降级] 以下组合无数据/抓取失败，未登记: {', '.join(empty_logged)}")
 
 
 def main():
