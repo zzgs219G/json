@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>极客湾 5G 续航排行榜</title>
+<title>极客湾 芯片综合性能排行榜</title>
 <style>
 /*
- * 视觉层 1:1 复刻 socpk.com/batlife 官网（CSS 规则与 DOM 骨架照官网
- * index-t6cb_3jB.css 与 BatteryPage 组件还原），数据层仍走本仓库 JSON：
+ * 视觉层 1:1 复刻 socpk.com/allperf 官网（CSS 规则与 DOM 骨架与续航页
+ * battery/index.html 同款体系，数据层仍走本仓库 JSON）：
  *   - 官网恒黑主题 → 这里用 CSS 变量做黑/浅双主题（浅色为自设计变体）
- *   - 官网自托管字体 SocpkManrope → 不引用官网字体文件，降级 Arial/系统栈
- *   - 官网"查看充电曲线"按钮 → 官网内部路由，本页无对应数据，暂省略
+ *   - 差异点：条形右侧直接显示 score（toFixed(1)，无 h/min 换算）；
+ *     左列为芯片名；顶部有官网同款筛选 tab（对应 JSON.modes，条长按各
+ *     模式 max 归一化）
  */
 :root {
   --c-bg: #000;
@@ -21,6 +22,9 @@
   /* 金色渐变描边（浅色主题下换深金，保证浅底可读） */
   --caption-stroke: #fff3b8cc;
   --caption-glow: #ffc40059;
+  /* 官网模式选中态：亮色胶囊，未选中半透明 */
+  --tab-active-bg: #fff;
+  --tab-active-text: #000;
 }
 /* App 端显式注入 <html data-theme="light"> 时强制浅色（优先级高于媒体查询） */
 :root[data-theme="light"] {
@@ -31,6 +35,8 @@
   --c-accent: #0077cc;
   --caption-stroke: #8a6d1acc;
   --caption-glow: #c7910059;
+  --tab-active-bg: #14161a;
+  --tab-active-text: #fff;
 }
 /* 浏览器直开（无注入）时跟随系统深浅色；App 注入 data-theme="dark" 后此规则被排除 */
 @media (prefers-color-scheme: light) {
@@ -42,6 +48,8 @@
     --c-accent: #0077cc;
     --caption-stroke: #8a6d1acc;
     --caption-glow: #c7910059;
+    --tab-active-bg: #14161a;
+    --tab-active-text: #fff;
   }
 }
 * { box-sizing: border-box; }
@@ -83,26 +91,42 @@ a { color: inherit; }
 
 /* ===== 说明文字 ===== */
 #notice { color: var(--c-sub); text-align: center; margin: 15px 20px 20px; }
-.battery-page #notice { margin: 15px 20px 20px; padding-bottom: 6px; }
+
+/* ===== 筛选 tab（官网 RankingBarTable 顶部模式胶囊：全部/仅手机/苹果/高通/联发科/华为） ===== */
+#modeTabs {
+  display: flex; justify-content: center; flex-wrap: wrap;
+  gap: 10px; margin: 0 20px 6px;
+}
+#modeTabs .tab {
+  color: var(--c-sub); cursor: pointer; user-select: none;
+  border: 1px solid var(--c-line); border-radius: 999px;
+  padding: 7px 20px; font-size: 15px; line-height: 1;
+  transition: color .2s, background .2s, border-color .2s;
+}
+#modeTabs .tab.active {
+  color: var(--tab-active-text);
+  background: var(--tab-active-bg);
+  border-color: var(--tab-active-bg);
+  font-weight: 600;
+}
 
 /* ===== 榜单表格（官网同款 table 骨架） ===== */
 .score-table { font-family: Arial, "PingFang SC", "HarmonyOS Sans SC", sans-serif; position: relative; }
 .data { border-collapse: collapse; text-align: center; width: 90%; margin: 45px auto 0; }
 .data td { padding: 0; }
 
-/* 左列：品牌 + 机型名（点击跳 B 站录像） */
+/* 左列：品牌 + 芯片名 */
 .socName {
   color: var(--c-sub); text-align: right; white-space: nowrap;
   width: 250px; height: 40px; font-size: 18.7px;
 }
-.battery-name { width: 200px; padding-right: 10px; }
-.battery-name a { color: var(--c-sub); cursor: pointer; text-decoration: none; }
+.chip-name { width: 200px; padding-right: 10px; color: var(--c-sub); text-decoration: none; cursor: default; }
 
 /* 条形容器 */
 .ratioBar { text-align: left; width: 100%; height: 21.3px; position: relative; }
-.battery-ratio-bar { height: 25.3px; }
+.allperf-ratio-bar { height: 25.3px; }
 
-/* ===== 刻度轴：纵向细线贯穿整表，文字为小时（180min→3h） ===== */
+/* ===== 刻度轴：纵向细线贯穿整表，文字为分值 ===== */
 .ratioLine { background: var(--c-bg); height: 0; position: absolute; top: 0; left: 0; }
 .ratioLineHeight {
   width: 1px; height: var(--axis-line-height, 600px);
@@ -128,15 +152,6 @@ a { color: inherit; }
   position: absolute; right: -10px; transform: translate(100%);
 }
 
-/* 条形内左上：电池容量 + 系统版本小字 */
-.model {
-  z-index: 2; color: var(--c-sub); text-align: left; cursor: pointer;
-  white-space: nowrap; padding-top: 2px;
-  font-family: Arial, "PingFang SC", "HarmonyOS Sans SC", sans-serif;
-  font-size: 14.7px; text-decoration: none;
-  position: absolute; left: 12px;
-}
-
 /* ===== 逐行入场动画（延迟由 JS 按行序写入 --bar-row-delay） ===== */
 .score-table tbody tr:not(.axis-row) {
   --bar-row-delay: 0s; opacity: 0;
@@ -145,7 +160,7 @@ a { color: inherit; }
 }
 .score-table tbody tr:not(.axis-row) .ratio { animation-delay: var(--bar-row-delay); }
 
-#author { color: var(--c-sub); text-align: center; width: 200px; margin: 20px auto 0; font-size: 16px; display: block; }
+#author { color: var(--c-sub); text-align: center; width: 260px; margin: 20px auto 0; font-size: 16px; display: block; }
 
 /* ===== 加载 / 错误状态 ===== */
 .status { text-align: center; padding: 80px 0; color: var(--c-sub); font-size: 16px; }
@@ -159,26 +174,27 @@ a { color: inherit; }
 /* ===== 移动端（官网 width<=760px 断点还原） ===== */
 @media (width<=760px) {
   #caption { letter-spacing: 2px; margin: 30px 48px 0; font-size: 23px; }
-  #notice { margin: 9px 12px 12px; font-size: 11px; }
-  .battery-page #notice { margin: 9px 12px 12px; padding-bottom: 4px; }
+  #notice { margin: 9px 12px 6px; font-size: 11px; }
+  #modeTabs { gap: 6px; margin: 0 12px 2px; }
+  #modeTabs .tab { padding: 5px 12px; font-size: 11px; }
   .data { margin-top: 27px; }
   .socName { white-space: normal; width: 87px; height: 24px; font-size: 11.2px; }
-  .battery-name { width: 120px; padding-right: 6px; }
+  .chip-name { width: 120px; padding-right: 6px; }
   .ratioBar { height: 13px; }
-  .battery-ratio-bar { height: 15px; }
+  .allperf-ratio-bar { height: 15px; }
   .ratioLineHeight { font-size: 12px; }
   .ratio a { font-size: 12.4px; right: -6px; }
   .axis-row .ratioBar { height: 17px; margin-top: -6px; }
-  .model { padding-top: 1px; font-size: 9px; left: 7px; }
-  #author { width: 120px; font-size: 10px; }
+  #author { width: 150px; font-size: 10px; }
 }
 </style>
 </head>
 <body>
-<main id="mainLayout" class="score-page battery-page">
-  <p id="caption">极客湾5G续航排行榜 <span class="caption-gradient">5.0</span></p>
-  <p id="notice">均使用自购零售机测试。点击机型或系统版本可观看全程录像</p>
-  <table class="data score-table battery-table" border="0">
+<main id="mainLayout" class="score-page allperf-page">
+  <p id="caption">极客湾芯片综合性能排行榜 <span class="caption-gradient">5.0</span></p>
+  <p id="notice"></p>
+  <div id="modeTabs"></div>
+  <table class="data score-table allperf-table" border="0">
     <tbody>
       <tr class="axis-row">
         <td class="socName"></td>
@@ -194,28 +210,33 @@ a { color: inherit; }
 <script>
 /*
  * 渲染逻辑说明（schema 契约写死，数据动态）：
- *  - 数据运行时 fetch 同目录 socpk_battery.json，云端流水线每日更新，本页零改动跟随。
- *  - 所有从 JSON 读取的值（刻度、总数、颜色、条长）都不硬编码。
- *  - 视觉结构复刻官网 BatteryPage：机型名左列、条形黑→品牌色渐变、
- *    纵向刻度线贯穿整表、刻度文字以小时显示（分钟/60）、逐行入场动画。
+ *  - 数据运行时 fetch 同目录 socpk_allperf.json，云端流水线每日更新，本页零改动跟随。
+ *  - 所有从 JSON 读取的值（刻度、总数、颜色、条长、模式上限）都不硬编码。
+ *  - 视觉结构复刻官网 RankingBarTable：芯片名左列、条形黑→品牌色渐变、
+ *    纵向刻度线贯穿整表、刻度文字为分值、逐行入场动画。
+ *  - 筛选 tab 对应官网 modes（all/phone/apple/qualcomm/mediatek/huawei）：
+ *    phone 用 item.phone 过滤；品牌模式按品牌名过滤（官网 apple=苹果、
+ *    qualcomm=高通、mediatek=联发科、huawei=华为）；条长按各模式 max 归一化。
  */
 (function () {
-  var AXIS_FALLBACK = [0, 180, 360, 540, 720, 900]; // 仅当 JSON.axis 异常时兜底
+  var AXIS_FALLBACK = [0, 125, 250, 375, 500]; // 仅当 JSON.axis 异常时兜底
+  // 官网模式 → 展示名 / 过滤器（modes 各模式 max 从 JSON 读，缺了才用这里的兜底）
+  var MODES = [
+    { key: 'all',       label: '全部',   match: function () { return true; } },
+    { key: 'phone',     label: '仅手机', match: function (it) { return it.phone === true; } },
+    { key: 'apple',     label: '苹果',   match: function (it) { return it.brand === '苹果'; } },
+    { key: 'qualcomm',  label: '高通',   match: function (it) { return it.brand === '高通'; } },
+    { key: 'mediatek',  label: '联发科', match: function (it) { return it.brand === '联发科'; } },
+    { key: 'huawei',    label: '华为',   match: function (it) { return it.brand === '华为'; } }
+  ];
+  var MODE_MAX_FALLBACK = { all: 500, phone: 300, apple: 500, qualcomm: 300, mediatek: 300, huawei: 150 };
 
-  function fmtBattery(mah, wh) { // 官网 u(e)：有 mAh 显示 mAh(Wh)，否则只显 Wh
-    if (wh == null) return '';
-    return (mah != null) ? mah + 'mAh(' + wh + 'Wh)' : wh + 'Wh';
-  }
-  // 官网 eu(e)：分钟 → "12h6min"（整小时只显 h，0 显示 0min）
-  function fmtDuration(min) {
-    var h = Math.floor(min / 60), m = min % 60, parts = [];
-    if (h > 0) parts.push(h + 'h');
-    if (m > 0 || min === 0) parts.push(m + 'min');
-    return parts.join('');
-  }
+  var DATA = null;   // fetch 到的 JSON
+  var MODE = 'all';  // 当前选中模式
+
   function isSmall() { return window.matchMedia('(width<=760px)').matches; }
 
-  // 刻度轴：官网 ratioLine width = i*(100/(n-1))%，文字 = 分钟/60（小时）
+  // 刻度轴：官网 ratioLine width = i*(100/(n-1))%，文字 = 分值
   function renderAxis(axis) {
     var bar = document.getElementById('axisBar');
     bar.innerHTML = '';
@@ -225,80 +246,98 @@ a { color: inherit; }
       line.style.width = (i * (100 / (axis.length - 1))) + '%';
       var h = document.createElement('div');
       h.className = 'ratioLineHeight' + (i === 0 ? ' axis-origin' : '');
-      h.textContent = '\u00A0' + (v / 60);
+      h.textContent = '\u00A0' + v;
       line.appendChild(h);
       bar.appendChild(line);
     });
   }
 
-  function renderRow(item, maxH, i) {
+  function renderRow(item, maxScore, i) {
     var tr = document.createElement('tr');
     tr.style.setProperty('--bar-row-delay', (i * 0.006).toFixed(3) + 's'); // 官网逐行 6ms 递增入场
 
-    // 左列：品牌 机型（videoUrl 为空 → 点击 alert，官网 NA 同款文案）
+    // 左列：品牌 芯片
     var nameTd = document.createElement('td');
-    nameTd.className = 'socName battery-name';
+    nameTd.className = 'socName';
     var a = document.createElement('a');
-    a.textContent = item.brand + '\u00A0' + item.model;
-    if (item.videoUrl) {
-      a.href = item.videoUrl;
-      // 不设 target="_blank"：App WebView 默认不支持多窗口，_blank 点击会被静默吞掉；
-      // 当前页导航由 App 端 shouldOverrideUrlLoading 拦截跳系统浏览器（B站 App / 浏览器自选）
-    } else {
-      a.addEventListener('click', function () {
-        alert('该机型录像还在上传中，请稍后再试');
-      });
-    }
+    a.className = 'chip-name';
+    a.textContent = item.brand + '\u00A0' + item.chip;
     nameTd.appendChild(a);
     tr.appendChild(nameTd);
 
-    // 条形列：.model 小字 + 品牌色渐变条（官网公式：黑→品牌色，左端 1% 处切入）
+    // 条形列：品牌色渐变条（官网公式：黑→品牌色，左端 1% 处切入）
     var td = document.createElement('td');
     var zone = document.createElement('div');
-    zone.className = 'ratioBar battery-ratio-bar';
-
-    var model = document.createElement('a');
-    model.className = 'model';
-    model.textContent = fmtBattery(item.batteryMah, item.batteryWh) + ' ' + (item.osVersion || '');
+    zone.className = 'ratioBar allperf-ratio-bar';
 
     var bar = document.createElement('div');
-    bar.className = 'ratio battery-ratio';
-    bar.style.width = Math.min(100, (item.hours / maxH) * 100) + '%';
-    var c = item.brandColor || '#1ED76D';
+    bar.className = 'ratio allperf-ratio';
+    bar.style.width = Math.min(100, (item.score / maxScore) * 100) + '%';
+    var c = item.brandColor || '#BBBBBB';
     bar.style.background = 'linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 1%, #000000 1%, ' + c + ' 100%)';
 
-    var hours = document.createElement('a');
-    hours.textContent = fmtDuration(item.hours); // 官网条形右侧为时长文本（eu），非裸数字
+    var score = document.createElement('a');
+    score.textContent = Number(item.score).toFixed(1); // 综合性能分直接显示，无 h/min 换算
 
-    bar.appendChild(hours);
-    zone.appendChild(model);
+    bar.appendChild(score);
     zone.appendChild(bar);
     td.appendChild(zone);
     tr.appendChild(td);
     return tr;
   }
 
-  function render(data) {
+  function modeMax(modeKey) {
+    var m = DATA && DATA.modes && DATA.modes[modeKey];
+    if (m != null) return m;
+    return MODE_MAX_FALLBACK[modeKey] || 500;
+  }
+
+  function render() {
+    var mode = MODES.filter(function (m) { return m.key === MODE; })[0] || MODES[0];
+    var axis = (DATA.axis && DATA.axis.length) ? DATA.axis : AXIS_FALLBACK;
+    var maxScore = modeMax(mode.key);
+    var items = (DATA.items || []).filter(mode.match);
+
+    // 轴刻度跟随模式 max 生成（官网逻辑：Array.from({length:5},(_,n)=>mode.max/4*n)）
+    var axisVals = [];
+    for (var n = 0; n < 5; n++) axisVals.push(maxScore / 4 * n);
+    renderAxis(axisVals);
+
+    // 防御性重排：按分数降序
+    items = items.slice().sort(function (a, b) { return b.score - a.score; });
+
     var list = document.getElementById('list');
-    var status = document.getElementById('status');
-
-    var axis = (data.axis && data.axis.length) ? data.axis : AXIS_FALLBACK;
-    var maxH = Math.max.apply(null, axis);
-    // 官网 --axis-line-height = 行高*行数 + 行高（刻度线贯穿整个表格）
-    var rowH = isSmall() ? 24 : 40;
-    document.querySelector('.battery-table')
-      .style.setProperty('--axis-line-height', ((data.items.length + 1) * rowH) + 'px');
-
-    renderAxis(axis);
-
-    // 防御性重排：官网 [...battery50].sort((a,b)=>b[2]-a[2])，按续航降序
-    var items = (data.items || []).slice().sort(function (a, b) { return b.hours - a.hours; });
     list.innerHTML = '';
     var frag = document.createDocumentFragment();
-    items.forEach(function (item, i) { frag.appendChild(renderRow(item, maxH, i)); });
+    items.forEach(function (item, i) { frag.appendChild(renderRow(item, maxScore, i)); });
     list.appendChild(frag);
 
-    status.style.display = 'none';
+    // 官网 --axis-line-height = 行高*行数 + 行高（刻度线贯穿整个表格）
+    var rowH = isSmall() ? 24 : 40;
+    document.querySelector('.allperf-table')
+      .style.setProperty('--axis-line-height', ((items.length + 1) * rowH) + 'px');
+
+    document.getElementById('status').style.display = 'none';
+  }
+
+  // 筛选 tab：官网模式胶囊（有数据的模式才展示，避免 modes 变化后出现空 tab）
+  function renderTabs() {
+    var wrap = document.getElementById('modeTabs');
+    wrap.innerHTML = '';
+    MODES.forEach(function (m) {
+      var count = (DATA.items || []).filter(m.match).length;
+      if (count === 0) return;
+      var tab = document.createElement('span');
+      tab.className = 'tab' + (m.key === MODE ? ' active' : '');
+      tab.textContent = m.label;
+      tab.addEventListener('click', function () {
+        if (MODE === m.key) return;
+        MODE = m.key;
+        renderTabs();
+        render();
+      });
+      wrap.appendChild(tab);
+    });
   }
 
   function fail(msg) {
@@ -308,14 +347,19 @@ a { color: inherit; }
   }
 
   // 同源相对路径取数：页面和 JSON 同目录即可（仓库直链 / App WebView baseUrl 均适用）
-  fetch('./socpk_battery.json', { cache: 'no-cache' })
+  fetch('./socpk_allperf.json', { cache: 'no-cache' })
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     })
-    .then(render)
+    .then(function (data) {
+      DATA = data;
+      document.getElementById('notice').textContent = data.notice || '';
+      renderTabs();
+      render();
+    })
     .catch(function (e) {
-      fail('数据加载失败：' + e.message + '（请确认页面与 socpk_battery.json 同目录访问）');
+      fail('数据加载失败：' + e.message + '（请确认页面与 socpk_allperf.json 同目录访问）');
     });
 })();
 </script>
