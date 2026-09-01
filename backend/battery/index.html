@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>极客湾 5G 续航排行榜</title>
+<style>
+  :root {
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --text-main: #1a1d21;
+    --text-sub: #7a828a;
+    --grid-line: rgba(0, 0, 0, 0.06);
+    --bar-track: rgba(0, 0, 0, 0.04);
+    --accent: #01AEE1;
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121417;
+      --card-bg: #1c1f24;
+      --text-main: #e8eaed;
+      --text-sub: #8b929a;
+      --grid-line: rgba(255, 255, 255, 0.07);
+      --bar-track: rgba(255, 255, 255, 0.06);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 16px 12px 48px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+
+  /* ===== 头部 ===== */
+  header { padding: 12px 4px 20px; }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
+  header .meta {
+    margin-top: 8px; font-size: 12px; color: var(--text-sub);
+    display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center;
+  }
+  header .meta a { color: var(--accent); text-decoration: none; }
+
+  /* ===== 刻度表头 ===== */
+  .chart-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 18px 16px 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .scale-header {
+    position: relative; height: 22px; margin: 0 0 6px 108px;
+    font-size: 11px; color: var(--text-sub);
+  }
+  .scale-header .tick {
+    position: absolute; transform: translateX(-50%); white-space: nowrap;
+  }
+  .scale-header .tick::after {
+    content: ""; position: absolute; left: 50%; top: 20px;
+    width: 1px; height: 100vh; background: transparent;
+  }
+
+  /* ===== 榜单行 ===== */
+  .rows { position: relative; }
+  /* 纵向网格线：覆盖整个行区域，与刻度对齐 */
+  .gridlines { position: absolute; inset: 0; margin-left: 108px; pointer-events: none; }
+  .gridlines i {
+    position: absolute; top: 0; bottom: 0; width: 1px; background: var(--grid-line);
+  }
+  .row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 0; position: relative;
+  }
+  .row .idx {
+    width: 30px; text-align: center; font-size: 13px;
+    font-weight: 600; color: var(--text-sub); flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .row:nth-child(-n+3) .idx { color: var(--text-main); font-size: 14px; }
+  .row .main { flex: 1; min-width: 0; }
+  .bar-zone { position: relative; height: 30px; }
+  .bar {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    border-radius: 6px 15px 15px 6px;
+    display: flex; align-items: center;
+    padding-left: 10px; min-width: 0;
+    overflow: hidden; white-space: nowrap;
+    transition: width .5s cubic-bezier(.2,.7,.3,1);
+  }
+  .bar .label {
+    font-size: 12.5px; font-weight: 600; color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .row .side {
+    width: 62px; flex-shrink: 0; text-align: right;
+    font-size: 13px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .row .side small { display: block; font-size: 10px; font-weight: 400; color: var(--text-sub); }
+
+  /* ===== 视频跳转角标 ===== */
+  .video-badge {
+    width: 26px; height: 26px; flex-shrink: 0;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; text-decoration: none; color: var(--text-sub);
+    background: var(--bar-track); cursor: pointer;
+  }
+  .video-badge.has { color: #fb7299; }
+  .video-badge.na { opacity: 0.45; cursor: default; }
+
+  /* ===== 状态 / 错误 ===== */
+  .status { text-align: center; padding: 60px 0; color: var(--text-sub); font-size: 14px; }
+  .status.error { color: #e12d2c; }
+  footer {
+    margin-top: 14px; text-align: center;
+    font-size: 11px; color: var(--text-sub);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🔋 极客湾 5G 续航排行榜 <span style="font-size:13px;color:var(--text-sub);font-weight:400">5.0</span></h1>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <div class="chart-card">
+    <div class="scale-header" id="scaleHeader"></div>
+    <div class="rows">
+      <div class="gridlines" id="gridlines"></div>
+      <div id="list"></div>
+    </div>
+  </div>
+
+  <div class="status" id="status">加载中…</div>
+  <footer>数据来源：极客湾（socpk.com）· 三小时重度续航测试 · 本页仅做数据可视化</footer>
+</div>
+
+<script>
+/*
+ * 渲染逻辑说明（回应"JSON 是动态的怎么写"）：
+ *  - 写死在这里的只有「schema 契约」：字段名 / 结构 / 含义。
+ *  - 数据本身运行时 fetch 同目录 battery_rank.json 现读现渲染，
+ *    云端流水线每天更新 JSON，本页零改动自动展示新榜单。
+ *  - 所有从 JSON 读取的值（刻度、总数、颜色、条长）都不硬编码。
+ */
+(function () {
+  var MAX_HOURS_FALLBACK = 900; // 仅当 JSON.axis 异常时的兜底刻度上限
+
+  function fmtHours(h) { return h + 'h'; }
+  function fmtBattery(mah, wh) {
+    if (wh == null) return '';
+    return (mah != null) ? mah + 'mAh(' + wh + 'Wh)' : wh + 'Wh';
+  }
+
+  function renderScale(axis, maxH) {
+    var header = document.getElementById('scaleHeader');
+    var grid = document.getElementById('gridlines');
+    header.innerHTML = '';
+    grid.innerHTML = '';
+    axis.forEach(function (v) {
+      var pct = (v / maxH) * 100;
+      if (pct > 100) pct = 100;
+      var t = document.createElement('span');
+      t.className = 'tick';
+      t.style.left = pct + '%';
+      t.textContent = v;
+      header.appendChild(t);
+      var g = document.createElement('i');
+      g.style.left = pct + '%';
+      grid.appendChild(g);
+    });
+  }
+
+  function renderRow(item, maxH) {
+    var row = document.createElement('div');
+    row.className = 'row';
+
+    // 排名
+    var idx = document.createElement('div');
+    idx.className = 'idx';
+    idx.textContent = item.rank;
+
+    // 条形区
+    var main = document.createElement('div');
+    main.className = 'main';
+    var zone = document.createElement('div');
+    zone.className = 'bar-zone';
+    var bar = document.createElement('div');
+    bar.className = 'bar';
+    var pct = Math.max(6, (item.hours / maxH) * 100); // 最短 6% 保证短条也有可读文字位
+    bar.style.width = pct + '%';
+    bar.style.background = 'linear-gradient(90deg, ' + item.brandColor + 'CC, ' + item.brandColor + ')';
+    var label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = item.brand + ' ' + item.model;
+    bar.appendChild(label);
+    zone.appendChild(bar);
+    main.appendChild(zone);
+    row.appendChild(idx);
+    row.appendChild(main);
+
+    // 右侧数值：续航 + 电池
+    var side = document.createElement('div');
+    side.className = 'side';
+    side.innerHTML = fmtHours(item.hours) +
+      '<small>' + fmtBattery(item.batteryMah, item.batteryWh) + '</small>';
+    row.appendChild(side);
+
+    // B 站录像角标：有链接可点跳转，无链接置灰提示
+    var badge = document.createElement('a');
+    badge.className = 'video-badge' + (item.videoUrl ? ' has' : ' na');
+    badge.textContent = '▶';
+    badge.title = item.videoUrl ? '观看全程测试录像' : '录像未上传';
+    if (item.videoUrl) {
+      badge.href = item.videoUrl;
+      badge.target = '_blank';
+      badge.rel = 'noopener';
+    } else {
+      badge.addEventListener('click', function (e) {
+        e.preventDefault();
+        alert('该机型测试录像暂未上传');
+      });
+    }
+    row.appendChild(badge);
+
+    return row;
+  }
+
+  function render(data) {
+    var list = document.getElementById('list');
+    var meta = document.getElementById('meta');
+    var status = document.getElementById('status');
+
+    // 横轴上限：取 axis 最大值（不写死 900，跟随 JSON）
+    var axis = (data.axis && data.axis.length) ? data.axis : [0, 180, 360, 540, 720, MAX_HOURS_FALLBACK];
+    var maxH = Math.max.apply(null, axis);
+
+    // 防御性重排序：按续航降序（正常情况下爬虫已排好）
+    var items = (data.items || []).slice().sort(function (a, b) { return b.hours - a.hours; });
+
+    meta.innerHTML =
+      '<span>共 ' + (data.total || items.length) + ' 款机型</span>' +
+      '<span>更新于 ' + (data.generatedAt || '—').replace('T', ' ').slice(0, 16) + ' UTC</span>' +
+      '<a href="' + (data.source || 'https://www.socpk.com/batlife') + '" target="_blank" rel="noopener">数据来源 ↗</a>';
+
+    renderScale(axis, maxH);
+    list.innerHTML = '';
+    var frag = document.createDocumentFragment();
+    items.forEach(function (item, i) {
+      if (item.rank == null) item.rank = i + 1;
+      frag.appendChild(renderRow(item, maxH));
+    });
+    list.appendChild(frag);
+
+    status.style.display = 'none';
+  }
+
+  function fail(msg) {
+    var status = document.getElementById('status');
+    status.className = 'status error';
+    status.textContent = msg;
+  }
+
+  // 同源相对路径取数：页面和 JSON 在同一目录即可运行（仓库直链 / App WebView 均适用）
+  fetch('./battery_rank.json', { cache: 'no-cache' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(render)
+    .catch(function (e) {
+      fail('数据加载失败：' + e.message + '（请确认页面与 battery_rank.json 同目录访问）');
+    });
+})();
+</script>
+</body>
+</html>
