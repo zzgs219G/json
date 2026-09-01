@@ -18,14 +18,30 @@
   --c-sub: #bbb;
   --c-line: #444;
   --c-accent: #00b4ff;
+  /* 金色渐变描边（浅色主题下换深金，保证浅底可读） */
+  --caption-stroke: #fff3b8cc;
+  --caption-glow: #ffc40059;
 }
+/* App 端显式注入 <html data-theme="light"> 时强制浅色（优先级高于媒体查询） */
+:root[data-theme="light"] {
+  --c-bg: #f7f7f8;
+  --c-text: #14161a;
+  --c-sub: #66707a;
+  --c-line: #c9ced4;
+  --c-accent: #0077cc;
+  --caption-stroke: #8a6d1acc;
+  --caption-glow: #c7910059;
+}
+/* 浏览器直开（无注入）时跟随系统深浅色；App 注入 data-theme="dark" 后此规则被排除 */
 @media (prefers-color-scheme: light) {
-  :root {
+  :root:not([data-theme="dark"]) {
     --c-bg: #f7f7f8;
     --c-text: #14161a;
     --c-sub: #66707a;
     --c-line: #c9ced4;
     --c-accent: #0077cc;
+    --caption-stroke: #8a6d1acc;
+    --caption-glow: #c7910059;
   }
 }
 * { box-sizing: border-box; }
@@ -52,8 +68,8 @@ a { color: inherit; }
 #caption .caption-gradient {
   color: #0000;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px #fff3b8cc;
-  filter: drop-shadow(0 0 8px #ffc40059);
+  -webkit-text-stroke: 1px var(--caption-stroke);
+  filter: drop-shadow(0 0 8px var(--caption-glow));
   cursor: default;
   background-image: linear-gradient(90deg,#ffb52e 0%,#fff3b8 38%,#ffd101 55%,#ff8f1f 80%,#ffb52e 100%);
   background-size: 300% 100%;
@@ -178,7 +194,7 @@ a { color: inherit; }
 <script>
 /*
  * 渲染逻辑说明（schema 契约写死，数据动态）：
- *  - 数据运行时 fetch 同目录 battery_rank.json，云端流水线每日更新，本页零改动跟随。
+ *  - 数据运行时 fetch 同目录 socpk_battery.json，云端流水线每日更新，本页零改动跟随。
  *  - 所有从 JSON 读取的值（刻度、总数、颜色、条长）都不硬编码。
  *  - 视觉结构复刻官网 BatteryPage：机型名左列、条形黑→品牌色渐变、
  *    纵向刻度线贯穿整表、刻度文字以小时显示（分钟/60）、逐行入场动画。
@@ -189,6 +205,13 @@ a { color: inherit; }
   function fmtBattery(mah, wh) { // 官网 u(e)：有 mAh 显示 mAh(Wh)，否则只显 Wh
     if (wh == null) return '';
     return (mah != null) ? mah + 'mAh(' + wh + 'Wh)' : wh + 'Wh';
+  }
+  // 官网 eu(e)：分钟 → "12h6min"（整小时只显 h，0 显示 0min）
+  function fmtDuration(min) {
+    var h = Math.floor(min / 60), m = min % 60, parts = [];
+    if (h > 0) parts.push(h + 'h');
+    if (m > 0 || min === 0) parts.push(m + 'min');
+    return parts.join('');
   }
   function isSmall() { return window.matchMedia('(width<=760px)').matches; }
 
@@ -245,7 +268,7 @@ a { color: inherit; }
     bar.style.background = 'linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 1%, #000000 1%, ' + c + ' 100%)';
 
     var hours = document.createElement('a');
-    hours.textContent = item.hours;
+    hours.textContent = fmtDuration(item.hours); // 官网条形右侧为时长文本（eu），非裸数字
 
     bar.appendChild(hours);
     zone.appendChild(model);
@@ -285,14 +308,14 @@ a { color: inherit; }
   }
 
   // 同源相对路径取数：页面和 JSON 同目录即可（仓库直链 / App WebView baseUrl 均适用）
-  fetch('./battery_rank.json', { cache: 'no-cache' })
+  fetch('./socpk_battery.json', { cache: 'no-cache' })
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     })
     .then(render)
     .catch(function (e) {
-      fail('数据加载失败：' + e.message + '（请确认页面与 battery_rank.json 同目录访问）');
+      fail('数据加载失败：' + e.message + '（请确认页面与 socpk_battery.json 同目录访问）');
     });
 })();
 </script>

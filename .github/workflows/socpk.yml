@@ -5,7 +5,7 @@
 #   - schedule:  每天 UTC 21:00 执行（北京时间凌晨 5:00，低峰期，错开 antutu/star/trending）
 #   - workflow_dispatch: 手动触发
 #   - push:      脚本/工作流变更时自动跑一次
-# 产出物：backend/battery/battery_rank.json
+# 产出物：backend/socpk/battery/socpk_battery.json
 # 提交：commit message 带 [skip ci]，避免触发无关构建 / 自身 push 造成的循环触发
 # ==============================================================================
 
@@ -17,14 +17,14 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - "scripts/battery_crawler.py"
-      - ".github/workflows/battery.yml"
+      - "scripts/socpk_battery.py"
+      - ".github/workflows/socpk.yml"
 
 permissions:
   contents: write
 
 concurrency:
-  group: battery-crawler
+  group: socpk-crawler
   cancel-in-progress: true
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
         run: pip install --quiet requests
 
       - name: Run Battery crawler
-        run: python scripts/battery_crawler.py --out backend/battery/battery_rank.json
+        run: python scripts/socpk_battery.py --out backend/socpk/battery/socpk_battery.json
 
       - name: Commit & push
         env:
@@ -54,9 +54,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add backend/battery/battery_rank.json
+          git add backend/socpk/battery/socpk_battery.json
           if ! git diff --cached --quiet; then
-            git commit -m "🤖 battery: update rankings [skip ci]"
+            git commit -m "🤖 socpk: update battery rankings [skip ci]"
             # 将 origin 指向带 token 的地址后推送（否则默认 URL 无凭据会认证失败）
             git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             git push

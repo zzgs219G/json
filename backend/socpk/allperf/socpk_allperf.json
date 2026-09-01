@@ -1,0 +1,1306 @@
+{
+  "generatedAt": "2026-09-01T11:41:31+00:00",
+  "source": "https://www.socpk.com/allperf",
+  "decryptKey": "socpk-rankings-2026",
+  "total": 158,
+  "axis": [
+    0.0,
+    125.0,
+    250.0,
+    375.0,
+    500.0
+  ],
+  "notice": "CPU权重70% ,GPU权重30%。不包含功耗、AI、ISP基带性能。以骁龙865为基准",
+  "modes": {
+    "all": 500,
+    "phone": 300,
+    "apple": 500,
+    "qualcomm": 300,
+    "mediatek": 300,
+    "huawei": 150
+  },
+  "brandColors": {
+    "苹果": "#732EE3",
+    "vivo": "#3E5BF4",
+    "小米": "#F46400",
+    "OPPO": "#00CA81",
+    "iQOO": "#F4AC01",
+    "红米": "#DF003E",
+    "一加": "#E40027",
+    "真我": "#F6C318",
+    "Realme": "#F6C318",
+    "努比亚": "#FF2E4C",
+    "谷歌": "#4285F4",
+    "荣耀": "#01AEE1",
+    "华为": "#E12D2C",
+    "红魔": "#E61939",
+    "三星": "#3E5BF4"
+  },
+  "brandColorFallback": "#BBBBBB",
+  "items": [
+    {
+      "brand": "苹果",
+      "chip": "M4 (4+6)",
+      "score": 452.59,
+      "phone": false,
+      "brandColor": "#732EE3",
+      "rank": 1
+    },
+    {
+      "brand": "苹果",
+      "chip": "M4 (3+6)",
+      "score": 436.1,
+      "phone": false,
+      "brandColor": "#732EE3",
+      "rank": 2
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8 Elite Gen5",
+      "score": 392.9,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 3
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 9500",
+      "score": 383.7,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 4
+    },
+    {
+      "brand": "苹果",
+      "chip": "A19 Pro",
+      "score": 372.5,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 5
+    },
+    {
+      "brand": "苹果",
+      "chip": "A19",
+      "score": 333.1,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 6
+    },
+    {
+      "brand": "苹果",
+      "chip": "M2 (iPad Pro)",
+      "score": 322.6,
+      "phone": false,
+      "brandColor": "#732EE3",
+      "rank": 7
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8 Elite",
+      "score": 321.34,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 8
+    },
+    {
+      "brand": "小米",
+      "chip": "玄戒 O1",
+      "score": 311.2,
+      "phone": true,
+      "brandColor": "#F46400",
+      "rank": 9
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 9400",
+      "score": 310.19,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 10
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8 Gen5",
+      "score": 305.9,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 11
+    },
+    {
+      "brand": "苹果",
+      "chip": "A18 Pro",
+      "score": 289.87,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 12
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 9300",
+      "score": 278.9,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 13
+    },
+    {
+      "brand": "苹果",
+      "chip": "A18",
+      "score": 272.29,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 14
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8 Gen3",
+      "score": 264.68,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 15
+    },
+    {
+      "brand": "苹果",
+      "chip": "M1 (iPad Air)",
+      "score": 261.43,
+      "phone": false,
+      "brandColor": "#732EE3",
+      "rank": 16
+    },
+    {
+      "brand": "苹果",
+      "chip": "A17 Pro",
+      "score": 242.8,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 17
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 2400",
+      "score": 224.49,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 18
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 8400-MAX",
+      "score": 219.9,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 19
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8 Gen2",
+      "score": 205.74,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 20
+    },
+    {
+      "brand": "苹果",
+      "chip": "A16",
+      "score": 201.09,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 21
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 9200+",
+      "score": 199.3,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 22
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 9200",
+      "score": 186.97,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 23
+    },
+    {
+      "brand": "苹果",
+      "chip": "A15 (iPhone 13 PM)",
+      "score": 182.24,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 24
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8s Gen3",
+      "score": 180.62,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 25
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 7+ Gen3",
+      "score": 178.99,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 26
+    },
+    {
+      "brand": "苹果",
+      "chip": "A15 (iPhone 13)",
+      "score": 176.28,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 27
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 8300Ultra",
+      "score": 175.4,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 28
+    },
+    {
+      "brand": "苹果",
+      "chip": "A12Z",
+      "score": 171.63,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 29
+    },
+    {
+      "brand": "苹果",
+      "chip": "A12X",
+      "score": 166.62,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 30
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8+ Gen1",
+      "score": 157.68,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 31
+    },
+    {
+      "brand": "苹果",
+      "chip": "A14 (iPad)",
+      "score": 157.45,
+      "phone": false,
+      "brandColor": "#732EE3",
+      "rank": 32
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 9000",
+      "score": 155.98,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 33
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9020",
+      "score": 145.36,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 34
+    },
+    {
+      "brand": "苹果",
+      "chip": "A14",
+      "score": 144.61,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 35
+    },
+    {
+      "brand": "谷歌",
+      "chip": "Tensor G4",
+      "score": 144.13,
+      "phone": true,
+      "brandColor": "#4285F4",
+      "rank": 36
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 8 Gen1",
+      "score": 141.1,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 37
+    },
+    {
+      "brand": "谷歌",
+      "chip": "Tensor G3",
+      "score": 137.21,
+      "phone": true,
+      "brandColor": "#4285F4",
+      "rank": 38
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 7+ Gen2",
+      "score": 136.68,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 39
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9010",
+      "score": 130.52,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 40
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 2200",
+      "score": 129.8,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 41
+    },
+    {
+      "brand": "苹果",
+      "chip": "A13",
+      "score": 123.11,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 42
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 8200",
+      "score": 121.44,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 43
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9000S",
+      "score": 120.93,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 44
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9000",
+      "score": 120.03,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 45
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9000E",
+      "score": 117.53,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 46
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 888+",
+      "score": 117.17,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 47
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 888",
+      "score": 117.1,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 48
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 2100",
+      "score": 116.92,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 49
+    },
+    {
+      "brand": "高通",
+      "chip": "微软SQ1",
+      "score": 111.31,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 50
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 8100",
+      "score": 110.82,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 51
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9000WL",
+      "score": 109.05,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 52
+    },
+    {
+      "brand": "谷歌",
+      "chip": "Tensor",
+      "score": 107.34,
+      "phone": true,
+      "brandColor": "#4285F4",
+      "rank": 53
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 865+",
+      "score": 104.65,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 54
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 870",
+      "score": 104.2,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 55
+    },
+    {
+      "brand": "苹果",
+      "chip": "A12(iPad)",
+      "score": 100.5,
+      "phone": false,
+      "brandColor": "#732EE3",
+      "rank": 56
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 865",
+      "score": 100,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 57
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 1080",
+      "score": 98.49,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 58
+    },
+    {
+      "brand": "苹果",
+      "chip": "A12",
+      "score": 95.94,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 59
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 1200(8050)",
+      "score": 95.79,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 60
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9000SL",
+      "score": 95.7,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 61
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 990 5G",
+      "score": 89.9,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 62
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 7200Ultra",
+      "score": 89.21,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 63
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 1100",
+      "score": 88.7,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 64
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 990",
+      "score": 88.58,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 65
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 1000+",
+      "score": 86.89,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 66
+    },
+    {
+      "brand": "联发科",
+      "chip": "迅鲲 1300T",
+      "score": 86.69,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 67
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 855+",
+      "score": 85.87,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 68
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 860",
+      "score": 85.87,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 69
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 855",
+      "score": 83.36,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 70
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 7s Gen2",
+      "score": 83.3,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 71
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 8000",
+      "score": 83.3,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 72
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 782G",
+      "score": 82.55,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 73
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 780G",
+      "score": 81.59,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 74
+    },
+    {
+      "brand": "苹果",
+      "chip": "A11",
+      "score": 80.8,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 75
+    },
+    {
+      "brand": "苹果",
+      "chip": "A10X",
+      "score": 80.4,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 76
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 9000WM",
+      "score": 80.08,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 77
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 9820",
+      "score": 79.83,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 78
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 7 Gen1",
+      "score": 79.73,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 79
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 778G",
+      "score": 79.67,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 80
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 980",
+      "score": 73.28,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 81
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 6 Gen1",
+      "score": 73.16,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 82
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 985",
+      "score": 71.4,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 83
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 820",
+      "score": 71.3,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 84
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 1080",
+      "score": 70.96,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 85
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 1000L",
+      "score": 70.2,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 86
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 920",
+      "score": 66.87,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 87
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 820",
+      "score": 66.69,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 88
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T820",
+      "score": 64.6,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 89
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 9810",
+      "score": 64.15,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 90
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 845",
+      "score": 60.1,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 91
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T770",
+      "score": 59.24,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 92
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 695",
+      "score": 58.78,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 93
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T760",
+      "score": 56.08,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 94
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 4 Gen1",
+      "score": 55.3,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 95
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 4 Gen2",
+      "score": 55.24,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 96
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 810",
+      "score": 55.24,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 97
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 800",
+      "score": 55.19,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 98
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 980",
+      "score": 54.98,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 99
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 750G",
+      "score": 54.9,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 100
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 765G",
+      "score": 54.9,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 101
+    },
+    {
+      "brand": "苹果",
+      "chip": "A10",
+      "score": 53.07,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 102
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 800U",
+      "score": 52.42,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 103
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 810(6080)",
+      "score": 49.68,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 104
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 G99",
+      "score": 49.6,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 105
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 G90T",
+      "score": 47.84,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 106
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 730G",
+      "score": 46.64,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 107
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 480",
+      "score": 46.09,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 108
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 835",
+      "score": 46.01,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 109
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 700(6020)",
+      "score": 45.74,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 110
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T765",
+      "score": 45.74,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 111
+    },
+    {
+      "brand": "英伟达",
+      "chip": "Tegra X1",
+      "score": 43.64,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 112
+    },
+    {
+      "brand": "联发科",
+      "chip": "天玑 720",
+      "score": 43.58,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 113
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 970",
+      "score": 43.39,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 114
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 8895",
+      "score": 41.85,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 115
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 675",
+      "score": 41.06,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 116
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 P90",
+      "score": 40.51,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 117
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 960",
+      "score": 40.38,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 118
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 710",
+      "score": 39.06,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 119
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T740",
+      "score": 38.68,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 120
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 680",
+      "score": 38.31,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 121
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 8890",
+      "score": 37.95,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 122
+    },
+    {
+      "brand": "苹果",
+      "chip": "A9",
+      "score": 37.61,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 123
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 X30",
+      "score": 35.08,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 124
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 821",
+      "score": 35.06,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 125
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 660",
+      "score": 34.35,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 126
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T618",
+      "score": 33.46,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 127
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 P70",
+      "score": 33.35,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 128
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 950",
+      "score": 33.08,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 129
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 665",
+      "score": 32.6,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 130
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 G85",
+      "score": 32.43,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 131
+    },
+    {
+      "brand": "华为",
+      "chip": "麒麟 710F",
+      "score": 32.23,
+      "phone": true,
+      "brandColor": "#E12D2C",
+      "rank": 132
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 G80",
+      "score": 32.05,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 133
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 662",
+      "score": 31.99,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 134
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T616",
+      "score": 31.54,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 135
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T610",
+      "score": 30.95,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 136
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 P60",
+      "score": 30.08,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 137
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 T606",
+      "score": 27.46,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 138
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 636",
+      "score": 27.42,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 139
+    },
+    {
+      "brand": "英伟达",
+      "chip": "Tegra X1(NS底座)",
+      "score": 26.91,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 140
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 X20",
+      "score": 26.43,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 141
+    },
+    {
+      "brand": "英伟达",
+      "chip": "Tegra K1(64bit)",
+      "score": 25.84,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 142
+    },
+    {
+      "brand": "三星",
+      "chip": "Exynos 7420",
+      "score": 25.22,
+      "phone": true,
+      "brandColor": "#3E5BF4",
+      "rank": 143
+    },
+    {
+      "brand": "晶晨",
+      "chip": "S922X",
+      "score": 23.63,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 144
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 625",
+      "score": 22.34,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 145
+    },
+    {
+      "brand": "联发科",
+      "chip": "曦力 P35",
+      "score": 22.1,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 146
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 810",
+      "score": 21.83,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 147
+    },
+    {
+      "brand": "苹果",
+      "chip": "A8",
+      "score": 20.63,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 148
+    },
+    {
+      "brand": "英伟达",
+      "chip": "Tegra K1(32bit)",
+      "score": 20.49,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 149
+    },
+    {
+      "brand": "英伟达",
+      "chip": "Tegra X1(NS掌机)",
+      "score": 20.3,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 150
+    },
+    {
+      "brand": "小米",
+      "chip": "澎湃 S1",
+      "score": 19.46,
+      "phone": true,
+      "brandColor": "#F46400",
+      "rank": 151
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 808",
+      "score": 18.84,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 152
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 439",
+      "score": 18.03,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 153
+    },
+    {
+      "brand": "紫光",
+      "chip": "展锐 SC9863A",
+      "score": 17.77,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 154
+    },
+    {
+      "brand": "高通",
+      "chip": "骁龙 430",
+      "score": 17.37,
+      "phone": true,
+      "brandColor": "#BBBBBB",
+      "rank": 155
+    },
+    {
+      "brand": "苹果",
+      "chip": "A7",
+      "score": 17.19,
+      "phone": true,
+      "brandColor": "#732EE3",
+      "rank": 156
+    },
+    {
+      "brand": "博通",
+      "chip": "BCM2711(2GHz)",
+      "score": 16.3,
+      "phone": false,
+      "brandColor": "#BBBBBB",
+      "rank": 157
+    },
+    {
+      "brand": "博通",
+      "chip": "BCM2711(树莓派4B)",
+      "score": 13.52,
+      "phone": false,
+      "brandColor": "#BBBBBB",
+      "rank": 158
+    }
+  ]
+}

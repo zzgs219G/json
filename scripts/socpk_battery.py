@@ -7,7 +7,7 @@
 职责：抓取 socpk.com/batlife 页面，从其前端 JS bundle 中提取加密榜单数据，
 解密后产出结构化 JSON，供 App 端 / WebView 页面拉取展示。
 
-产出物：backend/battery/battery_rank.json
+产出物：backend/socpk/battery/socpk_battery.json
     {
       "generatedAt": "...",       # 抓取时间（UTC ISO8601）
       "source": "...",            # 数据来源页面
@@ -38,8 +38,8 @@
        链接为 "NA" 表示未上传）。
 
 用法：
-    python3 scripts/battery_crawler.py                       # 输出 backend/battery/battery_rank.json
-    python3 scripts/battery_crawler.py --out /tmp/x.json     # 指定输出路径
+    python3 scripts/socpk_battery.py                       # 输出 backend/socpk/battery/socpk_battery.json
+    python3 scripts/socpk_battery.py --out /tmp/x.json     # 指定输出路径
 """
 
 import argparse
@@ -53,7 +53,7 @@ from pathlib import Path
 import requests
 
 BASE_PAGE = "https://www.socpk.com/batlife"
-DEFAULT_OUT = Path(__file__).resolve().parent.parent / "backend" / "battery" / "battery_rank.json"
+DEFAULT_OUT = Path(__file__).resolve().parent.parent / "backend" / "socpk" / "battery" / "socpk_battery.json"
 
 # 横轴刻度（小时），与官网 BatteryPage 中 n=[0,180,360,540,720,900] 一致
 AXIS_HOURS = [0, 180, 360, 540, 720, 900]
@@ -104,7 +104,7 @@ def decrypt(b64_payload: str, key: str) -> bytes:
 def parse_battery50(session: requests.Session):
     html = fetch(session, BASE_PAGE)
     bundle_url = extract_bundle_url(html)
-    print(f"[battery] bundle: {bundle_url}")
+    print(f"[socpk] bundle: {bundle_url}")
     bundle = fetch(session, bundle_url)
 
     for b64_payload, key in extract_payloads(bundle):
@@ -113,7 +113,7 @@ def parse_battery50(session: requests.Session):
         except Exception:
             continue
         if isinstance(obj, dict) and "battery50" in obj:
-            print(f"[battery] 解密成功，key={key!r}，含字段: {sorted(obj.keys())}")
+            print(f"[socpk] 解密成功，key={key!r}，含字段: {sorted(obj.keys())}")
             return obj["battery50"], key
 
     raise RuntimeError("bundle 中所有加密块均无法解出 battery50，官网加密方案可能已变更")
@@ -140,7 +140,7 @@ def to_items(raw) -> list:
 
 
 def main():
-    ap = argparse.ArgumentParser(description="极客湾续航排行榜爬虫")
+    ap = argparse.ArgumentParser(description="极客湾（socpk）续航排行榜爬虫")
     ap.add_argument("--out", default=str(DEFAULT_OUT), help="输出 JSON 路径")
     args = ap.parse_args()
 
@@ -163,14 +163,14 @@ def main():
     out_path = Path(args.out)
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[battery] 共 {len(items)} 款机型，已写入 {out_path}")
+    print(f"[socpk] 共 {len(items)} 款机型，已写入 {out_path}")
     top3 = [(it["rank"], it["brand"], it["model"], it["hours"]) for it in items[:3]]
-    print(f"[battery] Top3: {top3}")
+    print(f"[socpk] Top3: {top3}")
 
 
 if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        print(f"[battery] 爬取失败: {e}", file=sys.stderr)
+        print(f"[socpk] 爬取失败: {e}", file=sys.stderr)
         sys.exit(1)
