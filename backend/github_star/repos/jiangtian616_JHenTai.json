@@ -2,6 +2,58 @@
   "nameWithOwner": "jiangtian616/JHenTai",
   "releases": [
     {
+      "tagName": "v8.0.16+334",
+      "publishedAt": "2026-09-09T13:55:14Z",
+      "assets": [
+        {
+          "name": "JHenTai-8.0.16+334-arm64-v8a.apk",
+          "size": 30291070,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai-8.0.16%2B334-arm64-v8a.apk"
+        },
+        {
+          "name": "JHenTai-8.0.16+334-armeabi-v7a.apk",
+          "size": 28782864,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai-8.0.16%2B334-armeabi-v7a.apk"
+        },
+        {
+          "name": "JHenTai-8.0.16+334-Linux-arm64.deb",
+          "size": 12007404,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai-8.0.16%2B334-Linux-arm64.deb"
+        },
+        {
+          "name": "JHenTai-8.0.16+334-Linux-x64.deb",
+          "size": 12439338,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai-8.0.16%2B334-Linux-x64.deb"
+        },
+        {
+          "name": "JHenTai-8.0.16+334-x64.apk",
+          "size": 31947861,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai-8.0.16%2B334-x64.apk"
+        },
+        {
+          "name": "JHenTai-8.0.16+334.dmg",
+          "size": 28206373,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai-8.0.16%2B334.dmg"
+        },
+        {
+          "name": "JHenTai_8.0.16+334.ipa",
+          "size": 13025015,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai_8.0.16%2B334.ipa"
+        },
+        {
+          "name": "JHenTai_8.0.16+334_Windows.zip",
+          "size": 18304824,
+          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.16%2B334/JHenTai_8.0.16%2B334_Windows.zip"
+        },
+        {
+          "name": "Source Code (v8.0.16+334).zip",
+          "size": 0,
+          "url": "https://api.github.com/repos/jiangtian616/JHenTai/zipball/v8.0.16+334",
+          "isSource": true
+        }
+      ]
+    },
+    {
       "tagName": "v8.0.16",
       "publishedAt": "2026-09-02T12:15:03Z",
       "assets": [
@@ -205,58 +257,6 @@
           "name": "Source Code (v8.0.14+323).zip",
           "size": 0,
           "url": "https://api.github.com/repos/jiangtian616/JHenTai/zipball/v8.0.14+323",
-          "isSource": true
-        }
-      ]
-    },
-    {
-      "tagName": "v8.0.14",
-      "publishedAt": "2026-07-01T12:55:09Z",
-      "assets": [
-        {
-          "name": "JHenTai-8.0.14+317-arm64-v8a.apk",
-          "size": 14222316,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai-8.0.14%2B317-arm64-v8a.apk"
-        },
-        {
-          "name": "JHenTai-8.0.14+317-armeabi-v7a.apk",
-          "size": 14163479,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai-8.0.14%2B317-armeabi-v7a.apk"
-        },
-        {
-          "name": "JHenTai-8.0.14+317-Linux-arm64.deb",
-          "size": 11350688,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai-8.0.14%2B317-Linux-arm64.deb"
-        },
-        {
-          "name": "JHenTai-8.0.14+317-Linux-x64.deb",
-          "size": 11721098,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai-8.0.14%2B317-Linux-x64.deb"
-        },
-        {
-          "name": "JHenTai-8.0.14+317-x64.apk",
-          "size": 14408233,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai-8.0.14%2B317-x64.apk"
-        },
-        {
-          "name": "JHenTai-8.0.14+317.dmg",
-          "size": 26733212,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai-8.0.14%2B317.dmg"
-        },
-        {
-          "name": "JHenTai_8.0.14+317.ipa",
-          "size": 15767125,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai_8.0.14%2B317.ipa"
-        },
-        {
-          "name": "JHenTai_8.0.14+317_Windows.zip",
-          "size": 16961246,
-          "url": "https://github.com/jiangtian616/JHenTai/releases/download/v8.0.14/JHenTai_8.0.14%2B317_Windows.zip"
-        },
-        {
-          "name": "Source Code (v8.0.14).zip",
-          "size": 0,
-          "url": "https://api.github.com/repos/jiangtian616/JHenTai/zipball/v8.0.14",
           "isSource": true
         }
       ]
