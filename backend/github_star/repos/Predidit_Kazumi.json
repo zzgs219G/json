@@ -2,6 +2,120 @@
   "nameWithOwner": "Predidit/Kazumi",
   "releases": [
     {
+      "tagName": "2.3.3",
+      "publishedAt": "2026-09-15T14:24:43Z",
+      "assets": [
+        {
+          "name": "Kazumi_android_2.3.3.apk",
+          "size": 31645410,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_android_2.3.3.apk"
+        },
+        {
+          "name": "Kazumi_ios_2.3.3_no_sign.ipa",
+          "size": 29823335,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_ios_2.3.3_no_sign.ipa"
+        },
+        {
+          "name": "Kazumi_linux_2.3.3_amd64.deb",
+          "size": 25905068,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_linux_2.3.3_amd64.deb"
+        },
+        {
+          "name": "Kazumi_linux_2.3.3_amd64.tar.gz",
+          "size": 30883924,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_linux_2.3.3_amd64.tar.gz"
+        },
+        {
+          "name": "Kazumi_linux_2.3.3_arm64.deb",
+          "size": 24663758,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_linux_2.3.3_arm64.deb"
+        },
+        {
+          "name": "Kazumi_linux_2.3.3_arm64.tar.gz",
+          "size": 29448261,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_linux_2.3.3_arm64.tar.gz"
+        },
+        {
+          "name": "Kazumi_macos_2.3.3.dmg",
+          "size": 54237444,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_macos_2.3.3.dmg"
+        },
+        {
+          "name": "Kazumi_windows_2.3.3.msix",
+          "size": 46203668,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_windows_2.3.3.msix"
+        },
+        {
+          "name": "Kazumi_windows_2.3.3.zip",
+          "size": 41364916,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.3/Kazumi_windows_2.3.3.zip"
+        },
+        {
+          "name": "Source Code (2.3.3).zip",
+          "size": 0,
+          "url": "https://api.github.com/repos/Predidit/Kazumi/zipball/2.3.3",
+          "isSource": true
+        }
+      ]
+    },
+    {
+      "tagName": "2.3.2",
+      "publishedAt": "2026-09-15T12:11:13Z",
+      "assets": [
+        {
+          "name": "Kazumi_android_2.3.2.apk",
+          "size": 31645410,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_android_2.3.2.apk"
+        },
+        {
+          "name": "Kazumi_ios_2.3.2_no_sign.ipa",
+          "size": 29823319,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_ios_2.3.2_no_sign.ipa"
+        },
+        {
+          "name": "Kazumi_linux_2.3.2_amd64.deb",
+          "size": 25904614,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_linux_2.3.2_amd64.deb"
+        },
+        {
+          "name": "Kazumi_linux_2.3.2_amd64.tar.gz",
+          "size": 30884532,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_linux_2.3.2_amd64.tar.gz"
+        },
+        {
+          "name": "Kazumi_linux_2.3.2_arm64.deb",
+          "size": 24663602,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_linux_2.3.2_arm64.deb"
+        },
+        {
+          "name": "Kazumi_linux_2.3.2_arm64.tar.gz",
+          "size": 29445986,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_linux_2.3.2_arm64.tar.gz"
+        },
+        {
+          "name": "Kazumi_macos_2.3.2.dmg",
+          "size": 54237503,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_macos_2.3.2.dmg"
+        },
+        {
+          "name": "Kazumi_windows_2.3.2.msix",
+          "size": 46204630,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_windows_2.3.2.msix"
+        },
+        {
+          "name": "Kazumi_windows_2.3.2.zip",
+          "size": 41364693,
+          "url": "https://github.com/Predidit/Kazumi/releases/download/2.3.2/Kazumi_windows_2.3.2.zip"
+        },
+        {
+          "name": "Source Code (2.3.2).zip",
+          "size": 0,
+          "url": "https://api.github.com/repos/Predidit/Kazumi/zipball/2.3.2",
+          "isSource": true
+        }
+      ]
+    },
+    {
       "tagName": "2.3.1",
       "publishedAt": "2026-09-07T14:33:57Z",
       "assets": [
@@ -168,120 +282,6 @@
           "name": "Source Code (2.2.9).zip",
           "size": 0,
           "url": "https://api.github.com/repos/Predidit/Kazumi/zipball/2.2.9",
-          "isSource": true
-        }
-      ]
-    },
-    {
-      "tagName": "2.2.8",
-      "publishedAt": "2026-08-15T01:52:16Z",
-      "assets": [
-        {
-          "name": "Kazumi_android_2.2.8.apk",
-          "size": 31493951,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_android_2.2.8.apk"
-        },
-        {
-          "name": "Kazumi_ios_2.2.8_no_sign.ipa",
-          "size": 29635192,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_ios_2.2.8_no_sign.ipa"
-        },
-        {
-          "name": "Kazumi_linux_2.2.8_amd64.deb",
-          "size": 25753520,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_linux_2.2.8_amd64.deb"
-        },
-        {
-          "name": "Kazumi_linux_2.2.8_amd64.tar.gz",
-          "size": 30693380,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_linux_2.2.8_amd64.tar.gz"
-        },
-        {
-          "name": "Kazumi_linux_2.2.8_arm64.deb",
-          "size": 24518868,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_linux_2.2.8_arm64.deb"
-        },
-        {
-          "name": "Kazumi_linux_2.2.8_arm64.tar.gz",
-          "size": 29252675,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_linux_2.2.8_arm64.tar.gz"
-        },
-        {
-          "name": "Kazumi_macos_2.2.8.dmg",
-          "size": 53868854,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_macos_2.2.8.dmg"
-        },
-        {
-          "name": "Kazumi_windows_2.2.8.msix",
-          "size": 46254084,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_windows_2.2.8.msix"
-        },
-        {
-          "name": "Kazumi_windows_2.2.8.zip",
-          "size": 41406112,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.8/Kazumi_windows_2.2.8.zip"
-        },
-        {
-          "name": "Source Code (2.2.8).zip",
-          "size": 0,
-          "url": "https://api.github.com/repos/Predidit/Kazumi/zipball/2.2.8",
-          "isSource": true
-        }
-      ]
-    },
-    {
-      "tagName": "2.2.7",
-      "publishedAt": "2026-08-08T08:17:26Z",
-      "assets": [
-        {
-          "name": "Kazumi_android_2.2.7.apk",
-          "size": 31407935,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_android_2.2.7.apk"
-        },
-        {
-          "name": "Kazumi_ios_2.2.7_no_sign.ipa",
-          "size": 29554015,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_ios_2.2.7_no_sign.ipa"
-        },
-        {
-          "name": "Kazumi_linux_2.2.7_amd64.deb",
-          "size": 26128042,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_linux_2.2.7_amd64.deb"
-        },
-        {
-          "name": "Kazumi_linux_2.2.7_amd64.tar.gz",
-          "size": 31108767,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_linux_2.2.7_amd64.tar.gz"
-        },
-        {
-          "name": "Kazumi_linux_2.2.7_arm64.deb",
-          "size": 24882036,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_linux_2.2.7_arm64.deb"
-        },
-        {
-          "name": "Kazumi_linux_2.2.7_arm64.tar.gz",
-          "size": 29659659,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_linux_2.2.7_arm64.tar.gz"
-        },
-        {
-          "name": "Kazumi_macos_2.2.7.dmg",
-          "size": 53697134,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_macos_2.2.7.dmg"
-        },
-        {
-          "name": "Kazumi_windows_2.2.7.msix",
-          "size": 46724175,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_windows_2.2.7.msix"
-        },
-        {
-          "name": "Kazumi_windows_2.2.7.zip",
-          "size": 41890769,
-          "url": "https://github.com/Predidit/Kazumi/releases/download/2.2.7/Kazumi_windows_2.2.7.zip"
-        },
-        {
-          "name": "Source Code (2.2.7).zip",
-          "size": 0,
-          "url": "https://api.github.com/repos/Predidit/Kazumi/zipball/2.2.7",
           "isSource": true
         }
       ]
