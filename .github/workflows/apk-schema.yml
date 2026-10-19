@@ -1,0 +1,85 @@
+# ============================================================================
+# 加固配置 schema 镜像同步
+# ============================================================================
+# 触发：
+#   - repository_dispatch (apk-schema-updated)：apk-protect-action 的
+#     configs/** 变更时主动通知（见该仓库 notify-json-mirror.yml）
+#   - workflow_dispatch：手动触发（源仓库 dispatch 失败时的兜底）
+#   - push：脚本/工作流自身变更时自动跑一次验证
+#
+# 产出物：backend/apk_schema/v{N}/config-schema.json
+# 提交：commit message 带 [skip ci]
+#
+# 为什么没有 schedule：
+#   其余三个 workflow（antutu / github-star / github-trending）抓的是**别人的**
+#   数据，会自己变，必须定时。这份 schema 是 apk-protect-action 自己的文件，
+#   不改就不变，只在源仓库 push 时同步即可，定时纯属浪费额度。
+#
+# 可选 secret：
+#   GH_SCHEMA_SOURCE_TOKEN — 拉取源仓库用。源仓库若为公开则不需要；
+#   配置后可提高速率上限并支持私有源仓库。
+# ============================================================================
+
+name: APK Schema Mirror
+
+on:
+  repository_dispatch:
+    types: [apk-schema-updated]
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/apk_schema_sync.py"
+      - ".github/workflows/apk-schema.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apk-schema-mirror
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    name: Sync & Commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Log dispatch origin
+        if: github.event_name == 'repository_dispatch'
+        env:
+          CLIENT_SHA: ${{ github.event.client_payload.source_sha }}
+          CLIENT_REPO: ${{ github.event.client_payload.source_repo }}
+        run: |
+          echo "来源仓库: ${CLIENT_REPO:-未知}"
+          echo "来源提交: ${CLIENT_SHA:-未知}"
+
+      - name: Fetch schema from source repo
+        env:
+          GH_SCHEMA_SOURCE_TOKEN: ${{ secrets.GH_SCHEMA_SOURCE_TOKEN }}
+        run: python3 scripts/apk_schema_sync.py
+
+      - name: Commit & push
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add backend/apk_schema
+
+          if ! git diff --cached --quiet; then
+            git commit -m "🤖 apk-schema: sync from apk-protect-action [skip ci]"
+            # 默认 remote 无凭据，换成带 token 的地址才能推送
+            git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+            git push
+          else
+            echo "schema 无变化，跳过提交"
+          fi
