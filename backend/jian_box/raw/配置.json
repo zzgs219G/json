@@ -1,0 +1,308 @@
+{
+  "启动图": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/98e99eb8-1824-4d09-9b22-2b024fb9d36c.webp",
+  "启动图跳转": "",
+  "启动页标题": "简盒",
+  "启动页副标题": "免费的多功能工具箱",
+  "显示公告": "关闭",
+  "公告弹窗标题": "",
+  "公告弹窗内容": "",
+  "最新版本": "211",
+  "更新链接": "https://www.baidu.com/",
+  "强制更新": "关闭",
+  "更新弹窗标题": "发现新版本",
+  "更新弹窗内容": "请立即更新",
+  "更新按钮一文本": "地址一",
+  "更新按钮一链接": "",
+  "更新按钮二文本": "地址二",
+  "更新按钮二链接": "",
+  "更新按钮三文本": "地址三",
+  "更新按钮三链接": "",
+  "云服务配置": {
+    "网关地址": "https://relay.614118.xyz",
+    "网关令牌": "zzgs219",
+    "GitHub镜像线路": [
+      "https://gh-proxy.org/",
+      "https://cdn.gh-proxy.org/",
+      "https://axisnow.gh-proxy.org/",
+      "https://v6.gh-proxy.org/",
+      "https://v4.gh-proxy.org/"
+    ],
+    "R2 公开域名": "https://r2.614118.xyz",
+    "BugPkApi令牌": "bp_live_c549471bc5bf88ef10aab8873577e35d845aedb16c3bef8768cecfca83a74f03"
+  },
+  "更新日志": [
+    "2026年9月3日/v2.1.0/1.重大版本发布！带来全新交互体验、视觉升级与海量新功能全面升级 M3E（Material 3 Expressive）设计语言启动页采用“环形蜕变”动画，配置加载完成后平滑过渡至主页，视觉更连贯2.GitHub 星标库与趋势榜浏览 GitHub 星标分类仓库，支持 README 渲染、Release 下载（多线路加速）内置 GitHub Trending 热门项目榜单，可按语言、时间维度筛选，一键跳转详情3.工具箱新增十余款实用工具，图像工坊：图片取色放大镜、图片压缩（调整分辨率与质量）、长图拼接（纵向/横向）、圆角图片（支持圆形裁剪与底色）榜单查询：安兔兔手机性能/性价比/好评率/SoC 天梯榜、极客湾续航/综合性能榜单，聚合解析：支持 33+ 平台（抖音、B站、小红书等）视频/图文/音乐去水印解析与下载4.蓝奏云解析全面重构支持文件夹目录浏览、分页加载、多级文件夹导航，优化直链获取逻辑稳定性5.新增文件队列下载功能，可批量选择文件依次下载，支持按日期分组显示、文件搜索、重命名、多选删除。集成全局下载队列，显示实时进度，支持断点续传（保留 .part 文件）6.其他体验优化，全新底部 Dock 导航栏（弹性动画，图标与文字联动），所有列表页支持下拉刷新与上滑加载更多，优化内存与缓存策略，修复大量已知崩溃与兼容性问题",
+    "2026年7月24日/v2.0.3/1.新增影视与动漫独立搜索页，采用全新的“左图右文”排版，剧名再长也能完整显示2.优化搜索框体验，固定搜索栏高度，修复文字较长时布局变形的问题3.优化列表与搜索的加载速度，看剧搜剧更加丝滑流畅",
+    "2026年7月23日/v2.0.2/1.全新重构播放器界面，支持竖屏与横屏无缝切换2.升级手势控制、画面调节与视频预加载功能3.优化选集控制台，支持自动流畅播放下一集4.修复播放卡顿、锁屏模式、电量显示及后台留存等已知问题",
+    "2026年7月15日/v2.0.1/1.优化资源解析与在线播放的稳定性2.工具箱新增多款日常实用小工具3.优化应用内存占用，提升低配设备的运行流畅度",
+    "2026年7月1日/v2.0/1.简盒 2.0 焕新发布！全面上线影视与动漫专区2.新增视频解析提取与本地保存功能3.新增版本更新日志页面，动态记录进化历程4.升级全新的主题配色与视觉风格",
+    "2026年6月10日/v1.0.5/1.重构侧边栏手势与动画，滑动更加丝滑跟手2.上线“下载管理”功能，轻松查看和管理已下载的文件3.新增版本更新提示与远程配置功能",
+    "2026年5月16日/v1.0.2/1.上线蓝奏云网盘资源解析与直连下载功能2.新增侧边栏快捷导航菜单3.优化工具箱模块体验，提升页面响应速度",
+    "2026年5月1日/v1.0.1/1.上线“仓库”与“工具箱”两大核心功能板块2.优化图片加载，大幅提升列表滑动流畅度3.修复若干已知视觉与交互细节",
+    "2026年4月26日/v1.0.0/1.简盒（JianBox）首个版本正式发布，集成首页核心功能"
+  ],
+  "卡片配置": {
+    "轮播图": [
+      {
+        "标题": "设计与UI",
+        "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/de90bd09-e452-42bf-84e3-9a7b67612e6c.webp",
+        "链接": "https://chat.deepseek.com/",
+        "类型": "内置"
+      }
+    ],
+    "主页列表": [
+      {
+        "标题": "推荐",
+        "列表": [
+          {
+            "标题": "age动漫",
+            "内容": "免费动漫观看",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/a1cfa4e4-3e77-4c4d-a0a7-498616709724.webp",
+            "链接": "",
+            "类型": "动漫",
+            "书源": "age"
+          },
+          {
+            "标题": "影视聚合",
+            "内容": "四源聚合",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/0919e02b-fb99-49e4-8254-61fb704f337f.webp",
+            "链接": "",
+            "类型": "影视"
+          },
+          {
+            "标题": "英伟达免费模型",
+            "内容": "模型仪表盘",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/ec28f1a1-6579-49ec-a2bf-f9cff480827b.png",
+            "链接": "https://nimstats.maurodruwel.be",
+            "类型": "内置"
+          },
+          {
+            "标题": "模型调用排行",
+            "内容": "模型仪表盘",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/8f800555-bde2-48fb-ad38-dc89a146cf8b.png",
+            "链接": "https://ai-model-rankings.streamlit.app",
+            "类型": "内置"
+          }
+        ]
+      },
+      {
+        "标题": "工具",
+        "列表": [
+          {
+            "标题": "UU工具",
+            "内容": "Material 3",
+            "图片": "https://icdn.binmt.cc/2504/68005f6e87d76.jpg",
+            "链接": "https://uutool.cn/",
+            "类型": "内置"
+          },
+          {
+            "标题": "一只木函",
+            "内容": "Material 3",
+            "图片": "https://icdn.binmt.cc/2504/680058740ff7f.jpg",
+            "链接": "https://ol.woobx.cn/",
+            "类型": "内置"
+          },
+          {
+            "标题": "邮箱轰炸",
+            "内容": "Material 3",
+            "图片": "https://icdn.binmt.cc/2504/6800528696930.jpg",
+            "链接": "https://www.mailbo.cc/",
+            "类型": "内置"
+          }
+        ]
+      },
+      {
+        "标题": "外网",
+        "列表": [
+          {
+            "标题": "GitHub",
+            "内容": "全球开源社区",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/983c7427-a935-41e2-bd86-dec0d42288cb.png",
+            "链接": "https://github.com",
+            "类型": "外置"
+          },
+          {
+            "标题": "CloudFlare",
+            "内容": "网络服务平台",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/e8c7c7dc-8702-4b96-996b-60449b6686e1.png",
+            "链接": "https://dash.cloudflare.com",
+            "类型": "外置"
+          },
+          {
+            "标题": "OpenRouter",
+            "内容": "全球API聚合平台",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/43f16115-0ae0-4f2d-85a4-daccac49f6a2.png",
+            "链接": "https://openrouter.ai",
+            "类型": "外置"
+          },
+          {
+            "标题": "NVIDIA",
+            "内容": "免费大模型API",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/060485de-b600-4784-8a24-b9458e0bf5a5.webp",
+            "链接": "https://build.nvidia.com",
+            "类型": "外置"
+          }
+        ]
+      },
+      {
+        "标题": "待定",
+        "列表": [
+          {
+            "标题": "GitHub",
+            "内容": "全球开源社区",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/983c7427-a935-41e2-bd86-dec0d42288cb.png",
+            "链接": "https://github.com",
+            "类型": "外置"
+          },
+          {
+            "标题": "CloudFlare",
+            "内容": "网络服务平台",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/e8c7c7dc-8702-4b96-996b-60449b6686e1.png",
+            "链接": "https://dash.cloudflare.com",
+            "类型": "外置"
+          },
+          {
+            "标题": "OpenRouter",
+            "内容": "全球API聚合平台",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/43f16115-0ae0-4f2d-85a4-daccac49f6a2.png",
+            "链接": "https://openrouter.ai",
+            "类型": "外置"
+          },
+          {
+            "标题": "NVIDIA",
+            "内容": "免费大模型API",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/060485de-b600-4784-8a24-b9458e0bf5a5.webp",
+            "链接": "https://build.nvidia.com",
+            "类型": "外置"
+          }
+        ]
+      }
+    ],
+    "仓库列表": [
+      {
+        "标题": "推荐",
+        "列表": [
+          {
+            "标题": "学习资料",
+            "内容": "资源均来自网络收集",
+            "类型": "软件库",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/47da1a40-8d9a-4b9f-ae87-448ebd5d5e9e.webp",
+            "链接": "https://yxlzy.lanzoue.com/b00wmbo4oj"
+          }
+        ]
+      },
+      {
+        "标题": "福利",
+        "列表": [
+          {
+            "标题": "免费VPN（机场）",
+            "内容": "用于访问github等，仅供技术交流！",
+            "类型": "内置",
+            "图片": "https://static.yingyonghui.com/icon/128/6699253.png",
+            "链接": "https://fuwari.614118.xyz/posts/vpn-freetutorial/"
+          }
+        ]
+      },
+      {
+        "标题": "软件库",
+        "列表": [
+          {
+            "标题": "软件窝",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/10960dba-6ba9-4d50-af63-3ab33653106b.webp",
+            "链接": "https://rjw.lanzoul.com/s/20"
+          },
+          {
+            "标题": "小七软件库",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/202409/30/4198787-15.png?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://xqapp.lanzouo.com/s/brjk"
+          },
+          {
+            "标题": "分享家",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/201912/06/964142-85.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://lanzoux.com/b0ev8g02h"
+          },
+          {
+            "标题": "软科技",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/202002/18/626842-67.png?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://www.lanzoui.com/b098unlvi"
+          },
+          {
+            "标题": "Viper软件库",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/202311/16/140133-62.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://www.lanzoui.com/u/彪煌QQ1846055318"
+          },
+          {
+            "标题": "辉少软件合集",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/202304/22/147726-47.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://pan.lanzoui.com/b221505"
+          },
+          {
+            "标题": "酷小呵软件库",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/202407/23/2821095-14.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://kuhehe.lanzouj.com/b03regicb"
+          },
+          {
+            "标题": "百万软件库",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/202404/06/592727-35.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://rjl6.lanzouy.com/s/bwk"
+          },
+          {
+            "标题": "千城软件库",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/201901/02/418306-55.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://lanzoux.com/b0nhkk3i"
+          },
+          {
+            "标题": "兜兜软件库",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/201901/13/122733-12.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://www.lanzoui.com/b133841"
+          },
+          {
+            "标题": "大肥爱分享",
+            "内容": "软件库资源均来自网络上收集",
+            "类型": "软件库",
+            "图片": "https://image.woozooo.com/image/userimg/201908/20/225298-88.jpg?x-oss-process=image/auto-orient,1/resize,m_fill,w_100,h_100/format,png",
+            "链接": "https://pan.lanzoui.com/u/qianxun8"
+          }
+        ]
+      }
+    ]
+  },
+  "影视源列表": [
+    {
+      "标题": "极速",
+      "链接": "https://jszyapi.com/api.php/provide/vod/"
+    },
+    {
+      "标题": "无印",
+      "链接": "https://api.wsyzy.net/api.php/provide/vod/"
+    },
+    {
+      "标题": "非凡",
+      "链接": "https://cj.ffzyapi.com/api.php/provide/vod/"
+    },
+    {
+      "标题": "量子",
+      "链接": "https://cj.lziapi.com/api.php/provide/vod/"
+    }
+  ]
+}
