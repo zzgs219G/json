@@ -2,6 +2,43 @@
   "nameWithOwner": "Hope2333/opencode-termux",
   "releases": [
     {
+      "tagName": "Push261026",
+      "publishedAt": "2026-10-25T23:01:02Z",
+      "assets": [
+        {
+          "name": "opencode_2.0.32_aarch64.deb",
+          "size": 75653064,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode_2.0.32_aarch64.deb"
+        },
+        {
+          "name": "opencode-2.0.32-1-aarch64.pkg.tar.xz",
+          "size": 75654744,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode-2.0.32-1-aarch64.pkg.tar.xz"
+        },
+        {
+          "name": "opencode_2.1.4_aarch64.deb",
+          "size": 76454428,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode_2.1.4_aarch64.deb"
+        },
+        {
+          "name": "SHA256SUMS.txt",
+          "size": 392,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/SHA256SUMS.txt"
+        },
+        {
+          "name": "opencode-2.1.4-1-aarch64.pkg.tar.xz",
+          "size": 76455388,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode-2.1.4-1-aarch64.pkg.tar.xz"
+        },
+        {
+          "name": "Source Code (Push261026).zip",
+          "size": 0,
+          "url": "https://api.github.com/repos/Hope2333/opencode-termux/zipball/Push261026",
+          "isSource": true
+        }
+      ]
+    },
+    {
       "tagName": "Push261013",
       "publishedAt": "2026-10-13T18:05:19Z",
       "assets": [
@@ -1118,61 +1155,24 @@
           "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261005/hope2333-mirrorlist-1.0.20261025-1-any.pkg.tar.xz"
         },
         {
+          "name": "hope2333.db",
+          "size": 2256,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261005/hope2333.db"
+        },
+        {
+          "name": "hope2333.db.tar.gz",
+          "size": 2256,
+          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261005/hope2333.db.tar.gz"
+        },
+        {
           "name": "hope2333-mirrorlist-latest-1-any.pkg.tar.xz",
           "size": 10212,
           "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261005/hope2333-mirrorlist-latest-1-any.pkg.tar.xz"
         },
         {
-          "name": "hope2333.db",
-          "size": 2245,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261005/hope2333.db"
-        },
-        {
-          "name": "hope2333.db.tar.gz",
-          "size": 2245,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261005/hope2333.db.tar.gz"
-        },
-        {
           "name": "Source Code (Push261005).zip",
           "size": 0,
           "url": "https://api.github.com/repos/Hope2333/opencode-termux/zipball/Push261005",
-          "isSource": true
-        }
-      ]
-    },
-    {
-      "tagName": "Push261026",
-      "publishedAt": "2026-10-25T23:01:02Z",
-      "assets": [
-        {
-          "name": "opencode_2.0.32_aarch64.deb",
-          "size": 75653064,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode_2.0.32_aarch64.deb"
-        },
-        {
-          "name": "opencode-2.0.32-1-aarch64.pkg.tar.xz",
-          "size": 75654744,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode-2.0.32-1-aarch64.pkg.tar.xz"
-        },
-        {
-          "name": "opencode_2.1.4_aarch64.deb",
-          "size": 76454428,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode_2.1.4_aarch64.deb"
-        },
-        {
-          "name": "SHA256SUMS.txt",
-          "size": 392,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/SHA256SUMS.txt"
-        },
-        {
-          "name": "opencode-2.1.4-1-aarch64.pkg.tar.xz",
-          "size": 76455388,
-          "url": "https://github.com/Hope2333/opencode-termux/releases/download/Push261026/opencode-2.1.4-1-aarch64.pkg.tar.xz"
-        },
-        {
-          "name": "Source Code (Push261026).zip",
-          "size": 0,
-          "url": "https://api.github.com/repos/Hope2333/opencode-termux/zipball/Push261026",
           "isSource": true
         }
       ]
