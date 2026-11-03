@@ -9,7 +9,7 @@ OpenCode on Termux. AI-powered coding assistant, native bionic runtime, zero gli
 ## Quick install
 
 ```bash
-curl -fsSL https://opencode.ai/install.sh | bash
+curl -fsSL https://hope2333.github.io/repo/install.sh | sh -s -- --install opencode
 ```
 
 This installs the `opencode` command. After installation, upgrade via package manager:
@@ -45,7 +45,7 @@ Within one generation pick exactly ONE of native / wrapper / compressed; v1 (`op
 Termux uses `apt` by default. If you prefer `pacman`:
 
 ```bash
-curl -fsSL https://opencode.ai/install-pacman.sh | bash
+curl -fsSL https://hope2333.github.io/repo/install.sh | sh -s -- --install opencode
 ```
 
 Then install:
@@ -64,6 +64,22 @@ pkg upgrade opencode
 pacman -Syu opencode
 ```
 
+## Termux notes
+
+The Termux soft keyboard cannot send shift+tab, which makes the default `agent.cycle` keybind (shift+tab, used to switch between build/plan agents) unreachable. Override it in `~/.config/opencode/cli.json` (note: in v2, keybinds live in cli.json, not opencode.json):
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/v2/cli.json",
+  "keybinds": {
+    "agent.cycle": "tab",
+    "agent.cycle.reverse": "shift+tab"
+  }
+}
+```
+
+`tab` is unbound in the v2 defaults, so it does not conflict. Zero-config alternative: press `<leader>a` (default leader is ctrl+x) to pick an agent from the list.
+
 ## Requirements
 
 - Android API >= 28 (Android 9.0+)
@@ -74,10 +90,13 @@ pacman -Syu opencode
 
 ### Stable releases
 
-Packages are published on [GitHub Releases](https://github.com/Hope2333/opencode-termux/releases) under rolling tags:
+Packages are published on [GitHub Releases](https://github.com/Hope2333/opencode-termux/releases) under rolling batch tags (`PushYYMMDD`). The latest batch is whatever the releases page lists first — this file intentionally does not hard-code it:
 
-- `Push260922` -- **RC3**: v2.0.[0-12] native & wrapper + v1.18.[30-32] three families, all PKGREL=3 (70 assets, per-file digest-verified)
-- `Push260912` -- archived (prerelease)
+```bash
+gh release list -R Hope2333/opencode-termux -L 3   # newest batches
+```
+
+Each batch ships the native / wrapper / compressed families for its version range, and `SHA256SUMS.txt` in the batch covers every asset.
 
 ### Package formats
 
@@ -103,11 +122,11 @@ make deb-native VER=2.0.0
 make pacman-native VER=2.0.0
 ```
 
-See [docs/make-maintainer.md](./docs/make-maintainer.md) for full build reference.
+See [docs/make-maintainer.md](./docs/build/make-maintainer.md) for full build reference.
 
 ## v1 and v2 (two generations)
 
-v2 (`opencode*`, 2.0.x) is the mainline; v1 (`opencode1*`, 1.18.30–32) is maintained and **coexists** with v2 — install both side by side:
+v2 (`opencode*`, 2.0.x → 2.1.x) is the mainline; v1 (`opencode1*`, 1.18.x → 1.19.x) is maintained and **coexists** with v2 — install both side by side:
 
 ```bash
 pacman -S opencode            # v2 mainline
@@ -118,12 +137,15 @@ Within one generation, native / wrapper / compressed are mutually exclusive (pic
 
 ## Technical documentation
 
-- [docs/transplant.md](./docs/transplant.md) -- Runtime transplant pipeline
-- [docs/comparison-runtime-lines.md](./docs/comparison-runtime-lines.md) -- Runtime line comparison
-- [docs/dual-track-install.md](./docs/dual-track-install.md) -- Dual-track install guide
-- [docs/make-maintainer.md](./docs/make-maintainer.md) -- Makefile reference
+- [docs/transplant.md](./docs/build/transplant.md) -- Runtime transplant pipeline
+- [docs/comparison-runtime-lines.md](./docs/history/comparison-runtime-lines.md) -- Runtime line comparison
+- [docs/dual-track-install.md](./docs/install/dual-track-install.md) -- Dual-track install guide
+- [docs/make-maintainer.md](./docs/build/make-maintainer.md) -- Makefile reference
 
 ## 💬 Community & Discussions
+
+> **Issues stay open until the problem is gone.** If an issue was marked closed but you still hit the problem, please reopen it (or comment on it) — that is welcome, not noise. A closed issue here means "we believe it's fixed", not "stop talking".
+
 
 ![Discussions](https://raw.githubusercontent.com/Hope2333/opencode-termux/native-android/assets/discussions-banner.svg)
 
