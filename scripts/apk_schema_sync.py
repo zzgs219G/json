@@ -4,18 +4,20 @@
 加固配置 schema 镜像抓取
 ========================
 
-职责：把 apk-protect-action 仓库里的 configs/v{N}/config-schema.json 拉到本
+职责：把 artifact-pipeline 仓库里的 configs/v{N}/config-schema.json 拉到本
 仓库的 backend/apk_schema/v{N}/ 下，供 App 端 ProtectSchemaLoader 读取。
 
 为什么要镜像这一份：App 原先直连
     raw.giteeusercontent.com/zzgs219/apk-protect-action/raw/main/configs/...
+    （旧仓库名。2026-11 迁移后源仓库是 zzgs219G/artifact-pipeline；
+      旧 apk-protect-action 虽仍存在但已转为【私有】，匿名拉取会 404）
 把 owner/repo 明文写在了请求 URL 里，抓包或反编译即可看到。镜像到本仓库后
 App 只需知道 zzgs219/json（这个仓库本来就公开，jian_box.enc 也在这里），
 不额外暴露任何东西。
 
 为什么不做定时：这份 schema 是本仓库主人的自有文件，不改就不会变。与
 antutu / github_star 那类"抓别人会变的数据"不同，只在源仓库 push 时由
-repository_dispatch 触发即可（见 apk-protect-action 的
+repository_dispatch 触发即可（见 artifact-pipeline 的
 .github/workflows/notify-json-mirror.yml）。
 
 用法：
@@ -41,7 +43,7 @@ import urllib.request
 
 # 源仓库坐标。owner/repo 只出现在本脚本里，不进 APK。
 SOURCE_OWNER = "zzgs219G"
-SOURCE_REPO = "apk-protect-action"
+SOURCE_REPO = "artifact-pipeline"
 SOURCE_REF = "main"
 
 OUT_DIR_TEMPLATE = "backend/apk_schema/v{version}"
@@ -124,7 +126,7 @@ def write_if_changed(path: str, content: str, dry_run: bool) -> bool:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="镜像 apk-protect-action 的加固 schema")
+    ap = argparse.ArgumentParser(description="镜像 artifact-pipeline 的加固 schema")
     ap.add_argument(
         "--version",
         type=int,

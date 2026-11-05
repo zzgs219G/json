@@ -2,8 +2,13 @@
 # 加固配置 schema 镜像同步
 # ============================================================================
 # 触发：
-#   - repository_dispatch (apk-schema-updated)：apk-protect-action 的
+#   - repository_dispatch (apk-schema-updated)：artifact-pipeline 的
 #     configs/** 变更时主动通知（见该仓库 notify-json-mirror.yml）
+#
+# ⚠️ 2026-11 仓库迁移：源仓库从 apk-protect-action 改名为 artifact-pipeline。
+#    旧名 apk-protect-action 仍存在但已转为【私有】→ 匿名拉取会 404。
+#    脚本里 SOURCE_REPO 忘改的后果是明确失败（fetch 抛 RuntimeError → exit 1），
+#    不会静默继续用旧数据 —— 这是刻意保留的 fail-fast。
 #   - workflow_dispatch：手动触发（源仓库 dispatch 失败时的兜底）
 #   - push：脚本/工作流自身变更时自动跑一次验证
 #
@@ -12,7 +17,7 @@
 #
 # 为什么没有 schedule：
 #   其余三个 workflow（antutu / github-star / github-trending）抓的是**别人的**
-#   数据，会自己变，必须定时。这份 schema 是 apk-protect-action 自己的文件，
+#   数据，会自己变，必须定时。这份 schema 是 artifact-pipeline 自己的文件，
 #   不改就不变，只在源仓库 push 时同步即可，定时纯属浪费额度。
 #
 # 可选 secret：
@@ -76,7 +81,7 @@ jobs:
           git add backend/apk_schema
 
           if ! git diff --cached --quiet; then
-            git commit -m "🤖 apk-schema: sync from apk-protect-action [skip ci]"
+            git commit -m "🤖 apk-schema: sync from artifact-pipeline [skip ci]"
             # 默认 remote 无凭据，换成带 token 的地址才能推送
             git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
             git push
