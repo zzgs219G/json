@@ -3,7 +3,7 @@
     "since": "daily",
     "label": "今日"
   },
-  "updatedAt": "2026-11-13T08:58:35+08:00",
+  "updatedAt": "2026-11-14T08:49:19+08:00",
   "languages": [
     "全部",
     "Python",
@@ -24,395 +24,350 @@
   "reposByLanguage": {
     "全部": [
       {
+        "nameWithOwner": "alibaba/open-code-review",
+        "repoUrl": "https://github.com/alibaba/open-code-review",
+        "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+        "language": "Go",
+        "stargazerCount": 50618,
+        "forkCount": 3766,
+        "todayStars": 215
+      },
+      {
         "nameWithOwner": "GoogleChrome/modern-web-guidance-src",
         "repoUrl": "https://github.com/GoogleChrome/modern-web-guidance-src",
         "description": "Keep your coding agent up to date with the latest web best practices",
         "language": "TypeScript",
-        "stargazerCount": 2951,
-        "forkCount": 199,
-        "todayStars": 739
+        "stargazerCount": 4844,
+        "forkCount": 270,
+        "todayStars": 1925
       },
       {
         "nameWithOwner": "openai/codex-security",
         "repoUrl": "https://github.com/openai/codex-security",
         "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm:https://www.npmjs.com/package/@openai/codex-security",
         "language": "TypeScript",
-        "stargazerCount": 12427,
-        "forkCount": 978,
-        "todayStars": 643
-      },
-      {
-        "nameWithOwner": "nvm-sh/nvm",
-        "repoUrl": "https://github.com/nvm-sh/nvm",
-        "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions.",
-        "language": "Shell",
-        "stargazerCount": 96015,
-        "forkCount": 10759,
-        "todayStars": 63
-      },
-      {
-        "nameWithOwner": "pookjw/HermesEnabler",
-        "repoUrl": "https://github.com/pookjw/HermesEnabler",
-        "description": "Enable Hermès Watch Faces on any Apple Watch devices",
-        "language": "Objective-C",
-        "stargazerCount": 1538,
-        "forkCount": 139,
-        "todayStars": 218
-      },
-      {
-        "nameWithOwner": "we-promise/sure",
-        "repoUrl": "https://github.com/we-promise/sure",
-        "description": "The personal finance app for everyone (by everyone)",
-        "language": "Ruby",
-        "stargazerCount": 13920,
-        "forkCount": 1042,
-        "todayStars": 967
-      },
-      {
-        "nameWithOwner": "QwenLM/qwen-code",
-        "repoUrl": "https://github.com/QwenLM/qwen-code",
-        "description": "An open-source AI coding agent that lives in your terminal.",
-        "language": "TypeScript",
-        "stargazerCount": 29812,
-        "forkCount": 3396,
-        "todayStars": 151
-      },
-      {
-        "nameWithOwner": "ashhart/TensorFold",
-        "repoUrl": "https://github.com/ashhart/TensorFold",
-        "description": "LLM Inference Engine for Metal, CUDA and Vulkan.",
-        "language": "Zig",
-        "stargazerCount": 1938,
-        "forkCount": 391,
-        "todayStars": 54
-      },
-      {
-        "nameWithOwner": "nodejs/node",
-        "repoUrl": "https://github.com/nodejs/node",
-        "description": "Node.js JavaScript runtime ✨🐢🚀✨",
-        "language": "JavaScript",
-        "stargazerCount": 123601,
-        "forkCount": 38057,
-        "todayStars": 62
-      },
-      {
-        "nameWithOwner": "addyosmani/agent-skills",
-        "repoUrl": "https://github.com/addyosmani/agent-skills",
-        "description": "Production-grade engineering skills for AI coding agents.",
-        "language": "JavaScript",
-        "stargazerCount": 116674,
-        "forkCount": 12210,
-        "todayStars": 816
-      },
-      {
-        "nameWithOwner": "meta/astryx",
-        "repoUrl": "https://github.com/meta/astryx",
-        "description": "An open source design system that's fully customizable and agent ready",
-        "language": "TypeScript",
-        "stargazerCount": 26542,
-        "forkCount": 2059,
-        "todayStars": 1830
-      },
-      {
-        "nameWithOwner": "CopilotKit/OpenBot",
-        "repoUrl": "https://github.com/CopilotKit/OpenBot",
-        "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
-        "language": "TypeScript",
-        "stargazerCount": 11612,
-        "forkCount": 1436,
-        "todayStars": 298
-      },
-      {
-        "nameWithOwner": "Alishahryar1/free-claude-code",
-        "repoUrl": "https://github.com/Alishahryar1/free-claude-code",
-        "description": "Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)",
-        "language": "Python",
-        "stargazerCount": 69292,
-        "forkCount": 10760,
-        "todayStars": 415
-      },
-      {
-        "nameWithOwner": "ggml-org/llama.cpp",
-        "repoUrl": "https://github.com/ggml-org/llama.cpp",
-        "description": "LLM inference in C/C++",
-        "language": "C++",
-        "stargazerCount": 134557,
-        "forkCount": 25508,
-        "todayStars": 176
-      }
-    ],
-    "Python": [
-      {
-        "nameWithOwner": "Alishahryar1/free-claude-code",
-        "repoUrl": "https://github.com/Alishahryar1/free-claude-code",
-        "description": "Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)",
-        "language": "Python",
-        "stargazerCount": 69292,
-        "forkCount": 10760,
-        "todayStars": 415
-      },
-      {
-        "nameWithOwner": "openai/whisper",
-        "repoUrl": "https://github.com/openai/whisper",
-        "description": "Robust Speech Recognition via Large-Scale Weak Supervision",
-        "language": "Python",
-        "stargazerCount": 112605,
-        "forkCount": 13655,
-        "todayStars": 113
+        "stargazerCount": 13129,
+        "forkCount": 1024,
+        "todayStars": 751
       },
       {
         "nameWithOwner": "ZhuLinsen/daily_stock_analysis",
         "repoUrl": "https://github.com/ZhuLinsen/daily_stock_analysis",
         "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
         "language": "Python",
-        "stargazerCount": 71084,
-        "forkCount": 57133,
-        "todayStars": 1294
+        "stargazerCount": 71594,
+        "forkCount": 57282,
+        "todayStars": 256
       },
       {
-        "nameWithOwner": "fastapi/fastapi",
-        "repoUrl": "https://github.com/fastapi/fastapi",
-        "description": "FastAPI framework, high performance, easy to learn, fast to code, ready for production",
-        "language": "Python",
-        "stargazerCount": 104672,
-        "forkCount": 10238,
-        "todayStars": 82
+        "nameWithOwner": "we-promise/sure",
+        "repoUrl": "https://github.com/we-promise/sure",
+        "description": "The personal finance app for everyone (by everyone)",
+        "language": "Ruby",
+        "stargazerCount": 14738,
+        "forkCount": 1119,
+        "todayStars": 925
       },
       {
-        "nameWithOwner": "python/cpython",
-        "repoUrl": "https://github.com/python/cpython",
-        "description": "The Python programming language",
-        "language": "Python",
-        "stargazerCount": 78198,
-        "forkCount": 36581,
-        "todayStars": 72
+        "nameWithOwner": "backnotprop/plannotator",
+        "repoUrl": "https://github.com/backnotprop/plannotator",
+        "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.",
+        "language": "TypeScript",
+        "stargazerCount": 10451,
+        "forkCount": 784,
+        "todayStars": 108
       },
       {
-        "nameWithOwner": "homeassistant-ai/ha-mcp",
-        "repoUrl": "https://github.com/homeassistant-ai/ha-mcp",
-        "description": "Configure and automate Home Assistant with Claude, ChatGPT, and other AI assistants.",
-        "language": "Python",
-        "stargazerCount": 7688,
-        "forkCount": 466,
-        "todayStars": 714
+        "nameWithOwner": "louislam/uptime-kuma",
+        "repoUrl": "https://github.com/louislam/uptime-kuma",
+        "description": "A fancy self-hosted monitoring tool",
+        "language": "JavaScript",
+        "stargazerCount": 93859,
+        "forkCount": 8722,
+        "todayStars": 71
       },
       {
-        "nameWithOwner": "oaustegard/claude-skills",
-        "repoUrl": "https://github.com/oaustegard/claude-skills",
-        "description": "My collection of Claude skills",
-        "language": "Python",
-        "stargazerCount": 369,
-        "forkCount": 17,
-        "todayStars": 34
+        "nameWithOwner": "block/buzz",
+        "repoUrl": "https://github.com/block/buzz",
+        "description": "A hive mind communication platform",
+        "language": "Rust",
+        "stargazerCount": 37298,
+        "forkCount": 4940,
+        "todayStars": 97
       },
       {
-        "nameWithOwner": "rlaope/oh-my-hermes",
-        "repoUrl": "https://github.com/rlaope/oh-my-hermes",
-        "description": "⚚ The ultrawork agent with AI coworkers wired into you",
+        "nameWithOwner": "tradermonty/claude-trading-skills",
+        "repoUrl": "https://github.com/tradermonty/claude-trading-skills",
+        "description": "Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.",
         "language": "Python",
-        "stargazerCount": 5560,
-        "forkCount": 452,
-        "todayStars": 79
+        "stargazerCount": 4169,
+        "forkCount": 863,
+        "todayStars": 69
       },
       {
-        "nameWithOwner": "NVIDIA/SkillSpector",
-        "repoUrl": "https://github.com/NVIDIA/SkillSpector",
-        "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
-        "language": "Python",
-        "stargazerCount": 25704,
-        "forkCount": 2270,
-        "todayStars": 297
+        "nameWithOwner": "tailscale/tailcat",
+        "repoUrl": "https://github.com/tailscale/tailcat",
+        "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
+        "language": "Go",
+        "stargazerCount": 9456,
+        "forkCount": 431,
+        "todayStars": 256
       },
       {
-        "nameWithOwner": "mvanhorn/last30days-skill",
-        "repoUrl": "https://github.com/mvanhorn/last30days-skill",
-        "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
-        "language": "Python",
-        "stargazerCount": 67444,
-        "forkCount": 5929,
-        "todayStars": 112
+        "nameWithOwner": "Likely7/Veyra-NRVideo",
+        "repoUrl": "https://github.com/Likely7/Veyra-NRVideo",
+        "description": "Bring PS5 GTA6 to 120FPS with DLSS 5. An advanced Windows video player and capture enhancement tool featuring real-time preview for videos, images, and capture card sources. Combine AI-powered Super Resolution, DLSS5 image enhancement, and Frame Generation to deliver a next-generation visual experience.",
+        "language": "C++",
+        "stargazerCount": 1616,
+        "forkCount": 71,
+        "todayStars": 256
       },
       {
-        "nameWithOwner": "huggingface/transformers",
-        "repoUrl": "https://github.com/huggingface/transformers",
-        "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.",
+        "nameWithOwner": "ChromeDevTools/chrome-devtools-mcp",
+        "repoUrl": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "description": "Chrome DevTools for coding agents",
+        "language": "TypeScript",
+        "stargazerCount": 55451,
+        "forkCount": 4602,
+        "todayStars": 67
+      }
+    ],
+    "Python": [
+      {
+        "nameWithOwner": "ZhuLinsen/daily_stock_analysis",
+        "repoUrl": "https://github.com/ZhuLinsen/daily_stock_analysis",
+        "description": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
         "language": "Python",
-        "stargazerCount": 168926,
-        "forkCount": 35232,
-        "todayStars": 98
+        "stargazerCount": 71594,
+        "forkCount": 57282,
+        "todayStars": 256
       },
       {
-        "nameWithOwner": "figma/mcp-server-guide",
-        "repoUrl": "https://github.com/figma/mcp-server-guide",
-        "description": "A guide on how to use the Figma MCP server",
+        "nameWithOwner": "tradermonty/claude-trading-skills",
+        "repoUrl": "https://github.com/tradermonty/claude-trading-skills",
+        "description": "Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.",
         "language": "Python",
-        "stargazerCount": 2181,
-        "forkCount": 215,
-        "todayStars": 4
+        "stargazerCount": 4169,
+        "forkCount": 863,
+        "todayStars": 69
       },
       {
-        "nameWithOwner": "TheAlgorithms/Python",
-        "repoUrl": "https://github.com/TheAlgorithms/Python",
-        "description": "All Algorithms implemented in Python",
+        "nameWithOwner": "Tencent-Hunyuan/Hy-MT2",
+        "repoUrl": "https://github.com/Tencent-Hunyuan/Hy-MT2",
+        "description": "",
         "language": "Python",
-        "stargazerCount": 226063,
-        "forkCount": 51312,
-        "todayStars": 43
+        "stargazerCount": 1752,
+        "forkCount": 185,
+        "todayStars": 28
       },
       {
         "nameWithOwner": "davila7/claude-code-templates",
         "repoUrl": "https://github.com/davila7/claude-code-templates",
         "description": "Open-source registry and CLI for Claude Code components: agents, commands, skills, hooks, MCPs, settings and mods",
         "language": "Python",
-        "stargazerCount": 33431,
-        "forkCount": 3929,
-        "todayStars": 102
+        "stargazerCount": 33484,
+        "forkCount": 3931,
+        "todayStars": 62
       },
       {
-        "nameWithOwner": "Qiskit/qiskit",
-        "repoUrl": "https://github.com/Qiskit/qiskit",
-        "description": "Qiskit is an open-source SDK for working with quantum computers at the level of extended quantum circuits, operators, and primitives.",
+        "nameWithOwner": "avenoxai/avenoxbeyin",
+        "repoUrl": "https://github.com/avenoxai/avenoxbeyin",
+        "description": "Your AI second brain in one command — open-source Obsidian + Claude Code system with persistent cross-session memory. avenox.lol/beyin.md",
         "language": "Python",
-        "stargazerCount": 7968,
-        "forkCount": 3125,
-        "todayStars": 3
+        "stargazerCount": 456,
+        "forkCount": 75,
+        "todayStars": 51
       },
       {
-        "nameWithOwner": "NVIDIA/SkillEvaluator",
-        "repoUrl": "https://github.com/NVIDIA/SkillEvaluator",
-        "description": "Multi-tier framework for evaluating AI agent skills with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior.",
+        "nameWithOwner": "asgeirtj/system_prompts_leaks",
+        "repoUrl": "https://github.com/asgeirtj/system_prompts_leaks",
+        "description": "Leaked system prompts of ChatGPT, Claude, Gemini and more. The hidden system prompt of every popular chatbot, in full, every version since May 2025. Also Anthropic Claude Code, OpenAI Codex, Google Antigravity, xAI Grok, Meta Muse, Moonshot Kimi, Alibaba Qwen, Z.ai GLM ZCode, MiniMax, Cursor, Perplexity, DeepSeek and 30+ others. Updated daily.",
         "language": "Python",
-        "stargazerCount": 871,
-        "forkCount": 104,
-        "todayStars": 108
+        "stargazerCount": 71354,
+        "forkCount": 11488,
+        "todayStars": 73
+      },
+      {
+        "nameWithOwner": "anthropics/claude-plugins-official",
+        "repoUrl": "https://github.com/anthropics/claude-plugins-official",
+        "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+        "language": "Python",
+        "stargazerCount": 47199,
+        "forkCount": 4896,
+        "todayStars": 130
+      },
+      {
+        "nameWithOwner": "headroomlabs-ai/headroom",
+        "repoUrl": "https://github.com/headroomlabs-ai/headroom",
+        "description": "Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.",
+        "language": "Python",
+        "stargazerCount": 79604,
+        "forkCount": 6230,
+        "todayStars": 120
+      },
+      {
+        "nameWithOwner": "Alishahryar1/free-claude-code",
+        "repoUrl": "https://github.com/Alishahryar1/free-claude-code",
+        "description": "Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser sessions (multi-harness + multi-model) like OpenClaw (voice supported + ToS friendly)",
+        "language": "Python",
+        "stargazerCount": 69882,
+        "forkCount": 10829,
+        "todayStars": 787
+      },
+      {
+        "nameWithOwner": "ahujasid/mcp-for-blender",
+        "repoUrl": "https://github.com/ahujasid/mcp-for-blender",
+        "description": "Community plugin to control Blender 3D with any LLM of your choice. Not affiliated with the official Blender Foundation.",
+        "language": "Python",
+        "stargazerCount": 34324,
+        "forkCount": 3122,
+        "todayStars": 136
+      },
+      {
+        "nameWithOwner": "realiti4/claude-swap",
+        "repoUrl": "https://github.com/realiti4/claude-swap",
+        "description": "Switch between multiple Claude Code accounts, with automatic rate-limit rotation, usage dashboard, and parallel sessions",
+        "language": "Python",
+        "stargazerCount": 4698,
+        "forkCount": 505,
+        "todayStars": 25
+      },
+      {
+        "nameWithOwner": "volcengine/OpenViking",
+        "repoUrl": "https://github.com/volcengine/OpenViking",
+        "description": "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+        "language": "Python",
+        "stargazerCount": 42205,
+        "forkCount": 3479,
+        "todayStars": 113
+      },
+      {
+        "nameWithOwner": "langchain-ai/langgraph",
+        "repoUrl": "https://github.com/langchain-ai/langgraph",
+        "description": "Build resilient agents.",
+        "language": "Python",
+        "stargazerCount": 44923,
+        "forkCount": 7746,
+        "todayStars": 49
+      },
+      {
+        "nameWithOwner": "kajisho5/ffmpeg-skill",
+        "repoUrl": "https://github.com/kajisho5/ffmpeg-skill",
+        "description": "Local video editor for coding agents: 42 FFmpeg tools with a machine-readable contract and an MCP server, for Claude Code, Cursor and Codex. Cut, captions, reframe, loudness, platform exports. No cloud, no API keys.",
+        "language": "Python",
+        "stargazerCount": 5434,
+        "forkCount": 468,
+        "todayStars": 168
+      },
+      {
+        "nameWithOwner": "NVIDIA/SkillSpector",
+        "repoUrl": "https://github.com/NVIDIA/SkillSpector",
+        "description": "Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, security risks, prompt injection, data exfiltration, and supply-chain risks in Claude Code, Codex, and MCP skills before you install them.",
+        "language": "Python",
+        "stargazerCount": 25896,
+        "forkCount": 2298,
+        "todayStars": 190
+      },
+      {
+        "nameWithOwner": "mvanhorn/last30days-skill",
+        "repoUrl": "https://github.com/mvanhorn/last30days-skill",
+        "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+        "language": "Python",
+        "stargazerCount": 67558,
+        "forkCount": 5939,
+        "todayStars": 111
       }
     ],
     "JavaScript": [
       {
-        "nameWithOwner": "nodejs/node",
-        "repoUrl": "https://github.com/nodejs/node",
-        "description": "Node.js JavaScript runtime ✨🐢🚀✨",
+        "nameWithOwner": "louislam/uptime-kuma",
+        "repoUrl": "https://github.com/louislam/uptime-kuma",
+        "description": "A fancy self-hosted monitoring tool",
         "language": "JavaScript",
-        "stargazerCount": 123601,
-        "forkCount": 38057,
-        "todayStars": 62
+        "stargazerCount": 93859,
+        "forkCount": 8722,
+        "todayStars": 71
       },
       {
         "nameWithOwner": "addyosmani/agent-skills",
         "repoUrl": "https://github.com/addyosmani/agent-skills",
         "description": "Production-grade engineering skills for AI coding agents.",
         "language": "JavaScript",
-        "stargazerCount": 116674,
-        "forkCount": 12210,
-        "todayStars": 816
+        "stargazerCount": 117147,
+        "forkCount": 12250,
+        "todayStars": 591
       },
       {
-        "nameWithOwner": "laoma528/awesome-zhuiju-free",
-        "repoUrl": "https://github.com/laoma528/awesome-zhuiju-free",
-        "description": "免费无广告的追剧资源指南，人工精选资源、每天检测资源有效性。收录在线影视、影视APP、网盘搜索、磁力BT、字幕、TVBox / 影视仓空壳软件/配置地址、IPTV直播源、会员拼团、影视相关开源项目。开源，社区共同维护。",
+        "nameWithOwner": "Leonxlnx/taste-skill",
+        "repoUrl": "https://github.com/Leonxlnx/taste-skill",
+        "description": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages",
         "language": "JavaScript",
-        "stargazerCount": 15414,
-        "forkCount": 1109,
-        "todayStars": 131
+        "stargazerCount": 115050,
+        "forkCount": 7719,
+        "todayStars": 795
       },
       {
-        "nameWithOwner": "axios/axios",
-        "repoUrl": "https://github.com/axios/axios",
-        "description": "Promise based HTTP client for the browser and node.js",
+        "nameWithOwner": "affaan-m/ECC",
+        "repoUrl": "https://github.com/affaan-m/ECC",
+        "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
         "language": "JavaScript",
-        "stargazerCount": 109395,
-        "forkCount": 12021,
-        "todayStars": 55
+        "stargazerCount": 302465,
+        "forkCount": 44615,
+        "todayStars": 559
       },
       {
-        "nameWithOwner": "coreyhaines31/marketingskills",
-        "repoUrl": "https://github.com/coreyhaines31/marketingskills",
-        "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
+        "nameWithOwner": "microsoft/power-platform-skills",
+        "repoUrl": "https://github.com/microsoft/power-platform-skills",
+        "description": "A plugin marketplace for GitHub Copilot and other AI agents that provides Power Platform development plugins, including reusable skills, agents, and commands for building and deploying solutions.",
         "language": "JavaScript",
-        "stargazerCount": 59972,
-        "forkCount": 8761,
-        "todayStars": 208
-      },
-      {
-        "nameWithOwner": "sveltejs/svelte",
-        "repoUrl": "https://github.com/sveltejs/svelte",
-        "description": "web development for the rest of us",
-        "language": "JavaScript",
-        "stargazerCount": 88747,
-        "forkCount": 6063,
-        "todayStars": 79
-      },
-      {
-        "nameWithOwner": "OpenWhispr/openwhispr",
-        "repoUrl": "https://github.com/OpenWhispr/openwhispr",
-        "description": "Voice-to-text dictation app with local (Nvidia Parakeet/Whisper) and cloud models (BYOK). Privacy-first and available cross-platform.",
-        "language": "JavaScript",
-        "stargazerCount": 11443,
-        "forkCount": 1505,
-        "todayStars": 116
-      },
-      {
-        "nameWithOwner": "react/react",
-        "repoUrl": "https://github.com/react/react",
-        "description": "The library for web and native user interfaces.",
-        "language": "JavaScript",
-        "stargazerCount": 252556,
-        "forkCount": 52480,
-        "todayStars": 78
-      },
-      {
-        "nameWithOwner": "expressjs/express",
-        "repoUrl": "https://github.com/expressjs/express",
-        "description": "Fast, unopinionated, minimalist web framework for node.",
-        "language": "JavaScript",
-        "stargazerCount": 69676,
-        "forkCount": 25438,
-        "todayStars": 37
-      },
-      {
-        "nameWithOwner": "PenglongHuang/chinese-novelist-skill",
-        "repoUrl": "https://github.com/PenglongHuang/chinese-novelist-skill",
-        "description": "🎭 AI 写小说：从零生成 10-50 章完整中文小说，三层问答 · 创作记忆 · 悬念钩子 · 自动校验，长篇网文连载皆宜｜开源免费，适配主流 coding agent｜🤝 Infistar.cc 赞助 · 注册送 $5｜AI novel writing skill",
-        "language": "JavaScript",
-        "stargazerCount": 4827,
-        "forkCount": 655,
-        "todayStars": 31
+        "stargazerCount": 1146,
+        "forkCount": 231,
+        "todayStars": 5
       },
       {
         "nameWithOwner": "mksglu/context-mode",
         "repoUrl": "https://github.com/mksglu/context-mode",
         "description": "Free, local plugin that keeps tool output out of your coding agent's context window. Sandbox and SQLite FTS5 search, 99% fewer bytes in context. Works with Claude Code, Codex, Pi, OpenCode, Gemini CLI, Copilot CLI and 4 more agents. Zero telemetry.",
         "language": "JavaScript",
-        "stargazerCount": 33992,
-        "forkCount": 2331,
-        "todayStars": 113
+        "stargazerCount": 34055,
+        "forkCount": 2338,
+        "todayStars": 77
       },
       {
-        "nameWithOwner": "Orkas-AI/Orkas",
-        "repoUrl": "https://github.com/Orkas-AI/Orkas",
-        "description": "Orkas is an open-source (MIT), local-first AI team for your desktop: a Commander turns your goal into to-dos and coordinates 16 built-in specialist agents plus Claude Code, Codex, OpenCode, OpenClaw and Hermes, with projects, scheduled automations and connectors. Free app for macOS & Windows; built-in models or your own keys.",
+        "nameWithOwner": "coreyhaines31/marketingskills",
+        "repoUrl": "https://github.com/coreyhaines31/marketingskills",
+        "description": "Marketing skills for Claude Code and AI agents. CRO, copywriting, SEO, analytics, and growth engineering.",
         "language": "JavaScript",
-        "stargazerCount": 9307,
-        "forkCount": 551,
-        "todayStars": 51
+        "stargazerCount": 60177,
+        "forkCount": 8788,
+        "todayStars": 190
       },
       {
-        "nameWithOwner": "PavelDoGreat/WebGL-Fluid-Simulation",
-        "repoUrl": "https://github.com/PavelDoGreat/WebGL-Fluid-Simulation",
-        "description": "Play with fluids in your browser (works even on mobile)",
+        "nameWithOwner": "OpenWhispr/openwhispr",
+        "repoUrl": "https://github.com/OpenWhispr/openwhispr",
+        "description": "Voice-to-text dictation app with local (Nvidia Parakeet/Whisper) and cloud models (BYOK). Privacy-first and available cross-platform.",
         "language": "JavaScript",
-        "stargazerCount": 16837,
-        "forkCount": 1925,
-        "todayStars": 11
+        "stargazerCount": 11518,
+        "forkCount": 1515,
+        "todayStars": 79
       },
       {
-        "nameWithOwner": "tiagozip/cap",
-        "repoUrl": "https://github.com/tiagozip/cap",
-        "description": "The open-source, privacy-friendly CAPTCHA you host yourself. Bots and AI agents out, people in.",
+        "nameWithOwner": "tabler/tabler-icons",
+        "repoUrl": "https://github.com/tabler/tabler-icons",
+        "description": "A set of over 6200 free MIT-licensed high-quality SVG icons for you to use in your web projects.",
         "language": "JavaScript",
-        "stargazerCount": 8364,
-        "forkCount": 655,
-        "todayStars": 25
+        "stargazerCount": 22642,
+        "forkCount": 1275,
+        "todayStars": 20
+      },
+      {
+        "nameWithOwner": "DietrichGebert/ponytail",
+        "repoUrl": "https://github.com/DietrichGebert/ponytail",
+        "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+        "language": "JavaScript",
+        "stargazerCount": 190367,
+        "forkCount": 10628,
+        "todayStars": 600
       }
     ],
     "TypeScript": [
@@ -421,593 +376,593 @@
         "repoUrl": "https://github.com/GoogleChrome/modern-web-guidance-src",
         "description": "Keep your coding agent up to date with the latest web best practices",
         "language": "TypeScript",
-        "stargazerCount": 2951,
-        "forkCount": 199,
-        "todayStars": 739
+        "stargazerCount": 4844,
+        "forkCount": 270,
+        "todayStars": 1925
       },
       {
         "nameWithOwner": "openai/codex-security",
         "repoUrl": "https://github.com/openai/codex-security",
         "description": "OpenAI's Codex Security CLI and TypeScript SDK for finding, validating, and fixing security vulnerabilities. npm:https://www.npmjs.com/package/@openai/codex-security",
         "language": "TypeScript",
-        "stargazerCount": 12427,
-        "forkCount": 978,
-        "todayStars": 643
+        "stargazerCount": 13129,
+        "forkCount": 1024,
+        "todayStars": 751
       },
       {
-        "nameWithOwner": "QwenLM/qwen-code",
-        "repoUrl": "https://github.com/QwenLM/qwen-code",
-        "description": "An open-source AI coding agent that lives in your terminal.",
+        "nameWithOwner": "backnotprop/plannotator",
+        "repoUrl": "https://github.com/backnotprop/plannotator",
+        "description": "The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.",
         "language": "TypeScript",
-        "stargazerCount": 29812,
-        "forkCount": 3396,
-        "todayStars": 151
-      },
-      {
-        "nameWithOwner": "meta/astryx",
-        "repoUrl": "https://github.com/meta/astryx",
-        "description": "An open source design system that's fully customizable and agent ready",
-        "language": "TypeScript",
-        "stargazerCount": 26543,
-        "forkCount": 2059,
-        "todayStars": 1830
-      },
-      {
-        "nameWithOwner": "CopilotKit/OpenBot",
-        "repoUrl": "https://github.com/CopilotKit/OpenBot",
-        "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
-        "language": "TypeScript",
-        "stargazerCount": 11612,
-        "forkCount": 1436,
-        "todayStars": 298
-      },
-      {
-        "nameWithOwner": "n8n-io/n8n",
-        "repoUrl": "https://github.com/n8n-io/n8n",
-        "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-        "language": "TypeScript",
-        "stargazerCount": 210332,
-        "forkCount": 61492,
-        "todayStars": 167
-      },
-      {
-        "nameWithOwner": "supabase/supabase",
-        "repoUrl": "https://github.com/supabase/supabase",
-        "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-        "language": "TypeScript",
-        "stargazerCount": 114932,
-        "forkCount": 15130,
-        "todayStars": 97
-      },
-      {
-        "nameWithOwner": "block/buzz-app",
-        "repoUrl": "https://github.com/block/buzz-app",
-        "description": "A new desktop/web app experience for buzz",
-        "language": "TypeScript",
-        "stargazerCount": 223,
-        "forkCount": 176,
-        "todayStars": 41
-      },
-      {
-        "nameWithOwner": "elder-plinius/G0DM0D3",
-        "repoUrl": "https://github.com/elder-plinius/G0DM0D3",
-        "description": "LIBERATED AI CHAT",
-        "language": "TypeScript",
-        "stargazerCount": 12250,
-        "forkCount": 2859,
-        "todayStars": 29
-      },
-      {
-        "nameWithOwner": "PurpleDoubleD/locally-uncensored",
-        "repoUrl": "https://github.com/PurpleDoubleD/locally-uncensored",
-        "description": "The all-in-one local AI studio for your desktop: chat, image and video generation and a coding agent in one free, open source app. Windows and Linux. No Docker, no terminal, no cloud required.",
-        "language": "TypeScript",
-        "stargazerCount": 4083,
-        "forkCount": 650,
-        "todayStars": 197
-      },
-      {
-        "nameWithOwner": "adewaskar/jarvis",
-        "repoUrl": "https://github.com/adewaskar/jarvis",
-        "description": "J.A.R.V.I.S for automating your daily tasks using Claude Code",
-        "language": "TypeScript",
-        "stargazerCount": 860,
-        "forkCount": 370,
-        "todayStars": 34
-      },
-      {
-        "nameWithOwner": "google-labs-code/stitch-skills",
-        "repoUrl": "https://github.com/google-labs-code/stitch-skills",
-        "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
-        "language": "TypeScript",
-        "stargazerCount": 8753,
-        "forkCount": 1055,
-        "todayStars": 13
-      },
-      {
-        "nameWithOwner": "appwrite/appwrite",
-        "repoUrl": "https://github.com/appwrite/appwrite",
-        "description": "The open-source cloud for agents & devs. Including Auth, Databases, Storage, Functions, Messaging, Hosting, Realtime, WAF and more",
-        "language": "TypeScript",
-        "stargazerCount": 58068,
-        "forkCount": 5870,
-        "todayStars": 78
-      },
-      {
-        "nameWithOwner": "every-app/open-seo",
-        "repoUrl": "https://github.com/every-app/open-seo",
-        "description": "Open source alternative to Semrush and Ahrefs",
-        "language": "TypeScript",
-        "stargazerCount": 27503,
-        "forkCount": 3853,
-        "todayStars": 145
-      },
-      {
-        "nameWithOwner": "shanliuling/dsh-image-gen",
-        "repoUrl": "https://github.com/shanliuling/dsh-image-gen",
-        "description": "可在对话内生成、编辑、对比图像；内置 500 + 提示词、图库、多模型工作流，支持 ComfyUI。AI image studio for DeepSeek Harness — generate, edit & compare images in chat, with 500+ prompts, gallery, multi-model workflows and ComfyUI.",
-        "language": "TypeScript",
-        "stargazerCount": 1393,
-        "forkCount": 116,
-        "todayStars": 70
-      },
-      {
-        "nameWithOwner": "RocketChat/Rocket.Chat",
-        "repoUrl": "https://github.com/RocketChat/Rocket.Chat",
-        "description": "The Secure CommsOS™ for mission-critical operations",
-        "language": "TypeScript",
-        "stargazerCount": 46502,
-        "forkCount": 14148,
-        "todayStars": 52
-      },
-      {
-        "nameWithOwner": "angular/angular",
-        "repoUrl": "https://github.com/angular/angular",
-        "description": "Deliver web apps with confidence 🚀",
-        "language": "TypeScript",
-        "stargazerCount": 101483,
-        "forkCount": 28211,
-        "todayStars": 65
-      },
-      {
-        "nameWithOwner": "gitroomhq/postiz-app",
-        "repoUrl": "https://github.com/gitroomhq/postiz-app",
-        "description": "📨 The ultimate agentic social media scheduling tool 🤖",
-        "language": "TypeScript",
-        "stargazerCount": 41473,
-        "forkCount": 7913,
-        "todayStars": 92
+        "stargazerCount": 10451,
+        "forkCount": 784,
+        "todayStars": 108
       },
       {
         "nameWithOwner": "ChromeDevTools/chrome-devtools-mcp",
         "repoUrl": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
         "description": "Chrome DevTools for coding agents",
         "language": "TypeScript",
-        "stargazerCount": 55176,
+        "stargazerCount": 55451,
         "forkCount": 4602,
-        "todayStars": 60
+        "todayStars": 67
       },
       {
-        "nameWithOwner": "NapNeko/NapCatQQ",
-        "repoUrl": "https://github.com/NapNeko/NapCatQQ",
-        "description": "Modern protocol-side framework",
-        "language": "",
-        "stargazerCount": 12764,
-        "forkCount": 1895,
+        "nameWithOwner": "CopilotKit/OpenBot",
+        "repoUrl": "https://github.com/CopilotKit/OpenBot",
+        "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
+        "language": "TypeScript",
+        "stargazerCount": 12111,
+        "forkCount": 1487,
+        "todayStars": 674
+      },
+      {
+        "nameWithOwner": "a2ui-project/a2ui",
+        "repoUrl": "https://github.com/a2ui-project/a2ui",
+        "description": "Open-source generative UI framework: agents stream layout data, and apps render it with native components in React, Angular, Lit, Flutter, SwiftUI and Jetpack Compose.",
+        "language": "TypeScript",
+        "stargazerCount": 17312,
+        "forkCount": 1402,
+        "todayStars": 117
+      },
+      {
+        "nameWithOwner": "PurpleDoubleD/locally-uncensored",
+        "repoUrl": "https://github.com/PurpleDoubleD/locally-uncensored",
+        "description": "The all-in-one local AI studio for your desktop: chat, image and video generation and a coding agent in one free, open source app. Windows and Linux. No Docker, no terminal, no cloud required.",
+        "language": "TypeScript",
+        "stargazerCount": 4191,
+        "forkCount": 666,
+        "todayStars": 148
+      },
+      {
+        "nameWithOwner": "shanliuling/dsh-image-gen",
+        "repoUrl": "https://github.com/shanliuling/dsh-image-gen",
+        "description": "可在对话内生成、编辑、对比图像；内置 500 + 提示词、图库、多模型工作流，支持 ComfyUI。AI image studio for DeepSeek Harness — generate, edit & compare images in chat, with 500+ prompts, gallery, multi-model workflows and ComfyUI.",
+        "language": "TypeScript",
+        "stargazerCount": 1473,
+        "forkCount": 124,
         "todayStars": 95
+      },
+      {
+        "nameWithOwner": "EveryInc/compound-engineering-plugin",
+        "repoUrl": "https://github.com/EveryInc/compound-engineering-plugin",
+        "description": "Official Compound Engineering plugin for Claude Code, Codex, Cursor, and more",
+        "language": "TypeScript",
+        "stargazerCount": 26073,
+        "forkCount": 2065,
+        "todayStars": 15
+      },
+      {
+        "nameWithOwner": "QwenLM/qwen-code",
+        "repoUrl": "https://github.com/QwenLM/qwen-code",
+        "description": "An open-source AI coding agent that lives in your terminal.",
+        "language": "TypeScript",
+        "stargazerCount": 30120,
+        "forkCount": 3417,
+        "todayStars": 462
+      },
+      {
+        "nameWithOwner": "AdventDevInc/kudu",
+        "repoUrl": "https://github.com/AdventDevInc/kudu",
+        "description": "Free Windows, Mac and Linux cleaner, scanner, and more.",
+        "language": "TypeScript",
+        "stargazerCount": 4340,
+        "forkCount": 360,
+        "todayStars": 18
+      },
+      {
+        "nameWithOwner": "google-labs-code/stitch-skills",
+        "repoUrl": "https://github.com/google-labs-code/stitch-skills",
+        "description": "A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.",
+        "language": "TypeScript",
+        "stargazerCount": 8770,
+        "forkCount": 1053,
+        "todayStars": 13
+      },
+      {
+        "nameWithOwner": "thesysdev/openui",
+        "repoUrl": "https://github.com/thesysdev/openui",
+        "description": "The Open Standard for Generative UI",
+        "language": "TypeScript",
+        "stargazerCount": 15195,
+        "forkCount": 1010,
+        "todayStars": 35
+      },
+      {
+        "nameWithOwner": "adewaskar/jarvis",
+        "repoUrl": "https://github.com/adewaskar/jarvis",
+        "description": "J.A.R.V.I.S for automating your daily tasks using Claude Code",
+        "language": "TypeScript",
+        "stargazerCount": 890,
+        "forkCount": 387,
+        "todayStars": 35
+      },
+      {
+        "nameWithOwner": "callstack/agent-device",
+        "repoUrl": "https://github.com/callstack/agent-device",
+        "description": "Open source device layer for AI coding agents: a CLI, MCP server, and typed Node.js API to control mobile, web, TV, and desktop apps on devices and simulators, locally or in the cloud.",
+        "language": "TypeScript",
+        "stargazerCount": 5376,
+        "forkCount": 402,
+        "todayStars": 21
+      },
+      {
+        "nameWithOwner": "abhigyanpatwari/GitNexus",
+        "repoUrl": "https://github.com/abhigyanpatwari/GitNexus",
+        "description": "GitNexus: The Zero-Server Code Intelligence Engine",
+        "language": "TypeScript",
+        "stargazerCount": 48519,
+        "forkCount": 5261,
+        "todayStars": 48
+      },
+      {
+        "nameWithOwner": "lidge-jun/opencodex",
+        "repoUrl": "https://github.com/lidge-jun/opencodex",
+        "description": "Universal provider proxy for OpenAI Codex & Claude Code — use any LLM (Claude, Gemini, Grok, DeepSeek, Ollama…) with Codex CLI, App, SDK, and Claude Code",
+        "language": "TypeScript",
+        "stargazerCount": 18492,
+        "forkCount": 1472,
+        "todayStars": 54
+      },
+      {
+        "nameWithOwner": "actions/checkout",
+        "repoUrl": "https://github.com/actions/checkout",
+        "description": "Action for checking out a repo",
+        "language": "TypeScript",
+        "stargazerCount": 9015,
+        "forkCount": 2748,
+        "todayStars": 4
       }
     ],
     "Go": [
       {
-        "nameWithOwner": "Tencent/LoopForge",
-        "repoUrl": "https://github.com/Tencent/LoopForge",
-        "description": "Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.",
+        "nameWithOwner": "alibaba/open-code-review",
+        "repoUrl": "https://github.com/alibaba/open-code-review",
+        "description": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
         "language": "Go",
-        "stargazerCount": 548,
-        "forkCount": 95,
-        "todayStars": 184
-      },
-      {
-        "nameWithOwner": "moby/buildkit",
-        "repoUrl": "https://github.com/moby/buildkit",
-        "description": "concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit",
-        "language": "Go",
-        "stargazerCount": 10410,
-        "forkCount": 1570,
-        "todayStars": 16
-      },
-      {
-        "nameWithOwner": "agent-substrate/substrate",
-        "repoUrl": "https://github.com/agent-substrate/substrate",
-        "description": "Agent Substrate: the core system",
-        "language": "Go",
-        "stargazerCount": 6547,
-        "forkCount": 739,
-        "todayStars": 84
-      },
-      {
-        "nameWithOwner": "golang/go",
-        "repoUrl": "https://github.com/golang/go",
-        "description": "The Go programming language",
-        "language": "Go",
-        "stargazerCount": 139878,
-        "forkCount": 20276,
-        "todayStars": 77
-      },
-      {
-        "nameWithOwner": "databricks/cli",
-        "repoUrl": "https://github.com/databricks/cli",
-        "description": "Databricks CLI",
-        "language": "Go",
-        "stargazerCount": 431,
-        "forkCount": 270,
-        "todayStars": 3
-      },
-      {
-        "nameWithOwner": "kubernetes/kubernetes",
-        "repoUrl": "https://github.com/kubernetes/kubernetes",
-        "description": "Production-Grade Container Scheduling and Management",
-        "language": "Go",
-        "stargazerCount": 129036,
-        "forkCount": 45108,
-        "todayStars": 78
+        "stargazerCount": 50618,
+        "forkCount": 3766,
+        "todayStars": 215
       },
       {
         "nameWithOwner": "tailscale/tailcat",
         "repoUrl": "https://github.com/tailscale/tailcat",
         "description": "like netcat, but over Tailscale's data plane, without Tailscale's control plane",
         "language": "Go",
-        "stargazerCount": 9072,
-        "forkCount": 415,
-        "todayStars": 173
+        "stargazerCount": 9456,
+        "forkCount": 431,
+        "todayStars": 256
       },
       {
-        "nameWithOwner": "dsx-ai-factory/run-ai",
-        "repoUrl": "https://github.com/dsx-ai-factory/run-ai",
-        "description": "Run:ai is the AI workload orchestration platform for Kubernetes. This monorepo contains the control plane services, in-cluster Kubernetes operator/controllers, shared libraries and clients, the installer, and the local dev environment.",
+        "nameWithOwner": "Tencent/LoopForge",
+        "repoUrl": "https://github.com/Tencent/LoopForge",
+        "description": "Self-hosted workflows for coding-agent delivery. Orchestrate CodeBuddy, Codex and Claude Code with scripts and human approval gates. Includes Local workflows for coding assistants.",
         "language": "Go",
-        "stargazerCount": 757,
-        "forkCount": 125,
-        "todayStars": 8
+        "stargazerCount": 670,
+        "forkCount": 110,
+        "todayStars": 174
       },
       {
-        "nameWithOwner": "kubescape/kubescape",
-        "repoUrl": "https://github.com/kubescape/kubescape",
-        "description": "Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources.",
+        "nameWithOwner": "Tencent/WeKnora",
+        "repoUrl": "https://github.com/Tencent/WeKnora",
+        "description": "Open-source LLM knowledge platform: turn raw documents into a queryable RAG, an autonomous reasoning agent, and a self-maintaining Wiki.",
         "language": "Go",
-        "stargazerCount": 11877,
-        "forkCount": 1100,
-        "todayStars": 8
+        "stargazerCount": 37397,
+        "forkCount": 5185,
+        "todayStars": 88
+      },
+      {
+        "nameWithOwner": "ollama/ollama",
+        "repoUrl": "https://github.com/ollama/ollama",
+        "description": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+        "language": "Go",
+        "stargazerCount": 186897,
+        "forkCount": 19070,
+        "todayStars": 141
+      },
+      {
+        "nameWithOwner": "Gentleman-Programming/gentle-ai",
+        "repoUrl": "https://github.com/Gentleman-Programming/gentle-ai",
+        "description": "Gentle-AI configures the AI coding agents you already use: Claude Code, Cursor, OpenCode, Codex, Pi, and more. Choose persistent memory, Organic-Driven Development, curated skills, MCP servers, personas, and optional bounded review. Open source, no agent lock-in.",
+        "language": "Go",
+        "stargazerCount": 9131,
+        "forkCount": 898,
+        "todayStars": 242
+      },
+      {
+        "nameWithOwner": "modelcontextprotocol/go-sdk",
+        "repoUrl": "https://github.com/modelcontextprotocol/go-sdk",
+        "description": "The official Go SDK for Model Context Protocol servers and clients. Maintained in collaboration with Google.",
+        "language": "Go",
+        "stargazerCount": 5343,
+        "forkCount": 617,
+        "todayStars": 2
       },
       {
         "nameWithOwner": "multica-ai/multica",
         "repoUrl": "https://github.com/multica-ai/multica",
         "description": "Make humans and AI agents work as one team — open-source and self-hostable.",
         "language": "Go",
-        "stargazerCount": 55898,
-        "forkCount": 7383,
-        "todayStars": 148
+        "stargazerCount": 56057,
+        "forkCount": 7402,
+        "todayStars": 167
       },
       {
-        "nameWithOwner": "superplanehq/superplane",
-        "repoUrl": "https://github.com/superplanehq/superplane",
-        "description": "Open source factory for one-shot engineering",
+        "nameWithOwner": "hashicorp/vault",
+        "repoUrl": "https://github.com/hashicorp/vault",
+        "description": "A tool for secrets management, encryption as a service, and privileged access management",
         "language": "Go",
-        "stargazerCount": 10033,
-        "forkCount": 707,
-        "todayStars": 10
+        "stargazerCount": 36510,
+        "forkCount": 4818,
+        "todayStars": 7
       },
       {
-        "nameWithOwner": "fatedier/frp",
-        "repoUrl": "https://github.com/fatedier/frp",
-        "description": "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.",
+        "nameWithOwner": "agent-substrate/substrate",
+        "repoUrl": "https://github.com/agent-substrate/substrate",
+        "description": "Agent Substrate: the core system",
         "language": "Go",
-        "stargazerCount": 110570,
-        "forkCount": 15318,
-        "todayStars": 34
+        "stargazerCount": 6596,
+        "forkCount": 744,
+        "todayStars": 52
       },
       {
-        "nameWithOwner": "smtg-ai/claude-squad",
-        "repoUrl": "https://github.com/smtg-ai/claude-squad",
-        "description": "Manage multiple AI terminal agents like Claude Code, Codex, OpenCode, and Amp.",
+        "nameWithOwner": "crowdsecurity/crowdsec",
+        "repoUrl": "https://github.com/crowdsecurity/crowdsec",
+        "description": "Open-source IDS/IPS, WAF and bot detection for Linux, Windows, Docker and Kubernetes, with a crowdsourced blocklist of malicious IPs.",
         "language": "Go",
-        "stargazerCount": 8793,
-        "forkCount": 632,
-        "todayStars": 8
+        "stargazerCount": 15605,
+        "forkCount": 763,
+        "todayStars": 25
       },
       {
-        "nameWithOwner": "cloudflare/cloudflared",
-        "repoUrl": "https://github.com/cloudflare/cloudflared",
-        "description": "Cloudflare Tunnel client",
+        "nameWithOwner": "vernette/warpscout",
+        "repoUrl": "https://github.com/vernette/warpscout",
+        "description": "🛰️ Cloudflare WARP endpoint scanner - find working endpoints over wg/awg/masque and see the exit region and edge node they land on",
         "language": "Go",
-        "stargazerCount": 16563,
-        "forkCount": 1531,
-        "todayStars": 32
+        "stargazerCount": 646,
+        "forkCount": 61,
+        "todayStars": 9
+      },
+      {
+        "nameWithOwner": "netbirdio/netbird",
+        "repoUrl": "https://github.com/netbirdio/netbird",
+        "description": "NetBird securely connects people, machines and AI agents across any network with one identity-based Zero Trust platform. Powered by peer-to-peer WireGuard®",
+        "language": "Go",
+        "stargazerCount": 30977,
+        "forkCount": 1858,
+        "todayStars": 49
+      },
+      {
+        "nameWithOwner": "cli/cli",
+        "repoUrl": "https://github.com/cli/cli",
+        "description": "GitHub’s official command line tool",
+        "language": "Go",
+        "stargazerCount": 47003,
+        "forkCount": 9292,
+        "todayStars": 29
+      },
+      {
+        "nameWithOwner": "kubescape/kubescape",
+        "repoUrl": "https://github.com/kubescape/kubescape",
+        "description": "Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources.",
+        "language": "Go",
+        "stargazerCount": 11891,
+        "forkCount": 1102,
+        "todayStars": 23
+      },
+      {
+        "nameWithOwner": "larksuite/cli",
+        "repoUrl": "https://github.com/larksuite/cli",
+        "description": "The official Lark/飞书 CLI tool, maintained by the larksuite team — built for humans and AI Agents. Covers core business domains including Messenger, Docs, Base, Sheets, Calendar, Mail, Tasks, Meetings, and more, with 200+ commands and 20+ AI Agent Skills.",
+        "language": "Go",
+        "stargazerCount": 18098,
+        "forkCount": 1375,
+        "todayStars": 15
       }
     ],
     "Rust": [
       {
-        "nameWithOwner": "tokio-rs/topcoat",
-        "repoUrl": "https://github.com/tokio-rs/topcoat",
-        "description": "A batteries-included framework for building web apps",
+        "nameWithOwner": "block/buzz",
+        "repoUrl": "https://github.com/block/buzz",
+        "description": "A hive mind communication platform",
         "language": "Rust",
-        "stargazerCount": 7162,
-        "forkCount": 325,
-        "todayStars": 90
+        "stargazerCount": 37298,
+        "forkCount": 4940,
+        "todayStars": 97
       },
       {
-        "nameWithOwner": "zellij-org/zellij",
-        "repoUrl": "https://github.com/zellij-org/zellij",
-        "description": "A terminal workspace with batteries included",
+        "nameWithOwner": "rustdesk/rustdesk",
+        "repoUrl": "https://github.com/rustdesk/rustdesk",
+        "description": "An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.",
         "language": "Rust",
-        "stargazerCount": 36040,
-        "forkCount": 1534,
-        "todayStars": 37
+        "stargazerCount": 129356,
+        "forkCount": 20663,
+        "todayStars": 146
       },
       {
-        "nameWithOwner": "Universal-Debloater-Alliance/universal-android-debloater-next-generation",
-        "repoUrl": "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation",
-        "description": "Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. Improve your privacy, the security and battery life of your device.",
+        "nameWithOwner": "farion1231/cc-switch",
+        "repoUrl": "https://github.com/farion1231/cc-switch",
+        "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode,DeepSeek Harness and more. Only official website: ccswitch.io",
         "language": "Rust",
-        "stargazerCount": 10030,
-        "forkCount": 442,
-        "todayStars": 31
+        "stargazerCount": 154232,
+        "forkCount": 10115,
+        "todayStars": 315
       },
       {
-        "nameWithOwner": "vercel-labs/agent-browser",
-        "repoUrl": "https://github.com/vercel-labs/agent-browser",
-        "description": "Browser automation CLI for AI agents",
+        "nameWithOwner": "tw93/Pake",
+        "repoUrl": "https://github.com/tw93/Pake",
+        "description": "Turn any website into a lightweight desktop app with one command, on macOS, Windows and Linux.",
         "language": "Rust",
-        "stargazerCount": 50332,
-        "forkCount": 3504,
-        "todayStars": 604
-      },
-      {
-        "nameWithOwner": "astral-sh/uv",
-        "repoUrl": "https://github.com/astral-sh/uv",
-        "description": "An extremely fast Python package and project manager, written in Rust.",
-        "language": "Rust",
-        "stargazerCount": 91955,
-        "forkCount": 3809,
-        "todayStars": 94
+        "stargazerCount": 63548,
+        "forkCount": 13000,
+        "todayStars": 102
       },
       {
         "nameWithOwner": "ShayanAbbas1/dbdelve",
         "repoUrl": "https://github.com/ShayanAbbas1/dbdelve",
         "description": "Fast and lightweight DB Client made in Rust and GPUI.",
         "language": "Rust",
-        "stargazerCount": 1227,
-        "forkCount": 65,
-        "todayStars": 108
+        "stargazerCount": 1300,
+        "forkCount": 69,
+        "todayStars": 106
       },
       {
-        "nameWithOwner": "tauri-apps/tauri",
-        "repoUrl": "https://github.com/tauri-apps/tauri",
-        "description": "Build smaller, faster, and more secure desktop and mobile applications with a web frontend.",
+        "nameWithOwner": "zellij-org/zellij",
+        "repoUrl": "https://github.com/zellij-org/zellij",
+        "description": "A terminal workspace with batteries included",
         "language": "Rust",
-        "stargazerCount": 112856,
-        "forkCount": 4218,
-        "todayStars": 90
+        "stargazerCount": 36042,
+        "forkCount": 1536,
+        "todayStars": 32
       },
       {
-        "nameWithOwner": "rust-lang/rust",
-        "repoUrl": "https://github.com/rust-lang/rust",
-        "description": "Empowering everyone to build reliable and efficient software.",
+        "nameWithOwner": "ModernRelay/omnigraph",
+        "repoUrl": "https://github.com/ModernRelay/omnigraph",
+        "description": "Object-storage native graph database with branching and typed ontology",
         "language": "Rust",
-        "stargazerCount": 121854,
-        "forkCount": 16661,
-        "todayStars": 107
+        "stargazerCount": 2248,
+        "forkCount": 291,
+        "todayStars": 160
+      },
+      {
+        "nameWithOwner": "rustfs/rustfs",
+        "repoUrl": "https://github.com/rustfs/rustfs",
+        "description": "RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.",
+        "language": "Rust",
+        "stargazerCount": 36064,
+        "forkCount": 1666,
+        "todayStars": 44
+      },
+      {
+        "nameWithOwner": "rtk-ai/rtk",
+        "repoUrl": "https://github.com/rtk-ai/rtk",
+        "description": "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies",
+        "language": "Rust",
+        "stargazerCount": 86499,
+        "forkCount": 5545,
+        "todayStars": 123
+      },
+      {
+        "nameWithOwner": "aimod-cc/Agent2API",
+        "repoUrl": "https://github.com/aimod-cc/Agent2API",
+        "description": "Local AI routing gateway with Agent client takeover — reuse existing client logins, call 50+ AI clients through one base URL, with unified OpenAI / Anthropic / Images APIs, multi-account routing, check-in, balance and request reports · 本地 AI 路由网关 + Agent 客户端接管：复用各家客户端登录态，一个 base_url 调用 50+ 家模型额度，统一 OpenAI / Anthropic / 生图接口，多账号选路、签到、余额与请求报表一体管理",
+        "language": "Rust",
+        "stargazerCount": 2259,
+        "forkCount": 595,
+        "todayStars": 59
       }
     ],
     "Java": [
       {
-        "nameWithOwner": "ashishps1/awesome-system-design-resources",
-        "repoUrl": "https://github.com/ashishps1/awesome-system-design-resources",
-        "description": "Learn System Design concepts and prepare for interviews using free resources.",
+        "nameWithOwner": "apache/iceberg",
+        "repoUrl": "https://github.com/apache/iceberg",
+        "description": "Apache Iceberg",
         "language": "Java",
-        "stargazerCount": 43333,
-        "forkCount": 8967,
-        "todayStars": 84
-      },
-      {
-        "nameWithOwner": "elastic/elasticsearch",
-        "repoUrl": "https://github.com/elastic/elasticsearch",
-        "description": "Free and Open Source, Distributed, RESTful Search Engine",
-        "language": "Java",
-        "stargazerCount": 78680,
-        "forkCount": 26250,
-        "todayStars": 68
+        "stargazerCount": 9431,
+        "forkCount": 3689,
+        "todayStars": 3
       },
       {
         "nameWithOwner": "TheAlgorithms/Java",
         "repoUrl": "https://github.com/TheAlgorithms/Java",
         "description": "All Algorithms implemented in Java",
         "language": "Java",
-        "stargazerCount": 67213,
-        "forkCount": 21529,
-        "todayStars": 362
+        "stargazerCount": 67230,
+        "forkCount": 21530,
+        "todayStars": 31
       },
       {
-        "nameWithOwner": "spring-projects/spring-boot",
-        "repoUrl": "https://github.com/spring-projects/spring-boot",
-        "description": "Spring Boot helps you to create Spring-powered, production-grade applications and services with absolute minimum fuss.",
+        "nameWithOwner": "jeecgboot/JeecgBoot",
+        "repoUrl": "https://github.com/jeecgboot/JeecgBoot",
+        "description": "一款免费开源的 AI 低代码平台，也是 AI 时代构建复杂业务系统的开源基座！权限、多租户、工作流、报表、大屏、AI 知识库等通用能力开箱即用，AI 只需生成业务差异部分。AI Skills 一句话生成完整系统——建表、前后端代码、菜单权限、BPM 流程、表单、报表、大屏全自动。内置 AI 应用平台（聊天、知识库、流程编排、MCP），兼容主流大模型",
         "language": "Java",
-        "stargazerCount": 81906,
-        "forkCount": 42766,
-        "todayStars": 55
+        "stargazerCount": 48462,
+        "forkCount": 16216,
+        "todayStars": 14
       },
       {
-        "nameWithOwner": "apache/flink",
-        "repoUrl": "https://github.com/apache/flink",
-        "description": "Apache Flink",
+        "nameWithOwner": "ashishps1/awesome-system-design-resources",
+        "repoUrl": "https://github.com/ashishps1/awesome-system-design-resources",
+        "description": "Learn System Design concepts and prepare for interviews using free resources.",
         "language": "Java",
-        "stargazerCount": 26467,
-        "forkCount": 14184,
-        "todayStars": 4
+        "stargazerCount": 43365,
+        "forkCount": 8970,
+        "todayStars": 43
       },
       {
         "nameWithOwner": "termux/termux-x11",
         "repoUrl": "https://github.com/termux/termux-x11",
         "description": "Termux X-server add-on.",
         "language": "Java",
-        "stargazerCount": 5130,
-        "forkCount": 830,
+        "stargazerCount": 5140,
+        "forkCount": 831,
         "todayStars": 12
       },
       {
-        "nameWithOwner": "AndreyPavlenko/Fermata",
-        "repoUrl": "https://github.com/AndreyPavlenko/Fermata",
-        "description": "",
+        "nameWithOwner": "kunal-kushwaha/DSA-Bootcamp-Java",
+        "repoUrl": "https://github.com/kunal-kushwaha/DSA-Bootcamp-Java",
+        "description": "This repository consists of the code samples, assignments, and notes for the Java data structures & algorithms + interview preparation bootcamp of WeMakeDevs.",
         "language": "Java",
-        "stargazerCount": 1508,
-        "forkCount": 237,
-        "todayStars": 5
+        "stargazerCount": 24138,
+        "forkCount": 13615,
+        "todayStars": 1
       },
       {
-        "nameWithOwner": "xuxueli/xxl-job",
-        "repoUrl": "https://github.com/xuxueli/xxl-job",
-        "description": "A distributed task scheduling framework.（分布式任务调度平台XXL-JOB）",
+        "nameWithOwner": "YunaiV/ruoyi-vue-pro",
+        "repoUrl": "https://github.com/YunaiV/ruoyi-vue-pro",
+        "description": "🔥 官方推荐 🔥 RuoYi-Vue 全新 Pro 版本，优化重构所有功能。基于 Spring Boot + MyBatis Plus + Vue & Element 实现的后台管理系统 + 微信小程序，支持 RBAC 动态权限、数据权限、SaaS 多租户、Flowable 工作流、三方登录、支付、短信、商城、CRM、ERP、MES、IM、AI 大模型、IoT 物联网等功能。你的 ⭐️ Star ⭐️，是作者生发的动力！",
         "language": "Java",
-        "stargazerCount": 30663,
-        "forkCount": 11492,
+        "stargazerCount": 40404,
+        "forkCount": 8672,
+        "todayStars": 21
+      },
+      {
+        "nameWithOwner": "OpenAPITools/openapi-generator",
+        "repoUrl": "https://github.com/OpenAPITools/openapi-generator",
+        "description": "OpenAPI Generator allows generation of API client libraries (SDK generation), server stubs, documentation and configuration automatically given an OpenAPI Spec (v2, v3)",
+        "language": "Java",
+        "stargazerCount": 26863,
+        "forkCount": 7760,
         "todayStars": 2
       },
       {
-        "nameWithOwner": "apache/solr",
-        "repoUrl": "https://github.com/apache/solr",
-        "description": "Apache Solr open-source search software",
+        "nameWithOwner": "apache/zookeeper",
+        "repoUrl": "https://github.com/apache/zookeeper",
+        "description": "Apache ZooKeeper",
         "language": "Java",
-        "stargazerCount": 1700,
-        "forkCount": 869,
-        "todayStars": 0
+        "stargazerCount": 12834,
+        "forkCount": 7331,
+        "todayStars": 1
       },
       {
-        "nameWithOwner": "jenkinsci/jenkins",
-        "repoUrl": "https://github.com/jenkinsci/jenkins",
-        "description": "Jenkins automation server",
+        "nameWithOwner": "kksimp/Mac.apk",
+        "repoUrl": "https://github.com/kksimp/Mac.apk",
+        "description": "Mac.apk: Run Android apps natively on Apple Silicon Macs",
         "language": "Java",
-        "stargazerCount": 26770,
-        "forkCount": 9826,
-        "todayStars": 8
-      },
-      {
-        "nameWithOwner": "microg/GmsCore",
-        "repoUrl": "https://github.com/microg/GmsCore",
-        "description": "Free implementation of Play Services",
-        "language": "Java",
-        "stargazerCount": 15289,
-        "forkCount": 3365,
-        "todayStars": 9
-      },
-      {
-        "nameWithOwner": "dataease/dataease",
-        "repoUrl": "https://github.com/dataease/dataease",
-        "description": "🔥 人人可用的开源 BI 工具，数据可视化神器。An open-source BI tool alternative to Tableau.",
-        "language": "Java",
-        "stargazerCount": 24691,
-        "forkCount": 4262,
-        "todayStars": 2
+        "stargazerCount": 4215,
+        "forkCount": 179,
+        "todayStars": 21
       },
       {
         "nameWithOwner": "jean-voila/FeurStagram",
         "repoUrl": "https://github.com/jean-voila/FeurStagram",
         "description": "Instagram without Reels, feed or ads: an open-source, updatable Instagram app for Android that keeps DMs and stories.",
         "language": "Java",
-        "stargazerCount": 1255,
+        "stargazerCount": 1267,
         "forkCount": 78,
-        "todayStars": 29
+        "todayStars": 9
       },
       {
-        "nameWithOwner": "DrKLO/Telegram",
-        "repoUrl": "https://github.com/DrKLO/Telegram",
-        "description": "Telegram for Android source",
+        "nameWithOwner": "agentscope-ai/agentscope-java",
+        "repoUrl": "https://github.com/agentscope-ai/agentscope-java",
+        "description": "Build distributed, production-grade, long-running agents.",
         "language": "Java",
-        "stargazerCount": 30270,
-        "forkCount": 10537,
-        "todayStars": 10
+        "stargazerCount": 6364,
+        "forkCount": 1607,
+        "todayStars": 14
       },
       {
-        "nameWithOwner": "openjdk/jdk",
-        "repoUrl": "https://github.com/openjdk/jdk",
-        "description": "JDK main-line developmenthttps://openjdk.org/projects/jdk",
+        "nameWithOwner": "648540858/wvp-GB28181-pro",
+        "repoUrl": "https://github.com/648540858/wvp-GB28181-pro",
+        "description": "基于GB28181-2016、部标808、部标1078标准实现的开箱即用的网络视频平台。自带管理页面，支持NAT穿透，支持海康、大华、宇视等品牌的IPC、NVR接入。支持国标级联，支持将普通摄像机/直播流/直播推流转国标共享到国标平台。",
         "language": "Java",
-        "stargazerCount": 23525,
-        "forkCount": 6603,
-        "todayStars": 7
+        "stargazerCount": 7433,
+        "forkCount": 2144,
+        "todayStars": 2
       },
       {
-        "nameWithOwner": "apache/ozone",
-        "repoUrl": "https://github.com/apache/ozone",
-        "description": "Scalable, reliable, distributed storage system optimized for data analytics and object store workloads.",
+        "nameWithOwner": "aleixrodriala/newtube",
+        "repoUrl": "https://github.com/aleixrodriala/newtube",
+        "description": "SmartTube for phones, unofficial: an open-source YouTube client for Android. Background play, PiP, SponsorBlock, DeArrow, save for offline, code sign-in.",
         "language": "Java",
-        "stargazerCount": 1334,
-        "forkCount": 657,
-        "todayStars": 0
+        "stargazerCount": 775,
+        "forkCount": 37,
+        "todayStars": 26
       },
       {
-        "nameWithOwner": "TGX-Android/Telegram-X",
-        "repoUrl": "https://github.com/TGX-Android/Telegram-X",
-        "description": "The main repository of Telegram X — official alternative Telegram client for Android.",
+        "nameWithOwner": "mlmvpn/mlmvpn_android",
+        "repoUrl": "https://github.com/mlmvpn/mlmvpn_android",
+        "description": "Multi-engine Android VPN — Xray, WARP, Psiphon, Tor, Geph, OpenVPN, MASQUE/AmneziaWG, and the MLM Adaptive Engine that routes each app by its own best path; Cloudflare panels, Config Studio, game booster. Kotlin + Jetpack Compose. | اپلیکیشن VPN چندموتورهٔ اندروید با موتور تطبیقی",
         "language": "Java",
-        "stargazerCount": 6193,
-        "forkCount": 1189,
-        "todayStars": 3
+        "stargazerCount": 707,
+        "forkCount": 114,
+        "todayStars": 9
       }
     ],
     "C++": [
+      {
+        "nameWithOwner": "Likely7/Veyra-NRVideo",
+        "repoUrl": "https://github.com/Likely7/Veyra-NRVideo",
+        "description": "Bring PS5 GTA6 to 120FPS with DLSS 5. An advanced Windows video player and capture enhancement tool featuring real-time preview for videos, images, and capture card sources. Combine AI-powered Super Resolution, DLSS5 image enhancement, and Frame Generation to deliver a next-generation visual experience.",
+        "language": "C++",
+        "stargazerCount": 1616,
+        "forkCount": 71,
+        "todayStars": 256
+      },
       {
         "nameWithOwner": "ggml-org/llama.cpp",
         "repoUrl": "https://github.com/ggml-org/llama.cpp",
         "description": "LLM inference in C/C++",
         "language": "C++",
-        "stargazerCount": 134557,
-        "forkCount": 25508,
-        "todayStars": 176
+        "stargazerCount": 134878,
+        "forkCount": 25576,
+        "todayStars": 494
       },
       {
-        "nameWithOwner": "facebookresearch/faiss",
-        "repoUrl": "https://github.com/facebookresearch/faiss",
-        "description": "A library for efficient similarity search and clustering of dense vectors.",
+        "nameWithOwner": "ggml-org/whisper.cpp",
+        "repoUrl": "https://github.com/ggml-org/whisper.cpp",
+        "description": "Port of OpenAI's Whisper model in C/C++",
         "language": "C++",
-        "stargazerCount": 41537,
-        "forkCount": 4624,
-        "todayStars": 81
-      },
-      {
-        "nameWithOwner": "Atmosphere-NX/Atmosphere",
-        "repoUrl": "https://github.com/Atmosphere-NX/Atmosphere",
-        "description": "Atmosphère is a work-in-progress customized firmware for the Nintendo Switch.",
-        "language": "C++",
-        "stargazerCount": 20366,
-        "forkCount": 1528,
-        "todayStars": 18
-      },
-      {
-        "nameWithOwner": "tensorflow/tensorflow",
-        "repoUrl": "https://github.com/tensorflow/tensorflow",
-        "description": "An Open Source Machine Learning Framework for Everyone",
-        "language": "C++",
-        "stargazerCount": 201585,
-        "forkCount": 77948,
-        "todayStars": 86
+        "stargazerCount": 55167,
+        "forkCount": 6300,
+        "todayStars": 40
       },
       {
         "nameWithOwner": "dariulone/cyberpunk-vr-port",
         "repoUrl": "https://github.com/dariulone/cyberpunk-vr-port",
         "description": "",
         "language": "C++",
-        "stargazerCount": 609,
+        "stargazerCount": 615,
         "forkCount": 62,
-        "todayStars": 31
+        "todayStars": 13
       },
       {
-        "nameWithOwner": "Tencent/ncnn",
-        "repoUrl": "https://github.com/Tencent/ncnn",
-        "description": "ncnn is a high-performance neural network inference framework optimized for the mobile platform",
+        "nameWithOwner": "boykopovar/AnyPS5",
+        "repoUrl": "https://github.com/boykopovar/AnyPS5",
+        "description": "Tool for automatic PS5 executables porting to Linux and Windows",
         "language": "C++",
-        "stargazerCount": 24047,
-        "forkCount": 4549,
-        "todayStars": 6
+        "stargazerCount": 53724,
+        "forkCount": 5124,
+        "todayStars": 239
+      },
+      {
+        "nameWithOwner": "facebookresearch/faiss",
+        "repoUrl": "https://github.com/facebookresearch/faiss",
+        "description": "A library for efficient similarity search and clustering of dense vectors.",
+        "language": "C++",
+        "stargazerCount": 41622,
+        "forkCount": 4632,
+        "todayStars": 89
       },
       {
         "nameWithOwner": "google/googletest",
@@ -1019,278 +974,278 @@
         "todayStars": 7
       },
       {
-        "nameWithOwner": "JakeATX/llamAmpere",
-        "repoUrl": "https://github.com/JakeATX/llamAmpere",
-        "description": "llama.cpp fork for significantly improved performance on Ampere generation Nvidia cards (especially RTX 3090 / 3090 Ti): example: 110+ tok/s over a 100K-token generation at temperature 1 for qwen3.8, supporting full 262K ctx. Supports low memory (12gb) configs for 200k+ ctx. 120+ TPS, 3300+ prefill for QFN 3.8.",
+        "nameWithOwner": "redpanda-data/redpanda",
+        "repoUrl": "https://github.com/redpanda-data/redpanda",
+        "description": "Redpanda is a streaming data platform for developers. Kafka API compatible. 10x faster. No ZooKeeper. No JVM!",
         "language": "C++",
-        "stargazerCount": 376,
-        "forkCount": 44,
-        "todayStars": 29
+        "stargazerCount": 12680,
+        "forkCount": 805,
+        "todayStars": 1
       },
       {
-        "nameWithOwner": "love2d/love",
-        "repoUrl": "https://github.com/love2d/love",
-        "description": "LÖVE is an awesome 2D game framework for Lua.",
+        "nameWithOwner": "eugeniosegala/MAKO",
+        "repoUrl": "https://github.com/eugeniosegala/MAKO",
+        "description": "Next-generation, Vulkan-powered graphics layer for Linux gaming, bringing frame generation, scaling and more, to Steam Deck, Steam Machine and desktop Linux.",
         "language": "C++",
-        "stargazerCount": 8957,
-        "forkCount": 670,
-        "todayStars": 15
+        "stargazerCount": 792,
+        "forkCount": 26,
+        "todayStars": 60
       },
       {
-        "nameWithOwner": "telegramdesktop/tdesktop",
-        "repoUrl": "https://github.com/telegramdesktop/tdesktop",
-        "description": "Telegram Desktop messaging app",
+        "nameWithOwner": "microsoft/BitNet",
+        "repoUrl": "https://github.com/microsoft/BitNet",
+        "description": "Official inference framework for 1-bit LLMs",
         "language": "C++",
-        "stargazerCount": 33546,
-        "forkCount": 7610,
-        "todayStars": 14
-      },
-      {
-        "nameWithOwner": "openxla/xla",
-        "repoUrl": "https://github.com/openxla/xla",
-        "description": "A machine learning compiler for GPUs, CPUs, and ML accelerators",
-        "language": "C++",
-        "stargazerCount": 4672,
-        "forkCount": 1010,
-        "todayStars": 7
-      },
-      {
-        "nameWithOwner": "protocolbuffers/protobuf",
-        "repoUrl": "https://github.com/protocolbuffers/protobuf",
-        "description": "Protocol Buffers - Google's data interchange format",
-        "language": "C++",
-        "stargazerCount": 72169,
-        "forkCount": 16357,
-        "todayStars": 5
-      },
-      {
-        "nameWithOwner": "notepad-plus-plus/notepad-plus-plus",
-        "repoUrl": "https://github.com/notepad-plus-plus/notepad-plus-plus",
-        "description": "Notepad++ official repository",
-        "language": "C++",
-        "stargazerCount": 29865,
-        "forkCount": 5432,
+        "stargazerCount": 41576,
+        "forkCount": 3881,
         "todayStars": 18
-      },
-      {
-        "nameWithOwner": "nlohmann/json",
-        "repoUrl": "https://github.com/nlohmann/json",
-        "description": "JSON for Modern C++",
-        "language": "C++",
-        "stargazerCount": 50895,
-        "forkCount": 7517,
-        "todayStars": 15
-      },
-      {
-        "nameWithOwner": "catchorg/Catch2",
-        "repoUrl": "https://github.com/catchorg/Catch2",
-        "description": "A modern, C++-native, test framework for unit-tests, TDD and BDD - using C++14, C++17 and later (C++11 support is in v2.x branch, and C++03 on the Catch1.x branch)",
-        "language": "C++",
-        "stargazerCount": 21575,
-        "forkCount": 3440,
-        "todayStars": 13
       }
     ],
     "C#": [
       {
-        "nameWithOwner": "obsproject/obs-studio",
-        "repoUrl": "https://github.com/obsproject/obs-studio",
-        "description": "OBS Studio - Free and open source software for live streaming and screen recording",
+        "nameWithOwner": "JustVugg/colibri",
+        "repoUrl": "https://github.com/JustVugg/colibri",
+        "description": "A hierarchical inference engine for frontier MoE models: hot experts on the GPU (CUDA, Vulkan), warm ones in RAM, cold ones streamed from NVMe. Written in C, runs on the hardware you already own.",
         "language": "C",
-        "stargazerCount": 79472,
-        "forkCount": 11233,
-        "todayStars": 103
+        "stargazerCount": 50868,
+        "forkCount": 6020,
+        "todayStars": 488
+      },
+      {
+        "nameWithOwner": "Genymobile/scrcpy",
+        "repoUrl": "https://github.com/Genymobile/scrcpy",
+        "description": "Display and control your Android device",
+        "language": "C",
+        "stargazerCount": 154758,
+        "forkCount": 14208,
+        "todayStars": 84
+      },
+      {
+        "nameWithOwner": "nothings/stb",
+        "repoUrl": "https://github.com/nothings/stb",
+        "description": "stb single-file public domain libraries for C/C++",
+        "language": "C",
+        "stargazerCount": 35025,
+        "forkCount": 8123,
+        "todayStars": 8
+      },
+      {
+        "nameWithOwner": "pbatard/rufus",
+        "repoUrl": "https://github.com/pbatard/rufus",
+        "description": "The Reliable USB Formatting Utility",
+        "language": "C",
+        "stargazerCount": 38334,
+        "forkCount": 3209,
+        "todayStars": 9
       },
       {
         "nameWithOwner": "CTCaer/hekate",
         "repoUrl": "https://github.com/CTCaer/hekate",
         "description": "hekate - A GUI based Nintendo Switch Bootloader",
         "language": "C",
-        "stargazerCount": 9012,
-        "forkCount": 699,
-        "todayStars": 25
+        "stargazerCount": 9023,
+        "forkCount": 700,
+        "todayStars": 8
       },
       {
-        "nameWithOwner": "ventoy/Ventoy",
-        "repoUrl": "https://github.com/ventoy/Ventoy",
-        "description": "A new bootable USB solution.",
+        "nameWithOwner": "quickjs-ng/quickjs",
+        "repoUrl": "https://github.com/quickjs-ng/quickjs",
+        "description": "QuickJS, the Next Generation: a mighty JavaScript engine",
         "language": "C",
-        "stargazerCount": 80849,
-        "forkCount": 5088,
-        "todayStars": 73
+        "stargazerCount": 4147,
+        "forkCount": 443,
+        "todayStars": 15
       },
       {
-        "nameWithOwner": "redis/redis",
-        "repoUrl": "https://github.com/redis/redis",
-        "description": "For developers, who are building real-time data-driven applications, Redis is the preferred, fastest, and most feature-rich cache, data structure server, and document and vector query engine.",
+        "nameWithOwner": "UberGuidoZ/Flipper",
+        "repoUrl": "https://github.com/UberGuidoZ/Flipper",
+        "description": "Playground (and dump) of stuff I make or modify for the Flipper Zero",
         "language": "C",
-        "stargazerCount": 77485,
-        "forkCount": 25055,
-        "todayStars": 79
+        "stargazerCount": 17822,
+        "forkCount": 3930,
+        "todayStars": 5
       },
       {
-        "nameWithOwner": "freebsd/freebsd-src",
-        "repoUrl": "https://github.com/freebsd/freebsd-src",
-        "description": "The FreeBSD src tree publish-only repository. Experimenting with 'simple' pull requests....",
+        "nameWithOwner": "duixcom/Duix-Avatar",
+        "repoUrl": "https://github.com/duixcom/Duix-Avatar",
+        "description": "🚀 Truly open-source AI avatar(digital human) toolkit for offline video generation and digital human cloning.",
         "language": "C",
-        "stargazerCount": 9457,
-        "forkCount": 3482,
-        "todayStars": 7
+        "stargazerCount": 16335,
+        "forkCount": 2788,
+        "todayStars": 18
       },
       {
-        "nameWithOwner": "DarkFlippers/unleashed-firmware",
-        "repoUrl": "https://github.com/DarkFlippers/unleashed-firmware",
-        "description": "Flipper Zero Unleashed Firmware",
+        "nameWithOwner": "KernelSU-Next/KernelSU-Next",
+        "repoUrl": "https://github.com/KernelSU-Next/KernelSU-Next",
+        "description": "An advanced Kernel based root solution for Android",
         "language": "C",
-        "stargazerCount": 22715,
-        "forkCount": 1984,
+        "stargazerCount": 4832,
+        "forkCount": 1278,
+        "todayStars": 14
+      },
+      {
+        "nameWithOwner": "FreeRTOS/FreeRTOS-Kernel",
+        "repoUrl": "https://github.com/FreeRTOS/FreeRTOS-Kernel",
+        "description": "FreeRTOS kernel files only, submoduled intohttps://github.com/FreeRTOS/FreeRTOSand various other repos.",
+        "language": "C",
+        "stargazerCount": 4652,
+        "forkCount": 1655,
+        "todayStars": 1
+      },
+      {
+        "nameWithOwner": "daijro/camoufox",
+        "repoUrl": "https://github.com/daijro/camoufox",
+        "description": "🦊 Anti-detect browser",
+        "language": "C",
+        "stargazerCount": 13245,
+        "forkCount": 1117,
         "todayStars": 22
-      },
-      {
-        "nameWithOwner": "SlickAmogus/silent-hill-decomp",
-        "repoUrl": "https://github.com/SlickAmogus/silent-hill-decomp",
-        "description": "Multiplatform and Feature-rich Port based on PSX decompilation of Silent Hill 1 made with Claude and Psycross. Still in beta and is in active development.",
-        "language": "C",
-        "stargazerCount": 851,
-        "forkCount": 69,
-        "todayStars": 3
       }
     ],
     "PHP": [
       {
-        "nameWithOwner": "openemr/openemr",
-        "repoUrl": "https://github.com/openemr/openemr",
-        "description": "The most popular open source electronic health records and medical practice management solution.",
+        "nameWithOwner": "glpi-project/glpi",
+        "repoUrl": "https://github.com/glpi-project/glpi",
+        "description": "GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.",
         "language": "PHP",
-        "stargazerCount": 5597,
-        "forkCount": 3131,
-        "todayStars": 3
-      },
-      {
-        "nameWithOwner": "nextcloud/all-in-one",
-        "repoUrl": "https://github.com/nextcloud/all-in-one",
-        "description": "📦 The official Nextcloud installation method. Provides easy deployment and maintenance with most features included in this one Nextcloud instance.",
-        "language": "PHP",
-        "stargazerCount": 10822,
-        "forkCount": 1134,
-        "todayStars": 9
-      },
-      {
-        "nameWithOwner": "woocommerce/woocommerce",
-        "repoUrl": "https://github.com/woocommerce/woocommerce",
-        "description": "A customizable, open-source ecommerce platform built on WordPress. Build any commerce solution you can imagine.",
-        "language": "PHP",
-        "stargazerCount": 10598,
-        "forkCount": 10664,
+        "stargazerCount": 6593,
+        "forkCount": 1869,
         "todayStars": 5
       },
       {
-        "nameWithOwner": "Leantime/leantime",
-        "repoUrl": "https://github.com/Leantime/leantime",
-        "description": "Leantime is a goals focused project management system for non-project managers. Building with ADHD, Autism, and dyslexia in mind.",
+        "nameWithOwner": "grokability/snipe-it",
+        "repoUrl": "https://github.com/grokability/snipe-it",
+        "description": "A free open source IT asset/license management system",
         "language": "PHP",
-        "stargazerCount": 12091,
-        "forkCount": 1181,
-        "todayStars": 11
+        "stargazerCount": 15186,
+        "forkCount": 4065,
+        "todayStars": 6
       },
       {
-        "nameWithOwner": "espocrm/espocrm",
-        "repoUrl": "https://github.com/espocrm/espocrm",
-        "description": "EspoCRM – Open Source CRM Application",
+        "nameWithOwner": "aureuserp/aureuserp",
+        "repoUrl": "https://github.com/aureuserp/aureuserp",
+        "description": "Free and Open Source ERP software",
         "language": "PHP",
-        "stargazerCount": 3599,
-        "forkCount": 1035,
-        "todayStars": 21
+        "stargazerCount": 12214,
+        "forkCount": 625,
+        "todayStars": 9
       },
       {
-        "nameWithOwner": "danielmiessler/SecLists",
-        "repoUrl": "https://github.com/danielmiessler/SecLists",
-        "description": "SecLists is the security tester's companion. It's a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more.",
+        "nameWithOwner": "mailcow/mailcow-dockerized",
+        "repoUrl": "https://github.com/mailcow/mailcow-dockerized",
+        "description": "mailcow: dockerized - 🐮 + 🐋 = 💕",
         "language": "PHP",
-        "stargazerCount": 74727,
-        "forkCount": 25194,
-        "todayStars": 19
-      },
-      {
-        "nameWithOwner": "vimeo/psalm",
-        "repoUrl": "https://github.com/vimeo/psalm",
-        "description": "A PHP static analysis tool for finding errors and security vulnerabilities in PHP applications",
-        "language": "PHP",
-        "stargazerCount": 5928,
-        "forkCount": 730,
-        "todayStars": 2
-      },
-      {
-        "nameWithOwner": "matomo-org/matomo",
-        "repoUrl": "https://github.com/matomo-org/matomo",
-        "description": "Empowering People Ethically 🚀 — Matomo is hiring! Join us →https://matomo.org/jobsMatomo is the leading open-source alternative to Google Analytics, giving you complete control and built-in privacy. Easily collect, visualise, and analyse data from websites & apps. Star us on GitHub ⭐️ – Pull Requests welcome!",
-        "language": "PHP",
-        "stargazerCount": 22028,
-        "forkCount": 2931,
-        "todayStars": 4
+        "stargazerCount": 13805,
+        "forkCount": 1868,
+        "todayStars": 15
       },
       {
         "nameWithOwner": "cedar2025/Xboard",
         "repoUrl": "https://github.com/cedar2025/Xboard",
         "description": "High-performance panel based on V2board secondary development supporting new protocols and new features",
         "language": "PHP",
-        "stargazerCount": 4861,
+        "stargazerCount": 4864,
         "forkCount": 1387,
-        "todayStars": 4
+        "todayStars": 2
       },
       {
-        "nameWithOwner": "bagisto/bagisto",
-        "repoUrl": "https://github.com/bagisto/bagisto",
-        "description": "Open Source eCommerce & Multi-Vendor Marketplace Platform Built with Laravel for Enterprise-Scale Commerce, Supporting 10M+ SKUs",
+        "nameWithOwner": "kimai/kimai",
+        "repoUrl": "https://github.com/kimai/kimai",
+        "description": "Kimai is the #1 open-source time-tracking application. From freelancers to companies and organisations - everyone can manage timesheets, generate reports, create invoices and so much more... Web-based multi-user application, available as On-Premise or SaaS version:https://www.kimai.org",
         "language": "PHP",
-        "stargazerCount": 28365,
-        "forkCount": 3388,
-        "todayStars": 5
+        "stargazerCount": 5161,
+        "forkCount": 887,
+        "todayStars": 8
       },
       {
-        "nameWithOwner": "leokhoa/laragon",
-        "repoUrl": "https://github.com/leokhoa/laragon",
-        "description": "Laragon is a portable, isolated, fast & powerful universal development environment for PHP, Node.js, Python. It is fast, lightweight, easy-to-use and easy-to-extend.",
+        "nameWithOwner": "espocrm/espocrm",
+        "repoUrl": "https://github.com/espocrm/espocrm",
+        "description": "EspoCRM – Open Source CRM Application",
         "language": "PHP",
-        "stargazerCount": 5462,
-        "forkCount": 510,
-        "todayStars": 1
+        "stargazerCount": 3610,
+        "forkCount": 1039,
+        "todayStars": 9
       },
       {
-        "nameWithOwner": "pterodactyl/panel",
-        "repoUrl": "https://github.com/pterodactyl/panel",
-        "description": "Pterodactyl® is a free, open-source game server management panel built with PHP, React, and Go. Designed with security in mind, Pterodactyl runs all game servers in isolated Docker containers while exposing a beautiful and intuitive UI to end users.",
+        "nameWithOwner": "vimeo/psalm",
+        "repoUrl": "https://github.com/vimeo/psalm",
+        "description": "A PHP static analysis tool for finding errors and security vulnerabilities in PHP applications",
         "language": "PHP",
-        "stargazerCount": 9505,
-        "forkCount": 2751,
-        "todayStars": 5
+        "stargazerCount": 5929,
+        "forkCount": 730,
+        "todayStars": 2
       },
       {
-        "nameWithOwner": "filamentphp/filament",
-        "repoUrl": "https://github.com/filamentphp/filament",
-        "description": "An open-source framework for building polished, maintainable business software with Laravel.",
+        "nameWithOwner": "mautic/mautic",
+        "repoUrl": "https://github.com/mautic/mautic",
+        "description": "Mautic: Open Source Marketing Automation Software.",
         "language": "PHP",
-        "stargazerCount": 32489,
-        "forkCount": 4240,
+        "stargazerCount": 10986,
+        "forkCount": 3541,
+        "todayStars": 9
+      },
+      {
+        "nameWithOwner": "Dolibarr/dolibarr",
+        "repoUrl": "https://github.com/Dolibarr/dolibarr",
+        "description": "Dolibarr ERP CRM is a modern software package to manage your company or foundation's activity (contacts, suppliers, invoices, orders, stocks, agenda, accounting, ...). it's an open source Web application (written in PHP) designed for businesses of any sizes, foundations and freelancers.",
+        "language": "PHP",
+        "stargazerCount": 7867,
+        "forkCount": 3621,
         "todayStars": 6
       },
       {
-        "nameWithOwner": "roundcube/roundcubemail",
-        "repoUrl": "https://github.com/roundcube/roundcubemail",
-        "description": "The Roundcube Webmail suite",
+        "nameWithOwner": "nextcloud/server",
+        "repoUrl": "https://github.com/nextcloud/server",
+        "description": "☁️ Nextcloud server, a safe home for all your data",
         "language": "PHP",
-        "stargazerCount": 7273,
-        "forkCount": 1808,
+        "stargazerCount": 37512,
+        "forkCount": 5354,
+        "todayStars": 17
+      },
+      {
+        "nameWithOwner": "danielmiessler/SecLists",
+        "repoUrl": "https://github.com/danielmiessler/SecLists",
+        "description": "SecLists is the security tester's companion. It's a collection of multiple types of lists used during security assessments, collected in one place. List types include usernames, passwords, URLs, sensitive data patterns, fuzzing payloads, web shells, and many more.",
+        "language": "PHP",
+        "stargazerCount": 74748,
+        "forkCount": 25194,
+        "todayStars": 31
+      },
+      {
+        "nameWithOwner": "laravel/framework",
+        "repoUrl": "https://github.com/laravel/framework",
+        "description": "Laravel is a web application framework with expressive, elegant syntax.",
+        "language": "PHP",
+        "stargazerCount": 34998,
+        "forkCount": 12031,
         "todayStars": 3
       },
       {
-        "nameWithOwner": "phpmyadmin/phpmyadmin",
-        "repoUrl": "https://github.com/phpmyadmin/phpmyadmin",
-        "description": "A web interface for MySQL and MariaDB",
+        "nameWithOwner": "FreshRSS/FreshRSS",
+        "repoUrl": "https://github.com/FreshRSS/FreshRSS",
+        "description": "A free, self-hostable news aggregator…",
         "language": "PHP",
-        "stargazerCount": 7975,
-        "forkCount": 3623,
-        "todayStars": 0
+        "stargazerCount": 16581,
+        "forkCount": 1347,
+        "todayStars": 13
+      },
+      {
+        "nameWithOwner": "krayin/laravel-crm",
+        "repoUrl": "https://github.com/krayin/laravel-crm",
+        "description": "Krayin CRM is Free & Open Source CRM Built with Laravel for Customer, Lead, and Sales Management.",
+        "language": "PHP",
+        "stargazerCount": 24150,
+        "forkCount": 1685,
+        "todayStars": 3
+      },
+      {
+        "nameWithOwner": "InvoiceShelf/InvoiceShelf",
+        "repoUrl": "https://github.com/InvoiceShelf/InvoiceShelf",
+        "description": "Open Source Invoicing Solution for Individuals & Businesses",
+        "language": "PHP",
+        "stargazerCount": 1997,
+        "forkCount": 413,
+        "todayStars": 49
       },
       {
         "nameWithOwner": "EC-CUBE/ec-cube",
@@ -1300,116 +1255,125 @@
         "stargazerCount": 792,
         "forkCount": 713,
         "todayStars": 0
+      },
+      {
+        "nameWithOwner": "shopware/shopware",
+        "repoUrl": "https://github.com/shopware/shopware",
+        "description": "Shopware 6 is an open commerce platform based on Symfony Framework and Vue and supported by a worldwide community and more than 3.100 community extensions",
+        "language": "PHP",
+        "stargazerCount": 3471,
+        "forkCount": 1226,
+        "todayStars": 0
       }
     ],
     "Swift": [
-      {
-        "nameWithOwner": "xtool-org/xtool",
-        "repoUrl": "https://github.com/xtool-org/xtool",
-        "description": "Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, macOS.",
-        "language": "Swift",
-        "stargazerCount": 15400,
-        "forkCount": 918,
-        "todayStars": 96
-      },
       {
         "nameWithOwner": "apple/container",
         "repoUrl": "https://github.com/apple/container",
         "description": "A tool for creating and running Linux containers using lightweight virtual machines on a Mac. It is written in Swift, and optimized for Apple silicon.",
         "language": "Swift",
-        "stargazerCount": 51319,
-        "forkCount": 1821,
-        "todayStars": 149
+        "stargazerCount": 51435,
+        "forkCount": 1822,
+        "todayStars": 104
       },
       {
-        "nameWithOwner": "microsoft/Procexp-Mac",
-        "repoUrl": "https://github.com/microsoft/Procexp-Mac",
-        "description": "Process Explorer for MacOS",
+        "nameWithOwner": "jaywcjlove/awesome-mac",
+        "repoUrl": "https://github.com/jaywcjlove/awesome-mac",
+        "description": " This project is dedicated to collecting high-quality macOS software and organizing them systematically by different categories for easy search and use.",
         "language": "Swift",
-        "stargazerCount": 786,
-        "forkCount": 23,
-        "todayStars": 243
-      },
-      {
-        "nameWithOwner": "maxgoedjen/secretive",
-        "repoUrl": "https://github.com/maxgoedjen/secretive",
-        "description": "Protect your SSH keys with your Mac's Secure Enclave",
-        "language": "Swift",
-        "stargazerCount": 9385,
-        "forkCount": 236,
-        "todayStars": 43
-      },
-      {
-        "nameWithOwner": "frs0n/GestaltEdit",
-        "repoUrl": "https://github.com/frs0n/GestaltEdit",
-        "description": "iOS 27 MobileGestalt editor",
-        "language": "Swift",
-        "stargazerCount": 1019,
-        "forkCount": 80,
-        "todayStars": 41
+        "stargazerCount": 118467,
+        "forkCount": 10282,
+        "todayStars": 84
       },
       {
         "nameWithOwner": "vorssaint/vorssaint-utils",
         "repoUrl": "https://github.com/vorssaint/vorssaint-utils",
         "description": "Free and open-source macOS menu bar toolkit.",
         "language": "Swift",
-        "stargazerCount": 34493,
-        "forkCount": 1737,
-        "todayStars": 276
+        "stargazerCount": 34615,
+        "forkCount": 1750,
+        "todayStars": 131
       },
       {
-        "nameWithOwner": "sozercan/kaset",
-        "repoUrl": "https://github.com/sozercan/kaset",
-        "description": "📼 The missing YouTube and YouTube Music macOS app",
+        "nameWithOwner": "frs0n/GestaltEdit",
+        "repoUrl": "https://github.com/frs0n/GestaltEdit",
+        "description": "iOS 27 MobileGestalt editor",
         "language": "Swift",
-        "stargazerCount": 2578,
-        "forkCount": 196,
-        "todayStars": 15
+        "stargazerCount": 1038,
+        "forkCount": 81,
+        "todayStars": 21
       },
       {
-        "nameWithOwner": "ggml-org/Llama-macOS",
-        "repoUrl": "https://github.com/ggml-org/Llama-macOS",
-        "description": "A cosy home for your LLMs.",
+        "nameWithOwner": "xtool-org/xtool",
+        "repoUrl": "https://github.com/xtool-org/xtool",
+        "description": "Cross-platform Xcode replacement. Build and deploy iOS apps with SwiftPM on Linux, Windows, macOS.",
         "language": "Swift",
-        "stargazerCount": 1788,
-        "forkCount": 145,
+        "stargazerCount": 15460,
+        "forkCount": 926,
+        "todayStars": 69
+      },
+      {
+        "nameWithOwner": "sw33tLie/macshot",
+        "repoUrl": "https://github.com/sw33tLie/macshot",
+        "description": "Feature-packed native macOS screenshot & recording tool: annotate, auto-redact PII, record GIFs, OCR + translate, scroll capture, beautify, and more. No Electron, no subscription.",
+        "language": "Swift",
+        "stargazerCount": 4142,
+        "forkCount": 282,
+        "todayStars": 10
+      },
+      {
+        "nameWithOwner": "Caldis/Mos",
+        "repoUrl": "https://github.com/Caldis/Mos",
+        "description": "一个用于在 macOS 上平滑你的鼠标滚动效果或单独设置滚动方向的小工具, 让你的滚轮爽如触控板 | A lightweight tool used to smooth scrolling and set scroll direction independently for your mouse on macOS",
+        "language": "Swift",
+        "stargazerCount": 21913,
+        "forkCount": 710,
         "todayStars": 12
       },
       {
-        "nameWithOwner": "LiveContainer/LiveContainer",
-        "repoUrl": "https://github.com/LiveContainer/LiveContainer",
-        "description": "Run iOS apps without actually installing them!",
+        "nameWithOwner": "MonitorControl/MonitorControl",
+        "repoUrl": "https://github.com/MonitorControl/MonitorControl",
+        "description": "🖥 Control your display's brightness & volume on your Mac as if it was a native Apple Display. Use Apple Keyboard keys or custom shortcuts. Shows the native macOS OSDs.",
         "language": "Swift",
-        "stargazerCount": 14146,
-        "forkCount": 1323,
-        "todayStars": 29
+        "stargazerCount": 34718,
+        "forkCount": 1041,
+        "todayStars": 16
       },
       {
-        "nameWithOwner": "jellyfin/Swiftfin",
-        "repoUrl": "https://github.com/jellyfin/Swiftfin",
-        "description": "Native Jellyfin Client for iOS and tvOS",
+        "nameWithOwner": "FrizzleM/SideInstaller",
+        "repoUrl": "https://github.com/FrizzleM/SideInstaller",
+        "description": "An an app that installs Sidestore on iOS 27, fully on-device",
         "language": "Swift",
-        "stargazerCount": 4275,
-        "forkCount": 657,
-        "todayStars": 2
+        "stargazerCount": 1419,
+        "forkCount": 114,
+        "todayStars": 17
       },
       {
-        "nameWithOwner": "swiftbar/SwiftBar",
-        "repoUrl": "https://github.com/swiftbar/SwiftBar",
-        "description": "Powerful macOS menu bar customization tool",
+        "nameWithOwner": "microsoft/Procexp-Mac",
+        "repoUrl": "https://github.com/microsoft/Procexp-Mac",
+        "description": "Process Explorer for MacOS",
         "language": "Swift",
-        "stargazerCount": 4787,
-        "forkCount": 145,
-        "todayStars": 8
+        "stargazerCount": 907,
+        "forkCount": 26,
+        "todayStars": 148
       },
       {
-        "nameWithOwner": "exelban/stats",
-        "repoUrl": "https://github.com/exelban/stats",
-        "description": "macOS system monitor in your menu bar",
+        "nameWithOwner": "iFurySt/open-computer-use",
+        "repoUrl": "https://github.com/iFurySt/open-computer-use",
+        "description": "👾 Open Computer Use – Open-Source Alternative to Codex Computer Use",
         "language": "Swift",
-        "stargazerCount": 43348,
-        "forkCount": 1627,
-        "todayStars": 32
+        "stargazerCount": 2964,
+        "forkCount": 274,
+        "todayStars": 19
+      },
+      {
+        "nameWithOwner": "caezium/burrow",
+        "repoUrl": "https://github.com/caezium/burrow",
+        "description": "🐹 Cleanup, app management, maintenance, disk analysis, and live status in one free, open-source, native Mac app + extensive support for AI agents.",
+        "language": "Swift",
+        "stargazerCount": 1771,
+        "forkCount": 186,
+        "todayStars": 16
       }
     ],
     "Kotlin": [
@@ -1418,227 +1382,227 @@
         "repoUrl": "https://github.com/tidain/YunX-Desktop",
         "description": "YunX（云析）的官方 windows 桌面端",
         "language": "Kotlin",
-        "stargazerCount": 5168,
-        "forkCount": 399,
-        "todayStars": 529
-      },
-      {
-        "nameWithOwner": "wasi-master/wmkeyboard",
-        "repoUrl": "https://github.com/wasi-master/wmkeyboard",
-        "description": "A modern, privacy-first Android keyboard: offline intelligence, 600+ languages, themes, tools and an addon ecosystem.",
-        "language": "Kotlin",
-        "stargazerCount": 935,
-        "forkCount": 55,
-        "todayStars": 30
+        "stargazerCount": 5605,
+        "forkCount": 435,
+        "todayStars": 457
       },
       {
         "nameWithOwner": "CYQawa/YunX",
         "repoUrl": "https://github.com/CYQawa/YunX",
         "description": "YunX云析 ✨一个安卓 网盘解析 + 视频平台解析 下载app✨",
         "language": "Kotlin",
-        "stargazerCount": 7557,
-        "forkCount": 398,
-        "todayStars": 249
-      },
-      {
-        "nameWithOwner": "samolego/Canta",
-        "repoUrl": "https://github.com/samolego/Canta",
-        "description": "Uninstall any Android app without root (with power of Shizuku). Debloat your device as you wish, with Android app or even from your browser!",
-        "language": "Kotlin",
-        "stargazerCount": 7166,
-        "forkCount": 174,
-        "todayStars": 73
+        "stargazerCount": 7763,
+        "forkCount": 408,
+        "todayStars": 209
       },
       {
         "nameWithOwner": "recloudstream/cloudstream",
         "repoUrl": "https://github.com/recloudstream/cloudstream",
         "description": "Android app for streaming and downloading media.",
         "language": "Kotlin",
-        "stargazerCount": 11273,
-        "forkCount": 1204,
-        "todayStars": 33
+        "stargazerCount": 11286,
+        "forkCount": 1207,
+        "todayStars": 20
       },
       {
-        "nameWithOwner": "JunkFood02/Seal",
-        "repoUrl": "https://github.com/JunkFood02/Seal",
-        "description": "🦭 Video/Audio Downloader for Android, based on yt-dlp",
+        "nameWithOwner": "Lelonio/Square",
+        "repoUrl": "https://github.com/Lelonio/Square",
+        "description": "Unofficial YouTube Music / Spotify Premium client for Android, built in Liquid Glass. Audio effects, Spotify Connect, listening history, 8 languages. Rust core on librespot.",
         "language": "Kotlin",
-        "stargazerCount": 30611,
-        "forkCount": 1558,
-        "todayStars": 35
+        "stargazerCount": 517,
+        "forkCount": 53,
+        "todayStars": 4
       },
       {
-        "nameWithOwner": "andreknieriem/open-headunit",
-        "repoUrl": "https://github.com/andreknieriem/open-headunit",
-        "description": "Headunit App for displaying Android Auto",
+        "nameWithOwner": "tasks/tasks",
+        "repoUrl": "https://github.com/tasks/tasks",
+        "description": "Bringing Astrid Tasks back from the dead",
         "language": "Kotlin",
-        "stargazerCount": 3291,
-        "forkCount": 315,
+        "stargazerCount": 5741,
+        "forkCount": 677,
+        "todayStars": 1
+      },
+      {
+        "nameWithOwner": "fcitx5-android/fcitx5-android",
+        "repoUrl": "https://github.com/fcitx5-android/fcitx5-android",
+        "description": "Fcitx5 input method framework and engines ported to Android",
+        "language": "Kotlin",
+        "stargazerCount": 5901,
+        "forkCount": 510,
+        "todayStars": 5
+      },
+      {
+        "nameWithOwner": "ahXN00/OwnTV",
+        "repoUrl": "https://github.com/ahXN00/OwnTV",
+        "description": "Native Android TV IPTV player — Kotlin, Compose for TV, ExoPlayer + mpv. Xtream, M3U and Stalker portals, EPG, catch-up TV, profiles and downloads.",
+        "language": "Kotlin",
+        "stargazerCount": 811,
+        "forkCount": 196,
+        "todayStars": 26
+      },
+      {
+        "nameWithOwner": "damontecres/Wholphin",
+        "repoUrl": "https://github.com/damontecres/Wholphin",
+        "description": "An OSS Android TV client for Jellyfin",
+        "language": "Kotlin",
+        "stargazerCount": 3331,
+        "forkCount": 244,
         "todayStars": 10
       },
       {
-        "nameWithOwner": "rikkahub/rikkahub",
-        "repoUrl": "https://github.com/rikkahub/rikkahub",
-        "description": "RikkaHub is an Android APP that supports for multiple LLM providers.",
+        "nameWithOwner": "amir1376/ab-download-manager",
+        "repoUrl": "https://github.com/amir1376/ab-download-manager",
+        "description": "A Download Manager that speeds up your downloads",
         "language": "Kotlin",
-        "stargazerCount": 8817,
-        "forkCount": 883,
-        "todayStars": 28
+        "stargazerCount": 19264,
+        "forkCount": 1027,
+        "todayStars": 29
       },
       {
-        "nameWithOwner": "android/nowinandroid",
-        "repoUrl": "https://github.com/android/nowinandroid",
-        "description": "A fully functional Android app built entirely with Kotlin and Jetpack Compose",
+        "nameWithOwner": "mihonapp/mihon",
+        "repoUrl": "https://github.com/mihonapp/mihon",
+        "description": "Free and open source manga reader for Android",
         "language": "Kotlin",
-        "stargazerCount": 22075,
-        "forkCount": 4715,
-        "todayStars": 6
+        "stargazerCount": 25276,
+        "forkCount": 1804,
+        "todayStars": 31
       },
       {
-        "nameWithOwner": "HydeYYHH/Litube",
-        "repoUrl": "https://github.com/HydeYYHH/Litube",
-        "description": "An unofficial, open-source YouTube client for Android.",
+        "nameWithOwner": "2dust/v2rayNG",
+        "repoUrl": "https://github.com/2dust/v2rayNG",
+        "description": "A V2Ray client for Android, support Xray core and v2fly core",
         "language": "Kotlin",
-        "stargazerCount": 611,
-        "forkCount": 48,
-        "todayStars": 8
+        "stargazerCount": 65837,
+        "forkCount": 8620,
+        "todayStars": 63
       },
       {
-        "nameWithOwner": "keiyoushi/extensions-source",
-        "repoUrl": "https://github.com/keiyoushi/extensions-source",
-        "description": "Source code of extensions inhttps://github.com/keiyoushi/extensions",
+        "nameWithOwner": "vivizzz007/vivi-music",
+        "repoUrl": "https://github.com/vivizzz007/vivi-music",
+        "description": "Vivi-Music is an expressive Material 3–based YouTube Music client for Android.",
         "language": "Kotlin",
-        "stargazerCount": 4891,
-        "forkCount": 1834,
-        "todayStars": 4
+        "stargazerCount": 4154,
+        "forkCount": 155,
+        "todayStars": 20
       }
     ],
     "Dart": [
       {
-        "nameWithOwner": "flutter/flutter",
-        "repoUrl": "https://github.com/flutter/flutter",
-        "description": "Flutter makes it easy and fast to build beautiful apps for mobile and beyond",
+        "nameWithOwner": "KaringX/karing",
+        "repoUrl": "https://github.com/KaringX/karing",
+        "description": "Simple & Powerful proxy utility, Support routing rules for clash/sing-box",
         "language": "Dart",
-        "stargazerCount": 181253,
-        "forkCount": 32174,
-        "todayStars": 79
+        "stargazerCount": 16136,
+        "forkCount": 1357,
+        "todayStars": 25
+      },
+      {
+        "nameWithOwner": "CyrilPeng/Venera-Next",
+        "repoUrl": "https://github.com/CyrilPeng/Venera-Next",
+        "description": "VeneraNext 是一个跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源、第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
+        "language": "Dart",
+        "stargazerCount": 2284,
+        "forkCount": 78,
+        "todayStars": 18
       },
       {
         "nameWithOwner": "localsend/localsend",
         "repoUrl": "https://github.com/localsend/localsend",
         "description": "An open-source cross-platform alternative to AirDrop",
         "language": "Dart",
-        "stargazerCount": 98705,
-        "forkCount": 5637,
-        "todayStars": 221
+        "stargazerCount": 98868,
+        "forkCount": 5653,
+        "todayStars": 177
       },
       {
         "nameWithOwner": "KaringX/clashmi",
         "repoUrl": "https://github.com/KaringX/clashmi",
         "description": "Clash Mihomo for iOS/MacOS/Android/Windows/Linux",
         "language": "Dart",
-        "stargazerCount": 10461,
-        "forkCount": 655,
-        "todayStars": 32
-      },
-      {
-        "nameWithOwner": "KaringX/karing",
-        "repoUrl": "https://github.com/KaringX/karing",
-        "description": "Simple & Powerful proxy utility, Support routing rules for clash/sing-box",
-        "language": "Dart",
-        "stargazerCount": 16122,
-        "forkCount": 1352,
-        "todayStars": 28
-      },
-      {
-        "nameWithOwner": "lollipopkit/flutter_server_box",
-        "repoUrl": "https://github.com/lollipopkit/flutter_server_box",
-        "description": "ServerBox - high performance server toolbox app & server written in Flutter & Rust.",
-        "language": "Dart",
-        "stargazerCount": 8999,
-        "forkCount": 578,
-        "todayStars": 10
-      },
-      {
-        "nameWithOwner": "ZhFahim/anchor",
-        "repoUrl": "https://github.com/ZhFahim/anchor",
-        "description": "Offline first, self hostable note taking application",
-        "language": "Dart",
-        "stargazerCount": 1715,
-        "forkCount": 72,
-        "todayStars": 38
-      },
-      {
-        "nameWithOwner": "UnboundTechCo/defyxVPN",
-        "repoUrl": "https://github.com/UnboundTechCo/defyxVPN",
-        "description": "A modern, secure VPN application built with Flutter that provides internet freedom and privacy protection.",
-        "language": "Dart",
-        "stargazerCount": 926,
-        "forkCount": 83,
-        "todayStars": 7
-      },
-      {
-        "nameWithOwner": "AppFlowy-IO/AppFlowy",
-        "repoUrl": "https://github.com/AppFlowy-IO/AppFlowy",
-        "description": "Bring projects, wikis, and teams together with AI. AppFlowy is the AI collaborative workspace where you achieve more without losing control of your data. The leading open source Notion alternative.",
-        "language": "Dart",
-        "stargazerCount": 78815,
-        "forkCount": 6261,
-        "todayStars": 81
-      },
-      {
-        "nameWithOwner": "techjarves/Uncensored-Local-AI-Multiplatform",
-        "repoUrl": "https://github.com/techjarves/Uncensored-Local-AI-Multiplatform",
-        "description": "A cross-platform Flutter app that runs uncensored, 100% offline open-source AI models (GGUF) directly on your Android, iOS, or PC. No cloud, no filters, total privacy.",
-        "language": "Dart",
-        "stargazerCount": 1550,
-        "forkCount": 367,
-        "todayStars": 7
+        "stargazerCount": 10484,
+        "forkCount": 658,
+        "todayStars": 24
       },
       {
         "nameWithOwner": "hiddify/hiddify-app",
         "repoUrl": "https://github.com/hiddify/hiddify-app",
         "description": "Multi-platform auto-proxy client, supporting Sing-box, X-ray, TUIC, Hysteria, Reality, Trojan, SSH etc. It’s an open-source, secure and ad-free.",
         "language": "Dart",
-        "stargazerCount": 33959,
-        "forkCount": 3214,
-        "todayStars": 32
+        "stargazerCount": 33993,
+        "forkCount": 3219,
+        "todayStars": 42
       },
       {
-        "nameWithOwner": "deckerst/aves",
-        "repoUrl": "https://github.com/deckerst/aves",
-        "description": "Aves is a gallery and metadata explorer app, built for Android with Flutter.",
+        "nameWithOwner": "ch6vip/novel-sound",
+        "repoUrl": "https://github.com/ch6vip/novel-sound",
+        "description": "内容聚合 Android 客户端：小说/短剧/漫剧/听书/漫画，Flutter UI + 进程内 Rust 核心，无自建服务器、无需 root",
         "language": "Dart",
-        "stargazerCount": 5511,
-        "forkCount": 261,
-        "todayStars": 5
+        "stargazerCount": 1446,
+        "forkCount": 222,
+        "todayStars": 29
+      },
+      {
+        "nameWithOwner": "akashdh11/skystream",
+        "repoUrl": "https://github.com/akashdh11/skystream",
+        "description": "SkyStream is a modern, cross-platform media streaming client inspired by CloudStream. It uses a custom JavaScript runtime for plugins, allowing users to scrape and stream content from various sources on Android, iOS, Windows, macOS, and Linux from a single codebase.",
+        "language": "Dart",
+        "stargazerCount": 699,
+        "forkCount": 78,
+        "todayStars": 2
+      },
+      {
+        "nameWithOwner": "Solido/awesome-flutter",
+        "repoUrl": "https://github.com/Solido/awesome-flutter",
+        "description": "An awesome list that curates the best Flutter libraries, tools, tutorials, articles and more.",
+        "language": "Dart",
+        "stargazerCount": 61895,
+        "forkCount": 6954,
+        "todayStars": 16
+      },
+      {
+        "nameWithOwner": "ente/ente",
+        "repoUrl": "https://github.com/ente/ente",
+        "description": "💚 End-to-end encrypted cloud for everything.",
+        "language": "Dart",
+        "stargazerCount": 30108,
+        "forkCount": 1917,
+        "todayStars": 31
       },
       {
         "nameWithOwner": "Chevey339/kelivo",
         "repoUrl": "https://github.com/Chevey339/kelivo",
         "description": "A Flutter LLM Chat Client. Support Mobile & Desktop.",
         "language": "Dart",
-        "stargazerCount": 4510,
-        "forkCount": 514,
+        "stargazerCount": 4523,
+        "forkCount": 513,
         "todayStars": 14
+      },
+      {
+        "nameWithOwner": "wanghongenpin/proxypin",
+        "repoUrl": "https://github.com/wanghongenpin/proxypin",
+        "description": "Open source free capture HTTP(S) traffic software ProxyPin, supporting full platform systems",
+        "language": "Dart",
+        "stargazerCount": 14404,
+        "forkCount": 1291,
+        "todayStars": 7
+      },
+      {
+        "nameWithOwner": "Spyou/Zangetsu",
+        "repoUrl": "https://github.com/Spyou/Zangetsu",
+        "description": "Free, open-source app for anime, movies, series, manga and light novels — on Android, Android TV and iOS (beta).",
+        "language": "Dart",
+        "stargazerCount": 539,
+        "forkCount": 69,
+        "todayStars": 6
       },
       {
         "nameWithOwner": "edde746/plezy",
         "repoUrl": "https://github.com/edde746/plezy",
         "description": "Modern cross-platform media server client built with Flutter",
         "language": "Dart",
-        "stargazerCount": 4165,
-        "forkCount": 483,
-        "todayStars": 17
-      },
-      {
-        "nameWithOwner": "simonoppowa/OpenNutriTracker",
-        "repoUrl": "https://github.com/simonoppowa/OpenNutriTracker",
-        "description": "🍴 OpenNutriTracker is a free and open source calorie tracker with a focus on simplicity and privacy.",
-        "language": "Dart",
-        "stargazerCount": 2886,
-        "forkCount": 412,
-        "todayStars": 5
+        "stargazerCount": 4177,
+        "forkCount": 486,
+        "todayStars": 14
       }
     ],
     "Ruby": [
@@ -1647,89 +1611,35 @@
         "repoUrl": "https://github.com/we-promise/sure",
         "description": "The personal finance app for everyone (by everyone)",
         "language": "Ruby",
-        "stargazerCount": 13920,
-        "forkCount": 1042,
-        "todayStars": 967
+        "stargazerCount": 14738,
+        "forkCount": 1119,
+        "todayStars": 925
       },
       {
-        "nameWithOwner": "mastodon/mastodon",
-        "repoUrl": "https://github.com/mastodon/mastodon",
-        "description": "Your self-hosted, globally interconnected microblogging community",
+        "nameWithOwner": "ruby/ruby",
+        "repoUrl": "https://github.com/ruby/ruby",
+        "description": "The Ruby Programming Language",
         "language": "Ruby",
-        "stargazerCount": 50596,
-        "forkCount": 7583,
+        "stargazerCount": 23812,
+        "forkCount": 5685,
         "todayStars": 3
-      },
-      {
-        "nameWithOwner": "rapid7/metasploit-framework",
-        "repoUrl": "https://github.com/rapid7/metasploit-framework",
-        "description": "Metasploit Framework",
-        "language": "Ruby",
-        "stargazerCount": 39564,
-        "forkCount": 15036,
-        "todayStars": 29
-      },
-      {
-        "nameWithOwner": "opf/openproject",
-        "repoUrl": "https://github.com/opf/openproject",
-        "description": "OpenProject is the leading open source project management software for product, project and portfolio management. A powerful Jira alternative with agile planning, issue tracking, roadmaps, Gantt charts, time tracking, collaboration features, and more. Available on premises or in the cloud. ⭐ Star us on GitHub",
-        "language": "Ruby",
-        "stargazerCount": 17324,
-        "forkCount": 3758,
-        "todayStars": 37
-      },
-      {
-        "nameWithOwner": "rails/rails",
-        "repoUrl": "https://github.com/rails/rails",
-        "description": "Ruby on Rails",
-        "language": "Ruby",
-        "stargazerCount": 59094,
-        "forkCount": 23130,
-        "todayStars": 1
-      },
-      {
-        "nameWithOwner": "jekyll/jekyll",
-        "repoUrl": "https://github.com/jekyll/jekyll",
-        "description": "🌐 Jekyll is a blog-aware static site generator in Ruby",
-        "language": "Ruby",
-        "stargazerCount": 51772,
-        "forkCount": 10303,
-        "todayStars": 5
-      },
-      {
-        "nameWithOwner": "danbooru/danbooru",
-        "repoUrl": "https://github.com/danbooru/danbooru",
-        "description": "A taggable image board written in Rails.",
-        "language": "Ruby",
-        "stargazerCount": 2932,
-        "forkCount": 466,
-        "todayStars": 4
       },
       {
         "nameWithOwner": "chatwoot/chatwoot",
         "repoUrl": "https://github.com/chatwoot/chatwoot",
         "description": "Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. 🔥💬",
         "language": "Ruby",
-        "stargazerCount": 39738,
-        "forkCount": 9659,
-        "todayStars": 69
+        "stargazerCount": 39820,
+        "forkCount": 9675,
+        "todayStars": 84
       },
       {
-        "nameWithOwner": "kilimchoi/engineering-blogs",
-        "repoUrl": "https://github.com/kilimchoi/engineering-blogs",
-        "description": "A curated list of engineering blogs",
+        "nameWithOwner": "Homebrew/homebrew-cask",
+        "repoUrl": "https://github.com/Homebrew/homebrew-cask",
+        "description": "🍻 Default casks (upstream binary packages) for the package manager for everywhere",
         "language": "Ruby",
-        "stargazerCount": 38959,
-        "forkCount": 2070,
-        "todayStars": 9
-      },
-      {
-        "nameWithOwner": "Homebrew/homebrew-core",
-        "repoUrl": "https://github.com/Homebrew/homebrew-core",
-        "description": "🍻 Default and OSS formulae (built-from-source packages) for the package manager for everywhere",
-        "language": "Ruby",
-        "stargazerCount": 15668,
-        "forkCount": 13958,
+        "stargazerCount": 22297,
+        "forkCount": 12101,
         "todayStars": 2
       },
       {
@@ -1737,90 +1647,90 @@
         "repoUrl": "https://github.com/rubysec/ruby-advisory-db",
         "description": "A database of vulnerable Ruby Gems",
         "language": "Ruby",
-        "stargazerCount": 1082,
+        "stargazerCount": 1083,
         "forkCount": 252,
         "todayStars": 1
       },
       {
-        "nameWithOwner": "otwcode/otwarchive",
-        "repoUrl": "https://github.com/otwcode/otwarchive",
-        "description": "The Organization for Transformative Works (OTW) - Archive Of Our Own (AO3) Project",
+        "nameWithOwner": "basecamp/once-campfire",
+        "repoUrl": "https://github.com/basecamp/once-campfire",
+        "description": "Super simple group chat, without a subscription",
         "language": "Ruby",
-        "stargazerCount": 2395,
-        "forkCount": 894,
+        "stargazerCount": 4833,
+        "forkCount": 832,
+        "todayStars": 4
+      },
+      {
+        "nameWithOwner": "cncf/gitdm",
+        "repoUrl": "https://github.com/cncf/gitdm",
+        "description": "📜Fork for tracking CNCF projects",
+        "language": "Ruby",
+        "stargazerCount": 89,
+        "forkCount": 1004,
+        "todayStars": 0
+      },
+      {
+        "nameWithOwner": "ruby/gem_rbs_collection",
+        "repoUrl": "https://github.com/ruby/gem_rbs_collection",
+        "description": "A collection of RBS for gems.",
+        "language": "Ruby",
+        "stargazerCount": 302,
+        "forkCount": 141,
+        "todayStars": 0
+      },
+      {
+        "nameWithOwner": "github-linguist/linguist",
+        "repoUrl": "https://github.com/github-linguist/linguist",
+        "description": "Language Savant. If your repository's language is being reported incorrectly, send us a pull request!",
+        "language": "Ruby",
+        "stargazerCount": 13786,
+        "forkCount": 5529,
+        "todayStars": 0
+      },
+      {
+        "nameWithOwner": "basecamp/fizzy",
+        "repoUrl": "https://github.com/basecamp/fizzy",
+        "description": "Kanban as it should be. Not as it has been.",
+        "language": "Ruby",
+        "stargazerCount": 8298,
+        "forkCount": 1207,
         "todayStars": 2
       },
       {
-        "nameWithOwner": "thoughtbot/shoulda-matchers",
-        "repoUrl": "https://github.com/thoughtbot/shoulda-matchers",
-        "description": "Simple one-liner tests for common Rails functionality",
+        "nameWithOwner": "dependabot/demo",
+        "repoUrl": "https://github.com/dependabot/demo",
+        "description": "🤖 Fork me to try out Dependabot",
         "language": "Ruby",
-        "stargazerCount": 3577,
-        "forkCount": 915,
-        "todayStars": 0
+        "stargazerCount": 354,
+        "forkCount": 5138,
+        "todayStars": 1
       },
       {
-        "nameWithOwner": "discourse/discourse",
-        "repoUrl": "https://github.com/discourse/discourse",
-        "description": "A platform for community discussion. Free, open, simple.",
+        "nameWithOwner": "lineofflight/frankfurter",
+        "repoUrl": "https://github.com/lineofflight/frankfurter",
+        "description": "💱 Currency data API",
         "language": "Ruby",
-        "stargazerCount": 48078,
-        "forkCount": 9061,
-        "todayStars": 7
-      },
-      {
-        "nameWithOwner": "ruby/ruby",
-        "repoUrl": "https://github.com/ruby/ruby",
-        "description": "The Ruby Programming Language",
-        "language": "Ruby",
-        "stargazerCount": 23813,
-        "forkCount": 5684,
-        "todayStars": 4
-      },
-      {
-        "nameWithOwner": "freeCodeCamp/devdocs",
-        "repoUrl": "https://github.com/freeCodeCamp/devdocs",
-        "description": "API Documentation Browser",
-        "language": "Ruby",
-        "stargazerCount": 39630,
-        "forkCount": 2655,
-        "todayStars": 6
-      },
-      {
-        "nameWithOwner": "Homebrew/homebrew-cask",
-        "repoUrl": "https://github.com/Homebrew/homebrew-cask",
-        "description": "🍻 Default casks (upstream binary packages) for the package manager for everywhere",
-        "language": "Ruby",
-        "stargazerCount": 22294,
-        "forkCount": 12097,
-        "todayStars": 4
-      },
-      {
-        "nameWithOwner": "DataDog/dd-trace-rb",
-        "repoUrl": "https://github.com/DataDog/dd-trace-rb",
-        "description": "Datadog's client library for Ruby",
-        "language": "Ruby",
-        "stargazerCount": 419,
-        "forkCount": 428,
-        "todayStars": 0
+        "stargazerCount": 2100,
+        "forkCount": 196,
+        "todayStars": 3
       },
       {
         "nameWithOwner": "basecamp/kamal",
         "repoUrl": "https://github.com/basecamp/kamal",
         "description": "Deploy web apps anywhere.",
         "language": "Ruby",
-        "stargazerCount": 14723,
+        "stargazerCount": 14727,
         "forkCount": 774,
-        "todayStars": 2
+        "todayStars": 3
       },
       {
-        "nameWithOwner": "docusealco/docuseal",
-        "repoUrl": "https://github.com/docusealco/docuseal",
-        "description": "Open source DocuSign alternative. Create, fill, and sign digital documents ✍️",
+        "nameWithOwner": "freeCodeCamp/devdocs",
+        "repoUrl": "https://github.com/freeCodeCamp/devdocs",
+        "description": "API Documentation Browser",
         "language": "Ruby",
-        "stargazerCount": 19045,
-        "forkCount": 1947,
-        "todayStars": 5
+        "stargazerCount": 39633,
+        "forkCount": 2655,
+        "todayStars": 4
       }
     ],
     "Shell": [
@@ -1829,144 +1739,126 @@
         "repoUrl": "https://github.com/nvm-sh/nvm",
         "description": "Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions.",
         "language": "Shell",
-        "stargazerCount": 96015,
-        "forkCount": 10759,
-        "todayStars": 63
-      },
-      {
-        "nameWithOwner": "ohmyzsh/ohmyzsh",
-        "repoUrl": "https://github.com/ohmyzsh/ohmyzsh",
-        "description": "🙃 A delightful community-driven (with 2,500+ contributors) framework for managing your zsh configuration. Includes 300+ optional plugins (rails, git, macOS, hub, docker, homebrew, node, php, python, etc), 140+ themes to spice up your morning, and an auto-update tool that makes it easy to keep up with the latest updates from the community.",
-        "language": "Shell",
-        "stargazerCount": 190595,
-        "forkCount": 27303,
-        "todayStars": 30
+        "stargazerCount": 96106,
+        "forkCount": 10761,
+        "todayStars": 154
       },
       {
         "nameWithOwner": "pi-hole/pi-hole",
         "repoUrl": "https://github.com/pi-hole/pi-hole",
         "description": "A black hole for Internet advertisements",
         "language": "Shell",
-        "stargazerCount": 61876,
-        "forkCount": 3379,
-        "todayStars": 38
-      },
-      {
-        "nameWithOwner": "obra/superpowers",
-        "repoUrl": "https://github.com/obra/superpowers",
-        "description": "An agentic skills framework & software development methodology that works.",
-        "language": "Shell",
-        "stargazerCount": 316775,
-        "forkCount": 28184,
-        "todayStars": 517
-      },
-      {
-        "nameWithOwner": "EpicGames/unreal-engine-skills-for-claude-code-plugin",
-        "repoUrl": "https://github.com/EpicGames/unreal-engine-skills-for-claude-code-plugin",
-        "description": "",
-        "language": "Shell",
-        "stargazerCount": 1959,
-        "forkCount": 202,
-        "todayStars": 8
-      },
-      {
-        "nameWithOwner": "bin456789/reinstall",
-        "repoUrl": "https://github.com/bin456789/reinstall",
-        "description": "一键DD/重装脚本 (One-click reinstall OS on VPS)",
-        "language": "Shell",
-        "stargazerCount": 14091,
-        "forkCount": 2247,
-        "todayStars": 19
-      },
-      {
-        "nameWithOwner": "htr-tech/nexphisher",
-        "repoUrl": "https://github.com/htr-tech/nexphisher",
-        "description": "Advanced Phishing tool",
-        "language": "Shell",
-        "stargazerCount": 3939,
-        "forkCount": 644,
-        "todayStars": 4
-      },
-      {
-        "nameWithOwner": "termux/termux-packages",
-        "repoUrl": "https://github.com/termux/termux-packages",
-        "description": "A package build system for Termux.",
-        "language": "Shell",
-        "stargazerCount": 17353,
-        "forkCount": 4547,
-        "todayStars": 8
-      },
-      {
-        "nameWithOwner": "233boy/sing-box",
-        "repoUrl": "https://github.com/233boy/sing-box",
-        "description": "最好用的 sing-box 一键安装脚本 & 管理脚本，自动创建 Hysteria2 协议；支持 TUIC，Trojan，REALITY 等所有常见的协议",
-        "language": "Shell",
-        "stargazerCount": 5434,
-        "forkCount": 1876,
-        "todayStars": 24
-      },
-      {
-        "nameWithOwner": "acmesh-official/acme.sh",
-        "repoUrl": "https://github.com/acmesh-official/acme.sh",
-        "description": "A pure Unix shell script ACME client for SSL / TLS certificate automation",
-        "language": "Shell",
-        "stargazerCount": 47950,
-        "forkCount": 5713,
-        "todayStars": 7
+        "stargazerCount": 61960,
+        "forkCount": 3387,
+        "todayStars": 89
       },
       {
         "nameWithOwner": "mattpocock/skills",
         "repoUrl": "https://github.com/mattpocock/skills",
         "description": "Skills for Real Engineers. Straight from my .agents directory.",
         "language": "Shell",
-        "stargazerCount": 323016,
-        "forkCount": 27097,
-        "todayStars": 1048
+        "stargazerCount": 323829,
+        "forkCount": 27176,
+        "todayStars": 898
       },
       {
-        "nameWithOwner": "bivlked/amneziawg-installer",
-        "repoUrl": "https://github.com/bivlked/amneziawg-installer",
-        "description": "Install your own AmneziaWG 3.1 VPN server on a fresh Ubuntu or Debian VPS with one command. Made for networks that block WireGuard. No Docker, QR-code import, 2.0 on request for routers.",
+        "nameWithOwner": "expo/skills",
+        "repoUrl": "https://github.com/expo/skills",
+        "description": "A collection of AI agent skills for working with Expo projects and Expo Application Services",
         "language": "Shell",
-        "stargazerCount": 1539,
-        "forkCount": 118,
-        "todayStars": 5
+        "stargazerCount": 4140,
+        "forkCount": 269,
+        "todayStars": 15
       },
       {
-        "nameWithOwner": "skills/introduction-to-git",
-        "repoUrl": "https://github.com/skills/introduction-to-git",
-        "description": "Use Git version control to work on a game using command line (CLI) and VS Code",
+        "nameWithOwner": "bin456789/reinstall",
+        "repoUrl": "https://github.com/bin456789/reinstall",
+        "description": "一键DD/重装脚本 (One-click reinstall OS on VPS)",
         "language": "Shell",
-        "stargazerCount": 276,
-        "forkCount": 200,
-        "todayStars": 1
+        "stargazerCount": 14099,
+        "forkCount": 2248,
+        "todayStars": 11
       },
       {
-        "nameWithOwner": "chefranov/mhi2-au37x-carplay",
-        "repoUrl": "https://github.com/chefranov/mhi2-au37x-carplay",
-        "description": "CarPlay map, route guidance and album art on the Audi Virtual Cockpit, plus MMI touchpad D-pad. MIB2 High, A3/S3/RS3 8V and Q2",
+        "nameWithOwner": "kunchenguid/firstmate",
+        "repoUrl": "https://github.com/kunchenguid/firstmate",
+        "description": "Talk to one agent. Ship with a crew.",
         "language": "Shell",
-        "stargazerCount": 141,
-        "forkCount": 9,
-        "todayStars": 2
+        "stargazerCount": 8854,
+        "forkCount": 2750,
+        "todayStars": 29
+      },
+      {
+        "nameWithOwner": "obra/superpowers",
+        "repoUrl": "https://github.com/obra/superpowers",
+        "description": "An agentic skills framework & software development methodology that works.",
+        "language": "Shell",
+        "stargazerCount": 317237,
+        "forkCount": 28240,
+        "todayStars": 530
+      },
+      {
+        "nameWithOwner": "msitarzewski/agency-agents",
+        "repoUrl": "https://github.com/msitarzewski/agency-agents",
+        "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+        "language": "Shell",
+        "stargazerCount": 168151,
+        "forkCount": 27278,
+        "todayStars": 190
+      },
+      {
+        "nameWithOwner": "233boy/sing-box",
+        "repoUrl": "https://github.com/233boy/sing-box",
+        "description": "最好用的 sing-box 一键安装脚本 & 管理脚本，自动创建 Hysteria2 协议；支持 TUIC，Trojan，REALITY 等所有常见的协议",
+        "language": "Shell",
+        "stargazerCount": 5453,
+        "forkCount": 1881,
+        "todayStars": 20
       },
       {
         "nameWithOwner": "233boy/v2ray",
         "repoUrl": "https://github.com/233boy/v2ray",
         "description": "最好用的 V2Ray 一键安装脚本 & 管理脚本",
         "language": "Shell",
-        "stargazerCount": 29867,
-        "forkCount": 16510,
-        "todayStars": 11
+        "stargazerCount": 29871,
+        "forkCount": 16508,
+        "todayStars": 8
       },
       {
-        "nameWithOwner": "conda-forge/miniforge",
-        "repoUrl": "https://github.com/conda-forge/miniforge",
-        "description": "A conda-forge distribution.",
+        "nameWithOwner": "a2aproject/A2A",
+        "repoUrl": "https://github.com/a2aproject/A2A",
+        "description": "Agent2Agent (A2A) is an open protocol enabling communication and interoperability between opaque agentic applications.",
         "language": "Shell",
-        "stargazerCount": 10364,
-        "forkCount": 552,
-        "todayStars": 4
+        "stargazerCount": 26533,
+        "forkCount": 2702,
+        "todayStars": 24
+      },
+      {
+        "nameWithOwner": "czlonkowski/n8n-skills",
+        "repoUrl": "https://github.com/czlonkowski/n8n-skills",
+        "description": "n8n skillset for Claude Code to build flawless n8n workflows",
+        "language": "Shell",
+        "stargazerCount": 6641,
+        "forkCount": 1082,
+        "todayStars": 2
+      },
+      {
+        "nameWithOwner": "orwa-mahmoud/nightshift",
+        "repoUrl": "https://github.com/orwa-mahmoud/nightshift",
+        "description": "Accountable long-running coding shifts for Cursor, Codex, and Claude Code. Safe autonomy, recovery, persistent state, and reviewable results a clear view of what’s done, in progress, parked, or blocked—without scrolling a marathon chat.",
+        "language": "Shell",
+        "stargazerCount": 441,
+        "forkCount": 19,
+        "todayStars": 50
+      },
+      {
+        "nameWithOwner": "fscarmen/sing-box",
+        "repoUrl": "https://github.com/fscarmen/sing-box",
+        "description": "Sing-box 全家桶 --- 一键多协议脚本。支持 Reality、Hysteria2 、TUIC 、Trojan 、Shadowsocks 、 AnyTLS 、ShadowTLS 、 Vmess 、 VLESS 、NaiveProxy 、Snell，搭配 Argo 隧道等，多客户端订阅（Clash / V2rayN / Throne / ShadowRocket / SFA ），无须域名、功能强大、配置灵活。",
+        "language": "Shell",
+        "stargazerCount": 6042,
+        "forkCount": 1167,
+        "todayStars": 5
       }
     ]
   }
