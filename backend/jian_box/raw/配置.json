@@ -8,10 +8,11 @@
   "公告弹窗内容": "",
   "最新版本": "211",
   "更新链接": "https://yxlzy.lanzoue.com/b00wnq3c2f",
+  "更新按钮一链接": "https://yxlzy.lanzoue.com/b00wnq3c2f",
+  "更新按钮二链接": "",
   "强制更新": "关闭",
   "更新弹窗标题": "发现新版本",
-  "更新弹窗内容": "请立即更新",
-  "更新按钮二链接": "",
+  "更新弹窗内容": "",
   "云服务配置": {
     "网关地址": "https://relay.614118.xyz",
     "网关令牌": "zzgs219",
@@ -94,7 +95,7 @@
         ]
       },
       {
-        "标题": "外网",
+        "标题": "平台",
         "列表": [
           {
             "标题": "GitHub",
@@ -122,6 +123,13 @@
             "内容": "免费大模型API",
             "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/060485de-b600-4784-8a24-b9458e0bf5a5.webp",
             "链接": "https://build.nvidia.com",
+            "类型": "外置"
+          },
+          {
+            "标题": "CNB",
+            "内容": "云端开发协作平台",
+            "图片": "https://cnb.cool/zzgs219/cdn-img/-/imgs/SfleRf7FvB2FQoKTkKFEwP/86212ab2-c992-4696-a098-5a9c77eea407.webp",
+            "链接": "https://cnb.cool",
             "类型": "外置"
           }
         ]
