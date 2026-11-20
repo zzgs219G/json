@@ -37,6 +37,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
@@ -49,9 +50,22 @@ SOURCE_REF = "main"
 OUT_DIR_TEMPLATE = "backend/apk_schema/v{version}"
 OUT_FILE = "config-schema.json"
 
-# 需要同步的 schema 大版本。新增版本时在 App 侧确认支持范围后再加。
-# 与 App 的 ProtectConfigSchema.MAX_SUPPORTED_SCHEMA_VERSION 对应。
-SUPPORTED_VERSIONS = [1]
+# 需要同步的 schema 大版本。
+#
+# ⚠️ 2026-11-21 改为【自动发现】：原来是硬编码 SUPPORTED_VERSIONS = [1]，
+# 后果是 artifact-pipeline 新增 configs/v2 后本仓库完全没镜像它 ——
+# src 那边发了 repository_dispatch、本仓库 workflow 也绿了、日志只循环了 v1，
+# 全程没有任何报错。这个 bug 的形态是「成功但漏做」，最难发现的一类。
+#
+# 现在通过 GitHub Contents API 列 configs/ 目录，发现所有 v<N> 子目录。
+# 新增卡片只需在源仓库建目录，本仓库零改动。
+#
+# 兜底：列目录失败（API 限流/网络）时退回这份保守清单，并打警告 ——
+# 宁可少拉也不要让整个同步变成红，但必须让人知道降级了。
+FALLBACK_VERSIONS = [1, 2]
+
+# 保留可被 --version 覆盖；None 表示「自动发现」
+SUPPORTED_VERSIONS = None
 
 # GitHub Contents API 走 raw 媒体类型可直接拿文件原文
 RAW_ACCEPT = "application/vnd.github.raw"
@@ -62,6 +76,40 @@ def source_url(version: int) -> str:
         f"https://api.github.com/repos/{SOURCE_OWNER}/{SOURCE_REPO}"
         f"/contents/configs/v{version}/{OUT_FILE}?ref={SOURCE_REF}"
     )
+
+
+def discover_versions(token: str | None) -> list[int]:
+    """列出源仓库 configs/ 下所有 v<N> 目录，返回版本号升序列表。
+
+    为什么用 Contents API 而不是硬编码清单：硬编码的形态是「新增卡片必须
+    回来改本文件」，而漏改时**不会报错**——2026-11-21 实际踩过：源仓库加了
+    configs/v2，本仓库照常绿、照常提交，只是只拉了 v1。这类「成功但漏做」
+    的 bug 靠人肉纪律防不住。
+    """
+    url = (
+        f"https://api.github.com/repos/{SOURCE_OWNER}/{SOURCE_REPO}"
+        f"/contents/configs?ref={SOURCE_REF}"
+    )
+    req = urllib.request.Request(url, headers={"Accept": "application/vnd.github+json"})
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    req.add_header("User-Agent", "json-repo-schema-sync")
+
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        entries = json.loads(resp.read().decode("utf-8"))
+
+    if not isinstance(entries, list):
+        raise RuntimeError(f"configs/ 列目录返回结构异常: {type(entries).__name__}")
+
+    versions = []
+    for e in entries:
+        if not isinstance(e, dict) or e.get("type") != "dir":
+            continue
+        name = e.get("name") or ""
+        m = re.fullmatch(r"v(\d+)", name)
+        if m:
+            versions.append(int(m.group(1)))
+    return sorted(set(versions))
 
 
 def fetch(version: int, token: str | None) -> str:
@@ -131,18 +179,35 @@ def main() -> int:
         "--version",
         type=int,
         action="append",
-        help="只同步指定版本（可重复）。缺省同步 SUPPORTED_VERSIONS 全部",
+        help="只同步指定版本（可重复）。缺省自动发现 configs/ 下所有 v<N>",
     )
     ap.add_argument("--dry-run", action="store_true", help="只报告不写文件")
     args = ap.parse_args()
 
-    versions = args.version or SUPPORTED_VERSIONS
     token = os.environ.get("GH_SCHEMA_SOURCE_TOKEN")
 
     print(f"源: {SOURCE_OWNER}/{SOURCE_REPO}@{SOURCE_REF}")
-    print(f"目标版本: {versions}")
     if not token:
         print("提示: 未设置 GH_SCHEMA_SOURCE_TOKEN，按公开仓库匿名拉取")
+
+    # ── 决定要同步哪些版本 ────────────────────────────────────────────
+    if args.version:
+        versions = args.version
+        print(f"目标版本（命令行指定）: {versions}")
+    elif SUPPORTED_VERSIONS is not None:
+        versions = SUPPORTED_VERSIONS
+        print(f"目标版本（常量）: {versions}")
+    else:
+        try:
+            versions = discover_versions(token)
+            print(f"目标版本（自动发现）: {versions}")
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ 自动发现失败，退回保守清单 {FALLBACK_VERSIONS}", file=sys.stderr)
+            print(f"   原因: {e}", file=sys.stderr)
+            versions = FALLBACK_VERSIONS
+        if not versions:
+            print("⚠️ 自动发现到 0 个版本，退回保守清单", file=sys.stderr)
+            versions = FALLBACK_VERSIONS
 
     changed = False
     for v in versions:
@@ -158,6 +223,19 @@ def main() -> int:
             changed = True
         else:
             print("  无变化")
+
+    # ── 索引文件：告诉 App「镜像里有哪些版本」────────────────────────
+    # 为什么需要：App 原先靠 MAX_SUPPORTED_SCHEMA_VERSION 常量决定渲染几个
+    # tab，那是「App 支持几个」而非「实际存在几个」。有了索引，App 可以
+    # 渲染实际存在的卡片，而不用每次加卡片都发新版 App。
+    index_path = os.path.join("backend", "apk_schema", "index.json")
+    index_body = json.dumps(
+        {"versions": sorted(versions)},
+        ensure_ascii=False,
+        indent=2,
+    ) + "\n"
+    if write_if_changed(index_path, index_body, args.dry_run):
+        changed = True
 
     print("有变更" if changed else "全部无变化")
     return 0
