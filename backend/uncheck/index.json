@@ -1,9 +1,17 @@
 {
-  "version": "1.0.0",
+  "version": "60b5ca5f49ed",
   "files": {
     "boot.dex": {
-      "sha256": "5d9c026ea1315ebe733766fc19160849fd82f212910fdf3acc503bc5feb5f33c",
-      "size": 11416
+      "sha256": "1571acb98a153a91c48d9fdf5f32e97b1a117e00deafe25dbd19d3902ab2d93b",
+      "size": 14052
+    },
+    "libusign_arm64.so": {
+      "sha256": "3886df3fb6d8c0cbb6af58a85961018320f6dc43d682cd97985376ec1f80da59",
+      "size": 133728
+    },
+    "libusign_armv7.so": {
+      "sha256": "25a7710e044fa0a99d27e58ba19d2a5d905f922f25524dec6774dcf988b03d31",
+      "size": 131908
     },
     "payload.dex": {
       "sha256": "62f874f694299c40e4a469ff9a5d9ec272c479d6e2fe944b2a3d078455a0a975",
